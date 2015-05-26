@@ -30,7 +30,7 @@ WSGI_APPLICATION = 'plataforma_fadcanic.wsgi.application'
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-NI'
 
 TIME_ZONE = 'UTC'
 
