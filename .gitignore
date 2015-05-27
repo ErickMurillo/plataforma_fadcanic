@@ -60,3 +60,5 @@ target/
 *.sql
 *.sqlite3
 local_settings.py
+media/
+static/
