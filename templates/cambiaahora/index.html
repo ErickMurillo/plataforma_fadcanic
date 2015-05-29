@@ -5,5 +5,33 @@
 {% endblock titulo %}
 
 {% block contenido %}
-	prueba del contenido
+	<h1>Ultimas noticias</h1>
+	{% for obj in ultimas_noticias %}
+		{{obj.titulo}} <br>
+		{{obj.fecha}} <br>
+		{{obj.foto}} <br>
+		{{obj.texto|safe}} <br>
+	{% endfor %}
+
+	<br><br>
+	<h1>Ultimas historias</h1>
+	{% for obj in ultimas_historia %}
+		{{obj.titulo}} <br>
+		{{obj.fecha}} <br>
+		{{obj.foto}} <br>
+		{{obj.texto|safe}} <br>
+	{% endfor %}
+
+	<br><br>
+	<h1>Ultimas testimonios</h1>
+	{% for obj in ultimas_testimonios %}
+		{{obj.titulo}} <br>
+		{{obj.fecha}} <br>
+		{{obj.foto}} <br>
+		{{obj.texto|safe}} <br>
+	{% endfor %}
+
+	<br><br>
+	<h1>Albunes</h1>
+
 {% endblock contenido %}

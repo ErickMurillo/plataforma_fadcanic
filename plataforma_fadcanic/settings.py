@@ -4,6 +4,7 @@ from local_settings import *
 # Application definition
 
 INSTALLED_APPS = (
+    'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -11,6 +12,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cambiaahora.noticias',
+    'cambiaahora.historias',
+    'cambiaahora.multimedias',
+    'cambiaahora.staff',
+    'cambiaahora.testimonios',
     #extras apps
     'ckeditor',
 )
@@ -34,10 +39,14 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request'
             ],
         },
     },
@@ -45,7 +54,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'plataforma_fadcanic.wsgi.application'
 
-
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
