@@ -1,5 +1,6 @@
 Django==1.8.2
 Pillow==2.8.1
+bootstrap-admin==0.3.6
 django-ckeditor-updated==4.4.4
 sorl-thumbnail==12.2
 wsgiref==0.1.2
