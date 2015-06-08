@@ -12,7 +12,7 @@ import json as simmplejson
             
 #     def __unicode__(self):                 
 #         return mark_safe(CODE % (self._data, self._load_items, self._selected_items))
-        
+
 class FormFKAutoFill(forms.Form):        
     def _foo(self):        
         a = getattr(self, 'Foo')

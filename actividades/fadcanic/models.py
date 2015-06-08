@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from actividades.thumbs import ImageWithThumbsField
 from actividades.utils import get_file_path
-import datetime
+import datetime 
 
 class ResultadoPrograma(models.Model):    
     nombre_corto = models.CharField(max_length=50)
