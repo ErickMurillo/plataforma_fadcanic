@@ -25,8 +25,6 @@ urlpatterns = [
     url(r'^report/$', 'actividades.contraparte.views.generate_report', name='generate_report' ),    
     url(r'^ajax/proyectos/$', 'actividades.contraparte.views.get_proyectos', name='get_proyectos' ),
     url(r'^ajax/salidas/$', 'actividades.contraparte.views.get_salidas', name='get_salidas' ),
-    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', {'template_name': 'logout.html'}),
     url(r'^fillout/', include('actividades.formutils.urls')),
     url(r'^proyecto/', include('actividades.contraparte.urls')),
     url(r'^programa/', include('actividades.fadcanic.urls')),    

@@ -26,6 +26,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^actividades/', include('actividades.urls')),
+    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'actividades/login.html'}),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'template_name': 'actividades/logout.html'}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns(

@@ -126,3 +126,6 @@ CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.j
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/actividades/'

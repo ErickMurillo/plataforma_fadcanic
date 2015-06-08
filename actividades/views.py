@@ -7,4 +7,4 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def home(request):
     organizaciones = Organizacion.objects.all()
-    return render_to_response('index.html', RequestContext(request, locals()))
+    return render_to_response('actividades/index.html', RequestContext(request, locals()))

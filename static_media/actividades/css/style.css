@@ -1,0 +1,28 @@
+#login {
+	width: 50%;
+	margin: 0 auto;
+	margin: 3% 25% 3% 25% ;
+	background: #d7d7d8;
+	border-radius: 15px;
+
+}
+
+#login form {
+	padding: 20px;
+	
+}
+
+.caption {
+	text-align: center;
+}
+.caption a {
+	color: #333333
+}
+
+.contenido {
+	margin-top: 3em;
+}
+
+.thumbnail i {
+	margin:0 40%;
+}

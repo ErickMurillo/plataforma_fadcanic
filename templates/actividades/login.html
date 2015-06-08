@@ -1,0 +1,61 @@
+{% extends "actividades/base.html" %}
+
+{% block extra_head %}
+<script>
+$(document).ready(function(){
+	$("#id_meses").multiselect({
+	    noneSelectedText: 'Mes',
+	    selectedText: '# seleccionados',
+	    minWidth: 150	    
+	});
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#id_password').val('password');
+        $('#id_username').val('usuario');
+        $('#id_password').click(function(){
+            if($(this).val()=='password'){$(this).val('')}
+        });
+        $('#id_password').focus(function(){
+            if($(this).val()=='password'){$(this).val('')}
+        });
+        $('#id_password').blur(function(){
+            if($(this).val()==''){$(this).val('password')}
+        });
+        $('#id_username').click(function(){
+            if($(this).val()=='usuario'){$(this).val('')}
+        });
+        $('#id_username').focus(function(){
+            if($(this).val()=='usuario'){$(this).val('')}
+        });
+        $('#id_username').blur(function(){
+            if($(this).val()==''){$(this).val('usuario')}
+        });
+    });
+</script>
+<style type="text/css">
+	.content .wrapper{
+		margin-bottom: 50px;
+		margin-top: 15px;
+	}
+	label{
+		float: left;
+		padding-right: 20px;	
+	}
+</style>
+{% endblock %}
+
+
+{% block contenido %}
+<div id="login">
+	<form action="." method="post" class="form">
+			{% csrf_token %}
+			<table>
+				{{form.as_table}}
+				<input type="hidden" name="next" value="{{ next }}" />
+			</table>
+			<input class="form-button" type="submit" value="Entrar" />	
+		</form>
+</div>	
+{% endblock contenido %}
