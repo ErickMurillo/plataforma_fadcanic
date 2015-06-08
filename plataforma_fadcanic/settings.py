@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 from local_settings import *
 
 # Application definition
@@ -28,6 +28,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -64,7 +65,13 @@ BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'es-NI'
+LANGUAGE_CODE = 'es'
+
+LANGUAGES = (
+    ('es', 'Español'),
+    ('en', 'English'),
+    
+)
 
 TIME_ZONE = 'UTC'
 
@@ -74,6 +81,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOCALE_PATHS = (
+        os.path.join(BASE_DIR, 'locale'),
+    )
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

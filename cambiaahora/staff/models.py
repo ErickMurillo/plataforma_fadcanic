@@ -6,19 +6,20 @@ from ckeditor.fields import RichTextField
 from cambiaahora.utils import get_file_path
 from django.contrib.auth.models import User
 from cambiaahora.noticias.models import CHOICE_APROBACION, CHOICE_IDIOMA
+from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 
 class Staff(models.Model):
-    titulo = models.CharField('Nombre', max_length=250)
+    titulo = models.CharField(_('Nombre'), max_length=250)
     slug = models.SlugField(editable=False)
-    foto = ImageField('Foto principal', upload_to=get_file_path, blank=True, null=True)
-    fecha = models.DateField('fecha de nacimiento')
-    texto = RichTextField()
-    profesion = models.CharField('Profesión', max_length=250)
-    cargo = models.CharField(max_length=250)
-    aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1')
-    idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1')
+    foto = ImageField(_('Foto principal'), upload_to=get_file_path, blank=True, null=True)
+    fecha = models.DateField(_('fecha de nacimiento'))
+    texto = RichTextField(_('Texto'))
+    profesion = models.CharField(_('Profesión'), max_length=250)
+    cargo = models.CharField(_('Cargo/Puesto'),max_length=250)
+    aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1', verbose_name=_('Aprobación'))
+    idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1', verbose_name=_('Idioma'))
 
     user = models.ForeignKey(User)
 
@@ -32,5 +33,5 @@ class Staff(models.Model):
         return u'%s' % (self.titulo)
 
     class Meta:
-        verbose_name='Staff'
-        verbose_name_plural='Staff'
+        verbose_name=_('Staff')
+        verbose_name_plural=_('Staff')

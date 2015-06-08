@@ -5,26 +5,27 @@ from django.template.defaultfilters import slugify
 from ckeditor.fields import RichTextField
 from cambiaahora.utils import get_file_path
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 CHOICE_APROBACION = (
-                        (1,'Borrador'),
-                        (2, 'Aprobado'),
+                        (1, _('Borrador')),
+                        (2, _('Aprobado')),
                     )
 CHOICE_IDIOMA = (
-                        (1,'Español'),
-                        (2, 'Ingles'),
+                        (1, _('Español')),
+                        (2, _('Ingles')),
                     )
 
 class Noticias(models.Model):
-    titulo = models.CharField(max_length=250)
+    titulo = models.CharField(_('Titulo'),max_length=250)
     slug = models.SlugField(editable=False)
-    fecha = models.DateField()
-    foto = ImageField('Foto principal', upload_to=get_file_path, blank=True, null=True)
-    url = models.URLField('url del video como portada', blank=True, null=True)
-    texto = RichTextField(blank=True, null=True)
-    aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1')
-    idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1')
+    fecha = models.DateField(_('Fecha'))
+    foto = ImageField(_('Foto principal'), upload_to=get_file_path, blank=True, null=True)
+    url = models.URLField(_('url del video como portada'), blank=True, null=True)
+    texto = RichTextField(_('Texto'),blank=True, null=True)
+    aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1', verbose_name=_('Aprobación'))
+    idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1',verbose_name=_('Idioma'))
 
     user = models.ForeignKey(User)
 
@@ -38,6 +39,5 @@ class Noticias(models.Model):
         return u'%s' % (self.titulo)
 
     class Meta:
-        verbose_name='Noticia'
-        verbose_name_plural='Noticias'
-    
+        verbose_name= _('Noticia')
+        verbose_name_plural= _('Noticias')

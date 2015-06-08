@@ -2,6 +2,8 @@ BeautifulSoup==3.2.1
 beautifulsoup4==4.3.2
 bootstrap-admin==0.3.6
 Django==1.8.2
+Pillow==2.8.1
+bootstrap-admin==0.3.6
 django-ckeditor-updated==4.4.4
 django-htmlmin==0.7.0
 django-smart-selects==1.1.1
