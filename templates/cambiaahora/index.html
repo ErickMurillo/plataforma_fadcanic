@@ -5,33 +5,685 @@
 {% endblock titulo %}
 
 {% block contenido %}
-	<h1>Ultimas noticias</h1>
-	{% for obj in ultimas_noticias %}
-		{{obj.titulo}} <br>
-		{{obj.fecha}} <br>
-		{{obj.foto}} <br>
-		{{obj.texto|safe}} <br>
-	{% endfor %}
+<section class="rev_slider_wrapperc main-slider">
+	<div class="rev_slider banner-slider">
+		<ul>
+			<!-- SLIDE  -->
+			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
+				<!-- MAIN IMAGE -->
+				<img src="banner/5.jpg" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
+				<!--Start Primer mensaje-->
+				<div
+				data-endspeed="500"
+				data-easing="easeOutCirc"
+				data-start="500"
+				data-end="5000"
+				data-speed="700"
+				data-y="448"
+				data-x="152"
+				class="tp-caption sft in-fondo3">
+					<div class="trans-black3"></div>
+				</div>
+				<div
+				data-endspeed="500"
+				data-easing="easeOutCirc"
+				data-start="500"
+				data-end="5000"
+				data-speed="700"
+				data-y="122"
+				data-x="152"
+				class="tp-caption sft banner-heading">
+					<h2>Cambiar parece difícil</h2>
+				</div>
 
-	<br><br>
-	<h1>Ultimas historias</h1>
-	{% for obj in ultimas_historia %}
-		{{obj.titulo}} <br>
-		{{obj.fecha}} <br>
-		{{obj.foto}} <br>
-		{{obj.texto|safe}} <br>
-	{% endfor %}
+				<div
+				data-endspeed="1000"
+				data-easing="easeOutCirc"
+				data-start="500"
+				data-end="5000"
+				data-speed="700"
+				data-y="308"
+				data-x="152"
+				class="tp-caption sft banner-summary in-banner">
+					<p>
+						Se lográ con acciones diarias y veremos resultados en el futuro. Solo debemos hacerlo.
+					</p>
+				</div>
+				<!--End Primer mensaje-->
 
-	<br><br>
-	<h1>Ultimas testimonios</h1>
-	{% for obj in ultimas_testimonios %}
-		{{obj.titulo}} <br>
-		{{obj.fecha}} <br>
-		{{obj.foto}} <br>
-		{{obj.texto|safe}} <br>
-	{% endfor %}
 
-	<br><br>
-	<h1>Albunes</h1>
+				<!--Start segundo mensaje-->
+				<div
+				data-endspeed="500"
+				data-easing="easeOutCirc"
+				data-start="5500"
+				data-end="10500"
+				data-speed="700"
+				data-y="448"
+				data-x="152"
+				class="tp-caption sft in-fondo3">
+					<div class="trans-black3"></div>
+				</div>
+				<div
+				data-endspeed="500"
+				data-easing="easeOutCirc"
+				data-start="5500"
+				data-end="10500"
+				data-speed="700"
+				data-y="122"
+				data-x="152"
+				class="tp-caption sft banner-heading">
+					<h2>Las acciones positivas</h2>
+				</div>
 
+				<div
+				data-endspeed="1000"
+				data-easing="easeOutCirc"
+				data-start="5500"
+				data-end="10500"
+				data-speed="700"
+				data-y="308"
+				data-x="152"
+				class="tp-caption sft banner-summary in-banner">
+					<p>
+						ayudan a tener un ambiente de paz.
+					</p>
+				</div>
+				<!--End Segundo mensaje-->
+
+
+				<!--Start tercer mensaje-->
+				<div
+				data-endspeed="500"
+				data-easing="easeOutCirc"
+				data-start="11000"
+				
+				data-speed="700"
+				data-y="448"
+				data-x="152"
+				class="tp-caption sft in-fondo3">
+					<div class="trans-black3"></div>
+				</div>
+				<div
+				data-endspeed="500"
+				data-easing="easeOutCirc"
+				data-start="11000"
+				
+				data-speed="700"
+				data-y="122"
+				data-x="152"
+				class="tp-caption sft banner-heading">
+					<h2>La violencia empieza</h2>
+				</div>
+
+				<div
+				data-endspeed="1000"
+				data-easing="easeOutCirc"
+				data-start="11000"
+				
+				data-speed="700"
+				data-y="308"
+				data-x="152"
+				class="tp-caption sft banner-summary in-banner">
+					<p>
+						 desde la casa, si tenemos un hogar sin violencia, tendremos personas y ciudadanos sin violencia.
+					</p>
+				</div>
+				<!--End Segundo mensaje-->
+
+
+			</li>
+			<!-- SLIDE  -->
+			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
+				<!-- MAIN IMAGE -->
+				<img src="newimg/cambia3.JPG" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
+				<div
+				data-endspeed="800"
+				data-easing="easeOutCirc"
+				data-start="800"
+				data-speed="500"
+				data-y="448"
+				data-x="152"
+				class="tp-caption sft in-fondo">
+					<div class="trans-black"></div>
+				</div>
+				<div
+				data-endspeed="800"
+				data-easing="easeOutCirc"
+				data-start="800"
+				data-speed="700"
+				data-y="122"
+				data-x="152"
+				class="tp-caption sft banner-heading in-title">
+					<h2>Las acciones positivas</h2>
+				</div>
+
+				<div
+				data-endspeed="1000"
+				data-easing="easeOutCirc"
+				data-start="1000"
+				data-speed="700"
+				data-y="308"
+				data-x="152"
+				class="tp-caption sft banner-summary in-summary">
+					<p>
+						ayudan a tener un ambiente de paz.
+					</p>
+				</div>
+
+				<!--<div
+				data-endspeed="1200"
+				data-easing="easeOutCirc"
+				data-start="1200"
+				data-speed="700"
+				data-y="384"
+				data-x="152"
+				class="tp-caption sft">
+					<a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Read more</a>
+				</div>-->
+
+			</li>
+			<!-- SLIDE  -->
+			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
+				<!-- MAIN IMAGE -->
+				<img src="newimg/Faltapoco.jpg" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
+				<div
+				data-endspeed="800"
+				data-easing="easeOutCirc"
+				data-start="800"
+				data-speed="500"
+				data-y="448"
+				data-x="152"
+				class="tp-caption sft in-fondo2">
+					<div class="trans-black2"></div>
+				</div>
+				<div
+				data-endspeed="800"
+				data-easing="easeOutCirc"
+				data-start="800"
+				data-speed="700"
+				data-y="118"
+				data-x="152"
+				class="tp-caption sft banner-heading in-banner2">
+					<h2>La violencia empieza desde la casa</h2>
+				</div>
+
+				<div
+				data-endspeed="1000"
+				data-easing="easeOutCirc"
+				data-start="1000"
+				data-speed="700"
+				data-y="310"
+				data-x="152"
+				class="tp-caption sft banner-summary in-summary2">
+					<p>
+						Si tenemos un hogar sin violencia, tendremos personas y ciudadanos sin violencia.
+					</p>
+				</div>
+
+				<!--<div
+				data-endspeed="1200"
+				data-easing="easeOutCirc"
+				data-start="1200"
+				data-speed="700"
+				data-y="400"
+				data-x="152"
+				class="tp-caption sft">
+					<a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Read more</a>
+				</div>-->
+			</li>
+		</ul>
+	</div>
+</section>
+<!-- banner slider End Here -->
+<!-- Latest News Section Start Here -->
+<section class="latest-news ">
+	<div class="container anim-section">
+		<div class="row">
+			<div class="col-xs-12">
+				<header class="page-header section-header clearfix">
+					<h2>Hecha un vistazo a lo que esta pasando. <strong>Ultimas Noticias</strong></h2>
+				</header>
+
+					
+				<div class="article-list flexslider article-slider row">
+				<ul class="slides">
+
+				<li>
+					<div class="items item-nota zoom">
+						<a href="#" class="img-thumb">
+							<figure>
+							<img src="newimg/nota1.jpg" alt="">
+							</figure>
+							</a>
+						<h3>Crean comité de organizaciones contra la violencia en Bluefields</h3>
+						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
+						<p>
+							Hasta el momento las organizaciones que conforman el Comité son: La Fundación para la Autonomía y Desarrollo de la Costa atlántica de Nicaragua, FADCANIC con la Campaña Cambia ahora, solo hazlo, a Secretaria Regional de la Juventud, SEREJUVE...
+						</p>
+						<a href="blog-full-width.html" class="btn btn-default btn-nota btn-nota">LEER MAS</a>
+					</div>
+				</li>
+				<li>
+					<div class="items item-nota zoom">
+						<a href="#" class="img-thumb">
+							<figure>
+							<img src="newimg/nota2.JPG" alt="">
+							</figure>
+							</a>
+						<h3>Estudiantes se preparan para debates escolares</h3>
+						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
+						<p>
+							Para prevenir la violencia se debe garantizar la participación de adolescentes y jóvenes, por eso la Campaña de comunicación también incluye promover que las y los estudiantes sean sujetos activos, que analicen y reflexionen sobre el impacto
+						</p>
+						<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MAS</a>
+					</div>
+				</li>
+				<li>
+					<div class="items item-nota zoom">
+						<a href="#" class="img-thumb">
+							<figure>
+							<img src="newimg/nota3.jpg" alt="">
+							</figure>
+							</a>
+						<h3>Documental “Tiempo de Cambio”</h3>
+						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
+						<p>
+							Un documental que presenta las vidas paralelas de 3 jóvenes costeños, que por diferentes razones cayeron en el círculo de la violencia. En 20 minutos: Julio, Antonio y Bismark muestran la realidad ante la violencia que se vive en el Caribe Nicaragüense.
+						</p>
+						<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MAS</a>
+					</div>
+				</li>
+				
+				<li>
+					<div class="items item-nota zoom">
+						<a href="#" class="img-thumb">
+							<figure>
+							<img src="newimg/nota1.jpg" alt="">
+							</figure>
+							</a>
+						<h3>Crean comité de organizaciones contra la violencia en Bluefields</h3>
+						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
+						<p>
+							Hasta el momento las organizaciones que conforman el Comité son: La Fundación para la Autonomía y Desarrollo de la Costa atlántica de Nicaragua, FADCANIC con la Campaña Cambia ahora, solo hazlo, a Secretaria Regional de la Juventud, SEREJUVE...
+						</p>
+						<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MAS</a>
+					</div>
+				</li>
+				<li>
+					<div class="items item-nota zoom">
+						<a href="#" class="img-thumb">
+							<figure>
+							<img src="newimg/nota2.JPG" alt="">
+							</figure>
+							</a>
+						<h3>Estudiantes se preparan para debates escolares</h3>
+						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
+						<p>
+							Para prevenir la violencia se debe garantizar la participación de adolescentes y jóvenes, por eso la Campaña de comunicación también incluye promover que las y los estudiantes sean sujetos activos, que analicen y reflexionen sobre el impacto
+						</p>
+						<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MAS</a>
+					</div>
+				</li>
+				<li>
+					<div class="items item-nota zoom">
+						<a href="#" class="img-thumb">
+							<figure>
+							<img src="newimg/nota3.jpg" alt="">
+							</figure>
+							</a>
+						<h3>Documental “Tiempo de Cambio”</h3>
+						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
+						<p>
+							Un documental que presenta las vidas paralelas de 3 jóvenes costeños, que por diferentes razones cayeron en el círculo de la violencia. En 20 minutos: Julio, Antonio y Bismark muestran la realidad ante la violencia que se vive en el Caribe Nicaragüense.
+						</p>
+						<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MAS</a>
+					</div>
+				</li>
+				</ul>
+					
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Latest News Section End Here -->
+ <!-- ABOUT US start here-->
+        <section id="about">
+        	<div class="container">
+                <div class="row">
+                	<header class="page-header section-header clearfix">
+						<h2 class="title-campana">Información de la Campaña</h2>
+					</header>
+
+                    
+                    <div class="col-lg-12">
+                        <img class="img-responsive" src="newimg/campana.jpg" alt="">
+
+                        <br>
+                        <div class="row">
+                            <p class="lead col-lg-4"><strong>Objetivo:</strong><br>
+                            Crear conciencia y movilizar a la opinión pública a favor de las acciones de la familia y la comunidad para prevenir la violencia juvenil y el abuso de drogas a través de una campaña en medios masivos<br>
+                            </p>
+                        	<p class="lead col-lg-4"><strong>Territorio: </strong><br>La campaña Cambia ahora se encuentra en los territoris de Bluefields, Puerto Cabezas, Waspam y Managua   
+                            </p>
+                            
+                            <p class="lead col-lg-4"><strong>Acciones:</strong><br>
+                            La campaña promueve diferentes acciones como Talleres contra la violencia, debates escolares, docuemntales y promoción de no a la violencia en las redes sociales.</p>
+                            
+                            
+                        </div>
+                      
+                    </div>
+
+                    
+                </div>
+            </div>
+        </section>
+    <!-- ABOUT US Section End Here -->
+<!-- How To Help Section Start Here -->
+<section class="how-to-help">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 ">
+				<header class="page-header section-header">
+					<h2><strong>Documentales</strong></h2>
+				</header>
+
+				<div class="row help-list">
+					<div class="col-xs-12 col-md-5">
+				<div class="row">
+					<div class="items zoom col-xs-12 col-md-12">
+						<div class="row">
+							<a href="#" class="img-thumb col-xs-12 col-sm-5">
+							<figure>
+								<img src="img/v2.jpg" alt="">
+							</figure> </a>
+							<div class="media col-xs-12 col-sm-7 video-list">
+								<h3>DEBATE INTERCOLEGIA</h3>
+								<span class="date">03 DEC 2013</span><span class="posted-in">Tema : category</span>
+								<p>Los estudiantes del Colegio Cristiano Verbo, participaron.</p>
+
+								
+							</div>
+						</div>
+					</div>
+					<div class="items zoom col-xs-12 col-md-12">
+						<div class="row">
+							<a href="#" class="img-thumb col-xs-12 col-sm-5">
+							<figure>
+								<img src="img/v3.jpg" alt="">
+							</figure> </a>
+							<div class="media col-xs-12 col-sm-7 video-list">
+								<h3>DEBATE INTERCOLEGIA</h3>
+								<span class="date">03 DEC 2013</span><span class="posted-in">Tema : category</span>
+								<p>Los estudiantes del Colegio Cristiano Verbo, participaron.</p>
+
+
+								
+							</div>
+						</div>
+					</div>
+					<div class="items zoom col-xs-12 col-md-12">
+						<div class="row">
+							<a href="#" class="img-thumb col-xs-12 col-sm-5">
+							<figure>
+								<img src="img/v4.jpg" alt="">
+							</figure> </a>
+							<div class="media col-xs-12 col-sm-7 video-list">
+								<h3>DEBATE INTERCOLEGIA</h3>
+								<span class="date">03 DEC 2013</span><span class="posted-in">Tema : category</span>
+								<p>Los estudiantes del Colegio Cristiano Verbo, participaron.</p>
+
+
+								
+							</div>
+						</div>
+					</div>
+					<a href="#" class="btn btn-default btn-video">VER MAS</a>
+				</div>
+
+			</div>
+
+					<div class="col-xs-12 col-sm-6 col-lg-7 video-r">
+					
+						<div class="embed-responsive embed-responsive-16by9">
+							<img  src="img/v1.png" alt="Click to play" data-video="https://www.youtube.com/embed/Fe88d0InpOI?autoplay=1"/>
+						</div>
+						<p>Los estudiantes del Colegio Cristiano Verbo, participaron en el debate en prevención de la violencia juvenil desde el centro escolar. </p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+<!-- How To Help Section End Here-->
+<section class="serie-radio">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+			<div role="tabpanel" class="radio-tab">
+
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active"><a href="#radio1" aria-controls="home" role="tab" data-toggle="tab">Radio 1</a></li>
+			    <li role="presentation"><a href="#radio2" aria-controls="profile" role="tab" data-toggle="tab">Radio 2</a></li>
+			    
+			  </ul>
+
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="radio1">
+			    <div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+						    <div class="audio-radio ">
+								<div class="col-xs-12 col-sm-7 col-md-6">
+									<img class="img-thumbnail" src="img/radio.jpg" alt="">
+									<h3>Serie radiofónica: <strong>HAZLO !</strong></h3>
+							      	<audio preload></audio>
+							      	<div class="track-details">
+
+    								</div>
+
+								</div>
+								<div class="col-xs-12 col-sm-7 col-md-6 playlist-audio">
+									<ol class="list-group">
+								        <li class="list-group-item">
+									        <span class="fa"></span>
+									        <a href="#"  data-src="http://kolber.github.io/audiojs/demos/mp3/01-dead-wrong-intro.mp3">dead wrong intro</a>
+								       
+								        </li>
+
+								        <li class="list-group-item">
+									        <span class="fa"></span>
+									        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/02-juicy-r.mp3">juicy-r</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/03-its-all-about-the-crystalizabeths.mp3">it's all about the crystalizabeths</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/04-islands-is-the-limit.mp3">islands is the limit</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/05-one-more-chance-for-a-heart-to-skip-a-beat.mp3">one more chance for a heart to skip a beat</a>
+								        </li>
+
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/06-suicidal-fantasy.mp3">suicidal fantasy</a>
+								        </li>
+
+								        <li class="list-group-item">
+									        <span class="fa"></span>
+									        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/07-everyday-shelter.mp3">everyday shelter</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/08-basic-hypnosis.mp3">basic hypnosis</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/09-infinite-victory.mp3">infinite victory</a>
+								        </li>
+
+								        <li class="list-group-item">
+											<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/10-the-curious-incident-of-big-poppa-in-the-nighttime.mp3">the curious incident of big poppa in the nighttime</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        <span class="fa"></span>
+								        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/11-mo-stars-mo-problems.mp3">mo stars mo problems</a>
+								        </li>
+								      </ol>
+								</div>
+						      
+
+							</div>
+						</div>
+					</div>
+				</div>	
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="radio2">
+			  		<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+						    <div class="audio-radio ">
+								<div class="col-xs-12 col-sm-7 col-md-6">
+									<img class="img-thumbnail" src="img/radio.jpg" alt="">
+									<h3>Serie radiofónica: <strong>HAZLO !</strong></h3>
+							      	<audio preload></audio>
+							      	<div class="track-details">
+
+    								</div>
+
+								</div>
+								<div class="col-xs-12 col-sm-7 col-md-6 playlist-audio">
+									<ol class="list-group">
+								        <li class="list-group-item">
+									        <span class="fa"></span>
+									        <a href="#"  data-src="http://kolber.github.io/audiojs/demos/mp3/01-dead-wrong-intro.mp3">dead wrong intro</a>
+								       
+								        </li>
+
+								        <li class="list-group-item">
+									        <span class="fa"></span>
+									        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/02-juicy-r.mp3">juicy-r</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/03-its-all-about-the-crystalizabeths.mp3">it's all about the crystalizabeths</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/04-islands-is-the-limit.mp3">islands is the limit</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/05-one-more-chance-for-a-heart-to-skip-a-beat.mp3">one more chance for a heart to skip a beat</a>
+								        </li>
+
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/06-suicidal-fantasy.mp3">suicidal fantasy</a>
+								        </li>
+
+								        <li class="list-group-item">
+									        <span class="fa"></span>
+									        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/07-everyday-shelter.mp3">everyday shelter</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/08-basic-hypnosis.mp3">basic hypnosis</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        	<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/09-infinite-victory.mp3">infinite victory</a>
+								        </li>
+
+								        <li class="list-group-item">
+											<span class="fa"></span>
+								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/10-the-curious-incident-of-big-poppa-in-the-nighttime.mp3">the curious incident of big poppa in the nighttime</a>
+								        </li>
+
+								        <li class="list-group-item">
+								        <span class="fa"></span>
+								        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/11-mo-stars-mo-problems.mp3">mo stars mo problems</a>
+								        </li>
+								      </ol>
+								</div>
+						      
+
+							</div>
+						</div>
+					</div>
+			    </div>
+			    
+			  </div>
+
+			</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+<!--radio Section End Here -->
+<div class="popup-gallery">
+
+	<a class="gallery" href="newimg/cambia1.jpg" title="The Cleaner">
+		<img src="newimg/cambia1.jpg" width="222" height="auto">
+		
+	</a>
+	<a class="gallery" href="newimg/Faltapoco.jpg" title="Winter Dance">
+		<img src="newimg/Faltapoco.jpg" width="222" height="auto">
+	</a>
+	<a class="gallery" href="newimg/cambia3.JPG"1 title="The Uninvited Guest">
+		<img src="newimg/cambia3.JPG" width="222" height="auto">
+	</a>
+	<a class="gallery" href="newimg/nota1.jpg" title="Oh no, not again!">
+		<img src="newimg/nota1.jpg" width="222" height="auto">
+	</a>
+	<a class="gallery" href="newimg/nota2.JPG" title="Swan Lake">
+		<img src="newimg/nota2.JPG" width="222" height="auto">
+	</a>
+
+	<a class="gallery" href="newimg/nota3.jpg" title="The Shake">
+		<img src="newimg/nota3.jpg" width="222" height="auto">
+	</a>
+			
+</div>
+
+<section class="socialmedia">
+	<div class="container">
+		<div class="row">
+			<h2> <strong>Cambia Ahora</strong></h2>
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				
+				<img src="newimg/socialmedia.png" alt="">
+			
+			</div>
+		</div>
+	</div>
+</section>
+</div>
 {% endblock contenido %}
