@@ -16,6 +16,11 @@ CHOICE_IDIOMA = (
                         (1, _('Español')),
                         (2, _('Ingles')),
                     )
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=250)
+
+    def __unicode__(self):
+        return self.nombre
 
 class Noticias(models.Model):
     titulo = models.CharField(_('Titulo'),max_length=250)
@@ -26,6 +31,7 @@ class Noticias(models.Model):
     texto = RichTextField(_('Texto'),blank=True, null=True)
     aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1', verbose_name=_('Aprobación'))
     idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1',verbose_name=_('Idioma'))
+    categoria = models.ForeignKey(Categoria, verbose_name=_('Categoria'))
 
     user = models.ForeignKey(User)
 

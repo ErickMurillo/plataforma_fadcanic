@@ -248,102 +248,24 @@
 					
 				<div class="article-list flexslider article-slider row">
 				<ul class="slides">
-
-				<li>
-					<div class="items item-nota zoom">
-						<a href="#" class="img-thumb">
-							<figure>
-							<img src="newimg/nota1.jpg" alt="">
-							</figure>
-							</a>
-						<h3>Crean comité de organizaciones contra la violencia en Bluefields</h3>
-						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
-						<p>
-							Hasta el momento las organizaciones que conforman el Comité son: La Fundación para la Autonomía y Desarrollo de la Costa atlántica de Nicaragua, FADCANIC con la Campaña Cambia ahora, solo hazlo, a Secretaria Regional de la Juventud, SEREJUVE...
-						</p>
-						<a href="blog-full-width.html" class="btn btn-default btn-nota btn-nota">LEER MAS</a>
-					</div>
-				</li>
-				<li>
-					<div class="items item-nota zoom">
-						<a href="#" class="img-thumb">
-							<figure>
-							<img src="newimg/nota2.JPG" alt="">
-							</figure>
-							</a>
-						<h3>Estudiantes se preparan para debates escolares</h3>
-						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
-						<p>
-							Para prevenir la violencia se debe garantizar la participación de adolescentes y jóvenes, por eso la Campaña de comunicación también incluye promover que las y los estudiantes sean sujetos activos, que analicen y reflexionen sobre el impacto
-						</p>
-						<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MAS</a>
-					</div>
-				</li>
-				<li>
-					<div class="items item-nota zoom">
-						<a href="#" class="img-thumb">
-							<figure>
-							<img src="newimg/nota3.jpg" alt="">
-							</figure>
-							</a>
-						<h3>Documental “Tiempo de Cambio”</h3>
-						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
-						<p>
-							Un documental que presenta las vidas paralelas de 3 jóvenes costeños, que por diferentes razones cayeron en el círculo de la violencia. En 20 minutos: Julio, Antonio y Bismark muestran la realidad ante la violencia que se vive en el Caribe Nicaragüense.
-						</p>
-						<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MAS</a>
-					</div>
-				</li>
-				
-				<li>
-					<div class="items item-nota zoom">
-						<a href="#" class="img-thumb">
-							<figure>
-							<img src="newimg/nota1.jpg" alt="">
-							</figure>
-							</a>
-						<h3>Crean comité de organizaciones contra la violencia en Bluefields</h3>
-						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
-						<p>
-							Hasta el momento las organizaciones que conforman el Comité son: La Fundación para la Autonomía y Desarrollo de la Costa atlántica de Nicaragua, FADCANIC con la Campaña Cambia ahora, solo hazlo, a Secretaria Regional de la Juventud, SEREJUVE...
-						</p>
-						<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MAS</a>
-					</div>
-				</li>
-				<li>
-					<div class="items item-nota zoom">
-						<a href="#" class="img-thumb">
-							<figure>
-							<img src="newimg/nota2.JPG" alt="">
-							</figure>
-							</a>
-						<h3>Estudiantes se preparan para debates escolares</h3>
-						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
-						<p>
-							Para prevenir la violencia se debe garantizar la participación de adolescentes y jóvenes, por eso la Campaña de comunicación también incluye promover que las y los estudiantes sean sujetos activos, que analicen y reflexionen sobre el impacto
-						</p>
-						<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MAS</a>
-					</div>
-				</li>
-				<li>
-					<div class="items item-nota zoom">
-						<a href="#" class="img-thumb">
-							<figure>
-							<img src="newimg/nota3.jpg" alt="">
-							</figure>
-							</a>
-						<h3>Documental “Tiempo de Cambio”</h3>
-						<span class="date">03 DEC 2013</span><span class="posted-in">Tema: Categoria</span>
-						<p>
-							Un documental que presenta las vidas paralelas de 3 jóvenes costeños, que por diferentes razones cayeron en el círculo de la violencia. En 20 minutos: Julio, Antonio y Bismark muestran la realidad ante la violencia que se vive en el Caribe Nicaragüense.
-						</p>
-						<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MAS</a>
-					</div>
-				</li>
-				</ul>
-					
-					
-					
+				{% for noticia in  ultimas_noticias %}
+					<li>
+						<div class="items item-nota zoom">
+							<a href="#" class="img-thumb">
+								<figure>
+								<img src="newimg/nota3.jpg" alt="">
+								</figure>
+								</a>
+							<h3>{{noticia.titulo}}</h3>
+							<span class="date">{{noticia.fecha|date:"d m Y"}}</span><span class="posted-in">Tema: {{noticia.categoria}}</span>
+							<p>
+								{{noticia.texto}}
+							</p>
+							<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MÁS</a>
+						</div>
+					</li>
+				{% endfor %}
+				</ul>	
 				</div>
 			</div>
 		</div>
