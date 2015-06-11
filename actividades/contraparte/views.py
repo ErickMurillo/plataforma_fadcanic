@@ -11,7 +11,7 @@ from BeautifulSoup import BeautifulSoup
 from htmlmin.minify import html_minify
 from actividades.forms import *
 from actividades import short
-#from g12d.settings import EXPORT_SERVER
+from plataforma_fadcanic.settings import EXPORT_SERVER
 from models import *
 import datetime
 import thread
@@ -45,7 +45,7 @@ def filtro_proyecto(request):
     else:
         form = ProyectoForm(request=request)
 
-    return render_to_response('contraparte/filtro.html', RequestContext(request, locals()))
+    return render_to_response('actividades/contraparte/filtro.html', RequestContext(request, locals()))
 
 def _get_query(params):
     return Actividad.objects.filter(**params)
@@ -88,7 +88,7 @@ def variables(request):
             if a in request.session:
                 del request.session[a]
 
-    return render_to_response('contraparte/variables.html', RequestContext(request, locals()))
+    return render_to_response('actividades/contraparte/variables.html', RequestContext(request, locals()))
 
 def output(request, saved_params=None):
     #chequear si se trata de una salida guardada y reasignar variables
@@ -202,7 +202,7 @@ def output(request, saved_params=None):
                                   municipio__nombre=obj.municipio.nombre, fecha=obj.fecha.strftime('%d/%m/%Y')))
         return HttpResponse(simplejson.dumps(lista), mimetype="application/json")
 
-    return render_to_response('contraparte/output.html', RequestContext(request, locals()))
+    return render_to_response('actividades/contraparte/output.html', RequestContext(request, locals()))
 
 # curar el html de la tabla
 def sanitize_html(html_table):
@@ -263,7 +263,7 @@ def shortview(request, hash):
     for key in ['total', 'bar_graph', 'pie_graph', 'var2', 'eval_tipo']:
         variables[key] = params[key]
 
-    return render_to_response('contraparte/shortview.html', RequestContext(request, variables))
+    return render_to_response('actividades/contraparte/shortview.html', RequestContext(request, variables))
 
 def get_proyectos(request):
     ids = request.GET.get('ids', '')
@@ -294,7 +294,7 @@ def generate_report(request):
         ids = request.POST['ids']
         salidas = Output.objects.filter(id__in=map(int, ids.split(',')), user=request.user)
 
-        response = render_to_response('report.html', {'lista': salidas})
+        response = render_to_response('actividades/report.html', {'lista': salidas})
         response['Content-Disposition'] = 'attachment; filename=reporte.doc'
         response['Content-Type'] = 'application/msword'
         response['Charset'] ='UTF-8'
@@ -306,7 +306,7 @@ def generate_report(request):
             Output.objects.filter(id__in=map(int, ids.split(',')), user=request.user).delete()
             return HttpResponse('Reportes eliminados correctamente!')
 
-        return render_to_response('report.html', RequestContext(request, {'lista': lista}))
+        return render_to_response('actividades/report.html', RequestContext(request, {'lista': lista}))
 
 def get_graph_png(svg, obj, field, width=940):
     import types

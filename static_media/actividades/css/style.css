@@ -26,3 +26,29 @@
 .thumbnail i {
 	margin:0 40%;
 }
+
+.text h3 {
+	position: absolute;
+	z-index: 10
+}
+
+.imagen {
+	position: relative;
+}
+
+.imagenFondo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 3em;
+ }
+.imagenFondo span {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 16px;
+    background: #0E9364;
+    padding: 10px;
+    opacity:0.4;
+    color: white;
+}

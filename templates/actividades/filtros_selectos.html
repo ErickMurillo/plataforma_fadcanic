@@ -1,0 +1,57 @@
+{% load tools %}
+
+<div class="selectedfilters" id="barrafiltros">
+	<div class="filtroselect">
+		Tipo de salida<br>
+		<span>
+			{{filtro.salida}}
+		</span>
+	</div>
+	<div class="filtroselect">
+		Organización<br>
+		<span>
+			{% for org in filtro.organizacion %}
+			{{org.nombre_corto}}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		</span>
+	</div>
+	{% if filtro.proyecto %}	
+	<div class="filtroselect">
+		Proyecto<br>
+		<span>
+			{% for proy in filtro.proyecto %}
+			{{proy}}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		</span>
+	</div>
+	{% endif %}
+	{% if filtro.resultado %}	
+	<div class="filtroselect">
+		Resultado<br>
+		<span>{{filtro.resultado}}</span>
+	</div>
+	{% endif %}
+	{% if filtro.fecha_inicio %}
+	<div class="filtroselect">		
+		Fecha Inicio<br>
+		<span>{{filtro.fecha_inicio}}</span>
+	</div>
+	{% endif %}
+	{% if filtro.fecha_fin %}
+	<div class="filtroselect">		
+		Fecha Fin<br>
+		<span>{{filtro.fecha_fin}}</span>
+	</div>
+	{% endif %}
+	<div class="clean"></div>		
+</div>
+<script type="text/javascript">
+	$(window).load(function(){		
+		//ajustando tamaño de los filtros seleccionados
+		var alto = $('#barrafiltros').height();
+		var filtros = $('.filtroselect');
+		$.each(filtros, function(i, item){
+			$(item).height(alto);
+		});				
+	});	
+</script>

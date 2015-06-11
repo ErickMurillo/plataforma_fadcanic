@@ -47,4 +47,4 @@ def filtro_programa(request):
             return HttpResponseRedirect('/variables/')            
     else:
         form = ProgramaForm()
-    return render_to_response('trocaire/filtro_programa.html', RequestContext(request, locals()))
+    return render_to_response('actividades/filtro_programa.html', RequestContext(request, locals()))
