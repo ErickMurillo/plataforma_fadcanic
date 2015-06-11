@@ -1,30 +1,31 @@
-{% extends "base.html" %}
+{% extends "actividades/base.html" %}
 {% load tools %}
-{% load clippy %}
+
+{% load staticfiles	%}
 
 {% block title %}
 {{var2.1|unslugify}} por {{main_field|unslugify}}
 {% endblock %}
 
 {% block extra_head %}
-<script type="text/javascript" src="/files/js/table.exporting.js"></script>
-<script type="text/javascript" src="/files/js/highcharts.js"></script>
-<script type="text/javascript" src="/files/js/exporting_patched.js"></script>
-<script type='text/javascript' src='/files/js/jquery.tipsy.js'></script>
-<script type='text/javascript' src='/files/js/tabs.js'></script>
-<script type='text/javascript' src='/files/js/underscore-min.js'></script>
+<script type="text/javascript" src="{% static 'actividades/js/table.exporting.js' %}"></script>
+<script type="text/javascript" src="{% static 'actividades/js/highcharts.js' %}"></script>
+<script type="text/javascript" src="{% static 'actividades/js/exporting_patched.js' %}"></script>
+<script type='text/javascript' src="{% static 'actividades/js/jquery.tipsy.js' %}"></script>
+<script type='text/javascript' src="{% static 'actividades/js/tabs.js' %}"></script>
+<script type='text/javascript' src="{% static 'actividades/js/underscore-min.js' %}"></script>
 
-<script type="text/javascript" src="/files/fb/jquery.easing-1.3.pack.js"></script>
-<script type="text/javascript" src="/files/fb/jquery.mousewheel-3.0.6.pack.js"></script>
-<script type="text/javascript" src="/files/fb/jquery.fancybox.pack.js"></script>
-<script type="text/javascript" src="/files/js/jquery.form.js"></script>
+<script type="text/javascript" src="{% static 'actividades/fb/jquery.easing-1.3.pack.js' %}"></script>
+<script type="text/javascript" src="{% static 'actividades/fb/jquery.mousewheel-3.0.6.pack.js' %}"></script>
+<script type="text/javascript" src="{% static 'actividades/fb/jquery.fancybox.pack.js' %}"></script>
+<script type="text/javascript" src="{% static 'actividades/js/jquery.form.js' %}"></script>
 
-<link rel="stylesheet" href="/files/fb/jquery.fancybox.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/files/css/tipsy.css" type="text/css" />
-<link rel="stylesheet" href="/files/css/tabs.css" type="text/css" />
-<link rel="stylesheet" href="/files/css/buttons.css" type="text/css" />
-<link rel="stylesheet" href="/files/css/formee/css/form-structure.css" type="text/css"/>
-<link rel="stylesheet" href="/files/css/formee/css/form-style.css" type="text/css"/>
+<link rel="stylesheet" href="{% static 'actividades/fb/jquery.fancybox.css' %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static 'actividades/css/tipsy.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'actividades/css/tabs.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'actividades/css/buttons.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'actividades/css/formee/css/form-structure.css' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static 'actividades/css/formee/css/form-style.css' %}" type="text/css"/>
 <style>
 .banner-filtros{	
 	height: 60px;
@@ -218,8 +219,8 @@
 </script>
 {% endblock %}
 
-{% block content %}
-{% include "filtros_selectos.html" %}
+{% block contenido %}
+{% include "actividades/filtros_selectos.html" %}
 <div class="banner banner-filtros">
 	<center class="banner_title">{{var2.1|unslugify}} por {{main_field|unslugify}} {% if eval_tipo %}| {{eval_tipo}}{% endif %}</center>	
 </div>
@@ -233,7 +234,7 @@
 			<a href="#" id="share" class="optionsbutton">Compartir <img src="/files/img/share.png" alt=":D"></a>
 		</div>
 		<div id="copiador" style="display: none;">
-			<span id="clippy_117"></span>{% clippy "clippy_117" "14x14" "#FFFFFF" "opaque" %}
+			
 		</div>
 		{% else %}
 		</div>

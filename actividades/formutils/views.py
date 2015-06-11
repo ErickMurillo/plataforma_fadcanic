@@ -13,5 +13,5 @@ def fill(request):
     
     #make query
     objects = get_model(app_label, model).objects.filter(** {filter:val}).values(*regress.split(','))
-            
-    return HttpResponse(simplejson.dumps(list(objects)), mimetype="application/json")
+       
+    return HttpResponse(json.dumps(list(objects)), mimetype="application/json")

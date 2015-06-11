@@ -9,6 +9,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #cambiaahora
@@ -53,11 +54,13 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request'
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'plataforma_fadcanic.wsgi.application'
 
@@ -130,3 +133,5 @@ EXPORT_SERVER = ''
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/actividades/'
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'

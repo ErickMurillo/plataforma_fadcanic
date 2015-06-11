@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 def filtro_programa(request):
     if not request.user.has_perm('fadcanic.view_programa'):
         error = '''<h1>Acceso restringido. Redirigiendo en 3 segundos.</h1>
-        <script>setTimeout("window.location='/'",3000)</script>'''
+        <script>setTimeout("window.location='/actividades/'",3000)</script>'''
         return HttpResponseForbidden(error)
     
     params = {}
@@ -44,7 +44,7 @@ def filtro_programa(request):
             request.session['filtro'] = filtro
             request.session['params'] = params             
             
-            return HttpResponseRedirect('/variables/')            
+            return HttpResponseRedirect('/actividades/variables/')            
     else:
         form = ProgramaForm()
     return render_to_response('actividades/filtro_programa.html', RequestContext(request, locals()))

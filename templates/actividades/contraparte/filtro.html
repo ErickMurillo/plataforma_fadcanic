@@ -1,12 +1,13 @@
 {% extends "actividades/base.html" %}
+{% load staticfiles %}
 {% block title %}Filtros : Por Proyecto{% endblock %}
 
 {% block extra_head %}
 {{form.media}}
 {{form.foo}}
-<link href="/files/css/formee/css/form-structure.css" rel="stylesheet" type="text/css"/>
-<link href="/files/css/formee/css/form-style.css" rel="stylesheet" type="text/css"/>
-<link href="/files/css/jquery.multiselect.css" rel="stylesheet" type="text/css"/>
+<link href="{% static 'actividades/css/formee/css/form-structure.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'actividades/css/formee/css/form-style.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'actividades/css/jquery.multiselect.css' %}" rel="stylesheet" type="text/css"/>
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
 <script type="text/javascript">

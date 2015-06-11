@@ -17,6 +17,7 @@ import datetime
 import thread
 import urllib
 
+
 @login_required
 def filtro_proyecto(request):
     proy_params = {}
@@ -41,7 +42,7 @@ def filtro_proyecto(request):
             request.session['filtro'] = filtro
             request.session['params'] = proy_params
 
-            return HttpResponseRedirect('/variables/')
+            return HttpResponseRedirect('/actividades/variables/')
     else:
         form = ProyectoForm(request=request)
 
@@ -79,7 +80,7 @@ def variables(request):
             else:
                 request.session['eval_tipo'] = None
 
-            return HttpResponseRedirect('/variables/output/')
+            return HttpResponseRedirect('/actividades/variables/output/')
     else:
         form = SubFiltroForm()
 
@@ -271,7 +272,7 @@ def get_proyectos(request):
         try:
             ids = ids.split(',')
             proyectos = Proyecto.objects.filter(organizacion__id__in=map(int, ids),
-                                                aporta_trocaire=1).values('id', 'organizacion__nombre_corto', 'codigo')
+                                                aporta_fadcanic=1).values('id', 'organizacion__nombre_corto', 'codigo')
             print proyectos
         except Exception as e:
             print e
@@ -279,6 +280,7 @@ def get_proyectos(request):
     else:
         return HttpResponse(':(')
     return HttpResponse(simplejson.dumps(list(proyectos)), mimetype="application/json")
+    
 
 def get_salidas(request):
     sitio = Site.objects.all()[0].domain
