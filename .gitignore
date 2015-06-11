@@ -63,3 +63,4 @@ local_settings.py
 media/
 static/
 locale/
+.DS_Store

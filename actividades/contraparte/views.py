@@ -7,7 +7,7 @@ from django.db.models import Sum
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.sites.models import Site
 import json as simplejson
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 from htmlmin.minify import html_minify
 from actividades.forms import *
 from actividades import short
