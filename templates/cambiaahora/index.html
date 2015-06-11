@@ -4,6 +4,8 @@
 	:: cambia ahora ::
 {% endblock titulo %}
 
+{% load thumbnail %}
+
 {% block contenido %}
 <section class="rev_slider_wrapperc main-slider">
 	<div class="rev_slider banner-slider">
@@ -253,13 +255,15 @@
 						<div class="items item-nota zoom">
 							<a href="#" class="img-thumb">
 								<figure>
-								<img src="newimg/nota3.jpg" alt="">
+								{% thumbnail noticia.foto "360x225" as img %}
+									<img src="/media/{{img}}" alt="">
+								{% endthumbnail %}
 								</figure>
 								</a>
 							<h3>{{noticia.titulo}}</h3>
 							<span class="date">{{noticia.fecha|date:"d m Y"}}</span><span class="posted-in">Tema: {{noticia.categoria}}</span>
 							<p>
-								{{noticia.texto}}
+								{{noticia.texto|safe|truncatewords:20}}
 							</p>
 							<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MÁS</a>
 						</div>

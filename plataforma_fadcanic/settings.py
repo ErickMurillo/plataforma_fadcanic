@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     #extras apps
     'ckeditor',
     'smart_selects',
+    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,7 +62,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'plataforma_fadcanic.wsgi.application'
 
-BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
+#BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -123,9 +124,6 @@ CKEDITOR_CONFIGS = {
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
-
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/actividades/'

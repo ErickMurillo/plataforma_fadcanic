@@ -14,7 +14,7 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2).order_by('-fecha')[:3]
+        context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2).order_by('-fecha')
         context['ultimas_historia'] = Historias.objects.filter(aprobacion=2).order_by('-fecha')[:3]
         context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2).order_by('-fecha')[:3]
         context['albunes'] = Fotos.objects.filter(aprobacion=2).order_by('-fecha')[:3]

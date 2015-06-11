@@ -5,16 +5,16 @@ from django.template.defaultfilters import slugify
 from ckeditor.fields import RichTextField
 from cambiaahora.utils import get_file_path
 from django.contrib.auth.models import User
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 
 # Create your models here.
 CHOICE_APROBACION = (
-                        (1, _('Borrador')),
-                        (2, _('Aprobado')),
+                        (1, _(u'Borrador')),
+                        (2, _(u'Aprobado')),
                     )
 CHOICE_IDIOMA = (
-                        (1, _('Español')),
-                        (2, _('Ingles')),
+                        (1, _(u'Español')),
+                        (2, _(u'English')),
                     )
 class Categoria(models.Model):
     nombre = models.CharField(max_length=250)
@@ -23,15 +23,15 @@ class Categoria(models.Model):
         return self.nombre
 
 class Noticias(models.Model):
-    titulo = models.CharField(_('Titulo'),max_length=250)
+    titulo = models.CharField(_(u'Titulo'),max_length=250)
     slug = models.SlugField(editable=False)
-    fecha = models.DateField(_('Fecha'))
-    foto = ImageField(_('Foto principal'), upload_to=get_file_path, blank=True, null=True)
-    url = models.URLField(_('url del video como portada'), blank=True, null=True)
-    texto = RichTextField(_('Texto'),blank=True, null=True)
-    aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1', verbose_name=_('Aprobación'))
-    idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1',verbose_name=_('Idioma'))
-    categoria = models.ForeignKey(Categoria, verbose_name=_('Categoria'))
+    fecha = models.DateField(_(u'Fecha'))
+    foto = ImageField(_(u'Foto principal'), upload_to=get_file_path, blank=True, null=True)
+    url = models.URLField(_(u'url del video como portada'), blank=True, null=True)
+    texto = RichTextField(_(u'Texto'),blank=True, null=True)
+    aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1', verbose_name=_(u'Aprobación'))
+    idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1',verbose_name=_(u'Idioma'))
+    categoria = models.ForeignKey(Categoria, verbose_name=_(u'Categoria'))
 
     user = models.ForeignKey(User)
 
@@ -45,5 +45,5 @@ class Noticias(models.Model):
         return u'%s' % (self.titulo)
 
     class Meta:
-        verbose_name= _('Noticia')
-        verbose_name_plural= _('Noticias')
+        verbose_name= _(u'Noticia')
+        verbose_name_plural= _(u'Noticias')
