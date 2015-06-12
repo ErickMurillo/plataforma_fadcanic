@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 from cambiaahora.utils import get_file_path
 from django.contrib.auth.models import User
 from cambiaahora.noticias.models import CHOICE_APROBACION, CHOICE_IDIOMA
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 

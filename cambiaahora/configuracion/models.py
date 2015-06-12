@@ -4,7 +4,7 @@ from django.db import models
 from sorl.thumbnail import ImageField
 from cambiaahora.utils import get_file_path
 from django.contrib.auth.models import User
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 
