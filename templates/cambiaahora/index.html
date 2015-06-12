@@ -10,10 +10,12 @@
 <section class="rev_slider_wrapperc main-slider">
 	<div class="rev_slider banner-slider">
 		<ul>
+		{% for obj in config %}
+			
 			<!-- SLIDE  -->
 			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
 				<!-- MAIN IMAGE -->
-				<img src="banner/5.jpg" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
+				<img src="/media/{{obj.foto}}" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
 				<!--Start Primer mensaje-->
 				<div
 				data-endspeed="500"
@@ -35,7 +37,7 @@
 				data-y="122"
 				data-x="152"
 				class="tp-caption sft banner-heading">
-					<h2>Cambiar parece difícil</h2>
+					<h2>{{obj.titulo1}}</h2>
 				</div>
 
 				<div
@@ -48,7 +50,7 @@
 				data-x="152"
 				class="tp-caption sft banner-summary in-banner">
 					<p>
-						Se lográ con acciones diarias y veremos resultados en el futuro. Solo debemos hacerlo.
+						{{obj.descripcion1}}
 					</p>
 				</div>
 				<!--End Primer mensaje-->
@@ -75,7 +77,7 @@
 				data-y="122"
 				data-x="152"
 				class="tp-caption sft banner-heading">
-					<h2>Las acciones positivas</h2>
+					<h2>{{obj.titulo2}}</h2>
 				</div>
 
 				<div
@@ -88,7 +90,7 @@
 				data-x="152"
 				class="tp-caption sft banner-summary in-banner">
 					<p>
-						ayudan a tener un ambiente de paz.
+						{{obj.descripcion2}}
 					</p>
 				</div>
 				<!--End Segundo mensaje-->
@@ -115,7 +117,7 @@
 				data-y="122"
 				data-x="152"
 				class="tp-caption sft banner-heading">
-					<h2>La violencia empieza</h2>
+					<h2>{{obj.titulo3}}</h2>
 				</div>
 
 				<div
@@ -128,112 +130,14 @@
 				data-x="152"
 				class="tp-caption sft banner-summary in-banner">
 					<p>
-						 desde la casa, si tenemos un hogar sin violencia, tendremos personas y ciudadanos sin violencia.
+						 {{obj.descripcion3}}
 					</p>
 				</div>
 				<!--End Segundo mensaje-->
 
 
 			</li>
-			<!-- SLIDE  -->
-			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
-				<!-- MAIN IMAGE -->
-				<img src="newimg/cambia3.JPG" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
-				<div
-				data-endspeed="800"
-				data-easing="easeOutCirc"
-				data-start="800"
-				data-speed="500"
-				data-y="448"
-				data-x="152"
-				class="tp-caption sft in-fondo">
-					<div class="trans-black"></div>
-				</div>
-				<div
-				data-endspeed="800"
-				data-easing="easeOutCirc"
-				data-start="800"
-				data-speed="700"
-				data-y="122"
-				data-x="152"
-				class="tp-caption sft banner-heading in-title">
-					<h2>Las acciones positivas</h2>
-				</div>
-
-				<div
-				data-endspeed="1000"
-				data-easing="easeOutCirc"
-				data-start="1000"
-				data-speed="700"
-				data-y="308"
-				data-x="152"
-				class="tp-caption sft banner-summary in-summary">
-					<p>
-						ayudan a tener un ambiente de paz.
-					</p>
-				</div>
-
-				<!--<div
-				data-endspeed="1200"
-				data-easing="easeOutCirc"
-				data-start="1200"
-				data-speed="700"
-				data-y="384"
-				data-x="152"
-				class="tp-caption sft">
-					<a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Read more</a>
-				</div>-->
-
-			</li>
-			<!-- SLIDE  -->
-			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
-				<!-- MAIN IMAGE -->
-				<img src="newimg/Faltapoco.jpg" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
-				<div
-				data-endspeed="800"
-				data-easing="easeOutCirc"
-				data-start="800"
-				data-speed="500"
-				data-y="448"
-				data-x="152"
-				class="tp-caption sft in-fondo2">
-					<div class="trans-black2"></div>
-				</div>
-				<div
-				data-endspeed="800"
-				data-easing="easeOutCirc"
-				data-start="800"
-				data-speed="700"
-				data-y="118"
-				data-x="152"
-				class="tp-caption sft banner-heading in-banner2">
-					<h2>La violencia empieza desde la casa</h2>
-				</div>
-
-				<div
-				data-endspeed="1000"
-				data-easing="easeOutCirc"
-				data-start="1000"
-				data-speed="700"
-				data-y="310"
-				data-x="152"
-				class="tp-caption sft banner-summary in-summary2">
-					<p>
-						Si tenemos un hogar sin violencia, tendremos personas y ciudadanos sin violencia.
-					</p>
-				</div>
-
-				<!--<div
-				data-endspeed="1200"
-				data-easing="easeOutCirc"
-				data-start="1200"
-				data-speed="700"
-				data-y="400"
-				data-x="152"
-				class="tp-caption sft">
-					<a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-default">Read more</a>
-				</div>-->
-			</li>
+			{% endfor %}
 		</ul>
 	</div>
 </section>

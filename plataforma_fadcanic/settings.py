@@ -17,6 +17,7 @@ INSTALLED_APPS = (
     'cambiaahora.multimedias',
     'cambiaahora.staff',
     'cambiaahora.testimonios',
+    'cambiaahora.configuracion',
     #actividades
     'actividades.contraparte',
     'actividades.fadcanic',
@@ -62,7 +63,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'plataforma_fadcanic.wsgi.application'
 
-#BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
