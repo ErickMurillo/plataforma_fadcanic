@@ -7,36 +7,40 @@
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-sm-3 col-md-4">
-					<div class="thumbnail">
-						<i class="fa fa-file fa-4x"></i>
-						<div class="caption">
-							<p>Filtro de actividades</p>
-							<h4><a href="/actividades/programa/">Programa</a></h4>
+					<a href="/actividades/programa/">
+						<div class="thumbnail">
+							<i class="fa fa-file fa-4x"></i>
+							<div class="caption">
+								<p>Filtro de actividades</p>
+								<h5>Programa</h5>
 
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 
 				<div class="col-sm-3 col-md-4">
-					<div class="thumbnail">
-						<i class="fa fa-clipboard fa-4x"></i>
-						<div class="caption">
-							<p>Filtro de actividades</p>
-							<h4><a href="/actividades/proyecto/">Proyecto</a></h4>
-
+					<a href="/actividades/proyecto/">
+						<div class="thumbnail">
+							<i class="fa fa-clipboard fa-4x"></i>
+							<div class="caption">
+								<p>Filtro de actividades</p>
+								<h5>Proyecto</h5>
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 
 				<div class="col-sm-3 col-md-4">
-					<div class="thumbnail">
-						<i class="fa fa-book fa-4x"></i>
-						<div class="caption">
-							<p>Manual de usuario</p>
-							<h4><a href="">Manual</a></h4>
-
+					<a href="">
+						<div class="thumbnail">
+							<i class="fa fa-book fa-4x"></i>
+							<div class="caption">
+								<p>Manual de usuario</p>
+								<h5>Manual</h5>
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -69,11 +73,9 @@
 				</div>
 				<div class="col-md-3 imglogo">
 					{% if org.logo %}
-						{% thumbnail noticia.foto "360x225" as img %}
-							<img src="/media/{{img}}" alt="{{org.nombre_corto}}">
-						{% endthumbnail %}
+					<img src="/media/{{org.logo}}" alt="" width="60px">
 					{% else %}
-						<img src="http://placehold.it/70x70" alt="{{org.nombre_corto}}">
+					<img src="http://placehold.it/70x70" alt="{{org.nombre_corto}}">
 					{% endif %}
 				</div>
 			</div>

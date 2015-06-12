@@ -66,3 +66,16 @@
 	margin-bottom: 5em;
 }
 
+h4 {
+	margin-bottom: 5px;
+}
+
+.caption h5 {
+	margin-bottom: 0px !important;
+}
+
+.thumbnail i {
+	margin-top: 5px;
+	color: #6B6864
+}
+

@@ -130,6 +130,8 @@ CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.j
 
 EXPORT_SERVER = ''
 
+SITE_ID = 1
+
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/actividades/'
 
