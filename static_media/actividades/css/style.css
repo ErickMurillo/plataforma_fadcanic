@@ -52,3 +52,17 @@
     opacity:0.4;
     color: white;
 }
+
+.organizaciones {
+	font-size: 12px !important;
+}
+
+.imglogo img {
+	max-width: none;
+}
+
+#text {
+	margin-top: 3em;
+	margin-bottom: 5em;
+}
+
