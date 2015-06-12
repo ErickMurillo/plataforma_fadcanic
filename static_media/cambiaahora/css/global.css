@@ -1717,3 +1717,35 @@ ol.flex-control-nav.flex-control-paging {
 .mfp-close:hover{
 	cursor: pointer !important;
 }
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+.item-testimonial{
+	margin-left: 30px;
+	margin-right: 30px;
+
+}
+.name-testimonial{
+	margin-bottom: 0px !important;
+	text-align: center !important;
+}
+
+.opinion p{
+	
+	display: inline;
+	margin-right: 5px;
+	margin-left: 5px;
+
+}
+
+.opinion span{
+
+	font-size: 20px;
+	opacity: 0.7;
+}
+
+.opinion{
+	text-align: justify;
+}
