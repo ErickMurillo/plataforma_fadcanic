@@ -4,6 +4,7 @@ from cambiaahora.utils import get_file_path
 from django.contrib.auth.models import User
 from cambiaahora.noticias.models import CHOICE_APROBACION, CHOICE_IDIOMA, Categoria
 from django.utils.translation import ugettext_lazy as _
+from sorl.thumbnail import ImageField
 
 # Create your models here.
 
@@ -95,7 +96,7 @@ class SubirAudios(models.Model):
 class SubirFotos(models.Model):
     fotos = models.ForeignKey(Fotos)
     titulo = models.CharField(_(u'Titulo'),max_length=250)
-    foto = models.FileField(_(u'Foto'),)
+    foto = ImageField(_(u'Foto'),)
 
     def __unicode__(self):
         return self.titulo

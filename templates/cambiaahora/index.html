@@ -225,57 +225,26 @@
 				<div class="row help-list">
 					<div class="col-xs-12 col-md-5">
 				<div class="row">
-					<div class="items zoom col-xs-12 col-md-12">
-						<div class="row">
-							<a href="#" class="img-thumb col-xs-12 col-sm-5">
-							<figure>
-								<img src="img/v2.jpg" alt="">
-							</figure> </a>
-							<div class="media col-xs-12 col-sm-7 video-list">
-								<h3>DEBATE INTERCOLEGIA</h3>
-								<span class="date">03 DEC 2013</span><span class="posted-in">Tema : category</span>
-								<p>Los estudiantes del Colegio Cristiano Verbo, participaron.</p>
+					{% for obj in documentales %}
+						<div class="items zoom col-xs-12 col-md-12">
+							<div class="row">
+								<a href="#" class="img-thumb col-xs-12 col-sm-5">
+								<figure>
+									<img src="img/v2.jpg" alt="">
+								</figure> </a>
+								<div class="media col-xs-12 col-sm-7 video-list">
+									<h3>{{obj.nombre}}</h3>
+									<span class="date">{{obj.fecha}}</span><span class="posted-in">Tema : {{obj.categoria}}</span>
+									<p>{{obj.descripcion|safe|truncatewords:8}}</p>
 
-								
+									
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="items zoom col-xs-12 col-md-12">
-						<div class="row">
-							<a href="#" class="img-thumb col-xs-12 col-sm-5">
-							<figure>
-								<img src="img/v3.jpg" alt="">
-							</figure> </a>
-							<div class="media col-xs-12 col-sm-7 video-list">
-								<h3>DEBATE INTERCOLEGIA</h3>
-								<span class="date">03 DEC 2013</span><span class="posted-in">Tema : category</span>
-								<p>Los estudiantes del Colegio Cristiano Verbo, participaron.</p>
-
-
-								
-							</div>
-						</div>
-					</div>
-					<div class="items zoom col-xs-12 col-md-12">
-						<div class="row">
-							<a href="#" class="img-thumb col-xs-12 col-sm-5">
-							<figure>
-								<img src="img/v4.jpg" alt="">
-							</figure> </a>
-							<div class="media col-xs-12 col-sm-7 video-list">
-								<h3>DEBATE INTERCOLEGIA</h3>
-								<span class="date">03 DEC 2013</span><span class="posted-in">Tema : category</span>
-								<p>Los estudiantes del Colegio Cristiano Verbo, participaron.</p>
-
-
-								
-							</div>
-						</div>
-					</div>
+					{% endfor %}
 					<a href="#" class="btn btn-default btn-video">VER MAS</a>
 				</div>
-
-			</div>
+					</div>
 
 					<div class="col-xs-12 col-sm-6 col-lg-7 video-r">
 					
@@ -300,176 +269,44 @@
 
 			  <!-- Nav tabs -->
 			  <ul class="nav nav-tabs" role="tablist">
-			    <li role="presentation" class="active"><a href="#radio1" aria-controls="home" role="tab" data-toggle="tab">Radio 1</a></li>
-			    <li role="presentation"><a href="#radio2" aria-controls="profile" role="tab" data-toggle="tab">Radio 2</a></li>
-			    
+			  	{% for obj in audios %}
+				    <li role="presentation" class=" {% if forloop.counter == 1 %}active{% endif %}"><a href="#radio{{forloop.counter}}" aria-controls="home" role="tab" data-toggle="tab">{{obj.nombre}}</a></li>
+			    {% endfor %}
 			  </ul>
 
 			  <!-- Tab panes -->
 			  <div class="tab-content">
-			    <div role="tabpanel" class="tab-pane active" id="radio1">
+			  	{% for obj in audios %}
+			    <div role="tabpanel" class="tab-pane active" id="radio{{forloop.counter}}">
 			    <div class="container">
 					<div class="row">
 						<div class="col-xs-12">
 						    <div class="audio-radio ">
 								<div class="col-xs-12 col-sm-7 col-md-6">
 									<img class="img-thumbnail" src="img/radio.jpg" alt="">
-									<h3>Serie radiofónica: <strong>HAZLO !</strong></h3>
+									<h3>Serie radiofónica: <strong>{{obj.nombre}} </strong></h3>
 							      	<audio preload></audio>
 							      	<div class="track-details">
-
     								</div>
 
 								</div>
 								<div class="col-xs-12 col-sm-7 col-md-6 playlist-audio">
 									<ol class="list-group">
-								        <li class="list-group-item">
+									{% for audios in obj.subiraudios_set.all %}
+										<li class="list-group-item">
 									        <span class="fa"></span>
-									        <a href="#"  data-src="http://kolber.github.io/audiojs/demos/mp3/01-dead-wrong-intro.mp3">dead wrong intro</a>
-								       
+									        <a href="#"  data-src="/media/{{audios.audio}}">{{audios.titulo}}</a>
 								        </li>
-
-								        <li class="list-group-item">
-									        <span class="fa"></span>
-									        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/02-juicy-r.mp3">juicy-r</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/03-its-all-about-the-crystalizabeths.mp3">it's all about the crystalizabeths</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/04-islands-is-the-limit.mp3">islands is the limit</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/05-one-more-chance-for-a-heart-to-skip-a-beat.mp3">one more chance for a heart to skip a beat</a>
-								        </li>
-
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/06-suicidal-fantasy.mp3">suicidal fantasy</a>
-								        </li>
-
-								        <li class="list-group-item">
-									        <span class="fa"></span>
-									        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/07-everyday-shelter.mp3">everyday shelter</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/08-basic-hypnosis.mp3">basic hypnosis</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/09-infinite-victory.mp3">infinite victory</a>
-								        </li>
-
-								        <li class="list-group-item">
-											<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/10-the-curious-incident-of-big-poppa-in-the-nighttime.mp3">the curious incident of big poppa in the nighttime</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        <span class="fa"></span>
-								        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/11-mo-stars-mo-problems.mp3">mo stars mo problems</a>
-								        </li>
-								      </ol>
+									{% endfor %}
+								        
+								    </ol>
 								</div>
-						      
-
 							</div>
 						</div>
 					</div>
 				</div>	
 			    </div>
-			    <div role="tabpanel" class="tab-pane" id="radio2">
-			  		<div class="container">
-					<div class="row">
-						<div class="col-xs-12">
-						    <div class="audio-radio ">
-								<div class="col-xs-12 col-sm-7 col-md-6">
-									<img class="img-thumbnail" src="img/radio.jpg" alt="">
-									<h3>Serie radiofónica: <strong>HAZLO !</strong></h3>
-							      	<audio preload></audio>
-							      	<div class="track-details">
-
-    								</div>
-
-								</div>
-								<div class="col-xs-12 col-sm-7 col-md-6 playlist-audio">
-									<ol class="list-group">
-								        <li class="list-group-item">
-									        <span class="fa"></span>
-									        <a href="#"  data-src="http://kolber.github.io/audiojs/demos/mp3/01-dead-wrong-intro.mp3">dead wrong intro</a>
-								       
-								        </li>
-
-								        <li class="list-group-item">
-									        <span class="fa"></span>
-									        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/02-juicy-r.mp3">juicy-r</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/03-its-all-about-the-crystalizabeths.mp3">it's all about the crystalizabeths</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/04-islands-is-the-limit.mp3">islands is the limit</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/05-one-more-chance-for-a-heart-to-skip-a-beat.mp3">one more chance for a heart to skip a beat</a>
-								        </li>
-
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/06-suicidal-fantasy.mp3">suicidal fantasy</a>
-								        </li>
-
-								        <li class="list-group-item">
-									        <span class="fa"></span>
-									        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/07-everyday-shelter.mp3">everyday shelter</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/08-basic-hypnosis.mp3">basic hypnosis</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        	<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/09-infinite-victory.mp3">infinite victory</a>
-								        </li>
-
-								        <li class="list-group-item">
-											<span class="fa"></span>
-								        	<a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/10-the-curious-incident-of-big-poppa-in-the-nighttime.mp3">the curious incident of big poppa in the nighttime</a>
-								        </li>
-
-								        <li class="list-group-item">
-								        <span class="fa"></span>
-								        <a href="#" data-src="http://kolber.github.io/audiojs/demos/mp3/11-mo-stars-mo-problems.mp3">mo stars mo problems</a>
-								        </li>
-								      </ol>
-								</div>
-						      
-
-							</div>
-						</div>
-					</div>
-			    </div>
-			    
-			  </div>
+			    {% endfor %}
 
 			</div>
 
@@ -479,28 +316,13 @@
 </section>
 <!--radio Section End Here -->
 <div class="popup-gallery">
-
-	<a class="gallery" href="newimg/cambia1.jpg" title="The Cleaner">
-		<img src="newimg/cambia1.jpg" width="222" height="auto">
-		
-	</a>
-	<a class="gallery" href="newimg/Faltapoco.jpg" title="Winter Dance">
-		<img src="newimg/Faltapoco.jpg" width="222" height="auto">
-	</a>
-	<a class="gallery" href="newimg/cambia3.JPG"1 title="The Uninvited Guest">
-		<img src="newimg/cambia3.JPG" width="222" height="auto">
-	</a>
-	<a class="gallery" href="newimg/nota1.jpg" title="Oh no, not again!">
-		<img src="newimg/nota1.jpg" width="222" height="auto">
-	</a>
-	<a class="gallery" href="newimg/nota2.JPG" title="Swan Lake">
-		<img src="newimg/nota2.JPG" width="222" height="auto">
-	</a>
-
-	<a class="gallery" href="newimg/nota3.jpg" title="The Shake">
-		<img src="newimg/nota3.jpg" width="222" height="auto">
-	</a>
-			
+	{% for obj in albunes %}
+		{% for fotos in obj.subirfotos_set.all|slice:":6" %}
+			<a class="gallery" href="/media/{{fotos.foto}}" title="The Cleaner">
+				<img src="/media/{{fotos.foto}}" width="222" height="auto">	
+			</a>
+		{% endfor %}
+	{% endfor %}		
 </div>
 
 <section class="socialmedia">

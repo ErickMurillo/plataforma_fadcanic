@@ -19,10 +19,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from cambiaahora.noticias import urls as noticias_urls
 from django.conf.urls.i18n import i18n_patterns
-
+from cambiaahora.noticias import views
 
 urlpatterns = [
-	url(r'', include(noticias_urls)),
+	#url(r'', include(noticias_urls)),
+    url(r'^$', views.IndexView.as_view(), name='index-carajo'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^actividades/', include('actividades.urls')),
