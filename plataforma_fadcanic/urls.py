@@ -14,16 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
-from django.conf import settings
+import settings
 from django.conf.urls.static import static
 from cambiaahora.noticias import urls as noticias_urls
 from django.conf.urls.i18n import i18n_patterns
 from cambiaahora.noticias import views
 
 urlpatterns = [
-	url(r'', include(noticias_urls)),
+    
+	url(r'', include('cambiaahora.noticias.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^actividades/', include('actividades.urls')),
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'actividades/login.html'}),
@@ -33,3 +36,5 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     url(r'^noticias/', include(noticias_urls)),
 )
+
+urlpatterns += staticfiles_urlpatterns()

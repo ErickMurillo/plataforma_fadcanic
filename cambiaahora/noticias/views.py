@@ -40,3 +40,6 @@ class DetailNewsView(DetailView):
         context = super(DetailNewsView, self).get_context_data(**kwargs)
         context['noticias_relacionadas'] = Noticias.objects.filter(aprobacion=2, categoria=self.object.categoria).exclude(id=self.object.id).order_by('-fecha')[:3]
         return context
+
+class ContactView(TemplateView):
+    template_name = "cambiaahora/noticias/contactenos.html"
