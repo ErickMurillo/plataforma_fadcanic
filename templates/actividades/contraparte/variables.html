@@ -51,10 +51,10 @@
 <div class="banner banner-filtros">
 	<center class="banner_title">Combinaciones de variables</center>	
 </div>
-<div id="subfiltros">
+<div>
 <form action="." method="post">
 	{% csrf_token %}
-	<div class="grid">
+	<div class="col-md-4">
 		<div class="span1">PASO <b>1</b></div>
 		<div class="x1">
 			<div class="varname">Variable Principal</div>
@@ -62,7 +62,7 @@
 			<div class="clean"></div>
 		</div>		
 	</div>
-	<div class="grid grid_x2">
+	<div class="col-md-4">
 		<div class="span1">PASO <b>2</b></div>
 		<div class="x1">
 			<div class="varname">{{form.participantes.label}}</div>
@@ -76,7 +76,7 @@
 			<div class="clean"></div>
 		</div>		
 	</div>
-	<div class="grid">
+	<div class="col-md-4">
 		<div class="span1">PASO <b>3</b></div>
 		<div class="x1">
 			<div class="varname">Opciones de Visualización</div>

@@ -9,20 +9,8 @@
 <link href="{% static 'actividades/css/formee/css/form-style.css' %}" rel="stylesheet" type="text/css"/>
 <link href="{% static 'actividades/css/jquery.multiselect.css' %}" rel="stylesheet" type="text/css"/>
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#id_fecha_inicio, #id_fecha_fin").datepicker({
-		changeMonth: true,
-		changeYear: true,
-		yearRange: '2011:2015',
-		dateFormat: 'dd/mm/yy',		
-		monthNamesShort: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
-		                  'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],			
-	});	
-});
-</script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <style type="text/css">
 	.content .wrapper{
 		margin-bottom: 50px;
@@ -36,13 +24,14 @@ $(document).ready(function(){
 	 	font-size:13px !important;
 	}
 </style>
+
 {% endblock %}
 
 {% block contenido %}
 <div class="banner banner-filtros">	
 	<div class="title">Filtros de proyectos</div>
 </div>
-<div style="width: 960px;">	
+<div>	
 	<div class="formfiltros">			
 		<center>		
 		<form action="." method="post" class="form">
@@ -55,4 +44,26 @@ $(document).ready(function(){
 		</center>
 	</div>
 </div>
+
+
 {% endblock %}
+
+
+{% block extra_js %}
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+  <script>
+$( "#id_fecha_inicio, #id_fecha_fin" ).datepicker({
+	altFormat: "dd/mm/yy",
+	monthNamesShort: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+						"Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
+	dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sab'],
+	rRange: '2014:2018',
+	changeMonth: true,
+	changeYear: true,
+});
+</script>
+
+{% endblock extra_js %}
