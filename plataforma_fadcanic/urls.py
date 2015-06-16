@@ -33,8 +33,10 @@ urlpatterns = [
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'template_name': 'actividades/logout.html'}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-urlpatterns += i18n_patterns(
+urlpatterns += i18n_patterns('',
+    url(r'', include('cambiaahora.noticias.urls')),
     url(r'^noticias/', include(noticias_urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,7 +1,10 @@
 {% extends "cambiaahora/base.html" %}
 
+{% load staticfiles%}
+{% load i18n %}
+
 {% block titulo %}
-	:: cambia ahora ::
+	:: {% trans 'cambia ahora' %}::
 {% endblock titulo %}
 
 {% load thumbnail %}
@@ -148,13 +151,13 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<header class="page-header section-header clearfix">
-					<h2>Hecha un vistazo a lo que esta pasando. <strong>Ultimas Noticias</strong></h2>
+					<h2>{% trans 'Hecha un vistazo a lo que esta pasando.' %} <strong>{% trans 'Ultimas Noticias' %}</strong></h2>
 				</header>
 
 					
 				<div class="article-list flexslider article-slider row">
 				<ul class="slides">
-				{% for noticia in  ultimas_noticias %}
+				{% for noticia in  ultimas_noticias %}	
 					<li>
 						<div class="items item-nota zoom">
 							<a href="#" class="img-thumb">
@@ -165,11 +168,11 @@
 								</figure>
 								</a>
 							<h3>{{noticia.titulo}}</h3>
-							<span class="date">{{noticia.fecha|date:"d m Y"}}</span><span class="posted-in">Tema: {{noticia.categoria}}</span>
+							<span class="date">{{noticia.fecha|date:"d m Y"}}</span><span class="posted-in">{% trans 'Tema:' %} {{noticia.categoria}}</span>
 							<p>
 								{{noticia.texto|safe|truncatewords:20}}
 							</p>
-							<a href="blog-full-width.html" class="btn btn-default btn-nota">LEER MÁS</a>
+							<a href="blog-full-width.html" class="btn btn-default btn-nota">{% trans 'LEER MÁS' %}</a>
 						</div>
 					</li>
 				{% endfor %}
@@ -185,7 +188,7 @@
         	<div class="container">
                 <div class="row">
                 	<header class="page-header section-header clearfix">
-						<h2 class="title-campana">Información de la Campaña</h2>
+						<h2 class="title-campana">{% trans 'Información de la Campaña' %}</h2>
 					</header>
 
                     
