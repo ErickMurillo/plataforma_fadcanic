@@ -279,8 +279,8 @@ def get_proyectos(request):
             return HttpResponse(e)
     else:
         return HttpResponse(':(')
-    return HttpResponse(simplejson.dumps(list(proyectos)), mimetype="application/json")
-    
+    return HttpResponse(simplejson.dumps(list(proyectos)), content_type="application/json")
+
 
 def get_salidas(request):
     sitio = Site.objects.all()[0].domain

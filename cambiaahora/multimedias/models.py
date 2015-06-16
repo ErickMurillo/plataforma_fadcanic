@@ -49,8 +49,6 @@ class Fotos(models.Model):
     class Meta:
         verbose_name=_(u'Foto')
         verbose_name_plural=_(u'Fotos')
-<<<<<<< HEAD
-=======
 
 class Documentales(models.Model):
     nombre = models.CharField(_(u'Nombre'), max_length=250)
@@ -66,9 +64,8 @@ class Documentales(models.Model):
         return self.nombre
 
     class Meta:
-        verbose_name=_(u'Documentale')
+        verbose_name=_(u'Documentales')
         verbose_name_plural=_(u'Documentales')
->>>>>>> d27e4dba33e0028aad23f3b729e6f194b26e2e33
 
 #los Inlines de los videos, audios, fotos
 
@@ -99,9 +96,6 @@ class SubirAudios(models.Model):
 class SubirFotos(models.Model):
     fotos = models.ForeignKey(Fotos)
     titulo = models.CharField(_(u'Titulo'),max_length=250)
-<<<<<<< HEAD
-    foto = models.FileField(_(u'Foto'),)
-=======
     foto = ImageField(_(u'Foto'),)
 
     def __unicode__(self):
@@ -115,16 +109,10 @@ class SubirDocumentales(models.Model):
     documental = models.ForeignKey(Documentales)
     titulo = models.CharField(_(u'Titulo'),max_length=250)
     video = models.URLField(_(u'Video'))
->>>>>>> d27e4dba33e0028aad23f3b729e6f194b26e2e33
 
     def __unicode__(self):
         return self.titulo
 
     class Meta:
-<<<<<<< HEAD
-        verbose_name=_(u'Subir foto')
-        verbose_name_plural=_(u'Subir fotos')
-=======
         verbose_name=_(u'Subir documento')
         verbose_name_plural=_(u'Subir documentos')
->>>>>>> d27e4dba33e0028aad23f3b729e6f194b26e2e33

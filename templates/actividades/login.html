@@ -1,18 +1,20 @@
 {% extends "actividades/base.html" %}
+{% block title %}Login : Actividades{% endblock %}
 
 {% block extra_head %}
 <script>
-$(document).ready(function(){
-	$("#id_meses").multiselect({
-	    noneSelectedText: 'Mes',
-	    selectedText: '# seleccionados',
-	    minWidth: 150	    
-	});
-});
+    $(document).ready(function(){
+       $("#id_meses").multiselect({
+           noneSelectedText: 'Mes',
+           selectedText: '# seleccionados',
+           minWidth: 150	    
+       });
+   });
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('#id_password').val('password');
+        $('#id_password').addClass('form-control')
         $('#id_username').val('usuario');
         $('#id_password').click(function(){
             if($(this).val()=='password'){$(this).val('')}
@@ -51,12 +53,34 @@ $(document).ready(function(){
 {% block contenido %}
 <div id="login">
 	<form action="." method="post" class="form">
-			{% csrf_token %}
-			<table>
-				{{form.as_table}}
-				<input type="hidden" name="next" value="{{ next }}" />
-			</table>
-			<input class="form-button" type="submit" value="Entrar" />	
-		</form>
-</div>	
+     {% csrf_token %}
+     
+        <label for="contenido" class="label-pag">
+            {{form.username.label}}
+            <span class="required">*</span>
+        </label>
+        <br>
+        <br>
+
+        {{form.username}}
+        <br>
+        <br>
+
+        <label for="contenido" class="label-pag">
+            {{form.password.label}}
+            <span class="required">*</span>
+        </label>
+        <br>
+        <br>
+
+        {{form.password}}
+        <br>
+        <br>
+         
+        <input type="hidden" name="next" value="{{ next }}" />
+    
+    <input class="form-button btn btn-success" type="submit" value="Entrar" />	
+</form>
+</div>
+
 {% endblock contenido %}

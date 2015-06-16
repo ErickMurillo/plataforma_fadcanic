@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('web', models.URLField(default=b'www.example.com', verbose_name=b'Sitio web', blank=True)),
                 ('historia', models.TextField(default=b'', blank=True)),
                 ('logo', sorl.thumbnail.fields.ImageField(null=True, upload_to=actividades.utils.get_file_path, blank=True)),
-                ('last_register', models.DateTimeField(default=datetime.datetime(2015, 6, 12, 20, 35, 41, 745250), editable=False)),
+                ('last_register', models.DateTimeField(default=datetime.datetime(2015, 6, 16, 14, 37, 3, 988802), editable=False)),
                 ('admin', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
