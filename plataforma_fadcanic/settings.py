@@ -12,12 +12,15 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     #cambiaahora
     'cambiaahora.noticias',
     'cambiaahora.historias',
     'cambiaahora.multimedias',
     'cambiaahora.staff',
     'cambiaahora.testimonios',
+    'cambiaahora.configuracion',
     #actividades
     'actividades.contraparte',
     'actividades.fadcanic',
@@ -37,9 +40,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'plataforma_fadcanic.urls'
+
+SITE_ID = 1
+
 
 TEMPLATES = [
     {
@@ -65,7 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'plataforma_fadcanic.wsgi.application'
 
-#BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 

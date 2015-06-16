@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('noticias', '0001_initial'),
     ]
 
     operations = [
@@ -16,9 +17,9 @@ class Migration(migrations.Migration):
             name='Audios',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('nombre', models.CharField(max_length=250)),
-                ('aprobacion', models.IntegerField(default=b'1', choices=[(1, b'Borrador'), (2, b'Aprobado')])),
-                ('idioma', models.IntegerField(default=b'1', choices=[(1, b'Espa\xc3\xb1ol'), (2, b'Ingles')])),
+                ('nombre', models.CharField(max_length=250, verbose_name='Nombre')),
+                ('aprobacion', models.IntegerField(default=b'1', verbose_name='Aprobaci\xf3n', choices=[(1, 'Borrador'), (2, 'Aprobado')])),
+                ('idioma', models.IntegerField(default=b'1', verbose_name='Idioma', choices=[(1, 'Espa\xf1ol'), (2, 'English')])),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
@@ -27,12 +28,29 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
+            name='Documentales',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('nombre', models.CharField(max_length=250, verbose_name='Nombre')),
+                ('fecha', models.DateField(verbose_name='Fecha')),
+                ('descripcion', models.TextField(verbose_name='Descripci\xf3n')),
+                ('aprobacion', models.IntegerField(default=b'1', verbose_name='Aprobaci\xf3n', choices=[(1, 'Borrador'), (2, 'Aprobado')])),
+                ('idioma', models.IntegerField(default=b'1', verbose_name='Idioma', choices=[(1, 'Espa\xf1ol'), (2, 'English')])),
+                ('categoria', models.ForeignKey(verbose_name='Categoria', to='noticias.Categoria')),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+                'verbose_name': 'Documentale',
+                'verbose_name_plural': 'Documentales',
+            },
+        ),
+        migrations.CreateModel(
             name='Fotos',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('nombre', models.CharField(max_length=250)),
-                ('aprobacion', models.IntegerField(default=b'1', choices=[(1, b'Borrador'), (2, b'Aprobado')])),
-                ('idioma', models.IntegerField(default=b'1', choices=[(1, b'Espa\xc3\xb1ol'), (2, b'Ingles')])),
+                ('nombre', models.CharField(max_length=250, verbose_name='Nombre')),
+                ('aprobacion', models.IntegerField(default=b'1', verbose_name='Aprobaci\xf3n', choices=[(1, 'Borrador'), (2, 'Aprobado')])),
+                ('idioma', models.IntegerField(default=b'1', verbose_name='Idioma', choices=[(1, 'Espa\xf1ol'), (2, 'English')])),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
@@ -44,8 +62,8 @@ class Migration(migrations.Migration):
             name='SubirAudios',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('titulo', models.CharField(max_length=250)),
-                ('audio', models.FileField(upload_to=b'')),
+                ('titulo', models.CharField(max_length=250, verbose_name='Titulo')),
+                ('audio', models.FileField(upload_to=b'', verbose_name='Audio')),
                 ('audios', models.ForeignKey(to='multimedias.Audios')),
             ],
             options={
@@ -54,11 +72,24 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
+            name='SubirDocumentales',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('titulo', models.CharField(max_length=250, verbose_name='Titulo')),
+                ('video', models.URLField(verbose_name='Video')),
+                ('documental', models.ForeignKey(to='multimedias.Documentales')),
+            ],
+            options={
+                'verbose_name': 'Subir documento',
+                'verbose_name_plural': 'Subir documentos',
+            },
+        ),
+        migrations.CreateModel(
             name='SubirFotos',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('titulo', models.CharField(max_length=250)),
-                ('foto', models.FileField(upload_to=b'')),
+                ('titulo', models.CharField(max_length=250, verbose_name='Titulo')),
+                ('foto', models.FileField(upload_to=b'', verbose_name='Foto')),
                 ('fotos', models.ForeignKey(to='multimedias.Fotos')),
             ],
             options={
@@ -70,8 +101,8 @@ class Migration(migrations.Migration):
             name='SubirVideos',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('titulo', models.CharField(max_length=250)),
-                ('video', models.URLField()),
+                ('titulo', models.CharField(max_length=250, verbose_name='Titulo')),
+                ('video', models.URLField(verbose_name='Video')),
             ],
             options={
                 'verbose_name': 'Subir video',
@@ -82,9 +113,9 @@ class Migration(migrations.Migration):
             name='Videos',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('nombre', models.CharField(max_length=250)),
-                ('aprobacion', models.IntegerField(default=b'1', choices=[(1, b'Borrador'), (2, b'Aprobado')])),
-                ('idioma', models.IntegerField(default=b'1', choices=[(1, b'Espa\xc3\xb1ol'), (2, b'Ingles')])),
+                ('nombre', models.CharField(max_length=250, verbose_name='Nombre')),
+                ('aprobacion', models.IntegerField(default=b'1', verbose_name='Aprobaci\xf3n', choices=[(1, 'Borrador'), (2, 'Aprobado')])),
+                ('idioma', models.IntegerField(default=b'1', verbose_name='Idioma', choices=[(1, 'Espa\xf1ol'), (2, 'English')])),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={

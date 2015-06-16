@@ -1,0 +1,301 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-16 04:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: cambiaahora/configuracion/models.py:12 cambiaahora/multimedias/models.py:50
+#: cambiaahora/multimedias/models.py:99
+msgid "Foto"
+msgstr "Photo"
+
+#: cambiaahora/configuracion/models.py:13
+msgid "Titulo español"
+msgstr "Spanish title"
+
+#: cambiaahora/configuracion/models.py:14
+msgid "Descripción español"
+msgstr "Spanish Description"
+
+#: cambiaahora/configuracion/models.py:15
+msgid "Titulo ingles"
+msgstr "English Title"
+
+#: cambiaahora/configuracion/models.py:16
+msgid "Descripción ingles"
+msgstr "English description"
+
+#: cambiaahora/configuracion/models.py:17
+msgid "Titulo miskitu"
+msgstr "Miskitu title"
+
+#: cambiaahora/configuracion/models.py:18
+msgid "Descripción miskitu"
+msgstr "Miskitu description"
+
+#: cambiaahora/configuracion/models.py:19
+msgid "Titulo otro"
+msgstr "Other title"
+
+#: cambiaahora/configuracion/models.py:20
+msgid "Descripción otro"
+msgstr "Other description"
+
+#: cambiaahora/configuracion/models.py:30
+msgid "Configuración"
+msgstr "Configuration"
+
+#: cambiaahora/configuracion/models.py:31
+msgid "Configuraciones"
+msgstr "Configuration's"
+
+#: cambiaahora/historias/models.py:14 cambiaahora/multimedias/models.py:74
+#: cambiaahora/multimedias/models.py:86 cambiaahora/multimedias/models.py:98
+#: cambiaahora/multimedias/models.py:110 cambiaahora/noticias/models.py:26
+msgid "Titulo"
+msgstr "Title"
+
+#: cambiaahora/historias/models.py:16 cambiaahora/noticias/models.py:29
+#: cambiaahora/staff/models.py:16 cambiaahora/testimonios/models.py:16
+msgid "Foto principal"
+msgstr "Main photo"
+
+#: cambiaahora/historias/models.py:17 cambiaahora/multimedias/models.py:55
+#: cambiaahora/noticias/models.py:28 cambiaahora/testimonios/models.py:17
+msgid "Fecha"
+msgstr "Date"
+
+#: cambiaahora/historias/models.py:18 cambiaahora/noticias/models.py:31
+#: cambiaahora/staff/models.py:18 cambiaahora/testimonios/models.py:18
+msgid "Texto"
+msgstr "Text"
+
+#: cambiaahora/historias/models.py:19 cambiaahora/multimedias/models.py:13
+#: cambiaahora/multimedias/models.py:27 cambiaahora/multimedias/models.py:41
+#: cambiaahora/multimedias/models.py:58 cambiaahora/noticias/models.py:32
+#: cambiaahora/staff/models.py:21 cambiaahora/testimonios/models.py:19
+msgid "Aprobación"
+msgstr "Approved"
+
+#: cambiaahora/historias/models.py:20 cambiaahora/multimedias/models.py:14
+#: cambiaahora/multimedias/models.py:28 cambiaahora/multimedias/models.py:42
+#: cambiaahora/multimedias/models.py:59 cambiaahora/noticias/models.py:33
+#: cambiaahora/staff/models.py:22 cambiaahora/testimonios/models.py:20
+msgid "Idioma"
+msgstr "Lenguage"
+
+#: cambiaahora/historias/models.py:34
+msgid "Historia"
+msgstr "History"
+
+#: cambiaahora/historias/models.py:35
+msgid "Historias"
+msgstr "Stories"
+
+#: cambiaahora/multimedias/models.py:12 cambiaahora/multimedias/models.py:26
+#: cambiaahora/multimedias/models.py:40 cambiaahora/multimedias/models.py:54
+#: cambiaahora/staff/models.py:14 cambiaahora/testimonios/models.py:14
+msgid "Nombre"
+msgstr "Name"
+
+#: cambiaahora/multimedias/models.py:22 cambiaahora/multimedias/models.py:75
+#: cambiaahora/multimedias/models.py:111
+msgid "Video"
+msgstr "Video"
+
+#: cambiaahora/multimedias/models.py:23
+msgid "Videos"
+msgstr "Videos"
+
+#: cambiaahora/multimedias/models.py:36 cambiaahora/multimedias/models.py:87
+msgid "Audio"
+msgstr "Audio"
+
+#: cambiaahora/multimedias/models.py:37
+msgid "Audios"
+msgstr "Audios"
+
+#: cambiaahora/multimedias/models.py:51
+msgid "Fotos"
+msgstr "Photos"
+
+#: cambiaahora/multimedias/models.py:56 cambiaahora/noticias/models.py:34
+msgid "Categoria"
+msgstr "Category"
+
+#: cambiaahora/multimedias/models.py:57
+msgid "Descripción"
+msgstr "Description"
+
+#: cambiaahora/multimedias/models.py:67
+msgid "Documentale"
+msgstr "Documentary"
+
+#: cambiaahora/multimedias/models.py:68
+msgid "Documentales"
+msgstr "Documentaries"
+
+#: cambiaahora/multimedias/models.py:81
+msgid "Subir video"
+msgstr "Upload video"
+
+#: cambiaahora/multimedias/models.py:82
+msgid "Subir videos"
+msgstr "Upload video"
+
+#: cambiaahora/multimedias/models.py:93
+msgid "Subir audio"
+msgstr "Upload audio"
+
+#: cambiaahora/multimedias/models.py:94
+msgid "Subir audios"
+msgstr "Upload audios"
+
+#: cambiaahora/multimedias/models.py:105
+msgid "Subir foto"
+msgstr "Upload photo"
+
+#: cambiaahora/multimedias/models.py:106
+msgid "Subir fotos"
+msgstr "Upload photos"
+
+#: cambiaahora/multimedias/models.py:117
+msgid "Subir documento"
+msgstr "Upload document"
+
+#: cambiaahora/multimedias/models.py:118
+msgid "Subir documentos"
+msgstr "Upload document"
+
+#: cambiaahora/noticias/models.py:12
+msgid "Borrador"
+msgstr "Draft"
+
+#: cambiaahora/noticias/models.py:13
+msgid "Aprobado"
+msgstr "Approved"
+
+#: cambiaahora/noticias/models.py:16
+msgid "Español"
+msgstr "Spanish"
+
+#: cambiaahora/noticias/models.py:17
+msgid "English"
+msgstr "Ingles"
+
+#: cambiaahora/noticias/models.py:30
+msgid "url del video como portada"
+msgstr "url of the video as the cover"
+
+#: cambiaahora/noticias/models.py:48
+msgid "Noticia"
+msgstr "News"
+
+#: cambiaahora/noticias/models.py:49 templates/cambiaahora/base.html:93
+msgid "Noticias"
+msgstr "News"
+
+#: cambiaahora/staff/models.py:17
+msgid "fecha de nacimiento"
+msgstr "Date of birth"
+
+#: cambiaahora/staff/models.py:19
+msgid "Profesión"
+msgstr "Profession"
+
+#: cambiaahora/staff/models.py:20
+msgid "Cargo/Puesto"
+msgstr "Title / Position"
+
+#: cambiaahora/staff/models.py:36 cambiaahora/staff/models.py:37
+msgid "Staff"
+msgstr "Staff"
+
+#: cambiaahora/testimonios/models.py:34
+msgid "Testimonio"
+msgstr "Testimony"
+
+#: cambiaahora/testimonios/models.py:35
+msgid "Testimonios"
+msgstr "Testimonials"
+
+#: templates/cambiaahora/base.html:8
+msgid "Cambia Ahora"
+msgstr "Change Now"
+
+#: templates/cambiaahora/base.html:85
+msgid "Inicio"
+msgstr "Home"
+
+#: templates/cambiaahora/base.html:89
+msgid "Campaña"
+msgstr "Campaign"
+
+#: templates/cambiaahora/base.html:97
+msgid "Radio"
+msgstr "Radio"
+
+#: templates/cambiaahora/base.html:102
+msgid "Sobre FADCANIC "
+msgstr "About FADCANIC"
+
+#: templates/cambiaahora/base.html:108
+msgid "Multimedia"
+msgstr "Multimedia"
+
+#: templates/cambiaahora/base.html:114
+msgid "Contactenos"
+msgstr "Contact Us"
+
+#: templates/cambiaahora/base.html:136
+msgid "Apoyan la campaña"
+msgstr "Supporting the campaign"
+
+#: templates/cambiaahora/base.html:226
+msgid "contactos"
+msgstr "contacts"
+
+#: templates/cambiaahora/base.html:279
+msgid "Departamento de Estado de los Estados Unidos"
+msgstr "United States Department of State"
+
+#: templates/cambiaahora/base.html:302
+msgid "Elaborado por"
+msgstr "Make by"
+
+#: templates/cambiaahora/index.html:7
+msgid "cambia ahora"
+msgstr "Change Now"
+
+#: templates/cambiaahora/index.html:154
+msgid "Hecha un vistazo a lo que esta pasando."
+msgstr "Take a look at what is happening."
+
+#: templates/cambiaahora/index.html:154
+msgid "Ultimas Noticias"
+msgstr "Last News"
+
+#: templates/cambiaahora/index.html:171
+msgid "Tema:"
+msgstr "Theme"
+
+#: templates/cambiaahora/index.html:175
+msgid "LEER MÁS"
+msgstr "READ MORE"
+
+#: templates/cambiaahora/index.html:191
+msgid "Información de la Campaña"
+msgstr "Information Campaign"
