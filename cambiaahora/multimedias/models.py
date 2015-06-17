@@ -64,7 +64,7 @@ class Documentales(models.Model):
         return self.nombre
 
     class Meta:
-        verbose_name=_(u'Documentale')
+        verbose_name=_(u'Documentales')
         verbose_name_plural=_(u'Documentales')
 
 #los Inlines de los videos, audios, fotos

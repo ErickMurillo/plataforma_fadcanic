@@ -19,12 +19,14 @@ from django.contrib import admin
 import settings
 from django.conf.urls.static import static
 from cambiaahora.noticias import urls as noticias_urls
+from cambiaahora.multimedias import urls as multimedias_urls
 from django.conf.urls.i18n import i18n_patterns
 from cambiaahora.noticias import views
 
 urlpatterns = [
     
 	url(r'', include('cambiaahora.noticias.urls')),
+    url(r'^multimedias/', include(multimedias_urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
@@ -36,6 +38,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns('',
     url(r'', include('cambiaahora.noticias.urls')),
     url(r'^noticias/', include(noticias_urls)),
+    url(r'^multimedias/', include(multimedias_urls)),
     url(r'^admin/', include(admin.site.urls)),
 )
 
