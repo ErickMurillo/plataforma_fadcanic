@@ -26,6 +26,11 @@
 <link rel="stylesheet" href="{% static 'actividades/css/buttons.css' %}" type="text/css" />
 <link rel="stylesheet" href="{% static 'actividades/css/formee/css/form-structure.css' %}" type="text/css"/>
 <link rel="stylesheet" href="{% static 'actividades/css/formee/css/form-style.css' %}" type="text/css"/>
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
 <style>
 .banner-filtros{	
 	height: 60px;
@@ -34,12 +39,7 @@
 }
 </style>
 <script type="text/javascript">
-	function _pieChartData(chart){
-		return escape(JSON.stringify({
-			'title'   : chart.options.title.text,
-			'series'  : chart.options.series
-		}))
-	}
+	
 	var _bar_chart;
 	$(document).ready(function(){
 		var csrf_token =  $.cookie('csrftoken'); 
@@ -221,8 +221,8 @@
 
 {% block contenido %}
 {% include "actividades/filtros_selectos.html" %}
-<div class="banner banner-filtros">
-	<center class="banner_title">{{var2.1|unslugify}} por {{main_field|unslugify}} {% if eval_tipo %}| {{eval_tipo}}{% endif %}</center>	
+<div class="col-md-12">
+	<h4 id="text_theme" align="center">{{var2.1|unslugify}} por {{main_field|unslugify}} {% if eval_tipo %}| {{eval_tipo}}{% endif %}</h4>
 </div>
 <div class="tablegatito">
 	<div class="tableoptions" id="tableoptions">
@@ -241,10 +241,11 @@
 		{% endif %}
 		<div class="clean"></div>
 	</div>
+	</div>
 	<div class="dinamictable">
 		{% load_table dicc opts2 var2 main_field total tipo %}
 	</div>		
-</div>
+
 
 
 <div class="contenedortabs">
@@ -314,4 +315,13 @@
 		<input type="submit" id="delete_report" value="Eliminar" title="Eliminar" class="optionsbutton">
 	</div>
 </div>
+<script>
+	(function($){
+    	$('.result_table').addClass('table');
+	})(jQuery || django.jQuery);
+</script>
+
+
+
+
 {% endblock %}

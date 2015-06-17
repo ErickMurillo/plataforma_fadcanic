@@ -1,7 +1,13 @@
 {% extends "actividades/base.html" %}
+{% load staticfiles %}
 {% block title %}Login : Actividades{% endblock %}
 
 {% block extra_head %}
+<link href="{% static 'actividades/css/formee/css/form-structure.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'actividades/css/formee/css/form-style.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'actividades/css/jquery.multiselect.css' %}" rel="stylesheet" type="text/css"/>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
 <script>
     $(document).ready(function(){
        $("#id_meses").multiselect({
@@ -54,32 +60,32 @@
 <div id="login">
 	<form action="." method="post" class="form">
      {% csrf_token %}
-     
+     <div class="col-md-12">
+
         <label for="contenido" class="label-pag">
-            {{form.username.label}}
+            Nombre de Usuario
             <span class="required">*</span>
         </label>
-        <br>
-        <br>
-
+        </div>
+        <div class="col-md-12">
         {{form.username}}
-        <br>
-        <br>
-
+        </div>
+        
+        <div class="col-md-12">
         <label for="contenido" class="label-pag">
-            {{form.password.label}}
+            Contraseña
             <span class="required">*</span>
         </label>
-        <br>
-        <br>
-
+        </div>
+        <div class="col-md-12">
         {{form.password}}
-        <br>
-        <br>
-         
+         </div>
+
+         <div class="col-md-12" style="margin-top:15px;">
         <input type="hidden" name="next" value="{{ next }}" />
     
-    <input class="form-button btn btn-success" type="submit" value="Entrar" />	
+        <input class="form-button btn btn-success" type="submit" value="Entrar" />	
+        </div>
 </form>
 </div>
 

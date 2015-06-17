@@ -4,11 +4,10 @@
 	margin: 3% 25% 3% 25% ;
 	background: #d7d7d8;
 	border-radius: 15px;
-
 }
 
 #login form {
-	padding: 20px;
+	padding: 50px;
 	
 }
 
@@ -60,3 +59,32 @@ h4 {
 	color: #6B6864
 }
 
+.breadcrumb>li+li:before {
+  color: rgba(15, 8, 8, 1);
+  content: "\276F\00a0";
+}
+
+h5, .h5 {
+  font-size: 20px;
+   margin-bottom: 0px !important;
+}
+
+#filtros {
+	margin: 60px 0 60px 0;
+	background: #FDCB07;
+	opacity: 0.8;
+	padding: 7px;
+	border-radius: 15px;
+}
+
+.jumbotron h4 {
+	text-align: center;
+}
+
+.jumbotron {
+  padding: 15px !important;
+}
+
+#text_theme {
+	margin-bottom: 2em !important ;
+}

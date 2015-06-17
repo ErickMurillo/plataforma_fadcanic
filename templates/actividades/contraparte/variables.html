@@ -48,10 +48,12 @@
 
 {% block contenido %}
 {% include "actividades/filtros_selectos.html" %}
-<div class="banner banner-filtros">
-	<center class="banner_title">Combinaciones de variables</center>	
-</div>
-<div>
+
+<div class="jumbotron">
+  <h4>Combinaciones de variables</h4>
+</div>	
+
+<div class="container-fluid">
 <form action="." method="post">
 	{% csrf_token %}
 	<div class="col-md-4">
