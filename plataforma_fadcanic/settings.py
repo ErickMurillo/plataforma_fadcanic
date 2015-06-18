@@ -28,6 +28,7 @@ INSTALLED_APPS = (
     'ckeditor',
     'smart_selects',
     'sorl.thumbnail',
+    'embed_video',
 )
 
 MIDDLEWARE_CLASSES = (
