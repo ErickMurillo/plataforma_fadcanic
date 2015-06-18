@@ -10,7 +10,7 @@ class MultimediaView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(MultimediaView, self).get_context_data(**kwargs)
         context['documentales'] = Documentales.objects.filter(aprobacion=2).order_by('-fecha')[:2]
-        context['videos'] = Videos.objects.all()[:2]
-        context['audios'] = Audios.objects.all()[:2]
+        context['videos'] = Videos.objects.filter(aprobacion=2)[:2]
+        context['fotos'] = Fotos.objects.filter(aprobacion=2)[:2]
 
         return context
