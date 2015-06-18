@@ -16,7 +16,7 @@ def unslugify(value):
     
 def save_as_xls(request):
     tabla = request.POST['tabla']    
-    response = render_to_response('xls.html', {'tabla': tabla, })
+    response = render_to_response('actividades/xls.html', {'tabla': tabla, })
     response['Content-Disposition'] = 'attachment; filename=tabla.xls'
     response['Content-Type'] = 'application/vnd.ms-excel'
     response['Charset'] ='UTF-8'
