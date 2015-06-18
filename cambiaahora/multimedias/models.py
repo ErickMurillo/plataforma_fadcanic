@@ -5,15 +5,20 @@ from django.contrib.auth.models import User
 from cambiaahora.noticias.models import CHOICE_APROBACION, CHOICE_IDIOMA, Categoria
 from django.utils.translation import ugettext_lazy as _
 from sorl.thumbnail import ImageField
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
 class Videos(models.Model):
     nombre = models.CharField(_(u'Nombre'), max_length=250)
+    foto = ImageField(_(u'Foto'), upload_to=get_file_path, blank=True, null=True)
+    descripcion = RichTextField(_(u'Descripción'), null=True, blank=True)
     aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1', verbose_name=_(u'Aprobación'))
     idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1', verbose_name=_(u'Idioma'))
 
     user = models.ForeignKey(User)
+
+    fileDir = 'videos/'
 
     def __unicode__(self):
         return self.nombre
@@ -24,10 +29,14 @@ class Videos(models.Model):
 
 class Audios(models.Model):
     nombre = models.CharField(_(u'Nombre'), max_length=250)
+    foto = ImageField(_(u'Foto'), upload_to=get_file_path, blank=True, null=True)
+    descripcion = RichTextField(_(u'Descripción'), null=True, blank=True)
     aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1', verbose_name=_(u'Aprobación'))
     idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1', verbose_name=_(u'Idioma'))
 
     user = models.ForeignKey(User)
+
+    fileDir = 'audios/'
 
     def __unicode__(self):
         return self.nombre
@@ -38,6 +47,7 @@ class Audios(models.Model):
 
 class Fotos(models.Model):
     nombre = models.CharField(_(u'Nombre'), max_length=250)
+    descripcion = RichTextField(_(u'Descripción'), null=True, blank=True)
     aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1', verbose_name=_(u'Aprobación'))
     idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1', verbose_name=_(u'Idioma'))
 
@@ -54,11 +64,14 @@ class Documentales(models.Model):
     nombre = models.CharField(_(u'Nombre'), max_length=250)
     fecha = models.DateField(_(u'Fecha'))
     categoria = models.ForeignKey(Categoria, verbose_name=_(u'Categoria'))
+    foto = ImageField(_(u'Foto'), upload_to=get_file_path, blank=True, null=True)
     descripcion = models.TextField(_(u'Descripción'))
     aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1', verbose_name=_(u'Aprobación'))
     idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1', verbose_name=_(u'Idioma'))
 
     user = models.ForeignKey(User)
+
+    fileDir = 'documentales/'
 
     def __unicode__(self):
         return self.nombre
@@ -97,6 +110,8 @@ class SubirFotos(models.Model):
     fotos = models.ForeignKey(Fotos)
     titulo = models.CharField(_(u'Titulo'),max_length=250)
     foto = ImageField(_(u'Foto'),)
+
+    fileDir = 'subirFotos/'
 
     def __unicode__(self):
         return self.titulo
