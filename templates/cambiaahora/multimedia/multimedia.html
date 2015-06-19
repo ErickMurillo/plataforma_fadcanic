@@ -1,0 +1,120 @@
+{% extends "cambiaahora/base.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load embed_video_tags %}
+
+{% block titulo %}
+	:: {% trans "multimedias" %}
+{% endblock titulo %}
+
+{% block contenido %}
+<!-- site content -->
+<div id="main">
+<!--Breadcrumb Section Start Here-->
+<div class="breadcrumb-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-lg-8">
+				<h1>Programación</h1>
+				<ul class="breadcrumb">
+					<li>
+						<a href="index.html">Inicio</a>
+					</li>
+					<li class="active">
+						Multimedias
+					</li>
+				</ul>
+
+			</div>
+
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<!--Breadcrumb Section End Here-->
+
+<div class="content-wrapper" id="page-info">
+
+	<!-- Gallery Sections Start Here -->
+<section class="we-help gallery-wrap">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<!--Sub Breadcrumb Section Start Here-->
+
+				<ol class="breadcrumb">
+					<li>
+						<a href="#">Galerias de fotos</a>
+					</li>
+					<li class="active">
+						<a href="#">Videos</a>
+					</li>
+					<li>
+						<a href="#">Documentales</a>
+					</li>
+
+				</ol>
+				<!--Sub Breadcrumb Section End Here-->
+				<div class="row gallery">
+				
+				{% for obj in videos %}
+					<div class="cols-xs-12 col-sm-6">
+						<div class="thumbnail embed-vedio">
+						{% for vd in obj.subirvideos_set.all|slice:":1" %}
+							<div class="embed-responsive embed-responsive-16by9">
+							 {% video vd.video as video %}
+								<img  src="{{ video.thumbnail }}" width=555 height=341 alt="Click to play" data-video="{{video.url}}"/>
+							 {% endvideo %}
+							</div>
+							<h3 class="h3"><a  href="gallery-two-column.html">{{vd.titulo}}</a></h3>
+						{% endfor %}
+							
+						</div>
+					</div>
+				{% endfor %}
+				
+				{% for obj in fotos %}
+					<div class="cols-xs-12 col-sm-6">
+						<div class="thumbnail embed-vedio">
+							<div class="embed-responsive embed-responsive-16by9">
+								<img  src="img/nota2.png" alt="Click to play" data-video="http://www.youtube.com/embed/g2JiJPD4nxY?autoplay=1"/>
+							</div>
+
+							<h3 class="h3"><a  href="gallery-two-column.html">Heading title</a></h3>
+
+
+						</div>
+					</div>
+				{% endfor %}
+
+				{% for obj in documentales %}
+					<div class="cols-xs-12 col-sm-6">
+						<div class="thumbnail embed-vedio">
+						{% for vd in obj.subirvideos_set.all|slice:":1" %}
+							<div class="embed-responsive embed-responsive-16by9">
+							 {% video vd.video as video %}
+								<img  src="{{ video.thumbnail }}" width=555 height=341 alt="Click to play" data-video="{{video.url}}"/>
+							 {% endvideo %}
+							</div>
+							<h3 class="h3"><a  href="gallery-two-column.html">{{vd.titulo}}</a></h3>
+						{% endfor %}
+							
+						</div>
+					</div>
+				{% endfor %}
+					
+				</div>
+			</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- Gallery Sections Start Here -->
+
+</div>
+
+<!-- site content ends -->
+{% endblock contenido %}

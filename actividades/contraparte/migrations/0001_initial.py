@@ -11,9 +11,9 @@ import actividades.utils
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fadcanic', '0002_auto_20150527_1952'),
+        ('fadcanic', '__first__'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('lugar', '__first__'),
+        ('lugar', '0001_initial'),
     ]
 
     operations = [

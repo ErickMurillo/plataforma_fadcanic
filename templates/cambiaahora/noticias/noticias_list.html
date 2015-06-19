@@ -1,0 +1,102 @@
+{% extends "cambiaahora/base.html" %}
+
+{% block titulo %}
+	:: Noticias ::
+{% endblock titulo %}
+
+{% block contenido %}
+	<div id="wrapper">
+	<!-- site content -->
+		<div id="main">
+			<!--Breadcrumb Section Start Here-->
+			<div class="breadcrumb-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-lg-8">
+							<h1>Ultimas Noticias</h1>
+							<ul class="breadcrumb">
+								<li>
+									<a href="/">Inicio</a>
+								</li>
+								<li class="active">
+									Noticias
+								</li>
+							</ul>
+
+						</div>
+
+					</div>
+						
+				</div>
+			</div>
+		</div>
+			
+		<!--Breadcrumb Section End Here-->
+		<div class="content-wrapper" id="page-info">
+
+			<!-- Gallery sections Start Here -->
+			<section class="we-help gallery-wrap">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<!--Sub Breadcrumb Section Start Here-->
+							<ol class="breadcrumb">
+								<li>
+									<a href="#">La campaña</a>
+								</li>
+								<li class="active">
+									<a href="#">Violencia</a>
+								</li>
+								<li>
+									<a href="#">Drogas</a>
+								</li>
+
+							</ol>
+							<!--Sub Breadcrumb Section Start Here-->
+				<!--Gallery Section Start Here-->
+				<div class="row gallery ">
+								
+					{% for noticia in object_list %}
+						<div class="cols-xs-12 col-sm-4 anim-section nota-img">
+							<div class="thumbnail">
+								{% if noticia.url %}
+									<div class="embed-responsive embed-responsive-16by9">
+										<img  src="http://placehold.it/360x210" alt="Click to play" data-video="http://www.youtube.com/embed/g2JiJPD4nxY?autoplay=1"/>
+									</div>
+								{% else %}
+									<a class="img-thumb" href="portfolio-detail.html">
+										<img src="http://placehold.it/360x210" alt="">
+									</a>
+								{% endif %}
+								
+								<h3 class="h3"><a href="{% url 'noticia-detail' noticia.slug %}">{{noticia.titulo}}</a></h3>
+								<p>
+									{{noticia.texto|safe|truncatewords:12}}
+								</p>
+							</div>
+						</div>
+					{% endfor %}
+
+				</div>
+
+				<!--Gallery Section End Here-->
+				</div>
+
+				<!--Pagination Section Start Here-->
+			    {% if is_paginated %}
+				    <div class="cols-xs-12 text-center">  
+						{% load paginador %}
+						{% render_paginator 2 3 %}
+					</div>
+				{% endif %}
+				<!--Pagination Section Start Here-->
+
+				</div>
+			</div>
+		</section>
+		<!-- Gallery sections Start Here -->
+
+	</div>
+
+</div>
+{% endblock contenido %}

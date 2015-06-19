@@ -2,19 +2,19 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import datetime
+import sorl.thumbnail.fields
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fadcanic', '0001_initial'),
+        ('multimedias', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='organizacion',
-            name='last_register',
-            field=models.DateTimeField(default=datetime.datetime(2015, 5, 27, 19, 52, 11, 797655), editable=False),
+            model_name='subirfotos',
+            name='foto',
+            field=sorl.thumbnail.fields.ImageField(upload_to=b'', verbose_name='Foto'),
         ),
     ]

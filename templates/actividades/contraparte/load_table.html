@@ -1,0 +1,117 @@
+{% load tools %}
+<div id="result_table">
+{% if comment %}
+<div>{{comment}}</div>
+{% endif %}
+<table class="result_table" width="100%" {% if borde %}border="1" cellspacing="0" cellpadding="0"{% endif %}>
+	<thead>			
+		<tr>
+			<th rowspan="2">{{main_field|unslugify}}</th>
+			<th colspan="{{opts2|length}}">{{var2.1|unslugify}}</th>
+			{% if total %}
+			<th rowspan="2">Total</th>
+			{% endif %}
+		</tr>
+		<tr>
+			{% for value in opts2 %}
+			{% if tipo == 'choice' %}
+			<th>{{value.1}}</th>
+			{% else %}
+			<th>{{value|title}}</th>
+			{% endif %}
+			{% endfor %}
+		</tr>
+	</thead>
+	<tbody>
+		{% for key, value in dicc.items %}
+		<tr>
+			<td><span>{{key}}</span></td>
+			{% for k in opts2 %}
+				{% if tipo == 'choice' %}
+				<td><span class="activa" onclick="loadCell('{{key}}', '{{k.1}}');">{{value|get_value:k.1|length}}</span></td>
+				{% else %}
+				<td><span>{{value|get_value:k}}</span></td>
+				{% endif %}
+			{% endfor %}
+			{% if total %}
+				{% if tipo == 'choice' %}
+				<td><span>{{value|total_dict_query}}</span></td>
+				{% else %}
+				<td><span>{{value|total_dict}}</span></td>
+				{% endif %}
+			{% endif %}
+		</tr>			
+		{% endfor %}
+		{% if total %}
+		<tr>
+			<td><span><b>Total</b></span></td>
+			{% for k in opts2 %}  
+               <td><span>{% if tipo == 'choice' %}{{dicc|total_per_query_key:k.1}}{% else %}{{dicc|total_per_key:k}}{% endif %}</span></td>
+               {% endfor %}
+               <td><span>
+               {% if tipo == 'choice' %}
+               {{dicc|total_general:1}}
+               {% else %}
+               {{dicc|total_general}}
+               {% endif %}
+               </span>
+               </td>
+		</tr>
+		{% endif %}
+	</tbody>
+</table>
+</div>
+{% if not borde %}
+<script type="text/javascript">
+function loadCell(key, key2){
+	var detalle = $('input:radio[name=contenido_detalle]:checked').val();
+	if(detalle){
+		$.getJSON('?k='+key+'&k2='+key2+'&data='+detalle, function(data){
+			if(data){$('#contenido_de').html('');}
+			_.each(data, function(obj){			
+				var actividad = "<div class='actividad'><div class='data'>\
+				<span>"+obj.org+' - '+obj.nombre_actividad+"</span><span class='lugar'><b>"+obj.comunidad__nombre+", "+obj.municipio__nombre+"</b></span>\
+				<span class='fecha'><b>"+obj.fecha+"</b></span></div><div class='media'>";
+				
+				if(detalle=='multimedia'){
+					if(obj.foto1_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto1_pic+"'><img src='"+obj.foto1_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
+					if(obj.foto2_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto2_pic+"'><img src='"+obj.foto2_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
+					if(obj.foto3_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto3_pic+"'><img src='"+obj.foto3_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
+					if(obj.vthumb!=''){actividad+="<a class='yvideo fancybox.iframe' href='"+obj.video+"'>"+obj.vthumb+"</a>";}
+				}else{
+					actividad+="<div class='data' style='font-size: 12px;'><b>Comentarios: </b>"+obj.comentarios;
+					actividad+="<br><b>Acuerdos: </b>"+obj.acuerdos+"</div>";
+				}				
+				
+				actividad+="</div><div class='clean'></div>";			
+				$(actividad).appendTo($('#contenido_de'));
+				
+				//activar tab adecuada
+				$.fn.tabs.foo($('a[href="#detalle"]').parent(), $('a[href="#detalle"]').parent().parent());
+				$.fn.tabs.foo($('#detalle'), $('#detalle').parent());			
+			});
+		});	
+	}else{
+		alert('Selecciona el tipo de detalles.');
+	}	
+}
+</script>
+<script type="text/javascript">
+	$(function() {
+		$("a[rel=group]").fancybox({			
+			'titlePosition' 	: 'over',		
+		});
+		$(".yvideo").fancybox({
+			maxWidth	: 800,
+			maxHeight	: 600,
+			fitToView	: false,
+			width		: 644,
+			height		: 368,
+			autoSize	: false,
+			closeClick	: false,
+			openEffect	: 'none',
+			closeEffect	: 'none'
+		});
+	});
+</script>
+{% endif %}

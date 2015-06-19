@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>Actividades</title>
+		<title>{% block title %}:: Actividades ::{% endblock title %}</title>
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 		<!-- google fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Lato:400,300italic,300,700%7CPlayfair+Display:400,700italic%7CRoboto:300%7CMontserrat:400,700%7COpen+Sans:400,300%7CLibre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
@@ -14,12 +14,13 @@
 		<link href="{% static 'cambiaahora/css/font-awesome.min.css' %}" rel="stylesheet">
 		<link href="{% static 'cambiaahora/revolution-slider/css/settings.css' %}" rel="stylesheet">
 		<link href="{% static 'cambiaahora/css/global.css' %}" rel="stylesheet">
-		<link href="{% static 'cambiaahora/css/style.css' %}" rel="stylesheet">
+		<!--<link href="{% static 'cambiaahora/css/style.css' %}" rel="stylesheet"> -->
 		<link href="{% static 'cambiaahora/css/responsive.css' %}" rel="stylesheet">
 		<link href="{% static 'actividades/css/style.css' %}" rel="stylesheet">
 
-
 		<link rel="stylesheet" href="{% static 'cambiaahora/css/magnific-popup.css' %}">
+
+        <link href="{% static 'actividades/css/select2.min.css' %}" rel="stylesheet" type="text/css"/>
 	
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -39,7 +40,7 @@
 			<header id="header">
 				<div class="container">
 					<div class="row primary-header">
-						<a href="index.html" class="col-xs-12 col-sm-2 brand" title="Actividades"><img src="img/cambiaahora-logo.png" alt="fadcanic"></a>
+						<a href="index.html" class="col-xs-12 col-sm-2 brand" title="Actividades"><img src="/static/cambiaahora/img/cambiaahora-logo.png" alt="fadcanic"></a>
 						<div class="social-links col-xs-12 col-sm-10">
 							
 						</div>
@@ -97,112 +98,7 @@
 	<!--Content End Here -->
 	<!--Footer Section Start Here -->
  <!-- FOOTER -->
-        <footer>
-        	<div class="container">
-            	<div class="row">
-                	
-                	<div class="col-md-3 col-lg-3">
-                        <h3 class="uppercase">FADCANIC</h3>
-                        <img src="img/logo.png" class="logo-fadcanic center-block" alt="">
-                        <br>
-                        <p>Fundación para la Autonomía y el Desarrollo de la Costa Atlántica (FADCANIC) Bluefields, RAAS, Bilwi, RAAN Managua.</p>
-                        <div class="social">
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                            
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                    	</div>
-                    </div>
-                    
-                    <div class="col-md-3 col-lg-3">
-                    	<h3 class="uppercase">contactos</h3>
-                        
-
-                        
-                        <div class="address">
-                        	<div class="icon">
-                            	<i class="fa fa-lg fa-phone"></i>
-                            </div>
-                            <p>Managua: (505) 2270 0536 <br> (505) 2270 1921</p>
-                        </div>
-                        <div class="address">
-                            <div class="icon">
-                                <i class="fa fa-lg fa-phone"></i>
-                            </div>
-                            <p>Puerto Cabezas: (505) 27922203</p>
-                        </div>
-                        <div class="address">
-                            <div class="icon">
-                                <i class="fa fa-lg fa-phone"></i>
-                            </div>
-                            <p>Bluefields: (505) 2572 2386</p>
-                        </div>
-                        <div class="address">
-                            <div class="icon">
-                                <i class="fa fa-lg fa-fax"></i>
-                            </div>
-                            <p>Fax: (505) 2270 1921</p>
-                        </div>
-                        
-                        
-                        <div class="address">
-                        	<div class="icon">
-                            	<i class="fa fa-lg fa-envelope"></i>
-                            </div>
-                            
-                            <p>changenowlestsdoit@gmail.com</p>
-
-                        </div>
-                        <div class="address">
-                            <div class="icon">
-                                <i class="fa fa-lg fa-envelope"></i>
-                            </div>
-
-                            <p>director@fadcanic.org.ni</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6 col-lg-6 logo-eeuu">
-                    <h3 class="uppercase">Auspiciado por</h3>
-                        <div class="col-md-6 col-lg-6">
-                            <img src="img/ac2.png" alt="">
-                        </div>
-                    	<div class="col-md-6 col-lg-6">
-                        <p>Departamento de Estado de los Estados Unidos
-                        International Narcotics and Law Enforcement Affairs U.S. Embassy.
-                        <br>Managua, Nicaragua</p>
-                        <br>
-
-                            <div class="address">
-                                <div class="icon">
-                                    <i class="fa fa-lg fa-phone"></i>
-                                </div>
-                                <p> (505) 2252-7100, Ext. 7748</p>
-                            </div>
-                        </div>
-
-                    </div>
-                    
-                </div>
-            </div>
-        </footer>
-        
+     
         
         <!-- SUBFOOTER -->
         <div class="subfooter">
@@ -220,7 +116,8 @@
 
 		</div>
 
-	
+	    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<script src="{% static 'cambiaahora/js/jquery.min.js' %}"></script>
 		<script src="{% static 'cambiaahora/js/less.js' %}"></script>
 		<script src="{% static 'cambiaahora/js/bootstrap.min.js' %}"></script>
@@ -230,11 +127,18 @@
 		<script src="{% static 'cambiaahora/revolution-slider/js/jquery.themepunch.revolution.js' %}"></script>
 		<!--Main Slider End Js-->
 		<script src="{% static 'cambiaahora/js/jquery.flexslider.js' %}"></script>
-		<script src="{% static 'cambiaahora/js/fixednavbar.js' %}"></script>
+		<!--<script src="{% static 'cambiaahora/js/fixednavbar.js' %}"></script>-->
 		<script src="{% static 'cambiaahora/js/site.js' %}"></script>
 		<script src="{% static 'cambiaahora/js/audiojs/audio.min.js' %}"></script>
 
-<script src="{% static 'cambiaahora/js/jquery.magnific-popup.min.js' %}"></script>
+
+        <script src="{% static 'cambiaahora/js/jquery.magnific-popup.min.js' %}"></script>
+
+        <script src="{% static 'actividades/js/select2.min.js' %}" type="text/javascript"></script>
+
+        <script type="text/javascript" src="{% static 'actividades/js/jquery.cookie.js' %}"></script>
+        <script type="text/javascript" src="{% static 'actividades/js/table.exporting.js' %}"></script>
+
 
 
 
@@ -287,6 +191,6 @@
 
 document.addEventListener("touchstart", function(){}, true);
     </script>
-
+    {% block extra_js %}{% endblock extra_js %}
 	</body>
 </html>

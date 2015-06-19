@@ -1,0 +1,24 @@
+{% load tools %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+{% for obj in lista %}
+<div>{{obj.comment}}</div>
+<div id="result_table">
+    {{obj.html_table|safe}}
+</div>
+{% if obj.bar_img %}
+<img src="{{obj.bar_img}}" alt="grafico de barra"><br>
+{% endif %}
+{% if obj.pie1_img %}
+<img src="{{obj.pie1_img}}" alt="grafico de pastel"><br>
+{% endif %}
+{% if obj.pie2_img %}
+<img src="{{obj.pie2_img}}" alt="grafico de pastel"><br>
+{% endif %}
+{% endfor %}
+</body>
+</html>

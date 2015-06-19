@@ -1,0 +1,46 @@
+{% load tools %}
+
+<div id="filtros">
+<h5>Filtros Selectos:</h5>
+	<ol class="breadcrumb">
+
+		<li><a href="#">Tipo:</a>
+			{{filtro.salida}}
+		</li>
+
+		<li><a href="#">Organización: </a>
+			{% for org in filtro.organizacion %}
+			{{org.nombre_corto}}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		</li>
+
+		{% if filtro.proyecto %}
+		<li><a href="#">Proyecto: </a>
+			{% for proy in filtro.proyecto %}
+			{{proy}}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		</li>
+		{% endif %}
+
+		{% if filtro.resultado %}
+		<li>
+			<a href="#">Resultado: </a>
+			{{filtro.resultado}}
+		</li>
+		{% endif %}
+
+		{%if filtro.fecha_inicio %}
+		<li>
+			<a href="#">Fecha inicio: </a>
+			{{filtro.fecha_inicio}}
+		</li>
+		{% endif %}
+
+		{% if filtro.fecha_fin %}
+		<li>
+			<a href="#">Fecha fin: </a>
+			{{filtro.fecha_fin}}
+		</li>
+		{% endif %}
+	</ol>
+</div>

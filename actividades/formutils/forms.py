@@ -1,17 +1,25 @@
-#from django.utils.encoding import StrAndUnicode
 from django.utils.safestring import mark_safe
 from django import forms
 import json as simmplejson
+from django.utils.encoding import force_text
+from django.utils.encoding import python_2_unicode_compatible
 
-# class Foo(StrAndUnicode):
-#     def __init__(self, foo=None, selected_items=None, load_items=None, **kwargs):
-#         if foo:            
-#             self._load_items = simplejson.dumps(load_items)
-#             self._selected_items = simplejson.dumps(selected_items)       
-#             self._data = foo.__dict__['config']                        
+try:
+    from django.utils.encoding import StrAndUnicode
+except ImportError:
+    from django.utils.encoding import python_2_unicode_compatible
+
+@python_2_unicode_compatible
+
+class Foo(object):
+    def __str__(self, foo=None, selected_items=None, load_items=None, **kwargs):
+        if foo:            
+            self._load_items = simplejson.dumps(load_items)
+            self._selected_items = simplejson.dumps(selected_items)       
+            self._data = foo.__dict__['config']                        
             
-#     def __unicode__(self):                 
-#         return mark_safe(CODE % (self._data, self._load_items, self._selected_items))
+    def __unicode__(self):                 
+        return mark_safe(CODE % (self._data, self._load_items, self._selected_items))
 
 class FormFKAutoFill(forms.Form):        
     def _foo(self):        

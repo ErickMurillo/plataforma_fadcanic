@@ -1,25 +1,26 @@
 <!DOCTYPE html>
+{% load staticfiles%}
+{% load i18n %}
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<title>{% block titulo %}:: Cambia Ahora ::{% endblock titulo %}</title>
+		<title>{% block titulo %}:: {% trans 'Cambia Ahora' %} ::{% endblock titulo %}</title>
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 		<!-- google fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Lato:400,300italic,300,700%7CPlayfair+Display:400,700italic%7CRoboto:300%7CMontserrat:400,700%7COpen+Sans:400,300%7CLibre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
 		<!-- Bootstrap -->
-		<link href="static/cambiaahora/css/bootstrap.min.css" rel="stylesheet">
-		<link href="static/cambiaahora/css/bootstrap-theme.css" rel="stylesheet">
-		<link href="static/cambiaahora/css/font-awesome.min.css" rel="stylesheet">
-		<link href="static/cambiaahora/revolution-slider/css/settings.css" rel="stylesheet">
-		<link href="static/cambiaahora/css/global.css" rel="stylesheet">
-		<link href="static/cambiaahora/css/style.css" rel="stylesheet">
-		<link href="static/cambiaahora/css/responsive.css" rel="stylesheet">
+		<link href="/static/cambiaahora/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/static/cambiaahora/css/bootstrap-theme.css" rel="stylesheet">
+		<link href="/static/cambiaahora/css/font-awesome.min.css" rel="stylesheet">
+		<link href="/static/cambiaahora/revolution-slider/css/settings.css" rel="stylesheet">
+		<link href="/static/cambiaahora/css/global.css" rel="stylesheet">
+		<link href="/static/cambiaahora/css/style.css" rel="stylesheet">
+		<link href="/static/cambiaahora/css/responsive.css" rel="stylesheet">
 
 
-		<link rel="stylesheet" href="static/cambiaahora/css/magnific-popup.css">
+		<link rel="stylesheet" href="/static/cambiaahora/css/magnific-popup.css">
 	
-
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -35,10 +36,13 @@
 			<header id="header">
 				<div class="container">
 					<div class="row primary-header">
-						<a href="index.html" class="col-xs-12 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="img/cambiaahora-logo.png" alt="cambiaahora"></a>
+						<a href="index.html" class="col-xs-12 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/cambiaahora-logo.png" alt="cambiaahora"></a>
 						<div class="social-links col-xs-12 col-sm-10">
-							<a href="#" class="btn btn-default btn-idioma">
-								<img src="img/eeuu.jpg" alt=""> ENGLISH
+							<a href="/lang/en" class="btn btn-default btn-idioma">
+									<img src="/static/cambiaahora/img/eeuu.jpg" alt=""> ENGLISH
+							</a>
+							<a href="/lang/es" class="btn btn-default btn-idioma">
+									<img src="/static/cambiaahora/img/spanish.jpg" alt=""> SPANISH
 							</a>
 							<ul class="social-icons hidden-xs">
 								<li>
@@ -78,42 +82,36 @@
 							<nav>
 							<ul class="nav navbar-nav">
 								<li class="active">
-									<a href="#">Inicio</a>
+									<a href="/">{% trans 'Inicio' %}</a>
 
 								</li>
 								<li class="">
-									<a href="#">Campaña</a>
+									<a href="#">{% trans 'Campaña' %}</a>
 
 								</li>
 								<li class="">
-									<a href="#">Noticias</a>
+									<a href="/noticias/">{% trans 'Noticias' %}</a>
 
 								</li>
 								<li class="">
-									<a href="#">Documentales</a>
-
-								</li>
-								<li class="">
-									<a href="#">Radio</a>
+									<a href="#">{% trans 'Radio' %}</a>
 
 								</li>
 
 								<li class="">
-									<a href="#">Sobre FADCANIC</a>
+									<a href="#">{% trans 'Sobre FADCANIC '%}</a>
 
 								</li>
-								
-								
-								
+							
 								
 								<li class="">
-									<a href="#">Multimedia</a>
+									<a href="/multimedias/">{% trans 'Multimedia' %}</a>
 
 								</li>
 
 								
 								<li>
-									<a href="contact-us.html">Contactenos</a>
+									<a href="#">{% trans 'Contactenos' %}</a>
 								</li>
 
 							</ul>
@@ -135,7 +133,7 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<header class="page-header section-header clearfix">
-									<h2>Apoyan la campaña</h2>
+									<h2>{% trans 'Apoyan la campaña' %}</h2>
 								</header>
 
 									
@@ -225,7 +223,7 @@
                     </div>
                     
                     <div class="col-md-3 col-lg-3">
-                    	<h3 class="uppercase">contactos</h3>
+                    	<h3 class="uppercase">{% trans 'contactos' %}</h3>
                         
 
                         
@@ -278,7 +276,7 @@
                             <img src="img/ac2.png" alt="">
                         </div>
                     	<div class="col-md-6 col-lg-6">
-                        <p>Departamento de Estado de los Estados Unidos
+                        <p>{% trans 'Departamento de Estado de los Estados Unidos' %}
                         International Narcotics and Law Enforcement Affairs U.S. Embassy.
                         <br>Managua, Nicaragua</p>
                         <br>
@@ -301,7 +299,7 @@
         	<div class="container">
             	<div class="row">
                 	<div class="col-lg-12">
-                    	<p> © Copyright 2015. Elaborado por <a href="www.simas.org.ni">SIMAS</a>
+                    	<p> © Copyright 2015. {% trans  'Elaborado por' %} <a href="www.simas.org.ni">SIMAS</a>
                                     </p>
                     
                     </div>
@@ -310,20 +308,20 @@
         </div>
 	<!--Footer Section End Here -->
 
-		<script src="static/cambiaahora/js/jquery.min.js"></script>
-		<script src="static/cambiaahora/js/less.js"></script>
-		<script src="static/cambiaahora/js/bootstrap.min.js"></script>
-		<script src="static/cambiaahora/js/jquery.easing.min.js"></script>
+		<script src="/static/cambiaahora/js/jquery.min.js"></script>
+		<script src="/static/cambiaahora/js/less.js"></script>
+		<script src="/static/cambiaahora/js/bootstrap.min.js"></script>
+		<script src="/static/cambiaahora/js/jquery.easing.min.js"></script>
 		<!--Main Slider Js-->
-		<script src="static/cambiaahora/revolution-slider/js/jquery.themepunch.plugins.min.js"></script>
-		<script src="static/cambiaahora/revolution-slider/js/jquery.themepunch.revolution.js"></script>
+		<script src="/static/cambiaahora/revolution-slider/js/jquery.themepunch.plugins.min.js"></script>
+		<script src="/static/cambiaahora/revolution-slider/js/jquery.themepunch.revolution.js"></script>
 		<!--Main Slider End Js-->
-		<script src="static/cambiaahora/js/jquery.flexslider.js"></script>
-		<script src="static/cambiaahora/js/fixednavbar.js"></script>
-		<script src="static/cambiaahora/js/site.js"></script>
-		<script src="static/cambiaahora/js/audiojs/audio.min.js"></script>
+		<script src="/static/cambiaahora/js/jquery.flexslider.js"></script>
+		<script src="/static/cambiaahora/js/fixednavbar.js"></script>
+		<script src="/static/cambiaahora/js/site.js"></script>
+		<script src="/static/cambiaahora/js/audiojs/audio.min.js"></script>
 
-		<script src="static/cambiaahora/js/jquery.magnific-popup.min.js"></script>
+		<script src="/static/cambiaahora/js/jquery.magnific-popup.min.js"></script>
 
 
 

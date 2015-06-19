@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+import sorl.thumbnail.fields
 import datetime
-import actividades.thumbs
 from django.conf import settings
 import actividades.utils
 
@@ -30,14 +30,14 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('nombre', models.CharField(max_length=250)),
-                ('nombre_corto', models.CharField(help_text='Pueden ser siglas', max_length=15)),
-                ('contacto', models.CharField(max_length=200, verbose_name='Persona de contacto')),
+                ('nombre_corto', models.CharField(help_text=b'Pueden ser siglas', max_length=15)),
+                ('contacto', models.CharField(max_length=200, verbose_name=b'Persona de contacto')),
                 ('telefono', models.CharField(default=b'', max_length=12, blank=True)),
                 ('direccion', models.CharField(default=b'', max_length=300, blank=True)),
-                ('web', models.URLField(default=b'www.example.com', verbose_name='Sitio web', blank=True)),
+                ('web', models.URLField(default=b'www.example.com', verbose_name=b'Sitio web', blank=True)),
                 ('historia', models.TextField(default=b'', blank=True)),
-                ('logo', actividades.thumbs.ImageWithThumbsField(null=True, upload_to=actividades.utils.get_file_path, blank=True)),
-                ('last_register', models.DateTimeField(default=datetime.datetime(2015, 5, 27, 19, 51, 59, 200663), editable=False)),
+                ('logo', sorl.thumbnail.fields.ImageField(null=True, upload_to=actividades.utils.get_file_path, blank=True)),
+                ('last_register', models.DateTimeField(default=datetime.datetime(2015, 6, 16, 14, 37, 3, 988802), editable=False)),
                 ('admin', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={

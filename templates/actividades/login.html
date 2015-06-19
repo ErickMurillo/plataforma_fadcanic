@@ -1,18 +1,26 @@
 {% extends "actividades/base.html" %}
+{% load staticfiles %}
+{% block title %}Login : Actividades{% endblock %}
 
 {% block extra_head %}
+<link href="{% static 'actividades/css/formee/css/form-structure.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'actividades/css/formee/css/form-style.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'actividades/css/jquery.multiselect.css' %}" rel="stylesheet" type="text/css"/>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
 <script>
-$(document).ready(function(){
-	$("#id_meses").multiselect({
-	    noneSelectedText: 'Mes',
-	    selectedText: '# seleccionados',
-	    minWidth: 150	    
-	});
-});
+    $(document).ready(function(){
+       $("#id_meses").multiselect({
+           noneSelectedText: 'Mes',
+           selectedText: '# seleccionados',
+           minWidth: 150	    
+       });
+   });
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('#id_password').val('password');
+        $('#id_password').addClass('form-control')
         $('#id_username').val('usuario');
         $('#id_password').click(function(){
             if($(this).val()=='password'){$(this).val('')}
@@ -43,6 +51,7 @@ $(document).ready(function(){
 		float: left;
 		padding-right: 20px;	
 	}
+
 </style>
 {% endblock %}
 
@@ -50,12 +59,34 @@ $(document).ready(function(){
 {% block contenido %}
 <div id="login">
 	<form action="." method="post" class="form">
-			{% csrf_token %}
-			<table>
-				{{form.as_table}}
-				<input type="hidden" name="next" value="{{ next }}" />
-			</table>
-			<input class="form-button" type="submit" value="Entrar" />	
-		</form>
-</div>	
+     {% csrf_token %}
+     <div class="col-md-12">
+
+        <label for="contenido" class="label-pag">
+            Nombre de Usuario
+            <span class="required">*</span>
+        </label>
+        </div>
+        <div class="col-md-12">
+        {{form.username}}
+        </div>
+        
+        <div class="col-md-12">
+        <label for="contenido" class="label-pag">
+            Contraseña
+            <span class="required">*</span>
+        </label>
+        </div>
+        <div class="col-md-12">
+        {{form.password}}
+         </div>
+
+         <div class="col-md-12" style="margin-top:15px;">
+        <input type="hidden" name="next" value="{{ next }}" />
+    
+        <input class="form-button btn btn-success" type="submit" value="Entrar" />	
+        </div>
+</form>
+</div>
+
 {% endblock contenido %}

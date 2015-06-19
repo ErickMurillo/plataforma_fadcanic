@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 import sorl.thumbnail.fields
-from django.conf import settings
 import cambiaahora.utils
 import ckeditor.fields
+from django.conf import settings
 
 
 class Migration(migrations.Migration):
@@ -32,8 +32,8 @@ class Migration(migrations.Migration):
                 ('foto', sorl.thumbnail.fields.ImageField(upload_to=cambiaahora.utils.get_file_path, null=True, verbose_name='Foto principal', blank=True)),
                 ('url', models.URLField(null=True, verbose_name='url del video como portada', blank=True)),
                 ('texto', ckeditor.fields.RichTextField(null=True, verbose_name='Texto', blank=True)),
-                ('aprobacion', models.IntegerField(default='1', verbose_name='Aprobacion', choices=[(1, 'Borrador'), (2, 'Aprobado')])),
-                ('idioma', models.IntegerField(default='1', verbose_name='Idioma', choices=[(1, 'Espanol'), (2, 'Ingles')])),
+                ('aprobacion', models.IntegerField(default=b'1', verbose_name='Aprobaci\xf3n', choices=[(1, 'Borrador'), (2, 'Aprobado')])),
+                ('idioma', models.IntegerField(default=b'1', verbose_name='Idioma', choices=[(1, 'Espa\xf1ol'), (2, 'English')])),
                 ('categoria', models.ForeignKey(verbose_name='Categoria', to='noticias.Categoria')),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],

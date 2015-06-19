@@ -9,14 +9,17 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.flatpages',
     #cambiaahora
     'cambiaahora.noticias',
     'cambiaahora.historias',
     'cambiaahora.multimedias',
     'cambiaahora.staff',
     'cambiaahora.testimonios',
+    'cambiaahora.configuracion',
     #actividades
     'actividades.contraparte',
     'actividades.fadcanic',
@@ -25,6 +28,7 @@ INSTALLED_APPS = (
     'ckeditor',
     'smart_selects',
     'sorl.thumbnail',
+    'embed_video',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -36,9 +40,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'plataforma_fadcanic.urls'
+
+SITE_ID = 1
+
 
 TEMPLATES = [
     {
@@ -54,15 +62,17 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request'
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
 
+
+
 WSGI_APPLICATION = 'plataforma_fadcanic.wsgi.application'
 
-#BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -125,5 +135,11 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
+EXPORT_SERVER = ''
+
+SITE_ID = 1
+
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/actividades/'
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
