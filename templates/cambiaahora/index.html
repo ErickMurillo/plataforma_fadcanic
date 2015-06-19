@@ -176,15 +176,17 @@
 								</a>
 							<h3>{{noticia.titulo}}</h3>
 							<span class="date">{{noticia.fecha|date:"d m Y"}}</span><span class="posted-in">{% trans 'Tema:' %} {{noticia.categoria}}</span>
-							<p>
+							
 								{{noticia.texto|safe|truncatewords:20}}
-							</p>
-							<a href="blog-full-width.html" class="btn btn-default btn-nota">{% trans 'LEER MÁS' %}</a>
+							<br>
+							<br>
+							<a href="/noticia" class="btn btn-default btn-nota">{% trans 'LEER MÁS' %}</a>
 						</div>
 					</li>
 				{% endfor %}
 				</ul>	
 				</div>
+				<a href="#" class=" pull-right">{% trans "VER MAS NOTICIAS" %}</a>
 			</div>
 		</div>
 	</div>
@@ -265,7 +267,7 @@
 					<div class="col-xs-12 col-sm-6 col-lg-7 video-r">
 					<img src="" alt="">
 						<div class="video-icon">
-                            <i class="fa fa-3x fa-video-camera"></i>
+                            <i class="fa fa-2x fa-video-camera"></i>
                         </div>
 						<div class="embed-responsive embed-responsive-16by9">
 							<img  src="/static/cambiaahora/img/v1.png" alt="Click to play" data-video="https://www.youtube.com/embed/Fe88d0InpOI?autoplay=1"/>

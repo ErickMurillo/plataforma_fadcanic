@@ -604,7 +604,7 @@ blockquote footer:before, .blockquote-reverse footer:after {
 	padding: 4px 0;
 }
 .breadcrumb > li, .breadcrumb > .active, .breadcrumb a, .breadcrumb > li + li:before {
-	color: #26211d;
+	color: white;
 }
 .breadcrumb > .active {
 	font-weight: 700;
