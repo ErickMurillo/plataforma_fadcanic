@@ -351,6 +351,3 @@ msgstr "READ MORE"
 #: templates/cambiaahora/multimedia/multimedia.html:8
 msgid "multimedias"
 msgstr "Multimedia"
-
-#~ msgid "Documentales"
-#~ msgstr "Documentary"
