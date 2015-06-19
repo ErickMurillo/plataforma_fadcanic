@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic import ListView, DetailView
 from cambiaahora.multimedias.models import *
+from django.utils import translation
 
 # Create your views here.
 class MultimediaView(TemplateView):
@@ -18,7 +19,7 @@ class MultimediaView(TemplateView):
 
 
 class ListVideosView(ListView):
-    template_name = "cambiaahora/noticias/noticias_list.html"
+    template_name = "cambiaahora/multimedia/videos_list.html"
     model = Videos
     paginate_by = 6
 
@@ -31,7 +32,7 @@ class ListVideosView(ListView):
         return queryset
 
 class ListAudiosView(ListView):
-    template_name = "cambiaahora/noticias/noticias_list.html"
+    template_name = "cambiaahora/multimedia/audios_list.html"
     model = Audios
     paginate_by = 6
 
@@ -44,7 +45,7 @@ class ListAudiosView(ListView):
         return queryset
 
 class ListFotosView(ListView):
-    template_name = "cambiaahora/noticias/noticias_list.html"
+    template_name = "cambiaahora/multimedia/fotos_list.html"
     model = Fotos
     paginate_by = 6
 
@@ -58,7 +59,7 @@ class ListFotosView(ListView):
 
 
 class ListDocumentalesView(ListView):
-    template_name = "cambiaahora/noticias/noticias_list.html"
+    template_name = "cambiaahora/multimedia/documentales_list.html"
     model = Documentales
     paginate_by = 6
 

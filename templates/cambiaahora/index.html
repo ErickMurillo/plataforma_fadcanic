@@ -173,7 +173,7 @@
 							<p>
 								{{noticia.texto|safe|truncatewords:20}}
 							</p>
-							<a href="blog-full-width.html" class="btn btn-default btn-nota">{% trans 'LEER MÁS' %}</a>
+							<a href="{% url 'noticia-detail' noticia.slug %}" class="btn btn-default btn-nota">{% trans 'LEER MÁS' %}</a>
 						</div>
 					</li>
 				{% endfor %}
