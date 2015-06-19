@@ -2,12 +2,11 @@
 
 {% load staticfiles%}
 {% load i18n %}
+{% load thumbnail %}
 
 {% block titulo %}
 	:: {% trans 'cambia ahora' %}::
 {% endblock titulo %}
-
-{% load thumbnail %}
 
 {% block contenido %}
 <section class="rev_slider_wrapperc main-slider">
@@ -18,7 +17,9 @@
 			<!-- SLIDE  -->
 			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
 				<!-- MAIN IMAGE -->
-				<img src="/media/{{obj.foto}}" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
+				{% thumbnail obj.foto "1350x560" as img %}
+				<img src="/media/{{img}}" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
+				{% endthumbnail %}
 				<!--Start Primer mensaje-->
 				<div
 				data-endspeed="500"
