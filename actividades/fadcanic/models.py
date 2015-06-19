@@ -27,7 +27,7 @@ class Organizacion(models.Model):
     web = models.URLField(verbose_name='Sitio web', blank=True, default='www.example.com')
     historia = models.TextField(blank=True, default='')      
     logo = ImageField(upload_to=get_file_path,blank=True, null=True)
-    last_register = models.DateTimeField(editable=False, default=datetime.datetime.now())
+    last_register = models.DateTimeField(editable=False, default=datetime.datetime.now)
     
     fileDir = 'logos/'
     
