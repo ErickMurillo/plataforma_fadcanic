@@ -198,14 +198,20 @@
 
                         <br>
                         <div class="row">
-                            <p class="lead col-lg-4"><strong>Objetivo:</strong><br>
-                            Crear conciencia y movilizar a la opinión pública a favor de las acciones de la familia y la comunidad para prevenir la violencia juvenil y el abuso de drogas a través de una campaña en medios masivos<br>
+                            <p class="lead col-lg-4"><strong>{% trans "Objetivo" %}:</strong><br>
+                            {% blocktrans %}
+                                Crear conciencia y movilizar a la opinión pública a favor de las acciones de la familia y la comunidad para prevenir la violencia juvenil y el abuso de drogas a través de una campaña en medios masivos
+                            {% endblocktrans %}<br>
                             </p>
-                        	<p class="lead col-lg-4"><strong>Territorio: </strong><br>La campaña Cambia ahora se encuentra en los territoris de Bluefields, Puerto Cabezas, Waspam y Managua   
+                        	<p class="lead col-lg-4"><strong>{% trans "Territorio" %}: </strong><br>{% blocktrans %}
+                        	    La campaña Cambia ahora se encuentra en los territoris de Bluefields, Puerto Cabezas, Waspam y Managua
+                        	{% endblocktrans %}   
                             </p>
                             
-                            <p class="lead col-lg-4"><strong>Acciones:</strong><br>
-                            La campaña promueve diferentes acciones como Talleres contra la violencia, debates escolares, docuemntales y promoción de no a la violencia en las redes sociales.</p>
+                            <p class="lead col-lg-4"><strong>{% trans "Acciones" %}:</strong><br>
+                            {% blocktrans %}
+                                La campaña promueve diferentes acciones como Talleres contra la violencia, debates escolares, docuemntales y promoción de no a la violencia en las redes sociales.
+                            {% endblocktrans %}</p>
                             
                             
                         </div>
@@ -223,7 +229,7 @@
 		<div class="row">
 			<div class="col-xs-12 ">
 				<header class="page-header section-header">
-					<h2><strong>Documentales</strong></h2>
+					<h2><strong>{% trans "Documentales" %}</strong></h2>
 				</header>
 
 				<div class="row help-list">
@@ -238,7 +244,7 @@
 								</figure> </a>
 								<div class="media col-xs-12 col-sm-7 video-list">
 									<h3>{{obj.nombre}}</h3>
-									<span class="date">{{obj.fecha}}</span><span class="posted-in">Tema : {{obj.categoria}}</span>
+									<span class="date">{{obj.fecha}}</span><span class="posted-in">{% trans "Tema" %}: {{obj.categoria}}</span>
 									<p>{{obj.descripcion|safe|truncatewords:8}}</p>
 
 									
@@ -246,7 +252,7 @@
 							</div>
 						</div>
 					{% endfor %}
-					<a href="#" class="btn btn-default btn-video">VER MAS</a>
+					<a href="#" class="btn btn-default btn-video">{% trans "VER MAS" %}</a>
 				</div>
 					</div>
 

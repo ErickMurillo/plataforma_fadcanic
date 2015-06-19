@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 04:26+0000\n"
+"POT-Creation-Date: 2015-06-19 05:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cambiaahora/configuracion/models.py:12 cambiaahora/multimedias/models.py:50
-#: cambiaahora/multimedias/models.py:99
+#: cambiaahora/configuracion/models.py:12 cambiaahora/multimedias/models.py:14
+#: cambiaahora/multimedias/models.py:32 cambiaahora/multimedias/models.py:60
+#: cambiaahora/multimedias/models.py:67 cambiaahora/multimedias/models.py:112
 msgid "Foto"
 msgstr "Photo"
 
@@ -62,9 +63,9 @@ msgstr "Configuration"
 msgid "Configuraciones"
 msgstr "Configuration's"
 
-#: cambiaahora/historias/models.py:14 cambiaahora/multimedias/models.py:74
-#: cambiaahora/multimedias/models.py:86 cambiaahora/multimedias/models.py:98
-#: cambiaahora/multimedias/models.py:110 cambiaahora/noticias/models.py:26
+#: cambiaahora/historias/models.py:14 cambiaahora/multimedias/models.py:87
+#: cambiaahora/multimedias/models.py:99 cambiaahora/multimedias/models.py:111
+#: cambiaahora/multimedias/models.py:125 cambiaahora/noticias/models.py:26
 msgid "Titulo"
 msgstr "Title"
 
@@ -73,7 +74,7 @@ msgstr "Title"
 msgid "Foto principal"
 msgstr "Main photo"
 
-#: cambiaahora/historias/models.py:17 cambiaahora/multimedias/models.py:55
+#: cambiaahora/historias/models.py:17 cambiaahora/multimedias/models.py:65
 #: cambiaahora/noticias/models.py:28 cambiaahora/testimonios/models.py:17
 msgid "Fecha"
 msgstr "Date"
@@ -83,16 +84,16 @@ msgstr "Date"
 msgid "Texto"
 msgstr "Text"
 
-#: cambiaahora/historias/models.py:19 cambiaahora/multimedias/models.py:13
-#: cambiaahora/multimedias/models.py:27 cambiaahora/multimedias/models.py:41
-#: cambiaahora/multimedias/models.py:58 cambiaahora/noticias/models.py:32
+#: cambiaahora/historias/models.py:19 cambiaahora/multimedias/models.py:16
+#: cambiaahora/multimedias/models.py:34 cambiaahora/multimedias/models.py:51
+#: cambiaahora/multimedias/models.py:69 cambiaahora/noticias/models.py:32
 #: cambiaahora/staff/models.py:21 cambiaahora/testimonios/models.py:19
 msgid "Aprobación"
 msgstr "Approved"
 
-#: cambiaahora/historias/models.py:20 cambiaahora/multimedias/models.py:14
-#: cambiaahora/multimedias/models.py:28 cambiaahora/multimedias/models.py:42
-#: cambiaahora/multimedias/models.py:59 cambiaahora/noticias/models.py:33
+#: cambiaahora/historias/models.py:20 cambiaahora/multimedias/models.py:17
+#: cambiaahora/multimedias/models.py:35 cambiaahora/multimedias/models.py:52
+#: cambiaahora/multimedias/models.py:70 cambiaahora/noticias/models.py:33
 #: cambiaahora/staff/models.py:22 cambiaahora/testimonios/models.py:20
 msgid "Idioma"
 msgstr "Lenguage"
@@ -105,78 +106,76 @@ msgstr "History"
 msgid "Historias"
 msgstr "Stories"
 
-#: cambiaahora/multimedias/models.py:12 cambiaahora/multimedias/models.py:26
-#: cambiaahora/multimedias/models.py:40 cambiaahora/multimedias/models.py:54
+#: cambiaahora/multimedias/models.py:13 cambiaahora/multimedias/models.py:31
+#: cambiaahora/multimedias/models.py:49 cambiaahora/multimedias/models.py:64
 #: cambiaahora/staff/models.py:14 cambiaahora/testimonios/models.py:14
 msgid "Nombre"
 msgstr "Name"
 
-#: cambiaahora/multimedias/models.py:22 cambiaahora/multimedias/models.py:75
-#: cambiaahora/multimedias/models.py:111
-msgid "Video"
-msgstr "Video"
-
-#: cambiaahora/multimedias/models.py:23
-msgid "Videos"
-msgstr "Videos"
-
-#: cambiaahora/multimedias/models.py:36 cambiaahora/multimedias/models.py:87
-msgid "Audio"
-msgstr "Audio"
-
-#: cambiaahora/multimedias/models.py:37
-msgid "Audios"
-msgstr "Audios"
-
-#: cambiaahora/multimedias/models.py:51
-msgid "Fotos"
-msgstr "Photos"
-
-#: cambiaahora/multimedias/models.py:56 cambiaahora/noticias/models.py:34
-msgid "Categoria"
-msgstr "Category"
-
-#: cambiaahora/multimedias/models.py:57
+#: cambiaahora/multimedias/models.py:15 cambiaahora/multimedias/models.py:33
+#: cambiaahora/multimedias/models.py:50 cambiaahora/multimedias/models.py:68
 msgid "Descripción"
 msgstr "Description"
 
-#: cambiaahora/multimedias/models.py:67
-msgid "Documentale"
-msgstr "Documentary"
+#: cambiaahora/multimedias/models.py:27 cambiaahora/multimedias/models.py:88
+#: cambiaahora/multimedias/models.py:126
+msgid "Video"
+msgstr "Video"
 
-#: cambiaahora/multimedias/models.py:68
+#: cambiaahora/multimedias/models.py:28
+msgid "Videos"
+msgstr "Videos"
+
+#: cambiaahora/multimedias/models.py:45 cambiaahora/multimedias/models.py:100
+msgid "Audio"
+msgstr "Audio"
+
+#: cambiaahora/multimedias/models.py:46
+msgid "Audios"
+msgstr "Audios"
+
+#: cambiaahora/multimedias/models.py:61
+msgid "Fotos"
+msgstr "Photos"
+
+#: cambiaahora/multimedias/models.py:66 cambiaahora/noticias/models.py:34
+msgid "Categoria"
+msgstr "Category"
+
+#: cambiaahora/multimedias/models.py:80 cambiaahora/multimedias/models.py:81
+#: templates/cambiaahora/index.html:232
 msgid "Documentales"
 msgstr "Documentaries"
 
-#: cambiaahora/multimedias/models.py:81
+#: cambiaahora/multimedias/models.py:94
 msgid "Subir video"
 msgstr "Upload video"
 
-#: cambiaahora/multimedias/models.py:82
+#: cambiaahora/multimedias/models.py:95
 msgid "Subir videos"
 msgstr "Upload video"
 
-#: cambiaahora/multimedias/models.py:93
+#: cambiaahora/multimedias/models.py:106
 msgid "Subir audio"
 msgstr "Upload audio"
 
-#: cambiaahora/multimedias/models.py:94
+#: cambiaahora/multimedias/models.py:107
 msgid "Subir audios"
 msgstr "Upload audios"
 
-#: cambiaahora/multimedias/models.py:105
+#: cambiaahora/multimedias/models.py:120
 msgid "Subir foto"
 msgstr "Upload photo"
 
-#: cambiaahora/multimedias/models.py:106
+#: cambiaahora/multimedias/models.py:121
 msgid "Subir fotos"
 msgstr "Upload photos"
 
-#: cambiaahora/multimedias/models.py:117
+#: cambiaahora/multimedias/models.py:132
 msgid "Subir documento"
 msgstr "Upload document"
 
-#: cambiaahora/multimedias/models.py:118
+#: cambiaahora/multimedias/models.py:133
 msgid "Subir documentos"
 msgstr "Upload document"
 
@@ -209,7 +208,9 @@ msgid "Noticias"
 msgstr "News"
 
 #: cambiaahora/staff/models.py:17
-msgid "fecha de nacimiento"
+#, fuzzy
+#| msgid "fecha de nacimiento"
+msgid "Fecha de nacimiento"
 msgstr "Date of birth"
 
 #: cambiaahora/staff/models.py:19
@@ -276,26 +277,80 @@ msgstr "United States Department of State"
 msgid "Elaborado por"
 msgstr "Make by"
 
-#: templates/cambiaahora/index.html:7
+#: templates/cambiaahora/index.html:8
 msgid "cambia ahora"
 msgstr "Change Now"
 
-#: templates/cambiaahora/index.html:154
+#: templates/cambiaahora/index.html:155
 msgid "Hecha un vistazo a lo que esta pasando."
 msgstr "Take a look at what is happening."
 
-#: templates/cambiaahora/index.html:154
+#: templates/cambiaahora/index.html:155
 msgid "Ultimas Noticias"
 msgstr "Last News"
 
-#: templates/cambiaahora/index.html:171
+#: templates/cambiaahora/index.html:172
 msgid "Tema:"
 msgstr "Theme"
 
-#: templates/cambiaahora/index.html:175
+#: templates/cambiaahora/index.html:176
 msgid "LEER MÁS"
 msgstr "READ MORE"
 
-#: templates/cambiaahora/index.html:191
+#: templates/cambiaahora/index.html:192
 msgid "Información de la Campaña"
 msgstr "Information Campaign"
+
+#: templates/cambiaahora/index.html:201
+msgid "Objetivo"
+msgstr ""
+
+#: templates/cambiaahora/index.html:202
+msgid ""
+"\n"
+"                                Crear conciencia y movilizar a la opinión "
+"pública a favor de las acciones de la familia y la comunidad para prevenir "
+"la violencia juvenil y el abuso de drogas a través de una campaña en medios "
+"masivos\n"
+"                            "
+msgstr ""
+
+#: templates/cambiaahora/index.html:206
+msgid "Territorio"
+msgstr ""
+
+#: templates/cambiaahora/index.html:206
+msgid ""
+"\n"
+"                        \t    La campaña Cambia ahora se encuentra en los "
+"territoris de Bluefields, Puerto Cabezas, Waspam y Managua\n"
+"                        \t"
+msgstr ""
+
+#: templates/cambiaahora/index.html:211
+msgid "Acciones"
+msgstr ""
+
+#: templates/cambiaahora/index.html:212
+msgid ""
+"\n"
+"                                La campaña promueve diferentes acciones como "
+"Talleres contra la violencia, debates escolares, docuemntales y promoción de "
+"no a la violencia en las redes sociales.\n"
+"                            "
+msgstr ""
+
+#: templates/cambiaahora/index.html:247
+msgid "Tema"
+msgstr "Theme"
+
+#: templates/cambiaahora/index.html:255
+msgid "VER MAS"
+msgstr "READ MORE"
+
+#: templates/cambiaahora/multimedia/multimedia.html:8
+msgid "multimedias"
+msgstr "Multimedia"
+
+#~ msgid "Documentales"
+#~ msgstr "Documentary"
