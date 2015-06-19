@@ -16,7 +16,7 @@ MONTH_CHOICES = (('', 'Mes'),
                  (9, 'Septiembre'), (10, 'Octubre'),
                  (11, 'Noviembre'), (12, 'Diciembre'))
 
-ANIOS_CHOICE = (('', u'Año'), (2011, 2011), (2012, 2012), )
+ANIOS_CHOICE = (('', u'Año'), (2014, 2014), (2015, 2015), (2016, 2016), (2017, 2017), (2018,2018),)
 
 class ProyectoForm(FormFKAutoFill):
     #validar que el usuario solo pueda ver su organizacion.
