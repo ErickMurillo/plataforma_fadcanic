@@ -1,5 +1,7 @@
 {% extends "cambiaahora/base.html" %}
 
+{% load thumbnail %}
+
 {% block titulo %}
 	:: {{object.titulo}} ::
 {% endblock titulo %}
@@ -40,8 +42,11 @@
 				</header>
 <br>
 				<div class="portfolio-detail-description">
-
-					<img alt="" src="img/nota1-1.jpg" class="center-block">
+					{% thumbnail object.foto "800x500" as img %}
+						<a href="#" class="img-thumb">
+							<img alt="" src="/media/{{img}}" class="center-block">
+						</a>
+					{% endthumbnail %}
 					
 					<div class="row portfolio-details">
 						<div class="col-xs-12">
@@ -62,7 +67,12 @@
 							
 							<div class="cols-xs-12 zoom col-sm-4">
 								<div class="thumbnail">
-									<a href="portfolio-detail.html" class="img-thumb"><img alt="" src="http://placehold.it/360x210"></a>
+								{% thumbnail noticia.foto "360x210" as img %}
+									<a href="#" class="img-thumb">
+										<img alt="" src="/media/{{img}}">
+									</a>
+								{% endthumbnail %}
+
 
 									<h3 class="h3"><a href="{% url 'noticia-detail' relacion.slug %}">{{relacion.titulo}}</a></h3>
 									<p>

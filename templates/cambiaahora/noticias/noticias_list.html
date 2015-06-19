@@ -1,5 +1,7 @@
 {% extends "cambiaahora/base.html" %}
 
+{% load thumbnail %}
+
 {% block titulo %}
 	:: Noticias ::
 {% endblock titulo %}
@@ -64,8 +66,10 @@
 										<img  src="http://placehold.it/360x210" alt="Click to play" data-video="http://www.youtube.com/embed/g2JiJPD4nxY?autoplay=1"/>
 									</div>
 								{% else %}
-									<a class="img-thumb" href="portfolio-detail.html">
-										<img src="http://placehold.it/360x210" alt="">
+									<a class="img-thumb" href="#">
+									{% thumbnail noticia.foto "360x210" as img %}
+										<img src="/media/{{img}}" alt="">
+									{% endthumbnail %}
 									</a>
 								{% endif %}
 								
