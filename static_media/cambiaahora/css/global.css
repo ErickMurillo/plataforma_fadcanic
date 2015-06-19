@@ -1614,9 +1614,14 @@ ol li span:before{
   margin-bottom: 30px !important;
   text-align: center;
 }
-.socialmedia{
-	margin-bottom: 30px;
+
+.socialmedia {
+  margin-bottom: 30px;
+  padding-bottom: 50px;
+
+  background: rgb(240,248,255);
 }
+
 .item-nota{
 	background-color: white;
 	
@@ -1748,4 +1753,14 @@ hr.style-two {
 
 .opinion{
 	text-align: justify;
+}
+.video-icon {
+  color: #000000;
+  background: #fac42b;
+  padding: 10px;
+  display: table;
+  position: absolute;
+ 
+  right: 68px;
+  z-index: 9999;
 }
