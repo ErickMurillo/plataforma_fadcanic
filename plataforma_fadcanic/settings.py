@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     'actividades.contraparte',
     'actividades.fadcanic',
     'actividades.lugar',
+    'actividades.clippy',
     #extras apps
     'ckeditor',
     'smart_selects',
