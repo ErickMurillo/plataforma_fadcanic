@@ -47,6 +47,9 @@
 							<img alt="" src="/media/{{img}}" class="center-block">
 						</a>
 					{% endthumbnail %}
+					{% if object.url %}
+						<img alt="" src="/media/{{img}}" class="center-block">
+					{% endif %}
 					
 					<div class="row portfolio-details">
 						<div class="col-xs-12">
@@ -67,7 +70,7 @@
 							
 							<div class="cols-xs-12 zoom col-sm-4">
 								<div class="thumbnail">
-								{% thumbnail noticia.foto "360x210" as img %}
+								{% thumbnail relacion.foto "360x210" as img %}
 									<a href="#" class="img-thumb">
 										<img alt="" src="/media/{{img}}">
 									</a>

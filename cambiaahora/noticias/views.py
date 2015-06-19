@@ -34,7 +34,7 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         cur_language = translation.get_language()
         if cur_language == 'en':
-            context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')[:9]
+            context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')[:6]
             context['ultimas_historia'] = Historias.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')[:3]
             context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')[:3]
             context['albunes'] = Fotos.objects.filter(aprobacion=2,idioma=2).order_by('-id')[:1]
@@ -42,7 +42,7 @@ class IndexView(TemplateView):
             context['videos'] = Videos.objects.filter(aprobacion=2,idioma=2).order_by('-id')[:3]
             context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')[:3]
         else:
-            context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:9]
+            context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:6]
             context['ultimas_historia'] = Historias.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:3]
             context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:3]
             context['albunes'] = Fotos.objects.filter(aprobacion=2,idioma=1).order_by('-id')[:1]
