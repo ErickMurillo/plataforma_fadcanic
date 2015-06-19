@@ -9,3 +9,4 @@ html5lib==0.999
 htmlmin==0.1.5
 six==1.9.0
 sorl-thumbnail==12.2
+django-embed-video==1.0.0
