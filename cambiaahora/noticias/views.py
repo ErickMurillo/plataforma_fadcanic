@@ -42,13 +42,13 @@ class IndexView(TemplateView):
             context['videos'] = Videos.objects.filter(aprobacion=2,idioma=2).order_by('-id')[:3]
             context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')[:3]
         else:
-            context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2).order_by('-fecha')[:9]
-            context['ultimas_historia'] = Historias.objects.filter(aprobacion=2).order_by('-fecha')[:3]
-            context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2).order_by('-fecha')[:3]
-            context['albunes'] = Fotos.objects.filter(aprobacion=2).order_by('-id')[:1]
-            context['audios'] = Audios.objects.filter(aprobacion=2).order_by('id')[:3]
-            context['videos'] = Videos.objects.filter(aprobacion=2).order_by('-id')[:3]
-            context['documentales'] = Documentales.objects.filter(aprobacion=2).order_by('-fecha')[:3]
+            context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:9]
+            context['ultimas_historia'] = Historias.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:3]
+            context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:3]
+            context['albunes'] = Fotos.objects.filter(aprobacion=2,idioma=1).order_by('-id')[:1]
+            context['audios'] = Audios.objects.filter(aprobacion=2,idioma=1).order_by('id')[:3]
+            context['videos'] = Videos.objects.filter(aprobacion=2,idioma=1).order_by('-id')[:3]
+            context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:3]
         
         
         
@@ -59,8 +59,17 @@ class IndexView(TemplateView):
 class ListNewsView(ListView):
     template_name = "cambiaahora/noticias/noticias_list.html"
     model = Noticias
-    queryset = Noticias.objects.filter(aprobacion=2).order_by('-fecha')
     paginate_by = 6
+
+    def get_queryset(self):
+        cur_language = translation.get_language()
+        if cur_language == 'en':
+            queryset = Noticias.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')
+        else:
+            queryset = Noticias.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')
+        return queryset
+    
+    
 
 class DetailNewsView(DetailView):
     template_name = "cambiaahora/noticias/noticias_detail.html"
@@ -68,7 +77,11 @@ class DetailNewsView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DetailNewsView, self).get_context_data(**kwargs)
-        context['noticias_relacionadas'] = Noticias.objects.filter(aprobacion=2, categoria=self.object.categoria).exclude(id=self.object.id).order_by('-fecha')[:3]
+        cur_language = translation.get_language()
+        if cur_language == 'en':
+            context['noticias_relacionadas'] = Noticias.objects.filter(aprobacion=2, idioma=2, categoria=self.object.categoria).exclude(id=self.object.id).order_by('-fecha')[:3]
+        else:
+            context['noticias_relacionadas'] = Noticias.objects.filter(aprobacion=2, idioma=1, categoria=self.object.categoria).exclude(id=self.object.id).order_by('-fecha')[:3]
         return context
 
 class ContactView(TemplateView):
