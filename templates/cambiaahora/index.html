@@ -178,12 +178,8 @@
 							<span class="date">{{noticia.fecha|date:"d m Y"}}</span><span class="posted-in">{% trans 'Tema:' %} {{noticia.categoria}}</span>
 							
 								{{noticia.texto|safe|truncatewords:20}}
-
-							<br>
-							<br>
-							<a href="{% url 'noticia-detail' noticia.slug %}" class="btn btn-default btn-nota">{% trans 'LEER MÁS' %}</a>
-
 							
+							<a href="{% url 'noticia-detail' noticia.slug %}" class="btn btn-default btn-nota">{% trans 'LEER MÁS' %}</a>
 
 						</div>
 					</li>
