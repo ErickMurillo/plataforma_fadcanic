@@ -36,7 +36,7 @@
 			<header id="header">
 				<div class="container">
 					<div class="row primary-header">
-						<a href="index.html" class="col-xs-12 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/cambiaahora-logo.png" alt="cambiaahora"></a>
+						<a href="/" class="col-xs-12 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/cambiaahora-logo.png" alt="cambiaahora"></a>
 						<div class="social-links col-xs-12 col-sm-10">
 							<a href="/lang/en" class="btn btn-default btn-idioma">
 									<img src="/static/cambiaahora/img/eeuu.jpg" alt=""> ENGLISH
@@ -86,21 +86,23 @@
 
 								</li>
 								<li class="">
-									<a href="#">{% trans 'Campaña' %}</a>
-
+								{% if LANGUAGE_CODE == 'en' %}
+									<a href="/campaign-change-now/">{% trans 'Campaña' %}</a>
+								{%else%}
+									<a href="/campana-cambia-ahora/">{% trans 'Campaña' %}</a>
+								{% endif %}
 								</li>
 								<li class="">
 									<a href="/noticias/">{% trans 'Noticias' %}</a>
 
 								</li>
-								<li class="">
-									<a href="#">{% trans 'Radio' %}</a>
-
-								</li>
 
 								<li class="">
-									<a href="#">{% trans 'Sobre FADCANIC '%}</a>
-
+								{% if LANGUAGE_CODE == 'en' %}
+									<a href="/about-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
+								{%else%}
+									<a href="/sobre-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
+								{% endif %}
 								</li>
 							
 								
@@ -111,7 +113,7 @@
 
 								
 								<li>
-									<a href="#">{% trans 'Contactenos' %}</a>
+									<a href="/contactenos/">{% trans 'Contactenos' %}</a>
 								</li>
 
 							</ul>

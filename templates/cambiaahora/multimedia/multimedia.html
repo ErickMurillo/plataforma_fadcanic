@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load staticfiles %}
 {% load embed_video_tags %}
+{% load thumbnail %}
 
 {% block titulo %}
 	:: {% trans "multimedias" %}
@@ -19,7 +20,7 @@
 				<h1>Programación</h1>
 				<ul class="breadcrumb">
 					<li>
-						<a href="index.html">Inicio</a>
+						<a href="/">Inicio</a>
 					</li>
 					<li class="active">
 						Multimedias
@@ -47,13 +48,16 @@
 
 				<ol class="breadcrumb">
 					<li>
-						<a href="#">Galerias de fotos</a>
+						<a href="/multimedias/fotos/">{% trans "Galerias de fotos" %}</a>
 					</li>
 					<li class="active">
-						<a href="#">Videos</a>
+						<a href="/multimedias/videos/">{% trans "Videos" %}</a>
 					</li>
 					<li>
-						<a href="#">Documentales</a>
+						<a href="/multimedias/documentales/">{% trans "Documentales" %}</a>
+					</li>
+					<li>
+						<a href="/multimedias/audios/">{% trans "Audios" %}</a>
 					</li>
 
 				</ol>
@@ -75,25 +79,11 @@
 						</div>
 					</div>
 				{% endfor %}
-				
-				{% for obj in fotos %}
-					<div class="cols-xs-12 col-sm-6">
-						<div class="thumbnail embed-vedio">
-							<div class="embed-responsive embed-responsive-16by9">
-								<img  src="img/nota2.png" alt="Click to play" data-video="http://www.youtube.com/embed/g2JiJPD4nxY?autoplay=1"/>
-							</div>
-
-							<h3 class="h3"><a  href="gallery-two-column.html">Heading title</a></h3>
-
-
-						</div>
-					</div>
-				{% endfor %}
 
 				{% for obj in documentales %}
 					<div class="cols-xs-12 col-sm-6">
 						<div class="thumbnail embed-vedio">
-						{% for vd in obj.subirvideos_set.all|slice:":1" %}
+						{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
 							<div class="embed-responsive embed-responsive-16by9">
 							 {% video vd.video as video %}
 								<img  src="{{ video.thumbnail }}" width=555 height=341 alt="Click to play" data-video="{{video.url}}"/>
@@ -102,6 +92,26 @@
 							<h3 class="h3"><a  href="gallery-two-column.html">{{vd.titulo}}</a></h3>
 						{% endfor %}
 							
+						</div>
+					</div>
+				{% endfor %}
+				
+				{% for obj in fotos %}
+					<div class="cols-xs-12 col-sm-6">
+						<div class="thumbnail embed-vedio">
+							<a href="#" class="img-thumb">
+							{% for vd in obj.subirfotos_set.all|slice:":1" %}
+								<figure>
+								{% thumbnail vd.foto "555x341" as img %}
+									<img src="/media/{{img}}" alt="">
+								{% endthumbnail %}
+								</figure>
+							{% endfor %}
+							</a>
+
+							<h3 class="h3"><a  href="gallery-two-column.html">{{obj.nombre}}</a></h3>
+
+
 						</div>
 					</div>
 				{% endfor %}
