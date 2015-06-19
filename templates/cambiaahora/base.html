@@ -86,21 +86,23 @@
 
 								</li>
 								<li class="">
-									<a href="#">{% trans 'Campaña' %}</a>
-
+								{% if LANGUAGE_CODE == 'en' %}
+									<a href="/campaign-change-now/">{% trans 'Campaña' %}</a>
+								{%else%}
+									<a href="/campana-cambia-ahora/">{% trans 'Campaña' %}</a>
+								{% endif %}
 								</li>
 								<li class="">
 									<a href="/noticias/">{% trans 'Noticias' %}</a>
 
 								</li>
-								<li class="">
-									<a href="#">{% trans 'Radio' %}</a>
-
-								</li>
 
 								<li class="">
-									<a href="#">{% trans 'Sobre FADCANIC '%}</a>
-
+								{% if LANGUAGE_CODE == 'en' %}
+									<a href="/about-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
+								{%else%}
+									<a href="/sobre-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
+								{% endif %}
 								</li>
 							
 								
@@ -111,7 +113,7 @@
 
 								
 								<li>
-									<a href="#">{% trans 'Contactenos' %}</a>
+									<a href="/contactenos/">{% trans 'Contactenos' %}</a>
 								</li>
 
 							</ul>
