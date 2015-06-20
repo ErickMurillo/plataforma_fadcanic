@@ -1,11 +1,99 @@
 {% extends "cambiaahora/base.html" %}
 
 {% load i18n %}
+{% load thumbnail %}
 
 {% block titulo %}
 	:: {% trans "audios" %}
 {% endblock titulo %}
 
 {% block contenido %}
-	aca van los audios :P
+<!-- site content -->
+<div id="main">
+<!--Breadcrumb Section Start Here-->
+<div class="breadcrumb-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-lg-8">
+				<h1>Programación</h1>
+				<ul class="breadcrumb">
+					<li>
+						<a href="/">Inicio</a>
+					</li>
+					<li>
+						Multimedias
+					</li>
+					<li class="active">
+						Audios
+					</li>
+				</ul>
+
+			</div>
+
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<!--Breadcrumb Section End Here-->
+
+<div class="content-wrapper" id="page-info">
+
+	<!-- Gallery Sections Start Here -->
+<section class="we-help gallery-wrap">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<!--Sub Breadcrumb Section Start Here-->
+
+				<ol class="breadcrumb">
+					<li>
+						<a href="/multimedias/fotos/" class="btn btn-default btn-nota">{% trans "Galerias de fotos" %}</a>
+					</li>
+					<li>
+						<a href="/multimedias/videos/" class="btn btn-default btn-nota">{% trans "Videos" %}</a>
+					</li>
+					<li>
+						<a href="/multimedias/documentales/" class="btn btn-default btn-nota">{% trans "Documentales" %}</a>
+					</li>
+					<li>
+						<a href="/multimedias/audios/" class="btn btn-default btn-nota">{% trans "Audios" %}</a>
+					</li>
+
+				</ol>
+				<!--Sub Breadcrumb Section End Here-->
+				<div class="row gallery">
+				<h2>Audios</h2>
+				{% for obj in object_list %}
+					<div class="cols-xs-12 col-sm-6">
+						{% if  obj.foto %}
+							{% thumbnail obj.foto "310x310" as img %}
+								<img class="img-thumbnail" src="/media/{{img}}" alt="">
+							{% endthumbnail %}
+						{% else %}
+							<img class="img-thumbnail" src="http://placehold.it/310x310" alt="">
+						{% endif %}
+						<h3>Audio: <strong>{{obj.nombre}} </strong></h3>
+					</div>
+				{% endfor %}	
+				</div>
+			</div>
+
+			</div>
+			<!--Pagination Section Start Here-->
+			    {% if is_paginated %}
+				    <div class="cols-xs-12 text-center">  
+						{% load paginador %}
+						{% render_paginator 2 3 %}
+					</div>
+				{% endif %}
+				<!--Pagination Section Start Here-->
+		</div>
+	</section>
+	<!-- Gallery Sections Start Here -->
+
+</div>
+
+<!-- site content ends -->
 {% endblock contenido %}

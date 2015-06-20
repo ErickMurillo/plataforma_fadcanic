@@ -48,22 +48,22 @@
 
 				<ol class="breadcrumb">
 					<li>
-						<a href="/multimedias/fotos/">{% trans "Galerias de fotos" %}</a>
-					</li>
-					<li class="active">
-						<a href="/multimedias/videos/">{% trans "Videos" %}</a>
+						<a href="/multimedias/fotos/" class="btn btn-default btn-nota">{% trans "Galerias de fotos" %}</a>
 					</li>
 					<li>
-						<a href="/multimedias/documentales/">{% trans "Documentales" %}</a>
+						<a href="/multimedias/videos/" class="btn btn-default btn-nota">{% trans "Videos" %}</a>
 					</li>
 					<li>
-						<a href="/multimedias/audios/">{% trans "Audios" %}</a>
+						<a href="/multimedias/documentales/" class="btn btn-default btn-nota">{% trans "Documentales" %}</a>
+					</li>
+					<li>
+						<a href="/multimedias/audios/" class="btn btn-default btn-nota">{% trans "Audios" %}</a>
 					</li>
 
 				</ol>
 				<!--Sub Breadcrumb Section End Here-->
 				<div class="row gallery">
-				
+				<h2>Videos</h2>
 				{% for obj in videos %}
 					<div class="cols-xs-12 col-sm-6">
 						<div class="thumbnail embed-vedio">
@@ -79,6 +79,8 @@
 						</div>
 					</div>
 				{% endfor %}
+				<br>
+				<h2>Documentales</h2>
 
 				{% for obj in documentales %}
 					<div class="cols-xs-12 col-sm-6">
@@ -95,7 +97,8 @@
 						</div>
 					</div>
 				{% endfor %}
-				
+				<br>
+				<h2>Galerias</h2>
 				{% for obj in fotos %}
 					<div class="cols-xs-12 col-sm-6">
 						<div class="thumbnail embed-vedio">
