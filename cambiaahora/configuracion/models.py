@@ -29,3 +29,19 @@ class Configuracion(models.Model):
     class Meta:
         verbose_name = _(u'Configuración')
         verbose_name_plural = _(u'Configuraciones')
+
+class LogoApoyan(models.Model):
+    nombre = models.CharField(_(u'siglas organismo'), max_length=250)
+    foto = ImageField(_(u'Foto'), upload_to=get_file_path, blank=True, null=True)
+
+    user = models.ForeignKey(User)
+    
+    fileDir = 'logoApoyan/'
+
+    def __unicode__(self):
+        return u'%s' % (self.nombre)
+
+    class Meta:
+        verbose_name = _(u'Logo apoyan')
+        verbose_name_plural = _(u'Logo apoyan')
+

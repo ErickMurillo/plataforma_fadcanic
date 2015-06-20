@@ -320,7 +320,13 @@
 						<div class="col-xs-12">
 						    <div class="audio-radio ">
 								<div class="col-xs-12 col-sm-7 col-md-6">
-									<img class="img-thumbnail" src="img/radio.jpg" alt="">
+									{% if  obj.foto %}
+										{% thumbnail obj.foto "310x310" as img %}
+											<img class="img-thumbnail" src="/media/{{img}}" alt="">
+										{% endthumbnail %}
+									{% else %}
+										<img class="img-thumbnail" src="http://placehold.it/310x310" alt="">
+									{% endif %}
 									<h3>Serie radiofónica: <strong>{{obj.nombre}} </strong></h3>
 							      	<audio preload></audio>
 							      	<div class="track-details">
