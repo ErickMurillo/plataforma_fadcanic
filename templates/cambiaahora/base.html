@@ -160,15 +160,11 @@
 									
 								<div class="article-list flexslider article-slider row">
 								<ul class="slides">
+								{% for obj in logos %}
 									<li>
-									<img class="img-responsive" src="http://placehold.it/200x120" alt="">
+									<img class="img-responsive" src="/media/{{obj.foto}}" alt="">
 									</li>
-									<li>
-										<img class="img-responsive" src="http://placehold.it/200x120" alt="">
-									</li>
-									<li>
-										<img class="img-responsive" src="http://placehold.it/200x120" alt="">
-									</li>
+								{% endfor %}
 								</ul>
 									
 									

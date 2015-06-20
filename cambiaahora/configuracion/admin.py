@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Configuracion
+from .models import Configuracion, LogoApoyan
 # Register your models here.
 
 class ConfigAdmin(admin.ModelAdmin):
@@ -14,4 +14,17 @@ class ConfigAdmin(admin.ModelAdmin):
 
 	exclude = ('user',)
 
+class LogoApoyanAdmin(admin.ModelAdmin):
+	def queryset(self, request):
+		if request.user.is_superuser:
+			return LogoApoyan.objects.all()
+		return LogoApoyan.objects.filter(user=request.user)
+
+	def save_model(self, request, obj, form, change):
+		obj.user = request.user
+		obj.save()
+
+	exclude = ('user',)
+
 admin.site.register(Configuracion, ConfigAdmin)
+admin.site.register(LogoApoyan, LogoApoyanAdmin)
