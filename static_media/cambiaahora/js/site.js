@@ -225,6 +225,10 @@ $(window).ready(function() {
 		$('.testimonial .flexslider').flexslider({
 			animation : "slide",
 			animationLoop : false,
+			itemWidth :380,
+			itemMargin : 50,
+			slideToStart: 0,
+			move:1,
 
 			start : function(slider) {
 				$('body').removeClass('loading');

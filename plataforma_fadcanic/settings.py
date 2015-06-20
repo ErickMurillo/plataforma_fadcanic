@@ -129,6 +129,8 @@ CKEDITOR_CONFIGS = {
             { 'name': 'tools', 'items': [ 'Maximize', 'ShowBlocks', ] },
         
         ],
+        'height': 'auto',
+        'width': 'auto',
     },
 }
 
