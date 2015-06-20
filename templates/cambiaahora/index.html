@@ -171,7 +171,7 @@
 							<a href="#" class="img-thumb">
 								<figure>
 								{% if noticia.foto %}
-									{% thumbnail noticia.foto "360x225" as img %}
+								{% thumbnail noticia.foto "360x225" as img %}
 									<img src="/media/{{img}}" alt="">
 								{% endthumbnail %}
 								{%else%}
@@ -356,63 +356,38 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<header class="page-header section-header clearfix">
-									<h2>Cambia Ahora <strong> Opina</strong></h2>
+									<h2>{% trans "Cambia Ahora" %}<strong> {% trans "Opina" %}</strong></h2>
 								</header>
 
 									
 								<div class="article-list flexslider article-slider row">
 								<ul class="slides">
-								<li>
+								{% for obj in ultimas_testimonios %}
+									<li>
 									<div class="item-testimonial">
 										<div class="avatar">
-											<img src="img/testimonio1.jpg" alt="" class="img-circle">
+										{% if obj.foto %}
+											{% thumbnail obj.foto "274x235" as img %}
+												<img src="/media/{{img}}" alt="" class="img-circle">
+											{% endthumbnail %}
+										{% else %}
+											<img src="http://placehold.it/274x235" alt="" class="img-circle">
+										{% endif %}
 										</div>
 										<div class="opinion">
-											<h4 class="name-testimonial">Lestell Kelly</h4>
+											<h4 class="name-testimonial">{{obj.titulo}}</h4>
 
 											<hr class="style-two">
 
 											<span class="fa fa-quote-left"></span> 
-											<p>Tortor sed, habitasse urna dictumst et, penatibus in. Aliquet nascetur phasellus aenean in auctor auctor tempor auctor! Porta auctor cum urna adipiscing.
+											<p>{{obj.texto|safe}}
 											</p>
 											<span class="fa fa-quote-right"></span>
 										</div>
 									</div>
 								</li>
-								<li>
-									<div class="item-testimonial">
-										<div class="avatar">
-											<img src="img/testimonio1.jpg" alt="" class="img-circle">
-										</div>
-										<div class="opinion">
-											<h4 class="name-testimonial">Lestell Kelly</h4>
-
-											<hr class="style-two">
-
-											<span class="fa fa-quote-left"></span> 
-											<p>Tortor sed, habitasse urna dictumst et, penatibus in. Aliquet nascetur phasellus aenean in auctor auctor tempor auctor! Porta auctor cum urna adipiscing.
-											</p>
-											<span class="fa fa-quote-right"></span>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="item-testimonial">
-										<div class="avatar">
-											<img src="img/testimonio1.jpg" alt="" class="img-circle">
-										</div>
-										<div class="opinion">
-											<h4 class="name-testimonial">Lestell Kelly</h4>
-
-											<hr class="style-two">
-
-											<span class="fa fa-quote-left"></span> 
-											<p>Tortor sed, habitasse urna dictumst et, penatibus in. Aliquet nascetur phasellus aenean in auctor auctor tempor auctor! Porta auctor cum urna adipiscing.
-											</p>
-											<span class="fa fa-quote-right"></span>
-										</div>
-									</div>
-								</li>
+								{% endfor %}
+								
 
 								</ul>
 									
