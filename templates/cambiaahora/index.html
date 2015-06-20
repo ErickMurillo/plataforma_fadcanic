@@ -3,6 +3,7 @@
 {% load staticfiles%}
 {% load i18n %}
 {% load thumbnail %}
+{% load embed_video_tags %}
 
 {% block titulo %}
 	:: {% trans 'cambia ahora' %}::
@@ -209,7 +210,7 @@
 
                     
                     <div class="col-lg-12">
-                        <img class="img-responsive" src="newimg/campana.jpg" alt="">
+                        <img class="img-responsive" src="http://placehold.it/1170x435" alt="">
 
                         <br>
                         <div class="row">
@@ -255,7 +256,11 @@
 							<div class="row">
 								<a href="#" class="img-thumb col-xs-12 col-sm-5">
 								<figure>
-									<img src="img/v1.jpg" alt="">
+								{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
+									{% video vd.video as video %}
+										<img src="{{ video.thumbnail }}" width=170 height=100 alt="">
+									{% endvideo %}
+								{% endfor %}
 								</figure> </a>
 								<div class="media col-xs-12 col-sm-7 video-list">
 									<h3>{{obj.nombre}}</h3>
@@ -267,7 +272,7 @@
 							</div>
 						</div>
 					{% endfor %}
-					<a href="#" class="btn btn-default btn-video">{% trans "VER MAS" %}</a>
+					<a href="/multimedias/videos/" class="btn btn-default btn-video">{% trans "VER MÁS" %}</a>
 				</div>
 					</div>
 
@@ -277,7 +282,7 @@
                             <i class="fa fa-2x fa-video-camera"></i>
                         </div>
 						<div class="embed-responsive embed-responsive-16by9">
-							<img  src="/static/cambiaahora/img/v1.png" alt="Click to play" data-video="https://www.youtube.com/embed/Fe88d0InpOI?autoplay=1"/>
+							<img  src="http://placehold.it/600x400" alt="Click to play" data-video="https://www.youtube.com/embed/Fe88d0InpOI?autoplay=1"/>
 						</div>
 						<p>Los estudiantes del Colegio Cristiano Verbo, participaron en el debate en prevención de la violencia juvenil desde el centro escolar. </p>
 					</div>
