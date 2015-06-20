@@ -1,6 +1,7 @@
 {% extends "cambiaahora/base.html" %}
 
 {% load thumbnail %}
+{% load embed_video_tags %}
 
 {% block titulo %}
 	:: {{object.titulo}} ::
@@ -48,7 +49,12 @@
 						</a>
 					{% endthumbnail %}
 					{% if object.url %}
-						<img alt="" src="/media/{{img}}" class="center-block">
+					<h2>Esta noticia tiene el siguiente video</h2>
+						<div class="embed-responsive embed-responsive-16by9">
+							{% video object.url as video %}
+							<img  src="{{ video.thumbnail }}" width=800 height=500 alt="Click to play" data-video="{{video.url}}" class="center-block"/>
+							{% endvideo %}
+						</div>
 					{% endif %}
 					
 					<div class="row portfolio-details">
