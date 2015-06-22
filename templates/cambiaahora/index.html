@@ -167,18 +167,20 @@
 				{% for noticia in  ultimas_noticias %}	
 					<li>
 						<div class="items item-nota zoom">
-							<a href="#" class="img-thumb">
+							<a href="#" class="img-thumb img-nota">
 								<figure>
 								{% thumbnail noticia.foto "360x225" as img %}
-									<img src="/media/{{img}}" alt="">
+									<!--<img src="/media/{{img}}" alt="">-->
+
 								{% endthumbnail %}
+								<img src="http://placehold.it/360x225" alt="">
 								</figure>
 								</a>
 							<h3>{{noticia.titulo}}</h3>
 							<span class="date">{{noticia.fecha|date:"d m Y"}}</span><span class="posted-in">{% trans 'Tema:' %} {{noticia.categoria}}</span>
 							
 								{{noticia.texto|safe|truncatewords:20}}
-						
+						<p></p>
 							<a href="/noticia" class="btn btn-default btn-nota">{% trans 'LEER MÁS' %}</a>
 						</div>
 					</li>
@@ -201,7 +203,7 @@
 
                     
                     <div class="col-lg-12">
-                        <img class="img-responsive" src="newimg/campana.jpg" alt="">
+                        <img class="img-responsive" src="/static/cambiaahora/img/campana.jpg" alt="">
 
                         <br>
                         <div class="row">
