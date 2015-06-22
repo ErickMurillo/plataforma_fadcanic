@@ -58,35 +58,14 @@
 									<h2><strong class="border-none">Conoce a Nuestro Equipo</strong></h2>
 								</header>
 								<div class="row">
+									{% for obj in equipo %}
 									<div class="col-xs-12 col-sm-3 anim-section">
-										<div class="thumbnail">
-											<figure class="team-photo">
-											<img src="img/staff1.jpg" alt="">
-											</figure>
+									<div class="thumbnail">
+										<figure class="team-photo">
+										<img src="img/staff2.jpg" alt="">
+										</figure>
 											<div class="caption">
-												<h3>Kenia Regina Sánchez V</h3>
-												<ul class="staff-info">
-													<li>
-														<a href="#"><strong>Cargo: </strong> Coordinadora del Proyecto Mass Media Campaign Responsable de la Campaña para la Costa Caribe de Nicaragua</a>
-													</li>
-													<li>
-														<a href="#"><strong>Edad: </strong> Con uno más y llego a treinta</a>
-													<li>
-														<a href="#"><strong>Profesión: </strong> Licenciada en Comunicación Social</a>
-													</li>
-
-
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-3 anim-section">
-										<div class="thumbnail">
-											<figure class="team-photo">
-											<img src="img/staff2.jpg" alt="">
-											</figure>
-											<div class="caption">
-												<h3>Lestell Kelly Aburto</h3>
+												<h3>{{obj.titulo}}</h3>
 												<ul class="staff-info">
 													<li>
 														<a href="#"><strong>Cargo: </strong> Comunicación y Web  Mass Media Campaign</a>
@@ -96,56 +75,12 @@
 													<li>
 														<a href="#"><strong>Profesión: </strong> Lic. Sociologia con Mención En Autonomía</a>
 													</li>
-
-
 												</ul>
 											</div>
 										</div>
 									</div>
-									<div class="col-xs-12 col-sm-3 anim-section">
-										<div class="thumbnail">
-											<figure class="team-photo">
-											<img src="img/staff3.jpg" alt="">
-											</figure>
-											<div class="caption">
-												<h3>Bethania Sanles Alemán</h3>
-												<ul class="staff-info">
-													<li>
-														<a href="#"><strong>Cargo: </strong>  Comunicación y relaciones públicas. Mass Media Campaign</a>
-													</li>
-													<li>
-														<a href="#"><strong>Edad: </strong> 23</a>
-													<li>
-														<a href="#"><strong>Profesión: </strong> Lic en periodismo y comunicación intercultural</a>
-													</li>
-
-
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-3 anim-section">
-										<div class="thumbnail">
-											<figure class="team-photo">
-											<img src="img/staff4.jpg" alt="">
-											</figure>
-											<div class="caption">
-												<h3>Rodolfo Molina</h3>
-												<ul class="staff-info">
-													<li>
-														<a href="#"><strong>Cargo: </strong> Asistente territorial para la Campaña en Bilwi</a>
-													</li>
-													<li>
-														<a href="#"><strong>Edad: </strong> 34</a>
-													<li>
-														<a href="#"><strong>Profesión: </strong> Contador pero Líder comunitario de corazón</a>
-													</li>
-
-
-												</ul>
-											</div>
-										</div>
-									</div>
+									{% endfor %}
+									
 								</div>
 							</div>
 						</div>
