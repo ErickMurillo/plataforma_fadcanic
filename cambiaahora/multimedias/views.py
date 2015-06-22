@@ -22,7 +22,7 @@ class MultimediaView(TemplateView):
 class ListVideosView(ListView):
     template_name = "cambiaahora/multimedia/videos_list.html"
     model = Videos
-    paginate_by = 6
+    # paginate_by = 6
 
     def get_queryset(self):
         cur_language = translation.get_language()
@@ -35,7 +35,7 @@ class ListVideosView(ListView):
 class ListAudiosView(ListView):
     template_name = "cambiaahora/multimedia/audios_list.html"
     model = Audios
-    paginate_by = 6
+    # paginate_by = 6
 
     def get_queryset(self):
         cur_language = translation.get_language()
@@ -48,7 +48,7 @@ class ListAudiosView(ListView):
 class ListFotosView(ListView):
     template_name = "cambiaahora/multimedia/fotos_list.html"
     model = Fotos
-    paginate_by = 6
+    # paginate_by = 6
 
     def get_queryset(self):
         cur_language = translation.get_language()
@@ -62,7 +62,6 @@ class ListFotosView(ListView):
 class ListDocumentalesView(ListView):
     template_name = "cambiaahora/multimedia/documentales_list.html"
     model = Documentales
-    paginate_by = 6
 
     def get_queryset(self):
         cur_language = translation.get_language()

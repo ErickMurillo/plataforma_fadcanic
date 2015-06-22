@@ -3,6 +3,7 @@
 {% load thumbnail %}
 {% load i18n %}
 {% load embed_video_tags %}
+{% load endless %}
 
 {% block titulo %}
 	:: {% trans "Noticias" %} ::
@@ -58,6 +59,7 @@
 							</ol>
 							<!--Sub Breadcrumb Section Start Here-->
 				<!--Gallery Section Start Here-->
+				{% paginate object_list %}
 				<div class="row gallery ">
 								
 					{% for noticia in object_list %}
@@ -95,12 +97,19 @@
 				</div>
 
 				<!--Pagination Section Start Here-->
-			    {% if is_paginated %}
+				<div class="cols-xs-12 text-center">
+				<ul class="pagination">
+					<li>{% show_pages %}</li>
+				</ul>
+					
+  				</div>
+
+			    <!--{% if is_paginated %}
 				    <div class="cols-xs-12 text-center">  
 						{% load paginador %}
 						{% render_paginator 2 3 %}
 					</div>
-				{% endif %}
+				{% endif %}-->
 				<!--Pagination Section Start Here-->
 
 				</div>

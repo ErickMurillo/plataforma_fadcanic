@@ -4,6 +4,7 @@
 {% load staticfiles %}
 {% load embed_video_tags %}
 {% load thumbnail %}
+{% load endless %}
 
 {% block titulo %}
 	:: {% trans "documentales" %}
@@ -65,6 +66,7 @@
 
 				</ol>
 				<!--Sub Breadcrumb Section End Here-->
+				{% paginate object_list %}
 				<div class="row gallery">
 				<h2>Documentales</h2>
 				{% for obj in object_list %}
@@ -72,11 +74,11 @@
 						<div class="thumbnail embed-vedio">
 						{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
 							<div class="embed-responsive embed-responsive-16by9">
-							 {% video vd.video as video %}
+							 {% video vd.video query="autoplay=1" as video %}
 								<img  src="{{ video.thumbnail }}" width=555 height=341 alt="Click to play" data-video="{{video.url}}"/>
 							 {% endvideo %}
 							</div>
-							<h3 class="h3"><a  href="gallery-two-column.html">{{vd.titulo}}</a></h3>
+							<h3 class="h3"><a  href="{% url 'documental-detail' obj.id %}">{{vd.titulo}}</a></h3>
 						{% endfor %}
 							
 						</div>
@@ -87,12 +89,22 @@
 
 			</div>
 			<!--Pagination Section Start Here-->
-			    {% if is_paginated %}
+
+				
+				<div class="cols-xs-12 text-center">
+				<ul class="pagination">
+					<li>{% show_pages %}</li>
+				</ul>
+					
+  				</div>
+
+			   <!-- {% if is_paginated %}
 				    <div class="cols-xs-12 text-center">  
 						{% load paginador %}
 						{% render_paginator 2 3 %}
 					</div>
-				{% endif %}
+				{% endif %}-->
+
 				<!--Pagination Section Start Here-->
 		</div>
 	</section>

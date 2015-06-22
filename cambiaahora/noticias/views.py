@@ -61,7 +61,7 @@ class IndexView(TemplateView):
 class ListNewsView(ListView):
     template_name = "cambiaahora/noticias/noticias_list.html"
     model = Noticias
-    paginate_by = 6
+    #paginate_by = 6
 
     def get_queryset(self):
         cur_language = translation.get_language()
