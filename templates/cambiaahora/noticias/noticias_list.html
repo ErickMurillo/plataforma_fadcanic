@@ -64,7 +64,7 @@
 								
 					{% for noticia in object_list %}
 						<div class="cols-xs-12 col-sm-4 anim-section nota-img">
-							<div class="thumbnail">
+							<div class="thumbnail img-listnota">
 								{% if noticia.url %}
 								{% video noticia.url query="autoplay=1" as video %}
 									<div class="embed-responsive embed-responsive-16by9">

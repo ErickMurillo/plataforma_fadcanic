@@ -173,6 +173,7 @@
 								{% if noticia.foto %}
 								{% thumbnail noticia.foto "360x225" as img %}
 
+
 									<img src="/media/{{img}}" alt="">
 
 								{% endthumbnail %}
@@ -180,6 +181,7 @@
 								{%else%}
 									<img src="http://placehold.it/360x225" alt="">
 								{% endif %}
+
 								</figure>
 								</a>
 							<h3>{{noticia.titulo}}</h3>
@@ -337,7 +339,7 @@
 
 	<div class="container">
 		<div class="row">
-		
+
 			<header class="page-header section-header clearfix titulo-radio">
 				<h2>{% trans 'Series Radiofónica' %}</h2>
 			</header>
