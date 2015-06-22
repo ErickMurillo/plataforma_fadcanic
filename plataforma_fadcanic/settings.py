@@ -30,6 +30,7 @@ INSTALLED_APPS = (
     'smart_selects',
     'sorl.thumbnail',
     'embed_video',
+    'endless_pagination',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,7 +71,12 @@ TEMPLATES = [
     },
 ]
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
+)
 
+ENDLESS_PAGINATION_PER_PAGE = 6
 
 WSGI_APPLICATION = 'plataforma_fadcanic.wsgi.application'
 
