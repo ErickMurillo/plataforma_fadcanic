@@ -172,22 +172,14 @@
 								<figure>
 								{% if noticia.foto %}
 								{% thumbnail noticia.foto "360x225" as img %}
-<<<<<<< HEAD
-									<img src="http://placehold.it/360x225" alt="">
-									
-								{% endthumbnail %}
-								
-=======
-									<!--<img src="/media/{{img}}" alt="">-->
 
+									<img src="/media/{{img}}" alt="">
 
 								{% endthumbnail %}
 
->>>>>>> dbda6599be123147741b4adca0e89b6a37590c1b
 								{%else%}
 									<img src="http://placehold.it/360x225" alt="">
 								{% endif %}
-									<img src="http://placehold.it/360x225" alt="">
 								</figure>
 								</a>
 							<h3>{{noticia.titulo}}</h3>
@@ -431,7 +423,7 @@
 										{% else %}
 											<img src="http://placehold.it/250x250" alt="" class="img-circle">
 										{% endif %}
-										<img src="http://placehold.it/250x250" alt="" class="img-circle">
+										
 										</div>
 										<div class="opinion">
 											<h4 class="name-testimonial">{{obj.titulo}}</h4>
