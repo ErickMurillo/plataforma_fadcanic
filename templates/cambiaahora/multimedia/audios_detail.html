@@ -57,15 +57,20 @@
 								<p class="">
 									{{object.descripcion|safe}}
 								</p>
-
-								{% for vd in object.subirvideos_set.all %}
-									<div class="embed-responsive embed-responsive-16by9">
-									 {% video vd.video as video %}
-										<img  src="{{ video.thumbnail }}" width=555 height=341 alt="Click to play" data-video="{{video.url}}"/>
-									 {% endvideo %}
-									 <h3 class="h3">{{vd.titulo}}</h3>
-									</div>
-								{% endfor %}
+								<audio preload></audio>
+							      	<div class="track-details">
+    								</div>
+								<div class="playlist-audio">
+									<ol class="list-group">
+									{% for audios in object.subiraudios_set.all %}
+										<li class="list-group-item">
+									        <span class="fa"></span>
+									        <a href="#"  data-src="/media/{{audios.audio}}">{{audios.titulo}}</a>
+								        </li>
+									{% endfor %}
+								        
+								    </ol>
+								</div>
 							</div>
 						</div>
 

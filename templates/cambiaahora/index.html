@@ -346,7 +346,7 @@
 									{% else %}
 										<img class="img-thumbnail" src="http://placehold.it/310x310" alt="">
 									{% endif %}
-									<h3>Serie radiofónica: <strong>{{obj.nombre}} </strong></h3>
+									<h3>Serie radiofónica: <strong><a href="{% url 'audios-detail' obj.id %}">{{obj.nombre}}</a></strong></h3>
 							      	<audio preload></audio>
 							      	<div class="track-details">
     								</div>
