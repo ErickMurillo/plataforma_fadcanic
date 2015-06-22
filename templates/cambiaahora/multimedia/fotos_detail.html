@@ -1,0 +1,88 @@
+{% extends "cambiaahora/base.html" %}
+
+{% load thumbnail %}
+{% load embed_video_tags %}
+
+{% block titulo %}
+	:: {{object.nombre}} ::
+{% endblock titulo %}
+
+{% block contenido %}
+<!-- Breadcrumb Section Start Here -->
+<div class="breadcrumb-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Noticia </h1>
+				<ul class="breadcrumb">
+					<li>
+						<a href="index.html">Inicio</a>
+					</li>
+					<li>
+						<a href="notas.html">Galeria</a>
+					</li>
+					<li class="active">
+						{{object.nombre}}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Breadcrumb Section End Here -->
+<div class="content-wrapper" id="page-info">
+
+	<!-- portfolio detail sections -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+
+				<header class="page-header section-header text-center">
+					<h2>{{object.nombre|upper}}</h2>
+					<img class="social-img" src="newimg/social.png" alt="">
+				</header>
+				<br>
+				<div class="portfolio-detail-description">
+					{% thumbnail object.foto "800x500" as img %}
+						<a href="#" class="img-thumb">
+							<img alt="" src="/media/{{img}}" class="center-block">
+						</a>
+					{% endthumbnail %}
+					
+					<div class="row portfolio-details">
+						<div class="col-xs-12">
+
+							<div class="detail-description">
+
+								<p class="">
+									{{object.descripcion|safe}}
+								</p>
+
+								<div class="thumbnail embed-vedio">
+									<a href="#" class="img-thumb">
+									{% for vd in object.subirfotos_set.all|slice:":1" %}
+										<figure>
+										{% thumbnail vd.foto "555x341" as img %}
+											<img src="/media/{{img}}" alt="">
+										{% endthumbnail %}
+										</figure>
+										<h3 class="h3">{{vd.titulo}}</h3>
+									{% endfor %}
+									</a>
+
+									
+								</div>
+							</div>
+						</div>
+
+			</div>
+		</div>
+	</div>
+	<!--  sections end -->
+
+</div>
+
+</div>
+</div>
+
+{% endblock contenido %}

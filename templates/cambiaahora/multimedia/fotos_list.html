@@ -79,7 +79,7 @@
 							{% endfor %}
 							</a>
 
-							<h3 class="h3"><a  href="gallery-two-column.html">{{obj.nombre}}</a></h3>
+							<h3 class="h3"><a  href="{% url 'fotos-detail' obj.id %}">{{obj.nombre}}</a></h3>
 
 
 						</div>

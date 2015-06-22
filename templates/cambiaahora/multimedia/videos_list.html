@@ -76,9 +76,8 @@
 								<img  src="{{ video.thumbnail }}" width=555 height=341 alt="Click to play" data-video="{{video.url}}"/>
 							 {% endvideo %}
 							</div>
-							<h3 class="h3"><a  href="gallery-two-column.html">{{vd.titulo}}</a></h3>
 						{% endfor %}
-							
+							<h3 class="h3"><a  href="{% url 'videos-detail' obj.id %}">{{obj.nombre}}</a></h3>
 						</div>
 					</div>
 				{% endfor %}

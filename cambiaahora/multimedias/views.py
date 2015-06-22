@@ -6,6 +6,7 @@ from cambiaahora.multimedias.models import *
 from django.utils import translation
 
 # Create your views here.
+
 class MultimediaView(TemplateView):
     template_name = "cambiaahora/multimedia/multimedia.html"
 
@@ -70,3 +71,19 @@ class ListDocumentalesView(ListView):
         else:
             queryset = Documentales.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')
         return queryset
+
+class DetailDocumentalView(DetailView):
+    template_name = "cambiaahora/multimedia/documentales_detail.html"
+    model = Documentales
+
+class DetailVideosView(DetailView):
+    template_name = "cambiaahora/multimedia/videos_detail.html"
+    model = Videos
+
+class DetailFotosView(DetailView):
+    template_name = "cambiaahora/multimedia/fotos_detail.html"
+    model = Fotos
+
+class DetailAudiosView(DetailView):
+    template_name = "cambiaahora/multimedia/audios_detail.html"
+    model = Audios
