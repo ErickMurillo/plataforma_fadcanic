@@ -844,7 +844,8 @@ blockquote footer:before, .blockquote-reverse footer:after {
 }
 
 a.brand img {
-	padding-left: 0px
+	padding-left: 0px;
+	margin-left: 20px;
 }
 
 .navbar-nav > li > .dropdown-menu {
@@ -1847,3 +1848,8 @@ hr.style-two {
 .nota-img{
 	height: 360px !important;
 }
+
+a.btn-masnotas.pull-right, a.btn-campana.pull-right {
+	color: black;
+}
+
