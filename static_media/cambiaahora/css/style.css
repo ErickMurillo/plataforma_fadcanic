@@ -288,7 +288,7 @@
 	color: #26211d;
 	font-weight: 700;
 	margin-bottom: 14px;
-	font-size: 18px;
+	font-size: 16px;
 }
 .help-list .media h3 a {
 	color: #26211d;
@@ -462,7 +462,7 @@
  2.1) Banner Slider Section
  ----------------------------------------*/
 .main-slider .banner-slider h2 {
-	font-size: 48px;
+	font-size: 30px;
 	font-weight:700;
 	font-family: 'Lato', sans-serif;
 	color: #fff;
