@@ -8,7 +8,7 @@ from .models import Noticias
 from cambiaahora.historias.models import Historias
 from cambiaahora.multimedias.models import *
 from cambiaahora.testimonios.models import Testimonios
-from cambiaahora.configuracion.models import Configuracion
+from cambiaahora.configuracion.models import Configuracion, Informacion
 from django.utils import translation
 
 # Create your views here.
@@ -41,6 +41,7 @@ class IndexView(TemplateView):
             context['audios'] = Audios.objects.filter(aprobacion=2,idioma=2).order_by('id')[:3]
             context['videos'] = Videos.objects.filter(aprobacion=2,idioma=2).order_by('id')[:3]
             context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=2).order_by('fecha')[:3]
+            context['informacion'] = Informacion.objects.filter(idioma=2).order_by('id')[:1]
         else:
             context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2,idioma=1).order_by('fecha')[:3]
             context['ultimas_historia'] = Historias.objects.filter(aprobacion=2,idioma=1).order_by('fecha')[:3]
@@ -49,6 +50,7 @@ class IndexView(TemplateView):
             context['audios'] = Audios.objects.filter(aprobacion=2,idioma=1).order_by('id')[:3]
             context['videos'] = Videos.objects.filter(aprobacion=2,idioma=1).order_by('id')[:3]
             context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=1).order_by('fecha')[:3]
+            context['informacion'] = Informacion.objects.filter(id=1, idioma=1)
         
         
         
