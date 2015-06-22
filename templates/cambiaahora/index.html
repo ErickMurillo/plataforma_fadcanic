@@ -253,52 +253,67 @@
 				</header>
 
 				<div class="row help-list">
-					<div class="col-xs-12 col-md-5">
+					
 				<div class="row">
-					{% for obj in documentales %}
-						<div class="items zoom col-xs-12 col-md-12">
-							<div class="row">
-								<a href="#" class="img-thumb col-xs-12 col-sm-5">
-								<figure>
-								{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
-									{% video vd.video as video %}
-										<img src="{{ video.thumbnail }}" width=170 height=100 alt="">
-									{% endvideo %}
-								{% endfor %}
-								</figure> </a>
-								<div class="media col-xs-12 col-sm-7 video-list">
-									<h3>{{obj.nombre}}</h3>
-									<span class="date">{{obj.fecha}}</span><span class="posted-in">{% trans "Tema" %}: {{obj.categoria}}</span>
-									<p>{{obj.descripcion|safe|truncatewords:8}}</p>
 
-									
-								</div>
-							</div>
-						</div>
-					{% endfor %}
-					<a href="/multimedias/videos/" class="btn btn-default btn-video">{% trans "VER MÁS" %}</a>
+	<!-- tabs left -->    	
+
+		<div class="col-xs-12 col-sm-5"> <!-- required for floating -->
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs tabs-left">
+			{% for obj in documentales %}
+			<li {% if forloop.counter == 1 %}class="active"{% endif %} ><a href="#home{{forloop.counter}}" data-toggle="tab">
+				
+				<figure>
+				{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
+					{% video vd.video as video %}
+						<img src="{{ video.thumbnail }}" width=170 height=100 alt="">
+					{% endvideo %}
+				{% endfor %}
+				</figure> 
+				<div class="media col-xs-12 col-sm-7 video-list">
+					<h3>{{obj.nombre}}</h3>
+					<span class="date">{{obj.fecha}}</span><span class="posted-in">{% trans "Tema" %}: {{obj.categoria}}</span>
+					<p>{{obj.descripcion|safe|truncatewords:8}}</p>
 				</div>
-					</div>
 
-					<div class="col-xs-12 col-sm-6 col-lg-7 video-r">
+			</a></li>
+			{% endfor %}
+		</ul>
+		</div>
+
+		<div class="col-xs-12 col-sm-7">
+		<!-- Tab panes -->
+		<div class="tab-content">
+			{% for obj in documentales %}
+				<div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="home{{forloop.counter}}">
+					<div class="video-r">
 					<img src="" alt="">
 						<div class="video-icon">
                             <i class="fa fa-2x fa-video-camera"></i>
                         </div>
-						<div class="embed-responsive embed-responsive-16by9">
-							<img  src="http://placehold.it/600x400" alt="Click to play" data-video="https://www.youtube.com/embed/Fe88d0InpOI?autoplay=1"/>
-<<<<<<< HEAD
-=======
-
->>>>>>> bed8fa0dda28e4e92cd09bb322502ef4c75267c0
+						<div class="thumbnail embed-vedio">
+						{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
+							<div class="embed-responsive embed-responsive-16by9">
+							 {% video vd.video query="autoplay=1" as video %}
+								<img  src="{{ video.thumbnail }}" width=600 height=400 alt="Click to play" data-video="{{video.url}}"/>
+							 {% endvideo %}
+							</div>
+						{% endfor %}
 						</div>
-						<p>Los estudiantes del Colegio Cristiano Verbo, participaron en el debate en prevención de la violencia juvenil desde el centro escolar. </p>
+						<p>{{obj.descripcion}}</p>
 					</div>
 				</div>
-
-			</div>
+			{% endfor %}
 		</div>
+		</div>  
+     
+     <!-- /tabs -->
 	</div>
+
+ </div>
+</div>
+</div>
 </section>
 <!-- How To Help Section End Here-->
 <section class="serie-radio">
