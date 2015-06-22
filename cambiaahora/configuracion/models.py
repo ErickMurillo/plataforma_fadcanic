@@ -5,6 +5,8 @@ from sorl.thumbnail import ImageField
 from cambiaahora.utils import get_file_path
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from ckeditor.fields import RichTextField
+from cambiaahora.noticias.models import CHOICE_IDIOMA
 
 # Create your models here.
 
@@ -44,4 +46,24 @@ class LogoApoyan(models.Model):
     class Meta:
         verbose_name = _(u'Logo apoyan')
         verbose_name_plural = _(u'Logo apoyan')
+
+class Informacion(models.Model):
+    foto = ImageField(_(u'Foto principal'), upload_to=get_file_path, blank=True, null=True)
+    idioma = models.IntegerField(choices=CHOICE_IDIOMA, default='1',verbose_name=_(u'Idioma'))
+    objetivos = models.TextField()
+    territorios = models.TextField()
+    acciones = models.TextField()
+
+    user = models.ForeignKey(User)
+    
+    fileDir = 'imagenInformacion/'
+
+    def __unicode__(self):
+        return u'%s' % (self.objetivos)
+
+    class Meta:
+        verbose_name = _(u'Información de la campaña')
+        verbose_name_plural = _(u'Información de la campaña')
+
+
 

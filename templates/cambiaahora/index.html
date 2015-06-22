@@ -210,28 +210,32 @@
 
                     
                     <div class="col-lg-12">
-                        <img class="img-responsive" src="http://placehold.it/1170x435" alt="">
-
+                    	{% for obj in informacion %}
+                    	{% if obj.foto %}
+                    		{% thumbnail obj.foto "1170x435" as img %}
+								<img class="img-responsive" src="/media/{{img}}" alt="">
+							{% endthumbnail %}
+						{% else %}
+							<img class="img-responsive" src="http://placehold.it/1170x435" alt="">
+                    	{% endif %}
+                    		
                         <br>
                         <div class="row">
                             <p class="lead col-lg-4"><strong>{% trans "Objetivo" %}:</strong><br>
-                            {% blocktrans %}
-                                Crear conciencia y movilizar a la opinión pública a favor de las acciones de la familia y la comunidad para prevenir la violencia juvenil y el abuso de drogas a través de una campaña en medios masivos
-                            {% endblocktrans %}<br>
+                            {{obj.objetivos|safe}}
+                            <br>
                             </p>
-                        	<p class="lead col-lg-4"><strong>{% trans "Territorio" %}: </strong><br>{% blocktrans %}
-                        	    La campaña Cambia ahora se encuentra en los territoris de Bluefields, Puerto Cabezas, Waspam y Managua
-                        	{% endblocktrans %}   
+                        	<p class="lead col-lg-4"><strong>{% trans "Territorio" %}: </strong><br>
+							{{obj.territorios|safe}}
                             </p>
                             
                             <p class="lead col-lg-4"><strong>{% trans "Acciones" %}:</strong><br>
-                            {% blocktrans %}
-                                La campaña promueve diferentes acciones como Talleres contra la violencia, debates escolares, docuemntales y promoción de no a la violencia en las redes sociales.
-                            {% endblocktrans %}</p>
+							{{obj.acciones|safe}}
+                            </p>
                             
                             
                         </div>
-                      
+                     {% endfor %}
                     </div>
 
                     
