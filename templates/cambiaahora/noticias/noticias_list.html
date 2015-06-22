@@ -3,6 +3,7 @@
 {% load thumbnail %}
 {% load i18n %}
 {% load endless %}
+{% load embed_video_tags %}
 
 {% block titulo %}
 	:: {% trans "Noticias" %} ::
@@ -65,9 +66,11 @@
 						<div class="cols-xs-12 col-sm-4 anim-section nota-img">
 							<div class="thumbnail">
 								{% if noticia.url %}
+								{% video noticia.url query="autoplay=1" as video %}
 									<div class="embed-responsive embed-responsive-16by9">
-										<img  src="http://placehold.it/360x210" alt="Click to play" data-video="http://www.youtube.com/embed/g2JiJPD4nxY?autoplay=1"/>
+										<img  src="{{ video.thumbnail }}" width=360 height=210 alt="Click to play" data-video="{{video.url}}"/>
 									</div>
+									{% endvideo %}
 								{% else %}
 									<a class="img-thumb" href="#">
 									{% thumbnail noticia.foto "360x210" as img %}
