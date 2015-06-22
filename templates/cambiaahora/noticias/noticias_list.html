@@ -2,6 +2,7 @@
 
 {% load thumbnail %}
 {% load i18n %}
+{% load embed_video_tags %}
 {% load endless %}
 {% load embed_video_tags %}
 
@@ -68,15 +69,22 @@
 								{% if noticia.url %}
 								{% video noticia.url query="autoplay=1" as video %}
 									<div class="embed-responsive embed-responsive-16by9">
-										<img  src="{{ video.thumbnail }}" width=360 height=210 alt="Click to play" data-video="{{video.url}}"/>
+
+									 {% video noticia.url as video %}
+										<img  src="{{ video.thumbnail }}" width=360 height=291 alt="Click to play" data-video="{{video.url}}"/>
+									 {% endvideo %}
 									</div>
-									{% endvideo %}
-								{% else %}
+								{% elif noticia.foto %}
+
 									<a class="img-thumb" href="#">
-									{% thumbnail noticia.foto "360x210" as img %}
+									{% thumbnail noticia.foto "360x291" as img %}
 										<img src="/media/{{img}}" alt="">
 									{% endthumbnail %}
 									</a>
+								{% else %}
+									<div class="embed-responsive embed-responsive-16by9">
+										<img  src="http://placehold.it/360x291" alt="Click to play" data-video="http://www.youtube.com/embed/g2JiJPD4nxY?autoplay=1"/>
+									</div>
 								{% endif %}
 								
 								<h3 class="h3"><a href="{% url 'noticia-detail' noticia.slug %}">{{noticia.titulo}}</a></h3>
