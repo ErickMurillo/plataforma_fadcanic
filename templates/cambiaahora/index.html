@@ -172,7 +172,7 @@
 								<figure>
 								{% if noticia.foto %}
 								{% thumbnail noticia.foto "360x225" as img %}
-									<!--<img src="/media/{{img}}" alt="">-->
+									<img src="/media/{{img}}" alt="">
 
 
 								{% endthumbnail %}
@@ -180,7 +180,7 @@
 								{%else%}
 									<img src="http://placehold.it/360x225" alt="">
 								{% endif %}
-									<img src="http://placehold.it/360x225" alt="">
+									
 								</figure>
 								</a>
 							<h3>{{noticia.titulo}}</h3>
@@ -338,7 +338,7 @@
 
 	<div class="container">
 		<div class="row">
-		
+
 			<header class="page-header section-header clearfix titulo-radio">
 				<h2>{% trans 'Series Radiofónica' %}</h2>
 			</header>
@@ -424,7 +424,7 @@
 										{% else %}
 											<img src="http://placehold.it/250x250" alt="" class="img-circle">
 										{% endif %}
-										<img src="http://placehold.it/250x250" alt="" class="img-circle">
+										
 										</div>
 										<div class="opinion">
 											<h4 class="name-testimonial">{{obj.titulo}}</h4>
