@@ -275,7 +275,7 @@ msgstr "United States Department of State"
 
 #: templates/cambiaahora/base.html:302
 msgid "Elaborado por"
-msgstr "Make by"
+msgstr "Developed by "
 
 #: templates/cambiaahora/index.html:8
 msgid "cambia ahora"
@@ -351,6 +351,3 @@ msgstr "READ MORE"
 #: templates/cambiaahora/multimedia/multimedia.html:8
 msgid "multimedias"
 msgstr "Multimedia"
-
-#~ msgid "Documentales"
-#~ msgstr "Documentary"

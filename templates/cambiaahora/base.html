@@ -20,6 +20,7 @@
 
 
 		<link rel="stylesheet" href="/static/cambiaahora/css/magnific-popup.css">
+		<link rel="stylesheet" href="/static/cambiaahora/css/custom-tabs.css">
 	
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -53,7 +54,9 @@
 			<header id="header">
 				<div class="container">
 					<div class="row primary-header">
-						<a href="index.html" class="col-xs-12 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/logo es.png" width="55%" alt="cambiaahora"></a>
+
+						<a href="/" class="col-xs-12 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/logo es.png" width="55%" alt="cambiaahora"></a>
+
 						<div class="social-links col-xs-12 col-sm-10">
 							<a href="/lang/en" class="btn btn-default btn-idioma">
 									<img src="/static/cambiaahora/img/eeuu.jpg" alt=""> ENGLISH
@@ -95,21 +98,23 @@
 
 								</li>
 								<li class="">
-									<a href="#">{% trans 'Campaña' %}</a>
-
+								{% if LANGUAGE_CODE == 'en' %}
+									<a href="/campaign-change-now/">{% trans 'Campaña' %}</a>
+								{%else%}
+									<a href="/campana-cambia-ahora/">{% trans 'Campaña' %}</a>
+								{% endif %}
 								</li>
 								<li class="">
 									<a href="/noticias/">{% trans 'Noticias' %}</a>
 
 								</li>
-								<li class="">
-									<a href="#">{% trans 'Radio' %}</a>
-
-								</li>
 
 								<li class="">
-									<a href="#">{% trans 'Sobre FADCANIC '%}</a>
-
+								{% if LANGUAGE_CODE == 'en' %}
+									<a href="/about-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
+								{%else%}
+									<a href="/sobre-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
+								{% endif %}
 								</li>
 							
 								
@@ -120,7 +125,7 @@
 
 								
 								<li>
-									<a href="#">{% trans 'Contactenos' %}</a>
+									<a href="/contactenos/">{% trans 'Contáctenos' %}</a>
 								</li>
 
 							</ul>
@@ -148,44 +153,11 @@
 									
 								<div class="article-list flexslider article-slider row">
 								<ul class="slides">
-
-								<li>
-								<img class="img-responsive" src="img/p1.png" alt="">
-								</li>
-								<li>
-									<img class="img-responsive" src="img/p2.png" alt="">
-								</li>
-								<li>
-									<img class="img-responsive" src="img/p3.png" alt="">
-								</li>
-								
-								<li>
-									<img class="img-responsive" src="img/p4.png" alt="">
-								</li>
-								<li>
-									<img class="img-responsive" src="img/p5.png" alt="">
-								</li>
-								<li>
-									<img class="img-responsive" src="img/p6.png" alt="">
-								</li>
-								<li>
-									<img class="img-responsive" src="img/p1.png" alt="">
-								</li>
-								<li>
-									<img class="img-responsive" src="img/p2.png" alt="">
-								</li>
-								<li>
-									<img class="img-responsive" src="img/p3.png" alt="">
-								</li>
-								<li>
-									<img class="img-responsive" src="img/p4.png" alt="">
-								</li>
-								<li>
-									<img class="img-responsive" src="img/p5.png" alt="">
-								</li>
-								<li>
-									<img class="img-responsive" src="img/p6.png" alt="">
-								</li>
+								{% for obj in logos %}
+									<li>
+									<img class="img-responsive" src="/media/{{obj.foto}}" alt="">
+									</li>
+								{% endfor %}
 								</ul>
 									
 									
@@ -235,7 +207,7 @@
                     </div>
                     
                     <div class="col-md-3 col-lg-3">
-                    	<h3 class="uppercase">{% trans 'contactos' %}</h3>
+                    	<h3 class="uppercase">{% trans 'Contáctos' %}</h3>
                         
 
                         

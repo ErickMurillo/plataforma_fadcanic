@@ -201,7 +201,7 @@ def output(request, saved_params=None):
                 lista.append(dict(org=obj.organizacion.nombre_corto, nombre_actividad=obj.nombre_actividad, id=obj.id, comentarios=obj.comentarios,
                                   acuerdos=obj.acuerdos, comunidad__nombre=obj.comunidad.nombre,
                                   municipio__nombre=obj.municipio.nombre, fecha=obj.fecha.strftime('%d/%m/%Y')))
-        return HttpResponse(simplejson.dumps(lista), mimetype="application/json")
+        return HttpResponse(simplejson.dumps(lista), content_type="application/json")
 
     return render_to_response('actividades/contraparte/output.html', RequestContext(request, locals()))
 
@@ -289,7 +289,7 @@ def get_salidas(request):
         salidas = Output.objects.filter(user=request.user, file=True)
         for obj in salidas:
             lista.append(dict(id=obj.id, comment=obj.comment, date=obj.date.strftime('%d/%m/%Y'), hash=obj.hash))
-    return HttpResponse(simplejson.dumps(lista), mimetype="application/json")
+    return HttpResponse(simplejson.dumps(lista), content_type="application/json")
 
 def generate_report(request):
     if request.method == 'POST':

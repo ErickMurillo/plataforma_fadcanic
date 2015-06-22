@@ -1,16 +1,14 @@
 {% extends "cambiaahora/base.html" %}
 
 {% load i18n %}
-{% load staticfiles %}
-{% load embed_video_tags %}
 {% load thumbnail %}
 
 {% block titulo %}
-	:: {% trans "videos" %}
+	:: {% trans "audios" %}
 {% endblock titulo %}
 
 {% block contenido %}
-	<!-- site content -->
+<!-- site content -->
 <div id="main">
 <!--Breadcrumb Section Start Here-->
 <div class="breadcrumb-section">
@@ -26,7 +24,7 @@
 						Multimedias
 					</li>
 					<li class="active">
-						Videos
+						Audios
 					</li>
 				</ul>
 
@@ -66,21 +64,19 @@
 				</ol>
 				<!--Sub Breadcrumb Section End Here-->
 				<div class="row gallery">
-				<h2>Videos</h2>
+				<h2>Audios</h2>
 				{% for obj in object_list %}
 					<div class="cols-xs-12 col-sm-6">
-						<div class="thumbnail embed-vedio">
-						{% for vd in obj.subirvideos_set.all|slice:":1" %}
-							<div class="embed-responsive embed-responsive-16by9">
-							 {% video vd.video as video %}
-								<img  src="{{ video.thumbnail }}" width=555 height=341 alt="Click to play" data-video="{{video.url}}"/>
-							 {% endvideo %}
-							</div>
-						{% endfor %}
-							<h3 class="h3"><a  href="{% url 'videos-detail' obj.id %}">{{obj.nombre}}</a></h3>
-						</div>
+						{% if  obj.foto %}
+							{% thumbnail obj.foto "310x310" as img %}
+								<img class="img-thumbnail" src="/media/{{img}}" alt="">
+							{% endthumbnail %}
+						{% else %}
+							<img class="img-thumbnail" src="http://placehold.it/310x310" alt="">
+						{% endif %}
+						<h3>Audio: <strong>{{obj.nombre}} </strong></h3>
 					</div>
-				{% endfor %}
+				{% endfor %}	
 				</div>
 			</div>
 

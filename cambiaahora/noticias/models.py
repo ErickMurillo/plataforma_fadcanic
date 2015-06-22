@@ -23,7 +23,7 @@ class Categoria(models.Model):
         return self.nombre
 
 class Noticias(models.Model):
-    titulo = models.CharField(_(u'Titulo'),max_length=250)
+    titulo = models.CharField(_(u'Titulo'),max_length=450)
     slug = models.SlugField(editable=False)
     fecha = models.DateField(_(u'Fecha'))
     foto = ImageField(_(u'Foto principal'), upload_to=get_file_path, blank=True, null=True)

@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     'actividades.contraparte',
     'actividades.fadcanic',
     'actividades.lugar',
+    'actividades.clippy',
     #extras apps
     'ckeditor',
     'smart_selects',
@@ -63,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
+                'plataforma_fadcanic.context.globales',
             ],
         },
     },
@@ -128,6 +130,8 @@ CKEDITOR_CONFIGS = {
             { 'name': 'tools', 'items': [ 'Maximize', 'ShowBlocks', ] },
         
         ],
+        'height': 'auto',
+        'width': 'auto',
     },
 }
 

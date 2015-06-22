@@ -4,7 +4,7 @@
 {% load embed_video_tags %}
 
 {% block titulo %}
-	:: {{object.titulo}} ::
+	:: {{object.nombre}} ::
 {% endblock titulo %}
 
 {% block contenido %}
@@ -19,10 +19,10 @@
 						<a href="index.html">Inicio</a>
 					</li>
 					<li>
-						<a href="notas.html">Noticias</a>
+						<a href="notas.html">Videos</a>
 					</li>
 					<li class="active">
-						{{object.titulo}}
+						{{object.nombre}}
 					</li>
 				</ul>
 			</div>
@@ -38,24 +38,16 @@
 			<div class="col-xs-12">
 
 				<header class="page-header section-header text-center">
-					<h2>{{object.titulo|upper}}</h2>
+					<h2>{{object.nombre|upper}}</h2>
 					<img class="social-img" src="newimg/social.png" alt="">
 				</header>
-<br>
+				<br>
 				<div class="portfolio-detail-description">
 					{% thumbnail object.foto "800x500" as img %}
 						<a href="#" class="img-thumb">
 							<img alt="" src="/media/{{img}}" class="center-block">
 						</a>
 					{% endthumbnail %}
-					{% if object.url %}
-					<h2>Esta noticia tiene el siguiente video</h2>
-						<div class="embed-responsive embed-responsive-16by9">
-							{% video object.url as video %}
-							<img  src="{{ video.thumbnail }}" width=800 height=500 alt="Click to play" data-video="{{video.url}}" class="center-block"/>
-							{% endvideo %}
-						</div>
-					{% endif %}
 					
 					<div class="row portfolio-details">
 						<div class="col-xs-12">
@@ -63,39 +55,19 @@
 							<div class="detail-description">
 
 								<p class="">
-									{{object.texto|safe}}
+									{{object.descripcion|safe}}
 								</p>
-								
+
+								{% for vd in object.subirvideos_set.all %}
+									<div class="embed-responsive embed-responsive-16by9">
+									 {% video vd.video as video %}
+										<img  src="{{ video.thumbnail }}" width=555 height=341 alt="Click to play" data-video="{{video.url}}"/>
+									 {% endvideo %}
+									 <h3 class="h3">{{vd.titulo}}</h3>
+									</div>
+								{% endfor %}
 							</div>
-
-						<header class="page-header section-header text-left">
-								<h2 class="text-left h3">Noticias Relacionadas</h2>
-							</header>
-						<div class="row we-help anim-section">
-							{% for relacion in noticias_relacionadas %}
-							
-							<div class="cols-xs-12 zoom col-sm-4">
-								<div class="thumbnail">
-								{% thumbnail relacion.foto "360x210" as img %}
-									<a href="#" class="img-thumb">
-										<img alt="" src="/media/{{img}}">
-									</a>
-								{% endthumbnail %}
-
-
-									<h3 class="h3"><a href="{% url 'noticia-detail' relacion.slug %}">{{relacion.titulo}}</a></h3>
-									<p>
-										{{relacion.texto|safe|truncatewords:12}}
-									</p>
-
-								</div>
-							</div>
-
-							{% endfor %}
 						</div>
-
-					
-				</div>
 
 			</div>
 		</div>

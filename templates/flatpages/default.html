@@ -33,49 +33,14 @@
 						<section class="our-story row">
 							<div class="col-xs-12">
 								<header class="story-heading section-header">
-									<h2><strong>Historia</strong></h2>
+									<h2><strong>{{flatpage.title}}</strong></h2>
 								</header>
 								<div class="row">
-									<div class="col-xs-12 col-sm-5">
-										<section class="slider-wrap flex-slide flexslider">
-											<ul class="slides">
-											<li>
-												<img src="static_media/img/img-slide-01.jpg" alt="">
-											</li>
-											<li>
-												<img src="static_media/img/img-slide-02.jpg" alt="">
-											</li>
-											</ul>
-										</section>
-									</div>
 									
 										<p class="">
 											
-												En septiembre de 1987, la Asamblea Nacional de Nicaragua aprobó la Ley 28: “Estatuto de Autonomía de las Comunidades de la Costa Atlántica de Nicaragua”. Esta ley reivindica las demandas históricas de sus 6 pueblos indígenas y comunidades étnicas de mayor inclusión y espacios de participación efectiva, en la toma de decisiones de orden político, social y económica; oportunidades decisorias para el manejo y aprovechamiento de los recursos naturales y ambientales; el respeto y visibilización de las tradiciones histórico-culturales propias.
-												En este contexto se organiza la Fundación para la Autonomía y Desarrollo de la Costa Atlántica de Nicaragua (FADCANIC) para juntar recursos y voluntades que consoliden e impulsen la experiencia de la autonomía.
+											{{ flatpage.content|safe }}
 											
-										</p>
-								
-										
-										<strong>DEFINICIÓN</strong>
-									<p>
-										Organización de la sociedad civil, apartidista, sin fines de lucro con sede en las Regiones Autónomas que trabaja para el mejoramiento de la calidad de vida los pueblos del caribe y un desarrollo con equidad y justicia social.
-									</p>
-									<br>
-									<strong>CONSTITUCIÓN</strong>
-
-									<p>
-									Personería jurídica autorizada el 15 de marzo de 1990, mediante el decreto No. 102 de la Asamblea Nacional de Nicaragua, Estatutos aprobados en la Gaceta, Diario Oficial el 29 de Mayo de 1992.
-									Conformada por hombres y mujeres costeños y no costeños comprometidos con el desarrollo de la región, de reconocida trayectoria en el desarrollo en contextos multiétnicos y multiculturales.
-									</p>
-									<p>
-									Sólido respaldo profesional en el área de las ciencias sociales, recursos naturales y del medio ambiente, informática y finanzas.
-									Instancia de la sociedad civil donde confluyen trabajadores, instituciones y redes sociales que con el apoyo de agencias internacionales de cooperación fortalecen y consolidan la autonomía apoyando el desarrollo integral.
-									Espacio para la construcción de nuevos modelos de desarrollo más incluyentes y respetuosos de las visiones y formas propias de organización de los pueblos indígenas y comunidades étnicas de la región Foro de discusióne y consenso sobre los procesos sociales, políticos y económicos.
-
-									</p>									
-										<p>
-											Habitasse platea dictumst cras sit amet est eget dui viverra scelerisque duis semper pulvinar in risus ac bibendum aenean hendrerit pharetra nisl Sed sit am etsapien et elit porttitor
 										</p>
 									
 								</div>
@@ -84,20 +49,6 @@
 						<!-- Our Story Section Start Here -->
 
 					</div>
-
-					<!-- Helping Section Start here-->
-					<section class="helping-child parallax">
-						<div class="container">
-							<div class="row">
-								<div class="col-xs-12 col-sm-7 col-md-5">
-									<h2 class="h1">Helping child in <strong class="border-none">Africa</strong></h2>
-									<p>orem ipsum dolor sit amet consectetur adipiscing elit ellentesque egestas nisl at dui tempus uis imperdiet purus fringilla. consectetur adipiscing elit tempus.</p>
-									<a data-toggle="modal" href="external.html" data-target=".donate-form" class="btn btn-theme">Donate now</a>
-								</div>
-							</div>
-						</div>
-					</section>
-					<!-- Helping Section Start here-->
 
 					<!-- Our Team Section Start Here -->
 					<div class="container">
@@ -199,4 +150,5 @@
 							</div>
 						</div>
 					</div>
+				</div>
 {% endblock contenido %}

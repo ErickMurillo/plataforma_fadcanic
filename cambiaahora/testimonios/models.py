@@ -21,7 +21,7 @@ class Testimonios(models.Model):
 
     user = models.ForeignKey(User)
 
-    fileDir = 'testimonios/'
+    fileDir = 'opiniones/'
 
     def save(self, *args, **kwargs):
         self.slug = (slugify(self.titulo))
@@ -31,5 +31,5 @@ class Testimonios(models.Model):
         return u'%s' % (self.titulo)
 
     class Meta:
-        verbose_name=_(u'Testimonio')
-        verbose_name_plural=_(u'Testimonios')
+        verbose_name=_(u'Opiniones')
+        verbose_name_plural=_(u'Opiniones')

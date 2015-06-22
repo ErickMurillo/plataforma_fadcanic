@@ -18,15 +18,55 @@ class InlineSubirDocumentos(admin.TabularInline):
 	extra = 1
 
 class VideosAdmin(admin.ModelAdmin):
+	def queryset(self, request):
+		if request.user.is_superuser:
+			return Videos.objects.all()
+		return Videos.objects.filter(user=request.user)
+
+	def save_model(self, request, obj, form, change):
+		obj.user = request.user
+		obj.save()
+
+	exclude = ('user',)
 	inlines = [InlineSubirVideos]
 
 class AudiosAdmin(admin.ModelAdmin):
+	def queryset(self, request):
+		if request.user.is_superuser:
+			return Audios.objects.all()
+		return Audios.objects.filter(user=request.user)
+
+	def save_model(self, request, obj, form, change):
+		obj.user = request.user
+		obj.save()
+
+	exclude = ('user',)
 	inlines = [InlineSubirAudios]
 
 class FotosAdmin(admin.ModelAdmin):
+	def queryset(self, request):
+		if request.user.is_superuser:
+			return Fotos.objects.all()
+		return Fotos.objects.filter(user=request.user)
+
+	def save_model(self, request, obj, form, change):
+		obj.user = request.user
+		obj.save()
+
+	exclude = ('user',)
 	inlines = [InlineSubirFotos]
 
 class DocumentosAdmin(admin.ModelAdmin):
+	def queryset(self, request):
+		if request.user.is_superuser:
+			return Documentales.objects.all()
+		return Documentales.objects.filter(user=request.user)
+
+	def save_model(self, request, obj, form, change):
+		obj.user = request.user
+		obj.save()
+
+	exclude = ('user',)
 	inlines = [InlineSubirDocumentos]
 
 # Register your models here.
