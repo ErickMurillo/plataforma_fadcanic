@@ -51,13 +51,16 @@
 		float: left;
 		padding-right: 20px;	
 	}
-
+    .login {
+        width: 50% !important;
+    }
 </style>
 {% endblock %}
 
 
 {% block contenido %}
-<div id="login">
+<h3 align="center">Inicio de Sesión</h3>
+<div class="login">
 	<form action="." method="post" class="form">
      {% csrf_token %}
      <div class="col-md-12">

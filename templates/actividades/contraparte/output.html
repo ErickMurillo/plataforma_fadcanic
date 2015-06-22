@@ -110,31 +110,13 @@
 		</div>
 	{% endif %}
 </div>
-<!--<div class="tablegatito">
-	<div class="tableoptions" id="tableoptions">
-		<div style="float: left;">
-			<a class="guardarXLS optionsbutton" href="#" onclick="exportarXLS('result_table'); return false;">Exportar <img src="/files/img/xls.png" alt=":D"></a>
-		{% if not noshare %}		
-			<a href="#inline" id="sharesave" class="optionsbutton">Guardar para informe <img src="/files/img/save.png" alt=":D"></a>
-			<a href="#file" id="generatefile" class="optionsbutton">Generar informe <img src="/files/img/file.png" alt=":D"></a>
-			<a href="#" id="share" class="optionsbutton">Compartir <img src="/files/img/share.png" alt=":D"></a>
-		</div>
-		<div id="copiador" style="display: none;"></div>
-		{% else %}
-		</div>
-		{% endif %}
-		<div class="clean"></div>
-	</div>
-	</div>-->
+
 			
 
 
 <div class="dinamictable">
 		{% load_table dicc opts2 var2 main_field total tipo %}
 	</div>
-
-
-<div>
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -175,11 +157,6 @@
     {% endif %}	
  
   </div>
-
-</div>
-
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -239,41 +216,67 @@
   </div>
 </div>
 
-<div style="display:none;">
-	<!--<div id="inline">
-		<form method="POST" action="." class="form">{% csrf_token %}
-			<label>Comentario: </label>
-			<textarea rows="5" cols="50" name="comentario" id="id_comentario"></textarea><br><br>
-			<input type="submit" id="guardarfile" value="Guardar" title="Guardar">
-		</form>
-	</div>-->
-	<!--<div id="file">
-		<div class="banner banner-filtros en_inline">
-			<center class="banner_title">Generar reporte</center>	
-		</div>				
-		<table class="result_table reporte_tabla" width="100%">
-			<thead>
-				<tr>
-					<th><input id="id_todos" type="checkbox" name="todos" title="Marcar todos"></th>
-					<th>Dirección</th>
-					<th>Fecha</th>
-					<th>Comentario</th>										
-				</tr>
-			</thead>
-			<tbody id="reportbodytable">				
-			</tbody>
-		</table><br>
-		<input type="submit" id="generate_report" value="Generar Reporte" title="Generar Reporte" class="optionsbutton">		
-		<input type="submit" id="delete_report" value="Eliminar" title="Eliminar" class="optionsbutton">
-	</div>-->
-</div>
+
 <script>
 	(function($){
     	$('.result_table').addClass('table');
 	})(jQuery || django.jQuery);
 </script>
 
+{% if not borde %}
 
-
+<script type="text/javascript">
+function loadCell(key, key2){
+	var detalle = $('input:radio[name=contenido_detalle]:checked').val();
+	if(detalle){
+		$.getJSON('?k='+key+'&k2='+key2+'&data='+detalle, function(data){
+			if(data){$('#contenido_de').html('');}
+			_.each(data, function(obj){			
+				var actividad = "<div class='actividad'><div class='data'>\
+				<span>"+obj.org+' - '+obj.nombre_actividad+"</span><span class='lugar'><b>"+obj.comunidad__nombre+", "+obj.municipio__nombre+"</b></span>\
+				<span class='fecha'><b>"+obj.fecha+"</b></span></div><div class='media'>";
+				
+				if(detalle=='multimedia'){
+					if(obj.foto1_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto1_pic+"'><img src='"+obj.foto1_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
+					if(obj.foto2_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto2_pic+"'><img src='"+obj.foto2_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
+					if(obj.foto3_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto3_pic+"'><img src='"+obj.foto3_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
+					if(obj.vthumb!=''){actividad+="<a class='yvideo fancybox.iframe' href='"+obj.video+"'>"+obj.vthumb+"</a>";}
+				}else{
+					actividad+="<div class='data' style='font-size: 12px;'><b>Comentarios: </b>"+obj.comentarios;
+					actividad+="<br><b>Acuerdos: </b>"+obj.acuerdos+"</div>";
+				}				
+				
+				actividad+="</div><div class='clean'></div>";			
+				$(actividad).appendTo($('#contenido_de'));
+				
+				//activar tab adecuada
+				$.fn.tabs.foo($('a[href="#detalle"]').parent(), $('a[href="#detalle"]').parent().parent());
+				$.fn.tabs.foo($('#detalle'), $('#detalle').parent());			
+			});
+		});	
+	}else{
+		alert('Selecciona el tipo de detalles.');
+	}	
+}
+</script>
+<script type="text/javascript">
+	$(function() {
+		$("a[rel=group]").fancybox({			
+			'titlePosition' 	: 'over',		
+		});
+		$(".yvideo").fancybox({
+			maxWidth	: 800,
+			maxHeight	: 600,
+			fitToView	: false,
+			width		: 644,
+			height		: 368,
+			autoSize	: false,
+			closeClick	: false,
+			openEffect	: 'none',
+			closeEffect	: 'none'
+		});
+	});
+</script>
+{% endif %}
 
 {% endblock %}

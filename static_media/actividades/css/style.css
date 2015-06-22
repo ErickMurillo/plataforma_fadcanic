@@ -1,13 +1,15 @@
-#login {
-	width: 50%;
-	margin: 0 auto;
-	margin: 3% 25% 3% 25% ;
-	background: #d7d7d8;
-	border-radius: 15px;
+.login {
+  width: 65%;
+  margin: 0 auto;
+  /* margin: 3% 25% 3% 25%; */
+  margin-bottom: 3em;
+  background: #eee;
+  border-radius: 15px;
+  margin-top: 3em;
 }
 
-#login form {
-	padding: 50px;
+.login form {
+	padding: 3em;
 	
 }
 
@@ -91,4 +93,16 @@ h5, .h5 {
 
 .space {
 	margin-bottom: 3em !important;
+}
+
+.filtro_space{
+	margin-bottom: 1em !important;
+}
+
+.ui-multiselect {
+  width: 100% !important;
+}
+
+@media screen {
+	
 }

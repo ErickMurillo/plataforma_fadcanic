@@ -172,8 +172,10 @@
 								<figure>
 								{% if noticia.foto %}
 								{% thumbnail noticia.foto "360x225" as img %}
-									<img src="/media/{{img}}" alt="">
+									<img src="http://placehold.it/360x225" alt="">
+									
 								{% endthumbnail %}
+								
 								{%else%}
 									<img src="http://placehold.it/360x225" alt="">
 								{% endif %}

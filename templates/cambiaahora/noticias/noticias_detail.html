@@ -7,6 +7,17 @@
 	:: {{object.titulo}} ::
 {% endblock titulo %}
 
+{% block share_fb %}
+    <meta property="og:title" content="{{object.titulo}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="http://web.cambiaahora.com/media/{{object.foto}}">
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:description" content="{{object.texto}}" />
+    <meta property="og:url" content="http://web.cambiaahora.com{{request.path}}" />
+    <meta property="og:locale" content="es_ES" />
+{% endblock share_fb %}
+
 {% block contenido %}
 <!-- Breadcrumb Section Start Here -->
 <div class="breadcrumb-section">
@@ -39,7 +50,9 @@
 
 				<header class="page-header section-header text-center">
 					<h2>{{object.titulo|upper}}</h2>
-					<img class="social-img" src="newimg/social.png" alt="">
+					<!--<img class="social-img" src="newimg/social.png" alt="">-->
+					<div class="fb-share-button" data-share="true" data-layout="button_count"></div>
+					 <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{object.titulo}}">Tweet</a>
 				</header>
 <br>
 				<div class="portfolio-detail-description">
@@ -48,6 +61,7 @@
 							<img alt="" src="/media/{{img}}" class="center-block">
 						</a>
 					{% endthumbnail %}
+					<img src="http://placehold.it/360x225" alt="">
 					{% if object.url %}
 					<h2>Esta noticia tiene el siguiente video</h2>
 						<div class="embed-responsive embed-responsive-16by9">
@@ -106,5 +120,4 @@
 
 </div>
 </div>
-
 {% endblock contenido %}
