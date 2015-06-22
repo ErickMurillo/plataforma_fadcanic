@@ -4,6 +4,7 @@
 {% load i18n %}
 {% load embed_video_tags %}
 {% load endless %}
+{% load embed_video_tags %}
 
 {% block titulo %}
 	:: {% trans "Noticias" %} ::
@@ -64,14 +65,19 @@
 								
 					{% for noticia in object_list %}
 						<div class="cols-xs-12 col-sm-4 anim-section nota-img">
-							<div class="thumbnail">
+							<div class="thumbnail img-listnota">
 								{% if noticia.url %}
+								{% video noticia.url query="autoplay=1" as video %}
 									<div class="embed-responsive embed-responsive-16by9">
 									 {% video noticia.url as video %}
 										<img  src="{{ video.thumbnail }}" width=360 height=291 alt="Click to play" data-video="{{video.url}}"/>
 									 {% endvideo %}
 									</div>
 								{% elif noticia.foto %}
+										<img  src="{{ video.thumbnail }}" width=360 height=210 alt="Click to play" data-video="{{video.url}}"/>
+									</div>
+									{% endvideo %}
+								{% else %}
 									<a class="img-thumb" href="#">
 									{% thumbnail noticia.foto "360x291" as img %}
 										<img src="/media/{{img}}" alt="">
