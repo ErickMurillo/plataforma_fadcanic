@@ -19,3 +19,14 @@
   <li><a href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
 {% endif %}
 </ul>
+
+<div id="share-buttons">
+            <!-- Facebook -->
+            <a href="http://www.facebook.com/sharer.php?u={{request.url}}" target="_blank"><img src="{% static 'cambiaahora/img/facebook.png' %}" alt="Facebook" /></a>
+            <!-- Twitter -->
+            <a href="https://twitter.com/share" target="_blank" data-text="{{object.titulo}}"><img src="{% static 'cambiaahora/img/twitter.png' %}" alt="Twitter"/></a>
+            <!-- Google+ -->
+            <a href="https://plus.google.com/share?url={{request.url}}" target="_blank"><img src="{% static 'cambiaahora/img/g+.png' %}" alt="Google" /></a>
+            <!-- Email -->
+            <!--<a href="mailto:?Subject=FrinMash&Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://frinmash.blogspot.com"><img src="http://4.bp.blogspot.com/-njgKtNLrPqI/UwNI2o-9WfI/AAAAAAAAGR4/f8da1gBgyLs/s1600/email.png" alt="Email" /></a>-->
+          </div>

@@ -2,23 +2,26 @@
 
 {% load thumbnail %}
 {% load embed_video_tags %}
+{% load staticfiles %}
+{% load i18n %}
 
 {% block titulo %}
-	:: {{object.titulo}} ::
+:: {{object.titulo}} ::
 {% endblock titulo %}
 
 {% block share_fb %}
-    <meta property="og:title" content="{{object.titulo}}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:image" content="http://web.cambiaahora.com/media/{{object.foto}}">
-    <meta property="og:image:width" content="300" />
-    <meta property="og:image:height" content="300" />
-    <meta property="og:description" content="{{object.texto}}" />
-    <meta property="og:url" content="http://web.cambiaahora.com{{request.path}}" />
-    <meta property="og:locale" content="es_ES" />
+<meta property="og:title" content="{{object.titulo}}" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="http://web.cambiaahora.com/media/{{object.foto}}">
+<meta property="og:image:width" content="300" />
+<meta property="og:image:height" content="300" />
+<meta property="og:description" content="{{object.texto}}" />
+<meta property="og:url" content="http://web.cambiaahora.com{{request.path}}" />
+<meta property="og:locale" content="es_ES" />
 {% endblock share_fb %}
 
 {% block contenido %}
+
 <!-- Breadcrumb Section Start Here -->
 <div class="breadcrumb-section">
 	<div class="container">
@@ -47,54 +50,78 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
+				
+
 
 				<header class="page-header section-header text-center">
 					<h2>{{object.titulo|upper}}</h2>
-					<!--<img class="social-img" src="newimg/social.png" alt="">-->
-					<div class="fb-share-button" data-share="true" data-layout="button_count"></div>
-					 <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{object.titulo}}">Tweet</a>
 				</header>
-<br>
-				<div class="portfolio-detail-description">
+				<br>
+
+				<div id="share-buttons">
+					<a class="facebook customer share" href="http://www.facebook.com/sharer.php?u={{request.url}}/" title="Facebook share" target="_blank"><img src="{% static 'cambiaahora/img/facebook.png' %}"></a>
+			
+					<a class="twitter customer share" href="http://twitter.com/share?url={{request.url}}&amp;text={{object.titulo}}" title="Twitter share" target="_blank"><img src="{% static 'cambiaahora/img/twitter.png' %}"></a>
+				
+					<a class="google_plus customer share" href="https://plus.google.com/share?url={{request.url}}" title="Google Plus Share" target="_blank"><img src="{% static 'cambiaahora/img/g+.png' %}"></a>
+				</ul>
+				</div>
+				
+
+				<div class="portfolio-detail-description">	
+					{% if not object.url %}
 					{% thumbnail object.foto "800x500" as img %}
-						<a href="#" class="img-thumb">
-							<img alt="" src="/media/{{img}}" class="center-block">
-						</a>
+					<a href="#" class="img-thumb">
+						<img alt="" src="/media/{{img}}" class="center-block">
+					</a>
 					{% endthumbnail %}
-					
-					{% if object.url %}
-					<h2>Esta noticia tiene el siguiente video</h2>
-						<div class="embed-responsive embed-responsive-16by9">
-							{% video object.url as video %}
-							<img  src="{{ video.thumbnail }}" width=800 height=500 alt="Click to play" data-video="{{video.url}}" class="center-block"/>
-							{% endvideo %}
-						</div>
 					{% endif %}
 					
-					<div class="row portfolio-details">
-						<div class="col-xs-12">
+					{% if object.url %}
+					<!--<h2>Esta noticia tiene el siguiente video</h2>-->
+					<div class="embed-responsive embed-responsive-16by9">
+						{% video object.url as video  %}
+						<div class="col-md-8 col-md-offset-2 col-xs-12">
+							<iframe id="detalle_nota_video" 
+							src="{{ video.url }}?byline=0&amp;portrait=0&amp;color=ff0179&amp;autoplay=1" 
+							frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+						</iframe>
+					</div>
+					<div class="col-md-2 hidden-xs"></div>
 
-							<div class="detail-description">
+					<!--<img  src="{{ video.thumbnail }}" width="70%" height="60%" alt="Click to play" data-video="{{video.url}}" class="center-block"/>-->
+					{% endvideo %}
 
-								<p class="">
-									{{object.texto|safe}}
-								</p>
-								
-							</div>
+				</div>
+				<style>
+
+				</style>
+				{% endif %}
+
+				<div class="row portfolio-details">
+					<div class="col-xs-12">
+
+						<div class="detail-description">
+
+							{{object.texto|safe}}
+
+						</div>
 
 						<header class="page-header section-header text-left">
+
 								<h2 class="text-left h3">{% trans "Noticias Relacionadas" %}</h2>
 							</header>
+
 						<div class="row we-help anim-section">
 							{% for relacion in noticias_relacionadas %}
 							
 							<div class="cols-xs-12 zoom col-sm-4">
 								<div class="thumbnail">
-								{% thumbnail relacion.foto "360x210" as img %}
+									{% thumbnail relacion.foto "360x210" as img %}
 									<a href="#" class="img-thumb">
 										<img alt="" src="/media/{{img}}">
 									</a>
-								{% endthumbnail %}
+									{% endthumbnail %}
 
 
 									<h3 class="h3"><a href="{% url 'noticia-detail' relacion.slug %}">{{relacion.titulo}}</a></h3>
@@ -108,16 +135,17 @@
 							{% endfor %}
 						</div>
 
-					
-				</div>
 
+					</div>
+
+				</div>
 			</div>
 		</div>
+		<!--  sections end -->
+
 	</div>
-	<!--  sections end -->
-
-</div>
 
 </div>
 </div>
+
 {% endblock contenido %}
