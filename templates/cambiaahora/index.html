@@ -263,7 +263,7 @@
 	<div class="popup-gallery">
 		{% for obj in albunes %}
 			{% for fotos in obj.subirfotos_set.all|slice:":6" %}
-				<a class="gallery" href="/media/{{fotos.foto}}" title="The Cleaner">
+				<a class="gallery" href="/media/{{fotos.foto}}" title="{{fotos.titulo}}">
 					<img src="/media/{{fotos.foto}}" width="222" height="auto">	
 				</a>
 			{% endfor %}
