@@ -1852,4 +1852,33 @@ hr.style-two {
 a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 	color: black;
 }
+/* video detalle */
+
+#detalle_nota_video {
+	width: 700px !important;
+	height: 400px !important;
+
+
+}
+.embed-responsive.embed-responsive-16by9 {
+  padding-bottom: 35% !important;
+
+}
+
+
+#share-buttons img {
+	width: 100%;
+	padding: 5px;
+	border: 0;
+	box-shadow: 0;
+	display: inline;
+	transition: all .2s ease-in-out; 
+}
+
+#share-buttons {
+	width: 5%;
+
+}
+
+#share-buttons img:hover { transform: scale(1.05); }
 
