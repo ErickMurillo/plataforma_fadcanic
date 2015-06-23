@@ -1873,6 +1873,11 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 
 #share-buttons {
 	width: 5%;
+	position: absolute;
+    top:0;
+    right: 0px;
+    z-index: 100;
+    
 
 }
 

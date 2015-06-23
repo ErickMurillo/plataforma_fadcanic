@@ -32,4 +32,20 @@
     });
   });
 
+$(document).ready(function() {
+        var posicion = $("#share-buttons").offset();
+      var margenSuperior = 150;
+       $(window).scroll(function() {
+           if ($(window).scrollTop() > posicion.top) {
+               $("#share-buttons").stop().animate({
+                   marginTop: $(window).scrollTop() - posicion.top + margenSuperior
+               });
+           } else {
+               $("#share-buttons").stop().animate({
+                   marginTop: 100
+               });
+           };
+       });
+});
 }(jQuery));
+

@@ -3,6 +3,7 @@
 {% load thumbnail %}
 {% load embed_video_tags %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block titulo %}
 :: {{object.titulo}} ::
@@ -54,25 +55,15 @@
 
 				<header class="page-header section-header text-center">
 					<h2>{{object.titulo|upper}}</h2>
-					<!--<img class="social-img" src="newimg/social.png" alt="">-->
-					<!--<div class="fb-share-button" data-share="true" data-layout="button_count"></div>
-					<a href="https://twitter.com/share" class="twitter-share-button" data-text="{{object.titulo}}">Tweet</a>-->
 				</header>
 				<br>
 
 				<div id="share-buttons">
-					<!--<a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://web.cambiaahora.com{{request.path}}&amp;p[images][0]={{object.foto}}&amp;p[title]={{object.titulo}}&amp;p[summary]={{object.texto}}"><img src="{% static 'cambiaahora/img/facebook.png' %}"></a>
-
-					<a href="https://twitter.com/intent/tweet?url=http://web.cambiaahora.com{{request.path}}&amp;text={{object.titulo}}"><img src="{% static 'cambiaahora/img/twitter.png' %}"></a>
-
-					<a href="https://plus.google.com/share?url=http://web.cambiaahora.com{{request.path}}"><img src="{% static 'cambiaahora/img/g+.png' %}"></a>-->
-					
-						<a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=http://web.cambiaahora.com/en/noticias/noticias/official-launching-of-the-campaign-in-bluefields/" title="Facebook share" target="_blank"><img src="{% static 'cambiaahora/img/facebook.png' %}"></a>
+					<a class="facebook customer share" href="http://www.facebook.com/sharer.php?u={{request.url}}/" title="Facebook share" target="_blank"><img src="{% static 'cambiaahora/img/facebook.png' %}"></a>
+			
+					<a class="twitter customer share" href="http://twitter.com/share?url={{request.url}}&amp;text={{object.titulo}}" title="Twitter share" target="_blank"><img src="{% static 'cambiaahora/img/twitter.png' %}"></a>
 				
-						<a class="twitter customer share" href="http://twitter.com/share?url=http://web.cambiaahora.com/en/noticias/noticias/official-launching-of-the-campaign-in-bluefields/&amp;text={{object.titulo}}" title="Twitter share" target="_blank"><img src="{% static 'cambiaahora/img/twitter.png' %}"></a>
-					
-						<a class="google_plus customer share" href="https://plus.google.com/share?url=http://web.cambiaahora.com/en/noticias/noticias/official-launching-of-the-campaign-in-bluefields/" title="Google Plus Share" target="_blank"><img src="{% static 'cambiaahora/img/g+.png' %}"></a>
-					
+					<a class="google_plus customer share" href="https://plus.google.com/share?url={{request.url}}" title="Google Plus Share" target="_blank"><img src="{% static 'cambiaahora/img/g+.png' %}"></a>
 				</ul>
 				</div>
 				
@@ -117,13 +108,10 @@
 						</div>
 
 						<header class="page-header section-header text-left">
-<<<<<<< HEAD
-							<h2 class="text-left h3">Noticias Relacionadas</h2>
-						</header>
-=======
+
 								<h2 class="text-left h3">{% trans "Noticias Relacionadas" %}</h2>
 							</header>
->>>>>>> 82b0e7f28ca3f9f4a1888193513af6790daf3642
+
 						<div class="row we-help anim-section">
 							{% for relacion in noticias_relacionadas %}
 							
