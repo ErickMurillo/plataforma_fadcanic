@@ -7,7 +7,7 @@ from cambiaahora.utils import get_file_path
 from django.contrib.auth.models import User
 from cambiaahora.noticias.models import CHOICE_APROBACION, CHOICE_IDIOMA
 from django.utils.translation import ugettext as _
-
+from datetime import date
 # Create your models here.
 
 class Staff(models.Model):
@@ -29,8 +29,15 @@ class Staff(models.Model):
         self.slug = (slugify(self.titulo))
         super(Staff, self).save(*args, **kwargs)
 
-    def __unicode__(self):
-        return u'%s' % (self.titulo)
+
+
+    def calculate_age(self):
+        days_in_year = 365.2425
+        age = int((date.today() - self.fecha).days / days_in_year)  
+        return age
+
+        def __unicode__(self):
+            return u'%s' % (self.titulo)
 
     class Meta:
         verbose_name=_(u'Staff')

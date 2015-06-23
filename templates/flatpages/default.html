@@ -1,5 +1,7 @@
 {% extends "cambiaahora/base.html" %}
 
+{% load thumbnail %}
+
 {% block contenido %}
 	<div id="main">
 				<!--Breadcrumb Section Start Here-->
@@ -62,18 +64,24 @@
 									<div class="col-xs-12 col-sm-3 anim-section">
 									<div class="thumbnail">
 										<figure class="team-photo">
-										<img src="img/staff2.jpg" alt="">
+										{% if obj.foto %}
+											{% thumbnail obj.foto "250x250" as img %}
+												<img src="/media/{{img}}" alt="" class="img-circle">
+											{% endthumbnail %}
+										{% else %}
+											<img src="http://placehold.it/250x250" alt="" class="img-circle">
+										{% endif %}
 										</figure>
 											<div class="caption">
 												<h3>{{obj.titulo}}</h3>
 												<ul class="staff-info">
 													<li>
-														<a href="#"><strong>Cargo: </strong> </a>
+														<a href="#"><strong>Cargo: {{obj.cargo}}</strong> </a>
 													</li>
 													<li>
-														<a href="#"><strong>Edad: </strong> 26</a>
+														<a href="#"><strong>Edad: </strong> {{obj.calculate_age}}</a>
 													<li>
-														<a href="#"><strong>Profesión: </strong> Lic. Sociologia con Mención En Autonomía</a>
+														<a href="#"><strong>Profesión: </strong> {{obj.profesion}}</a>
 													</li>
 												</ul>
 											</div>
