@@ -154,7 +154,7 @@
 </section>
 <!-- banner slider End Here -->
 <!-- Latest News Section Start Here -->
-<section class="latest-news ">
+	<section class="latest-news ">
 	<div class="container anim-section">
 		<div class="row">
 			<div class="col-xs-12">
@@ -204,57 +204,75 @@
 			</div>
 		</div>
 	</div>
-</section>
+	</section>
 <!-- Latest News Section End Here -->
- <!-- ABOUT US start here-->
-        <section id="about">
-        	<div class="container">
-                <div class="row">
-                	<header class="page-header section-header clearfix">
-						<h2 class="title-campana">{% trans 'Información de la Campaña' %}</h2>
-					</header>
 
-                    
-                    <div class="col-lg-12">
+<!--Testimonial Section Start Here-->
+			
+				<section class="testimonial ">
+					<div class="container anim-section">
+						<div class="row">
+							<div class="col-xs-12">
+								<header class="page-header section-header clearfix">
+									<h2>{% trans "Cambia Ahora" %}<strong> {% trans "Opina" %}</strong></h2>
+								</header>
 
-                    	{% for obj in informacion %}
-                    	{% if obj.foto %}
-                    		{% thumbnail obj.foto "1170x480" as img %}
-								<img class="img-responsive" src="/media/{{img}}" alt="">
-							{% endthumbnail %}
-						{% else %}
-							<img class="img-responsive" src="http://placehold.it/1170x480" alt="">
-                    	{% endif %}
+									
+								<div class="article-list flexslider article-slider row">
+								<ul class="slides">
+								{% for obj in ultimas_testimonios %}
+									<li class="list-opinion">
+									<div class="item-testimonial">
+										<div class="avatar">
+										{% if obj.foto %}
+											{% thumbnail obj.foto "250x250" as img %}
+												<img src="/media/{{img}}" alt="" class="img-circle">
+											{% endthumbnail %}
+										{% else %}
+											<img src="http://placehold.it/250x250" alt="" class="img-circle">
+										{% endif %}
+										
+										</div>
+										<div class="opinion">
+											<h4 class="name-testimonial">{{obj.titulo}}</h4>
 
-                        <br>
-                        <div class="row">
-                            <p class="lead col-lg-4"><strong>{% trans "Objetivo" %}:</strong><br>
-                            {{obj.objetivos|safe}}
-                            <br>
-                            </p>
-                        	<p class="lead col-lg-4"><strong>{% trans "Territorio" %}: </strong><br>
-							{{obj.territorios|safe}}
-                            </p>
-                            
-                            <p class="lead col-lg-4"><strong>{% trans "Acciones" %}:</strong><br>
-							{{obj.acciones|safe}}
-                            </p>
-                            
-                            
-                        </div>
-                     {% endfor %}
-                     		<div class="">
-                            	<a href="" class="btn-campana pull-right">{% trans "LEER MÁS" %}</a>
-                            </div>
-                    </div>
+											<hr class="style-two">
 
-                    
-                </div>
-            </div>
-        </section>
-    <!-- ABOUT US Section End Here -->
-<!-- How To Help Section Start Here -->
-<section class="how-to-help">
+											<span class="fa fa-quote-left"></span> 
+											<p>{{obj.texto|safe}}
+											</p>
+											<span class="fa fa-quote-right"></span>
+										</div>
+									</div>
+								</li>
+								{% endfor %}
+								
+
+								</ul>
+									
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+<!--Testimonial Section End Here -->
+
+<!-- Gallery Section Start Here-->
+	<div class="popup-gallery">
+		{% for obj in albunes %}
+			{% for fotos in obj.subirfotos_set.all|slice:":6" %}
+				<a class="gallery" href="/media/{{fotos.foto}}" title="The Cleaner">
+					<img src="/media/{{fotos.foto}}" width="222" height="auto">	
+				</a>
+			{% endfor %}
+		{% endfor %}		
+	</div>
+<!--Gallery Section End Here -->
+
+<!-- Documentales Section Start Here -->
+	<section class="how-to-help">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 ">
@@ -264,77 +282,79 @@
 
 				<div class="row help-list">
 					
-				<div class="row">
+					<div class="row">
 
-	<!-- tabs left -->    	
+						<!-- tabs left -->    	
 
-		<div class="list-documental col-xs-12 col-sm-5"> <!-- required for floating -->
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs tabs-left nav-documental">
-			{% for obj in documentales %}
-			<li {% if forloop.counter == 1 %}class="active"{% endif %} >
+						<div class="list-documental col-xs-12 col-sm-5"> <!-- required for floating -->
+						<!-- Nav tabs -->
+							<ul class="nav nav-tabs tabs-left nav-documental">
+								{% for obj in documentales %}
+								<li {% if forloop.counter == 1 %}class="active"{% endif %} >
 
-				<a href="#home{{forloop.counter}}" data-toggle="tab">
-					<div class="img-documental col-xs-12 col-sm-6 ">
-					<figure>
+									<a href="#home{{forloop.counter}}" data-toggle="tab">
+										<div class="img-documental col-xs-12 col-sm-6 ">
+										<figure>
 
-					{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
-						{% video vd.video as video %}
-							<img src="{{ video.thumbnail }}" width="170" height="100" alt="">
-						{% endvideo %}
-					{% endfor %}
+										{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
+											{% video vd.video as video %}
+												<img src="{{ video.thumbnail }}" width="170" height="100" alt="">
+											{% endvideo %}
+										{% endfor %}
 
-					</figure>
-					</div>
-					<div class="media col-xs-12 col-sm-6 video-list">
-						<h3>{{obj.nombre}}</h3>
-						<span class="date-video">{{obj.fecha}}</span><span class="posted-in-video">{% trans "Tema" %}: {{obj.categoria}}</span>
-						<p>{{obj.descripcion|safe|truncatewords:8}}</p>
-					</div>
+										</figure>
+										</div>
+										<div class="media col-xs-12 col-sm-6 video-list">
+											<h3>{{obj.nombre}}</h3>
+											<span class="date-video">{{obj.fecha}}</span><span class="posted-in-video">{% trans "Tema" %}: {{obj.categoria}}</span>
+											<p>{{obj.descripcion|safe|truncatewords:8}}</p>
+										</div>
 
-				</a>
-			</li>
-			{% endfor %}
-		</ul>
-		<a href="#" class="btn btn-default btn-listvideo">{% trans 'VER MÁS' %}</a>
-		</div>
-
-		<div class="col-xs-12 col-sm-7 actual-video">
-		<!-- Tab panes -->
-		<div class="tab-content">
-			{% for obj in documentales %}
-				<div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="home{{forloop.counter}}">
-					<div class="video-r">
-					<img src="" alt="">
-						<div class="video-icon">
-                            <i class="fa fa-lg fa-video-camera"></i>
-                        </div>
-						<div class="thumbnail embed-vedio">
-						{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
-							<div class="embed-responsive embed-responsive-16by9">
-							 {% video vd.video query="autoplay=1" as video %}
-								<img  src="{{ video.thumbnail }}" width="600" height="400" alt="Click to play" data-video="{{video.url}}"/>
-							 {% endvideo %}
-							</div>
-						{% endfor %}
+									</a>
+								</li>
+								{% endfor %}
+							</ul>
+							<a href="#" class="btn btn-default btn-listvideo">{% trans 'VER MÁS' %}</a>
 						</div>
-						<p>{{obj.descripcion}}</p>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-		</div>  
-     
-     <!-- /tabs -->
-	</div>
 
- </div>
-</div>
-</div>
+						<div class="col-xs-12 col-sm-7 actual-video">
+						<!-- Tab panes -->
+							<div class="tab-content">
+								{% for obj in documentales %}
+									<div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="home{{forloop.counter}}">
+										<div class="video-r">
+										<img src="" alt="">
+											<div class="video-icon">
+					                            <i class="fa fa-lg fa-video-camera"></i>
+					                        </div>
+											<div class="thumbnail embed-vedio">
+											{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
+												<div class="embed-responsive embed-responsive-16by9">
+												 {% video vd.video query="autoplay=1" as video %}
+													<img  src="{{ video.thumbnail }}" width="600" height="400" alt="Click to play" data-video="{{video.url}}"/>
+												 {% endvideo %}
+												</div>
+											{% endfor %}
+											</div>
+											<p>{{obj.descripcion}}</p>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						</div>  
+			     
+			     		<!-- /tabs -->
+					</div>
+
+ 				</div>
+			</div>
+		</div>
 	</div>
-</section>
-<!-- How To Help Section End Here-->
-<section class="serie-radio">
+	</section>
+<!-- Documentales Section End Here-->
+
+<!-- Radio Section Start Here-->
+	<section class="serie-radio">
 			
 
 	<div class="container">
@@ -399,49 +419,100 @@
 			</div>
 		</div>
 	</div>
-</section>
+	</section>
 <!--radio Section End Here -->
-<!--Testimonial Section Start Here-->
-			
-				<section class="testimonial ">
+
+<!-- Social Section Start Here-->
+	<section class="socialmedia">
+		<div class="container">
+			<div class="row">
+				<header class="page-header section-header clearfix">
+					<h2>Cambia Ahora <strong> Redes Sociales</strong></h2>
+				</header>
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="fbook col-xs-12 col-sm-12 col-md-6">
+						
+						    <!-- Page plugin's width will be 190px -->
+						  <div class="fb-page" data-href="https://www.facebook.com/pages/Cambia-ahora-solo-hazlo/1485321515024959" data-width="800" data-height="400" data-show-posts="true" data-show-facepile="false" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true"></div>
+						
+					</div>
+					<div class="stwtter col-xs-12 col-sm-12 col-md-6">
+						<a class="twitter-timeline"  href="https://twitter.com/Cambia_ahora" data-widget-id="611998502336331776">Tweets por el @Cambia_ahora.</a>
+
+	            
+	          
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<!-- Social Section End Here-->
+
+<!-- ABOUT US start here-->
+        <section id="about">
+        	<div class="container">
+                <div class="row">
+                	<header class="page-header section-header clearfix">
+						<h2 class="title-campana">{% trans 'Información de la Campaña' %}</h2>
+					</header>
+
+                    
+                    <div class="col-lg-12">
+
+                    	{% for obj in informacion %}
+                    	{% if obj.foto %}
+                    		{% thumbnail obj.foto "1170x480" as img %}
+								<img class="img-responsive" src="/media/{{img}}" alt="">
+							{% endthumbnail %}
+						{% else %}
+							<img class="img-responsive" src="http://placehold.it/1170x480" alt="">
+                    	{% endif %}
+
+                        <br>
+                        <div class="row">
+                            <p class="lead col-lg-4"><strong>{% trans "Objetivo" %}:</strong><br>
+                            {{obj.objetivos|safe}}
+                            <br>
+                            </p>
+                        	<p class="lead col-lg-4"><strong>{% trans "Territorio" %}: </strong><br>
+							{{obj.territorios|safe}}
+                            </p>
+                            
+                            <p class="lead col-lg-4"><strong>{% trans "Acciones" %}:</strong><br>
+							{{obj.acciones|safe}}
+                            </p>
+                            
+                            
+                        </div>
+                     {% endfor %}
+                     		<div class="">
+                            	<a href="" class="btn-campana pull-right">{% trans "LEER MÁS" %}</a>
+                            </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </section>
+<!-- ABOUT US Section End Here -->
+
+<!--Apoyan Start Here -->
+			<section class="apoyan ">
 					<div class="container anim-section">
 						<div class="row">
 							<div class="col-xs-12">
 								<header class="page-header section-header clearfix">
-									<h2>{% trans "Cambia Ahora" %}<strong> {% trans "Opina" %}</strong></h2>
+									<h2>{% trans 'Apoyan la campaña' %}</h2>
 								</header>
 
 									
 								<div class="article-list flexslider article-slider row">
 								<ul class="slides">
-								{% for obj in ultimas_testimonios %}
-									<li class="list-opinion">
-									<div class="item-testimonial">
-										<div class="avatar">
-										{% if obj.foto %}
-											{% thumbnail obj.foto "250x250" as img %}
-												<img src="/media/{{img}}" alt="" class="img-circle">
-											{% endthumbnail %}
-										{% else %}
-											<img src="http://placehold.it/250x250" alt="" class="img-circle">
-										{% endif %}
-										
-										</div>
-										<div class="opinion">
-											<h4 class="name-testimonial">{{obj.titulo}}</h4>
-
-											<hr class="style-two">
-
-											<span class="fa fa-quote-left"></span> 
-											<p>{{obj.texto|safe}}
-											</p>
-											<span class="fa fa-quote-right"></span>
-										</div>
-									</div>
-								</li>
+								{% for obj in logos %}
+									<li>
+									<img class="img-responsive" src="/media/{{obj.foto}}" alt="">
+									</li>
 								{% endfor %}
-								
-
 								</ul>
 									
 									
@@ -451,38 +522,11 @@
 						</div>
 					</div>
 				</section>
-	<!--Testimonial Section End Here -->
+<!--Apoyan End Here -->
 
-<div class="popup-gallery">
-	{% for obj in albunes %}
-		{% for fotos in obj.subirfotos_set.all|slice:":6" %}
-			<a class="gallery" href="/media/{{fotos.foto}}" title="The Cleaner">
-				<img src="/media/{{fotos.foto}}" width="222" height="auto">	
-			</a>
-		{% endfor %}
-	{% endfor %}		
-</div>
 
-<section class="socialmedia">
-	<div class="container">
-		<div class="row">
-			<h2>Cambia Ahora <strong> Redes Sociales</strong></h2>
-			<div class="col-xs-12 col-sm-12 col-md-12">
-				<div class="fbook col-xs-12 col-sm-12 col-md-6">
-					
-					    <!-- Page plugin's width will be 190px -->
-					  <div class="fb-page" data-href="https://www.facebook.com/pages/Cambia-ahora-solo-hazlo/1485321515024959" data-width="800" data-height="400" data-show-posts="true" data-show-facepile="false" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true"></div>
-					
-				</div>
-				<div class="stwtter col-xs-12 col-sm-12 col-md-6">
-					<a class="twitter-timeline"  href="https://twitter.com/Cambia_ahora" data-widget-id="611998502336331776">Tweets por el @Cambia_ahora.</a>
 
-            
-          
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+
+
 </div>
 {% endblock contenido %}

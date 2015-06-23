@@ -1197,9 +1197,18 @@ footer .button {
 footer p{
 	color: black;
 }
+footer h3{
+	margin-bottom: 20px !important;
+}
+
+footer .social{
+	margin-top: 10px;
+}
 .logo-fadcanic {
   width: 50%;
   text-align: center;
+  margin-bottom: 15px;
+  margin-left: 40px;
 }
 /* SUBFOOTER */
 .subfooter {
@@ -1559,35 +1568,22 @@ ol li span:before{
 	top: 300px !important;
 	left:130px !important;
 }
-.in-title{
-	top: 220px !important;
-}
 
-.fondo-banner{
-	background-color: rgba(0, 0, 0, 0.9);
-}
 .trans-black3 {
   width: 550px;
-  height: 14.5em;
+  height: 12em;
   background: rgba(68,61,55,0.4);
 }
 .in-banner p{
 	font-size: 18px;
+	line-height: normal !important;
+	font-family: 'Montserrat', sans-serif;
 }
-.in-banner2{
-	width: 580px !important;
-	top:400px !important;
-	
+
+.main-slider .banner-summary {
+  width: 507px;
 }
-.in-banner2 h2{
-	font-size: 36px !important;
-}
-.in-summary{
-	top:280px !important;
-}
-.in-summary2{
-	top:450px !important;
-}
+
 .section-header img{
 	float: right;
 	margin-left: 50px;
