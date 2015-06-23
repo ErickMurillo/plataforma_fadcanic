@@ -17,13 +17,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-lg-8">
-				<h1>Programación</h1>
+				<h1>{% trans "Multimedias" %}</h1>
 				<ul class="breadcrumb">
 					<li>
 						<a href="/">Inicio</a>
 					</li>
 					<li class="active">
-						Multimedias
+						{% trans "Multimedias" %}
 					</li>
 				</ul>
 
@@ -63,7 +63,7 @@
 				</ol>
 				<!--Sub Breadcrumb Section End Here-->
 				<div class="row gallery">
-				<h2>Videos</h2>
+				<h2>{% trans "Videos" %}</h2>
 				{% for obj in videos %}
 					<div class="cols-xs-12 col-sm-6">
 						<div class="thumbnail embed-vedio">
@@ -79,7 +79,7 @@
 					</div>
 				{% endfor %}
 				<br>
-				<h2>Documentales</h2>
+				<h2>{% trans "Documentales" %}</h2>
 
 				{% for obj in documentales %}
 					<div class="cols-xs-12 col-sm-6">
@@ -96,7 +96,7 @@
 					</div>
 				{% endfor %}
 				<br>
-				<h2>Galerias</h2>
+				<h2>{% trans "Galerias" %}</h2>
 				{% for obj in fotos %}
 					<div class="cols-xs-12 col-sm-6">
 						<div class="thumbnail embed-vedio">

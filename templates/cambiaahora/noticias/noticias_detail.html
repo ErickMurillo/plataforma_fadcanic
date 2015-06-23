@@ -24,13 +24,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<h1>Noticia </h1>
+				<h1>{% trans "Noticia" %}</h1>
 				<ul class="breadcrumb">
 					<li>
-						<a href="index.html">Inicio</a>
+						<a href="/">{% trans "Inicio" %}</a>
 					</li>
 					<li>
-						<a href="notas.html">Noticias</a>
+						<a href="/noticias/">{% trans "Noticias" %}</a>
 					</li>
 					<li class="active">
 						{{object.titulo}}
@@ -83,7 +83,7 @@
 							</div>
 
 						<header class="page-header section-header text-left">
-								<h2 class="text-left h3">Noticias Relacionadas</h2>
+								<h2 class="text-left h3">{% trans "Noticias Relacionadas" %}</h2>
 							</header>
 						<div class="row we-help anim-section">
 							{% for relacion in noticias_relacionadas %}

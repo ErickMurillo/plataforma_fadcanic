@@ -18,16 +18,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-lg-8">
-				<h1>Programación</h1>
+				<h1>{% trans "Videos" %}</h1>
 				<ul class="breadcrumb">
 					<li>
-						<a href="/">Inicio</a>
+						<a href="/">{% trans "Inicio" %}</a>
 					</li>
 					<li>
-						Multimedias
+						<a href="/multimedias/">{% trans "Multimedias" %}</a>
 					</li>
 					<li class="active">
-						Videos
+						{% trans "Videos" %}
 					</li>
 				</ul>
 
@@ -68,7 +68,7 @@
 				<!--Sub Breadcrumb Section End Here-->
 				{% paginate object_list %}
 				<div class="row gallery">
-				<h2>Videos</h2>
+				<h2>{% trans "Videos" %}</h2>
 				{% for obj in object_list %}
 					<div class="cols-xs-12 col-sm-6">
 						<div class="thumbnail embed-vedio">
@@ -95,13 +95,6 @@
 				</ul>
 					
   				</div>
-
-			    <!--{% if is_paginated %}
-				    <div class="cols-xs-12 text-center">  
-						{% load paginador %}
-						{% render_paginator 2 3 %}
-					</div>
-				{% endif %}-->
 				<!--Pagination Section Start Here-->
 		</div>
 	</section>
