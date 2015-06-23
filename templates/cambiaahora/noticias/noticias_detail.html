@@ -20,6 +20,10 @@
 <meta property="og:locale" content="es_ES" />
 {% endblock share_fb %}
 
+{% block extra_js %}
+    <script src="{% static 'cambiaahora/js/social.js' %}"></script>
+{% endblock extra_js %}
+
 {% block contenido %}
 
 <!-- Breadcrumb Section Start Here -->
@@ -55,9 +59,7 @@
 
 				<header class="page-header section-header text-center">
 					<h2>{{object.titulo|upper}}</h2>
-					<!--<img class="social-img" src="newimg/social.png" alt="">-->
-					<!--<div class="fb-share-button" data-share="true" data-layout="button_count"></div>
-					<a href="https://twitter.com/share" class="twitter-share-button" data-text="{{object.titulo}}">Tweet</a>-->
+					
 				</header>
 				<br>
 
@@ -89,7 +91,7 @@
 					
 					{% if object.url %}
 					<!--<h2>Esta noticia tiene el siguiente video</h2>-->
-					<div class="embed-responsive embed-responsive-16by9">
+					<div class="embed-responsive embed-responsive-16by9 video_space">
 						{% video object.url as video  %}
 						<div class="col-md-8 col-md-offset-2 col-xs-12">
 							<iframe id="detalle_nota_video" 

@@ -1856,7 +1856,7 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 
 
 }
-.embed-responsive.embed-responsive-16by9 {
+.video_space {
   padding-bottom: 35% !important;
 
 }
@@ -1875,10 +1875,8 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 	width: 5%;
 	position: absolute;
     top:0;
-    right: 0px;
+    right: -50px;
     z-index: 100;
-    
-
 }
 
 #share-buttons img:hover { transform: scale(1.05); }
