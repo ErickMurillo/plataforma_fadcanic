@@ -69,7 +69,7 @@
 						<div class="thumbnail embed-vedio">
 						{% for vd in obj.subirvideos_set.all|slice:":1" %}
 							<div class="embed-responsive embed-responsive-16by9">
-							 {% video vd.video as video %}
+							 {% video vd.video query='autoplay=1' as video %}
 								<img  src="{{ video.thumbnail }}" width=555 height=341 alt="Click to play" data-video="{{video.url}}"/>
 							 {% endvideo %}
 							</div>
@@ -86,7 +86,7 @@
 						<div class="thumbnail embed-vedio">
 						{% for vd in obj.subirdocumentales_set.all|slice:":1" %}
 							<div class="embed-responsive embed-responsive-16by9">
-							 {% video vd.video as video %}
+							 {% video vd.video query='autoplay=1' as video %}
 								<img  src="{{ video.thumbnail }}" width=555 height=341 alt="Click to play" data-video="{{video.url}}"/>
 							 {% endvideo %}
 							</div>
