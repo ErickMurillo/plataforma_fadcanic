@@ -18,9 +18,8 @@
 		<link href="/static/cambiaahora/css/style.css" rel="stylesheet">
 		<link href="/static/cambiaahora/css/responsive.css" rel="stylesheet">
 
-
-		<link rel="stylesheet" href="/static/cambiaahora/css/magnific-popup.css">
-		<link rel="stylesheet" href="/static/cambiaahora/css/custom-tabs.css">
+        <link rel="stylesheet" href="/static/cambiaahora/css/magnific-popup.css">
+        <link rel="stylesheet" href="/static/cambiaahora/css/custom-tabs.css">
 
 		<!-- Font -->
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -32,8 +31,7 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-
-
+		   
         {% block share_fb %}{% endblock share_fb %}
 
 
@@ -60,7 +58,9 @@
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     
 				<!--Header Section Start Here -->
-			<header id="header">
+			
+
+			<header  id="header">
 				<div class="container">
 					<div class="row primary-header">
 
@@ -292,6 +292,7 @@
 		<script src="/static/cambiaahora/js/audiojs/audio.min.js"></script>
 
 		<script src="/static/cambiaahora/js/jquery.magnific-popup.min.js"></script>
+        {% block social %}{% endblock social %}
 
 
 

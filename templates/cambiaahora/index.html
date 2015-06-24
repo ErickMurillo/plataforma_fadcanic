@@ -10,14 +10,12 @@
 {% endblock titulo %}
 
 {% block extra_js %}
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-          
+    
 {% endblock extra_js %}
 
 {% block contenido %}
 <section class="rev_slider_wrapperc main-slider">
-	<div class="rev_slider banner-slider">
+	<div  class="rev_slider banner-slider">
 		<ul>
 		{% for obj in config %}
 			
@@ -261,16 +259,40 @@
 				</section>
 <!--Testimonial Section End Here -->
 
+
+
+
+
 <!-- Gallery Section Start Here-->
-	<div class="popup-gallery">
-		{% for obj in albunes %}
-			{% for fotos in obj.subirfotos_set.all|slice:":6" %}
-				<a class="gallery" href="/media/{{fotos.foto}}" title="{{fotos.titulo}}">
-					<img src="/media/{{fotos.foto}}" width="222" height="auto">	
-				</a>
-			{% endfor %}
-		{% endfor %}		
-	</div>
+
+
+	<section class="galeria-fotos">
+		<div class="container anim-section">
+			<div class="row">
+				<div class="col-xs-12">
+
+									
+					<div class="article-list flexslider article-slider row">
+					<ul class="slides popup-gallery ">
+					{% for obj in albunes %}
+						{% for fotos in obj.subirfotos_set.all%}
+					<li>
+						<a class="gallery" href="/media/{{fotos.foto}}" title="{{fotos.titulo}}">
+							<img src="/media/{{fotos.foto}}" width="222" height="auto">	
+						</a>
+					</li>
+								
+						{% endfor %}
+					{% endfor %}
+					</ul>
+									
+									
+									
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 <!--Gallery Section End Here -->
 
 <!-- Documentales Section Start Here -->
