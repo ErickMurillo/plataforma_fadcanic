@@ -8,6 +8,21 @@
 	:: {{object.nombre}} ::
 {% endblock titulo %}
 
+{% block share_fb %}
+<meta property="og:title" content="{{object.nombre}}" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="http://web.cambiaahora.com/media/{{object.foto}}">
+<meta property="og:image:width" content="300" />
+<meta property="og:image:height" content="300" />
+<meta property="og:description" content="{{object.descripcion}}" />
+<meta property="og:url" content="http://web.cambiaahora.com{{request.path}}" />
+<meta property="og:locale" content="es_ES" />
+{% endblock share_fb %}
+
+{% block social %}
+    <script src="{% static 'cambiaahora/js/social.js' %}"></script>
+{% endblock social %}
+
 {% block contenido %}
 <!-- Breadcrumb Section Start Here -->
 <div class="breadcrumb-section">
@@ -40,8 +55,17 @@
 
 				<header class="page-header section-header text-center">
 					<h2>{{object.nombre|upper}}</h2>
-					<img class="social-img" src="newimg/social.png" alt="">
 				</header>
+				<div id="share-buttons">
+					
+						<a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=http://web.cambiaahora.com{{request.path}}" title="Facebook share" target="_blank"><img src="{% static 'cambiaahora/img/facebook.png' %}"></a>
+				
+						<a class="twitter customer share" href="http://twitter.com/share?url=http://web.cambiaahora.com{{request.path}}&amp;text={{object.titulo}}" title="Twitter share" target="_blank"><img src="{% static 'cambiaahora/img/twitter.png' %}"></a>
+					
+						<a class="google_plus customer share" href="https://plus.google.com/share?url=http://web.cambiaahora.com{{request.path}}" title="Google Plus Share" target="_blank"><img src="{% static 'cambiaahora/img/g+.png' %}"></a>
+					
+				
+				</div>
 				<br>
 				<div class="portfolio-detail-description">
 					{% thumbnail object.foto "800x500" as img %}
