@@ -21,7 +21,7 @@
 {% endblock share_fb %}
 
 {% block social %}
-    <script src="{% static 'cambiaahora/js/social.js' %}"></script>
+<script src="{% static 'cambiaahora/js/social.js' %}"></script>
 {% endblock social %}
 
 {% block contenido %}
@@ -65,13 +65,13 @@
 
 				<div id="share-buttons">
 					
-						<a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=http://web.cambiaahora.com{{request.path}}" title="Facebook share" target="_blank"><img src="{% static 'cambiaahora/img/facebook.png' %}"></a>
-				
-						<a class="twitter customer share" href="http://twitter.com/share?url=http://web.cambiaahora.com{{request.path}}&amp;text={{object.titulo}}" title="Twitter share" target="_blank"><img src="{% static 'cambiaahora/img/twitter.png' %}"></a>
+					<a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=http://web.cambiaahora.com{{request.path}}" title="Facebook share" target="_blank"><img src="{% static 'cambiaahora/img/facebook.png' %}"></a>
+
+					<a class="twitter customer share" href="http://twitter.com/share?url=http://web.cambiaahora.com{{request.path}}&amp;text={{object.titulo}}" title="Twitter share" target="_blank"><img src="{% static 'cambiaahora/img/twitter.png' %}"></a>
 					
-						<a class="google_plus customer share" href="https://plus.google.com/share?url=http://web.cambiaahora.com{{request.path}}" title="Google Plus Share" target="_blank"><img src="{% static 'cambiaahora/img/g+.png' %}"></a>
+					<a class="google_plus customer share" href="https://plus.google.com/share?url=http://web.cambiaahora.com{{request.path}}" title="Google Plus Share" target="_blank"><img src="{% static 'cambiaahora/img/g+.png' %}"></a>
 					
-				
+
 				</div>
 				
 
@@ -95,14 +95,9 @@
 						</iframe>
 					</div>
 					<div class="col-md-2 hidden-xs"></div>
-
-					<!--<img  src="{{ video.thumbnail }}" width="70%" height="60%" alt="Click to play" data-video="{{video.url}}" class="center-block"/>-->
 					{% endvideo %}
 
 				</div>
-				<style>
-
-				</style>
 				{% endif %}
 
 				<div class="row portfolio-details">
@@ -116,29 +111,29 @@
 
 						<header class="page-header section-header text-left">
 
-								<h2 class="text-left h3">{% trans "Noticias Relacionadas" %}</h2>
-							</header>
+							<h2 class="text-left h3">{% trans "Noticias Relacionadas" %}</h2>
+						</header>
 
 						<div class="row we-help anim-section">
 							{% for relacion in noticias_relacionadas %}
 							
 							<div class="cols-xs-12 zoom col-sm-4">
 								<div class="thumbnail">
-								{% if relacion.foto %}
+									{% if relacion.foto %}
 									{% thumbnail relacion.foto "360x210" as img %}
 									<a href="{% url 'noticia-detail' relacion.slug %}" class="img-thumb">
 										<img alt="" src="/media/{{img}}">
 									</a>
 									{% endthumbnail %}
-								{% elif relacion.url %}
+									{% elif relacion.url %}
 									<div class="embed-responsive embed-responsive-16by9">
-									 {% video relacion.url query="autoplay=1" as video %}
+										{% video relacion.url query="autoplay=1" as video %}
 										<img  src="{{ video.thumbnail }}" width=360 height=291 alt="Click to play" data-video="{{video.url}}"/>
-									 {% endvideo %}
+										{% endvideo %}
 									</div>
-								{% else %}
+									{% else %}
 									<img alt="" src="http://placehold.it/360x210">
-								{% endif %}
+									{% endif %}
 									<h3 class="h3"><a href="{% url 'noticia-detail' relacion.slug %}">{{relacion.titulo}}</a></h3>
 									<p>
 										{{relacion.texto|safe|truncatewords:12}}
