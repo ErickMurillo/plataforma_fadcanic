@@ -21,7 +21,7 @@ jQuery(function($) {"use strict";
 					revslider_showDoubleJqueryError('.banner-slider');
 				else {
 					revSlider = $('.banner-slider').revolution({
-						delay : 16000,
+						delay : 10000,
 						startheight : 600,
 						startwidth : 1442,
 						navigationType : "bullet",
@@ -225,8 +225,8 @@ $(window).ready(function() {
 		$('.testimonial .flexslider').flexslider({
 			animation : "slide",
 			animationLoop : false,
-			itemWidth :380,
-			itemMargin : 50,
+			itemWidth :360,
+			itemMargin : 30,
 			slideToStart: 0,
 			move:1,
 
@@ -247,9 +247,9 @@ $(window).ready(function() {
 
 
 		$(window).load(function() {
-			if($('.apoyan').length){
+			if($('.flexslider').length){
 			
-		$('.apoyan .flexslider ').flexslider({
+		$('.apoyan .flexslider').flexslider({
 			animation : "slide",
 			animationLoop : false,
 			itemWidth :200,
@@ -271,11 +271,36 @@ $(window).ready(function() {
 		
 	});
 		
+				$(window).load(function() {
+			if($('.flexslider').length){
+			
+		$('.galeria-fotos .flexslider').flexslider({
+			animation : "slide",
+			animationLoop : false,
+			itemWidth :200,
+			itemMargin : 0,
+			slideToStart: 0,
+ 			
+			start : function(slider) {
+				$('body').removeClass('loading');
+			}
+		});
+		
+			$('.galeria-fotos.flexslider, .donation-holder .flexslider,.flex-slide.flexslider').flexslider({
+				
+			animation : "slide",
+			animationLoop : false
+			
+		});
+		}
+		
+	});
+
 		// Flexsliderfunction function
 		$(window).load(function() {
 			if($('.flexslider').length){
 			
-		$('.latest-news .flexslider ').flexslider({
+		$('.latest-news .flexslider').flexslider({
 			animation : "slide",
 			animationLoop : false,
 			itemWidth :360,

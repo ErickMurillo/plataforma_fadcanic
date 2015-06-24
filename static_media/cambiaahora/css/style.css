@@ -379,7 +379,7 @@
  2.5) Testimonial Section
  ----------------------------------------*/
 .testimonial {
-	background: url(../../img/fondo.jpg) center 0 no-repeat;
+	/*background: url(../../img/fondo.jpg) center 0 no-repeat;*/
 	background-size: cover;
 	text-align: center;
 	position: relative;
