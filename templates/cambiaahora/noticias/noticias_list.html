@@ -67,7 +67,7 @@
 							<div class="thumbnail img-listnota">
 								{% if noticia.url %}
 									
-										<div class="embed-responsive embed-responsive-16by9">
+									<div class="embed-responsive embed-responsive-16by9">
 
 									 {% video noticia.url query="autoplay=1" as video %}
 										<img  src="{{ video.thumbnail }}" width=360 height=291 alt="Click to play" data-video="{{video.url}}"/>
@@ -75,7 +75,7 @@
 									</div>
 								{% elif noticia.foto %}
 
-									<a class="img-thumb" href="#">
+									<a class="img-thumb" href="{% url 'noticia-detail' noticia.slug %}">
 									{% thumbnail noticia.foto "360x291" as img %}
 										<img src="/media/{{img}}" alt="">
 									{% endthumbnail %}
