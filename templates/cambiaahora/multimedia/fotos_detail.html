@@ -88,7 +88,7 @@
 
 					<div class="popup-detalle">
 					{% for vd in object.subirfotos_set.all %}
-						<a href="/media/{{vd.foto}}" title="titulo">
+						<a href="/media/{{vd.foto}}" title="{{vd.titulo}}">
 							{% thumbnail vd.foto "272x200" as img %}
 								<img src="/media/{{img}}" alt="">
 							{% endthumbnail %}
