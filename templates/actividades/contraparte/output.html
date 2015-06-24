@@ -16,19 +16,6 @@
 <link rel="stylesheet" href="{% static 'actividades/css/formee/css/form-structure.css' %}" type="text/css"/>
 <link rel="stylesheet" href="{% static 'actividades/css/formee/css/form-style.css' %}" type="text/css"/>
 <link rel="stylesheet" href="{% static 'actividades/fb/jquery.fancybox.css' %}" type="text/css" media="screen" />
-<script type="text/javascript" src="{% static 'actividades/js/table.exporting.js' %}"></script>
-<script type='text/javascript' src="{% static 'actividades/js/jquery.tipsy.js' %}"></script>
-<script type='text/javascript' src="{% static 'actividades/js/tabs.js' %}"></script>
-<script type='text/javascript' src="{% static 'actividades/js/underscore-min.js' %}"></script>
-
-<script type="text/javascript" src="{% static 'actividades/fb/jquery.easing-1.3.pack.js' %}"></script>
-<script type="text/javascript" src="{% static 'actividades/fb/jquery.mousewheel-3.0.6.pack.js' %}"></script>
-<script type="text/javascript" src="{% static 'actividades/fb/jquery.fancybox.pack.js' %}"></script>
-<script type="text/javascript" src="{% static 'actividades/js/jquery.form.js' %}"></script>
-
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-
 <style>
 .banner-filtros{	
 	height: 60px;
@@ -43,61 +30,78 @@
     margin: 0 0 3em 0;
 }
 </style>
-<script type="text/javascript">
-	
-	var _bar_chart;
-	$(document).ready(function(){
-			
-	});	
-
-	$(function() {
-	   $('.clippy-tooltip').tipsy({fade: true, gravity: 'w'});
-	   $('.tabs').tabs();	   
-	   $('#id_todos').click(function(){
-		   var state = $(this).attr('checked');
-		   if(state){
-			   $('input.salida').each(function(i, item){			   
-				   $(this).attr('checked', true); 
-			   });   
-		   }else{
-			   $('input.salida').each(function(i, item){			   
-				   $(this).attr('checked', false); 
-			   });
-		   }		   
-	   });
-	   $('#generate_report').click(function(){
-		   var ids = new Array();
-		   $("input.salida:checked").each(function(){			   
-			   ids.push($(this).attr('name'));			   
-		   });
-		   var csrf_token =  $.cookie('csrftoken');
-		   var form = $('<form>').attr({
-		       type: 'hidden',
-		       method: 'POST',
-		       action: '/actividades/report/',
-		       id: 'formreport'
-		   }).appendTo('body');
-			
-		   $('<input>').attr({type: 'hidden', name: 'ids',  value: ids}).appendTo(form);
-		   $('<input>').attr({type: 'hidden', name: 'csrfmiddlewaretoken',  value: csrf_token}).appendTo(form);
-				
-		   $(form).submit();		   
-		   return false;
-	   });
-	   $('#delete_report').click(function(){
-		   var ids = new Array();
-		   $("input.salida:checked").each(function(){			   
-			   ids.push($(this).attr('name'));			   
-		   });
-		   $.get('/actividades/report/?ids='+ids+'&e=ok', function(data){			   
-			   alert(data);
-			   $.fancybox.close();
-			   window.location.reload();
-		   });
-	   });
-	});
-</script>
 {% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'actividades/js/table.exporting.js' %}"></script>
+<script type='text/javascript' src="{% static 'actividades/js/jquery.tipsy.js' %}"></script>
+<script type='text/javascript' src="{% static 'actividades/js/tabs.js' %}"></script>
+<script type='text/javascript' src="{% static 'actividades/js/underscore-min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'actividades/fb/jquery.easing-1.3.pack.js' %}"></script>
+<script type="text/javascript" src="{% static 'actividades/fb/jquery.mousewheel-3.0.6.pack.js' %}"></script>
+<script type="text/javascript" src="{% static 'actividades/fb/jquery.fancybox.pack.js' %}"></script>
+<script type="text/javascript" src="{% static 'actividades/js/jquery.form.js' %}"></script>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<script type="text/javascript">
+    
+    var _bar_chart;
+    $(document).ready(function(){
+            
+    }); 
+
+    $(function() {
+       $('.clippy-tooltip').tipsy({fade: true, gravity: 'w'});
+       $('.tabs').tabs();      
+       $('#id_todos').click(function(){
+           var state = $(this).attr('checked');
+           if(state){
+               $('input.salida').each(function(i, item){               
+                   $(this).attr('checked', true); 
+               });   
+           }else{
+               $('input.salida').each(function(i, item){               
+                   $(this).attr('checked', false); 
+               });
+           }           
+       });
+       $('#generate_report').click(function(){
+           var ids = new Array();
+           $("input.salida:checked").each(function(){              
+               ids.push($(this).attr('name'));             
+           });
+           var csrf_token =  $.cookie('csrftoken');
+           var form = $('<form>').attr({
+               type: 'hidden',
+               method: 'POST',
+               action: '/actividades/report/',
+               id: 'formreport'
+           }).appendTo('body');
+            
+           $('<input>').attr({type: 'hidden', name: 'ids',  value: ids}).appendTo(form);
+           $('<input>').attr({type: 'hidden', name: 'csrfmiddlewaretoken',  value: csrf_token}).appendTo(form);
+                
+           $(form).submit();           
+           return false;
+       });
+       $('#delete_report').click(function(){
+           var ids = new Array();
+           $("input.salida:checked").each(function(){              
+               ids.push($(this).attr('name'));             
+           });
+           $.get('/actividades/report/?ids='+ids+'&e=ok', function(data){              
+               alert(data);
+               $.fancybox.close();
+               window.location.reload();
+           });
+       });
+    });
+</script>
+
+{% endblock extra_js %}
 
 {% block contenido %}
 {% include "actividades/filtros_selectos.html" %}
