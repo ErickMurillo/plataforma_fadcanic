@@ -124,13 +124,21 @@
 							
 							<div class="cols-xs-12 zoom col-sm-4">
 								<div class="thumbnail">
+								{% if relacion.foto %}
 									{% thumbnail relacion.foto "360x210" as img %}
-									<a href="#" class="img-thumb">
+									<a href="{% url 'noticia-detail' relacion.slug %}" class="img-thumb">
 										<img alt="" src="/media/{{img}}">
 									</a>
 									{% endthumbnail %}
-
-
+								{% elif relacion.url %}
+									<div class="embed-responsive embed-responsive-16by9">
+									 {% video relacion.url query="autoplay=1" as video %}
+										<img  src="{{ video.thumbnail }}" width=360 height=291 alt="Click to play" data-video="{{video.url}}"/>
+									 {% endvideo %}
+									</div>
+								{% else %}
+									<img alt="" src="http://placehold.it/360x210">
+								{% endif %}
 									<h3 class="h3"><a href="{% url 'noticia-detail' relacion.slug %}">{{relacion.titulo}}</a></h3>
 									<p>
 										{{relacion.texto|safe|truncatewords:12}}
