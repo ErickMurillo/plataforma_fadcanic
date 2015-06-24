@@ -100,7 +100,7 @@
 				{% for obj in fotos %}
 					<div class="cols-xs-12 col-sm-6">
 						<div class="thumbnail embed-vedio">
-							<a href="#" class="img-thumb">
+							<a href="{% url 'fotos-detail' obj.id %}" class="img-thumb">
 							{% for vd in obj.subirfotos_set.all|slice:":1" %}
 								<figure>
 								{% thumbnail vd.foto "555x341" as img %}
