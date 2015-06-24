@@ -13,10 +13,12 @@
 {% block share_fb %}
 <meta property="og:title" content="{{object.nombre}}" />
 <meta property="og:type" content="article" />
-<meta property="og:image" content="http://web.cambiaahora.com/media/{{object.foto}}">
+{% for vd in object.subirfotos_set.all|slice:":1" %}
+<meta property="og:image" content="http://web.cambiaahora.com/media/{{vd.foto}}">
+{% endfor %}
 <meta property="og:image:width" content="300" />
 <meta property="og:image:height" content="300" />
-<meta property="og:description" content="{{object.descripcion}}" />
+<meta property="og:description" content="{{object.descripcion|striptags}}" />
 <meta property="og:url" content="http://web.cambiaahora.com{{request.path}}" />
 <meta property="og:locale" content="es_ES" />
 {% endblock share_fb %}
@@ -81,31 +83,24 @@
 
 							<div class="detail-description">
 
-								
+								<p class="">
 									{{object.descripcion|safe}}
-								
-
+								</p>
 					<div class="popup-detalle">
 					{% for vd in object.subirfotos_set.all %}
-						<a href="/media/{{vd.foto}}" title="titulo">
+						<a href="/media/{{vd.foto}}" title="{{vd.titulo}}">
 							{% thumbnail vd.foto "272x200" as img %}
 								<img src="/media/{{img}}" alt="">
 							{% endthumbnail %}
 						</a>
-					
 					{% endfor %}
 					</div>
-
-
-
 							</div>
 						</div>
-
 			</div>
 		</div>
 	</div>
 	<!--  sections end -->
-
 </div>
 
 </div>

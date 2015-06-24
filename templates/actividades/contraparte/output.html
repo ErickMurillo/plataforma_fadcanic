@@ -48,10 +48,142 @@
 
 <script type="text/javascript">
     
-    var _bar_chart;
-    $(document).ready(function(){
-            
-    }); 
+   function _pieChartData(chart){
+    return escape(JSON.stringify({
+      'title'   : chart.options.title.text,
+      'series'  : chart.options.series
+    }))
+  }
+  var _bar_chart;
+  $(document).ready(function(){
+    var csrf_token =  $.cookie('csrftoken'); 
+    var html_table = $('#result_table').html();
+    {% if not noshare %}
+    $('#share').click(function(){
+      // mandar a guardar la salida
+      {% if request.session.bar_graph or bar_graph %}
+      _bar_chart = {
+          'xAxis'  : bar_chart.xAxis[0].categories,
+          'yAxis'  : bar_chart.yAxis[0].axisTitle.textStr,
+          'series' : bar_chart.options.series,
+          'title'  : bar_chart.options.title.text
+      }
+      {% endif %}
+      $.post('.', {
+        'url'                : 1, 
+        'csrfmiddlewaretoken': csrf_token, 
+        'html_table'         : escape(html_table),
+        {% if request.session.bar_graph or bar_graph %}
+        'bar_chart'          : escape(JSON.stringify(_bar_chart)),
+        {% endif %}
+        {% if request.session.pie_graph or pie_graph %}
+        'pie_chart_one'      : _pieChartData(pie1_chart),
+        'pie_chart_two'      : _pieChartData(pie2_chart)
+        {% endif %}
+        }, // cierra params
+        function(data){
+            $('#clippy_117').html(data);
+            $('#copiador').show();        
+        });
+      return false;
+    });
+    $('#guardarfile').click(function(){ 
+      {% if request.session.bar_graph or bar_graph %}
+      _bar_chart = {
+          'xAxis'  : bar_chart.xAxis[0].categories,
+          'yAxis'  : bar_chart.yAxis[0].axisTitle.textStr,
+          'series' : bar_chart.options.series,
+          'title'  : bar_chart.options.title.text
+      }
+      {% endif %}
+      
+      $(this).hide();     
+      var coment = $('#id_comentario').val();     
+      {% if request.session.bar_graph or bar_graph %}
+      var svg = bar_chart.getSVG();
+      {% endif %}
+      {% if request.session.pie_graph or pie_graph %}
+      var svg_pie1 = pie1_chart.getSVG();
+      var svg_pie2 = pie2_chart.getSVG();
+      {% endif %}     
+
+      var csrf_token =  $.cookie('csrftoken');
+      $.fancybox.showLoading();
+      $.post('.', {
+        'url'                 : 1,
+        'save'                : 1,
+        'comment'             : coment, 
+        'html_table'          : escape(html_table),
+        {% if request.session.bar_graph or bar_graph %}
+        'bar_svg'             : svg,
+        'bar_chart'           : escape(JSON.stringify(_bar_chart)),
+        {% endif %}
+        {% if request.session.pie_graph or pie_graph %}
+        'pie1_svg'            : svg_pie1,
+        'pie2_svg'            : svg_pie2,
+        'pie_chart_one'       : _pieChartData(pie1_chart),
+        'pie_chart_two'       : _pieChartData(pie2_chart),
+        {% endif %}   
+        'csrfmiddlewaretoken' : csrf_token
+        },
+        function(data){
+          $('#clippy_117').html(data);
+          $('#copiador').show();
+          alert('Guardado con exito! :D');
+          $('#guardarfile').show();
+          $.fancybox.close();         
+          });     
+      return false;
+    });
+      
+    $("#sharesave").fancybox({
+      maxWidth  : 800,
+      maxHeight : 600,
+      fitToView : true,
+      width   : '50%',
+      height    : '45%',
+      autoSize  : false,
+      closeClick  : false,
+      openEffect  : 'elastic',
+      closeEffect : 'fade'
+    });
+    $("#generatefile").fancybox({
+      maxWidth  : 800,
+      maxHeight : 600,
+      fitToView : true,
+      width   : '70%',
+      height    : '80%',
+      autoSize  : false,
+      closeClick  : false,
+      openEffect  : 'elastic',
+      closeEffect : 'fade',
+      beforeLoad  : function(){
+        $('#reportbodytable').html('');
+        $.getJSON('actividades/ajax/salidas/', function(data){
+          $.each(data, function(i, item){
+            var $tr = $('<tr></tr>');     
+            var _td = '<td></td>';
+            $tr.append($(_td)
+                .html($('<input />')
+                .addClass('salida')
+                .attr({'type': 'checkbox', 'id': 'id_'+item.id, 'name': ''+item.id})));           
+            $tr.append($(_td)
+                .html($('<a></a>')
+                .attr({'href': '{{sitio.domain}}/i/'+item.hash, 'target': '_blank'})
+                .html('{{sitio.domain}}/i/'+item.hash)));
+            $tr.append($(_td).html(item.date));
+            $tr.append($(_td).html(item.comment));            
+            $tr.appendTo($('#reportbodytable'));
+          });
+        });
+      }
+    });
+    {% else %}
+    $('span.activa').each(function(item){
+      $(this).removeAttr('onclick');
+    });
+    {% endif %}   
+  }); 
 
     $(function() {
        $('.clippy-tooltip').tipsy({fade: true, gravity: 'w'});
@@ -100,6 +232,71 @@
        });
     });
 </script>
+
+
+<script>
+  (function($){
+      $('.result_table').addClass('table');
+  })(jQuery || django.jQuery);
+</script>
+
+<!-- ********************************* load table js****************************************** -->
+{% if not borde %}
+
+<script type="text/javascript">
+function loadCell(key, key2){
+  var detalle = $('input:radio[name=contenido_detalle]:checked').val();
+  if(detalle){
+    $.getJSON('?k='+key+'&k2='+key2+'&data='+detalle, function(data){
+      if(data){$('#contenido_de').html('');}
+      _.each(data, function(obj){     
+        var actividad = "<div class='actividad'><div class='data'>\
+        <span>"+obj.org+' - '+obj.nombre_actividad+"</span><span class='lugar'><b>"+obj.comunidad__nombre+", "+obj.municipio__nombre+"</b></span>\
+        <span class='fecha'><b>"+obj.fecha+"</b></span></div><div class='media'>";
+        
+        if(detalle=='multimedia'){
+          if(obj.foto1_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto1_pic+"'><img src='"+obj.foto1_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
+          if(obj.foto2_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto2_pic+"'><img src='"+obj.foto2_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
+          if(obj.foto3_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto3_pic+"'><img src='"+obj.foto3_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
+          if(obj.vthumb!=''){actividad+="<a class='yvideo fancybox.iframe' href='"+obj.video+"'>"+obj.vthumb+"</a>";}
+        }else{
+          actividad+="<div class='data' style='font-size: 12px;'><b>Comentarios: </b>"+obj.comentarios;
+          actividad+="<br><b>Acuerdos: </b>"+obj.acuerdos+"</div>";
+        }       
+        
+        actividad+="</div><div class='clean'></div>";     
+        $(actividad).appendTo($('#contenido_de'));
+        
+        //activar tab adecuada
+        $.fn.tabs.foo($('a[href="#detalle"]').parent(), $('a[href="#detalle"]').parent().parent());
+        $.fn.tabs.foo($('#detalle'), $('#detalle').parent());     
+      });
+    }); 
+  }else{
+    alert('Selecciona el tipo de detalles.');
+  } 
+}
+</script>
+<script type="text/javascript">
+  $(function() {
+    $("a[rel=group]").fancybox({      
+      'titlePosition'   : 'over',   
+    });
+    $(".yvideo").fancybox({
+      maxWidth  : 800,
+      maxHeight : 600,
+      fitToView : false,
+      width   : 644,
+      height    : 368,
+      autoSize  : false,
+      closeClick  : false,
+      openEffect  : 'none',
+      closeEffect : 'none'
+    });
+  });
+</script>
+{% endif %}
+
 
 {% endblock extra_js %}
 
@@ -227,67 +424,5 @@
   </div>
 </div>
 
-
-<script>
-	(function($){
-    	$('.result_table').addClass('table');
-	})(jQuery || django.jQuery);
-</script>
-
-{% if not borde %}
-
-<script type="text/javascript">
-function loadCell(key, key2){
-	var detalle = $('input:radio[name=contenido_detalle]:checked').val();
-	if(detalle){
-		$.getJSON('?k='+key+'&k2='+key2+'&data='+detalle, function(data){
-			if(data){$('#contenido_de').html('');}
-			_.each(data, function(obj){			
-				var actividad = "<div class='actividad'><div class='data'>\
-				<span>"+obj.org+' - '+obj.nombre_actividad+"</span><span class='lugar'><b>"+obj.comunidad__nombre+", "+obj.municipio__nombre+"</b></span>\
-				<span class='fecha'><b>"+obj.fecha+"</b></span></div><div class='media'>";
-				
-				if(detalle=='multimedia'){
-					if(obj.foto1_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto1_pic+"'><img src='"+obj.foto1_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
-					if(obj.foto2_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto2_pic+"'><img src='"+obj.foto2_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
-					if(obj.foto3_thumb!=''){actividad+="<a class='fancybox' rel='group' href='"+obj.foto3_pic+"'><img src='"+obj.foto3_thumb+"' alt='"+obj.nombre_actividad+"'></a>";}
-					if(obj.vthumb!=''){actividad+="<a class='yvideo fancybox.iframe' href='"+obj.video+"'>"+obj.vthumb+"</a>";}
-				}else{
-					actividad+="<div class='data' style='font-size: 12px;'><b>Comentarios: </b>"+obj.comentarios;
-					actividad+="<br><b>Acuerdos: </b>"+obj.acuerdos+"</div>";
-				}				
-				
-				actividad+="</div><div class='clean'></div>";			
-				$(actividad).appendTo($('#contenido_de'));
-				
-				//activar tab adecuada
-				$.fn.tabs.foo($('a[href="#detalle"]').parent(), $('a[href="#detalle"]').parent().parent());
-				$.fn.tabs.foo($('#detalle'), $('#detalle').parent());			
-			});
-		});	
-	}else{
-		alert('Selecciona el tipo de detalles.');
-	}	
-}
-</script>
-<script type="text/javascript">
-	$(function() {
-		$("a[rel=group]").fancybox({			
-			'titlePosition' 	: 'over',		
-		});
-		$(".yvideo").fancybox({
-			maxWidth	: 800,
-			maxHeight	: 600,
-			fitToView	: false,
-			width		: 644,
-			height		: 368,
-			autoSize	: false,
-			closeClick	: false,
-			openEffect	: 'none',
-			closeEffect	: 'none'
-		});
-	});
-</script>
-{% endif %}
 
 {% endblock %}
