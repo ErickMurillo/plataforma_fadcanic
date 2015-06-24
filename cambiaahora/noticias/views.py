@@ -66,9 +66,9 @@ class ListNewsView(ListView):
     def get_queryset(self):
         cur_language = translation.get_language()
         if cur_language == 'en':
-            queryset = Noticias.objects.filter(aprobacion=2,idioma=2).order_by('fecha')
+            queryset = Noticias.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')
         else:
-            queryset = Noticias.objects.filter(aprobacion=2,idioma=1).order_by('fecha')
+            queryset = Noticias.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')
         return queryset
     
     
@@ -81,9 +81,9 @@ class DetailNewsView(DetailView):
         context = super(DetailNewsView, self).get_context_data(**kwargs)
         cur_language = translation.get_language()
         if cur_language == 'en':
-            context['noticias_relacionadas'] = Noticias.objects.filter(aprobacion=2, idioma=2, categoria=self.object.categoria).exclude(id=self.object.id).order_by('fecha')[:3]
+            context['noticias_relacionadas'] = Noticias.objects.filter(aprobacion=2, idioma=2, categoria=self.object.categoria).exclude(id=self.object.id).order_by('-fecha')[:3]
         else:
-            context['noticias_relacionadas'] = Noticias.objects.filter(aprobacion=2, idioma=1, categoria=self.object.categoria).exclude(id=self.object.id).order_by('fecha')[:3]
+            context['noticias_relacionadas'] = Noticias.objects.filter(aprobacion=2, idioma=1, categoria=self.object.categoria).exclude(id=self.object.id).order_by('-fecha')[:3]
         return context
 
 class ContactView(TemplateView):
