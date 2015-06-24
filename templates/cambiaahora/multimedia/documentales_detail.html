@@ -17,7 +17,7 @@
 {% else %}
 	{% for vd in object.subirdocumentales_set.all|slice:":1" %}
 		{% video vd.video as video %}
-			<meta property="og:image" content="http://web.cambiaahora.com/media/{{video.thumbnail}}">
+			<meta property="og:image" content="{{video.thumbnail}}">
 		{% endvideo %}
 	{% endfor %}	
 {% endif %}
