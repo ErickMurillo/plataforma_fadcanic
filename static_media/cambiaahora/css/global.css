@@ -1864,7 +1864,23 @@ hr.style-two {
 	}
 }
 
+@media (max-width: 768px){
+	.nav-tabs > li > a {
 
+	  color: white !important;
+	}
+
+	.fbook {
+		margin-bottom: 50px;
+	}
+
+	.logo-fadcanic {
+		width: 20%;
+	}
+	.audiojs{
+		margin-bottom: 20px;
+	}
+}
 .nav-serie>li>a:hover, .nav-serie>li>a:focus{
  background-color: #F7B07D !important;
  color: black !important;
@@ -1913,3 +1929,43 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 
 #share-buttons img:hover { transform: scale(1.05); }
 
+/*Nuevo css 25/06/15*/
+
+.brand img{
+	width: 55%;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color:#F47317 !important;
+}
+@media (min-width: 593px) and (max-width:767px)  {
+
+	.brand img {
+
+	  width: 20%;
+
+	}
+
+	.primary-header {
+  		padding: 30px 0 11px;
+	}
+	 .social-links {
+	  float: none !important;
+	}
+}
+
+@media (max-width: 593px)  {
+
+	.brand img {
+
+	  width: 25%;
+
+	}
+
+	.primary-header {
+  		padding: 30px 0 11px;
+	}
+	 .social-links {
+	  float: none !important;
+	}
+}
