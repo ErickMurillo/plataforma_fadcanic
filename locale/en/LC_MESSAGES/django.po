@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-23 20:33+0000\n"
+"POT-Creation-Date: 2015-06-25 03:47+0000\n"
 "PO-Revision-Date: 2015-06-23 21:06+0000\n"
 "Last-Translator:   <carlos@simas.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,11 +86,10 @@ msgstr "Main photo"
 #: cambiaahora/noticias/models.py:33 cambiaahora/staff/models.py:22
 #: cambiaahora/testimonios/models.py:20
 msgid "Idioma"
-msgstr "Lenguage"
+msgstr "Language"
 
 #: cambiaahora/configuracion/models.py:65
 #: cambiaahora/configuracion/models.py:66
-#| msgid "Información de la Campaña"
 msgid "Información de la campaña"
 msgstr "Information Campaign"
 
@@ -148,8 +147,8 @@ msgstr "Video"
 #: templates/cambiaahora/multimedia/fotos_list.html:57
 #: templates/cambiaahora/multimedia/multimedia.html:54
 #: templates/cambiaahora/multimedia/multimedia.html:66
-#: templates/cambiaahora/multimedia/videos_detail.html:16
-#: templates/cambiaahora/multimedia/videos_detail.html:22
+#: templates/cambiaahora/multimedia/videos_detail.html:41
+#: templates/cambiaahora/multimedia/videos_detail.html:47
 #: templates/cambiaahora/multimedia/videos_list.html:21
 #: templates/cambiaahora/multimedia/videos_list.html:30
 #: templates/cambiaahora/multimedia/videos_list.html:58
@@ -158,13 +157,13 @@ msgid "Videos"
 msgstr "Videos"
 
 #: cambiaahora/multimedias/models.py:45 cambiaahora/multimedias/models.py:100
-#: templates/cambiaahora/multimedia/audios_detail.html:22
+#: templates/cambiaahora/multimedia/audios_detail.html:42
 #: templates/cambiaahora/multimedia/audios_list.html:79
 msgid "Audio"
 msgstr "Audio"
 
 #: cambiaahora/multimedias/models.py:46
-#: templates/cambiaahora/multimedia/audios_detail.html:16
+#: templates/cambiaahora/multimedia/audios_detail.html:36
 #: templates/cambiaahora/multimedia/audios_list.html:19
 #: templates/cambiaahora/multimedia/audios_list.html:28
 #: templates/cambiaahora/multimedia/audios_list.html:62
@@ -185,9 +184,9 @@ msgid "Categoria"
 msgstr "Category"
 
 #: cambiaahora/multimedias/models.py:80 cambiaahora/multimedias/models.py:81
-#: templates/cambiaahora/index.html:280
+#: templates/cambiaahora/index.html:261
 #: templates/cambiaahora/multimedia/audios_list.html:59
-#: templates/cambiaahora/multimedia/documentales_detail.html:16
+#: templates/cambiaahora/multimedia/documentales_detail.html:41
 #: templates/cambiaahora/multimedia/documentales_list.html:21
 #: templates/cambiaahora/multimedia/documentales_list.html:30
 #: templates/cambiaahora/multimedia/documentales_list.html:61
@@ -252,23 +251,22 @@ msgid "url del video como portada"
 msgstr "url of the video as the cover"
 
 #: cambiaahora/noticias/models.py:48
-#: templates/cambiaahora/noticias/noticias_detail.html:27
+#: templates/cambiaahora/noticias/noticias_detail.html:34
 msgid "Noticia"
 msgstr "News"
 
 #: cambiaahora/noticias/models.py:49 templates/cambiaahora/base.html:120
-#: templates/cambiaahora/noticias/noticias_detail.html:33
+#: templates/cambiaahora/noticias/noticias_detail.html:40
 #: templates/cambiaahora/noticias/noticias_list.html:9
 #: templates/cambiaahora/noticias/noticias_list.html:27
 msgid "Noticias"
 msgstr "News"
 
 #: cambiaahora/staff/models.py:17
-#| msgid "fecha de nacimiento"
 msgid "Fecha de nacimiento"
 msgstr "Date of birth"
 
-#: cambiaahora/staff/models.py:19 templates/flatpages/default.html:84
+#: cambiaahora/staff/models.py:19 templates/flatpages/default.html:85
 msgid "Profesión"
 msgstr "Profession"
 
@@ -284,22 +282,23 @@ msgstr "Staff"
 msgid "Opiniones"
 msgstr "Reviews"
 
-#: templates/cambiaahora/base.html:8 templates/cambiaahora/index.html:217
+#: templates/cambiaahora/base.html:8 templates/cambiaahora/index.html:194
+#: templates/cambiaahora/index.html:405
 msgid "Cambia Ahora"
 msgstr "Change Now"
 
 #: templates/cambiaahora/base.html:109
-#: templates/cambiaahora/multimedia/audios_detail.html:19
+#: templates/cambiaahora/multimedia/audios_detail.html:39
 #: templates/cambiaahora/multimedia/audios_list.html:22
-#: templates/cambiaahora/multimedia/documentales_detail.html:19
+#: templates/cambiaahora/multimedia/documentales_detail.html:44
 #: templates/cambiaahora/multimedia/documentales_list.html:24
-#: templates/cambiaahora/multimedia/fotos_detail.html:19
+#: templates/cambiaahora/multimedia/fotos_detail.html:43
 #: templates/cambiaahora/multimedia/fotos_list.html:23
-#: templates/cambiaahora/multimedia/videos_detail.html:19
+#: templates/cambiaahora/multimedia/videos_detail.html:44
 #: templates/cambiaahora/multimedia/videos_list.html:24
-#: templates/cambiaahora/noticias/noticias_detail.html:30
+#: templates/cambiaahora/noticias/noticias_detail.html:37
 #: templates/cambiaahora/noticias/noticias_list.html:24
-#: templates/flatpages/contactenos.html:20 templates/flatpages/default.html:15
+#: templates/flatpages/contactenos.html:20 templates/flatpages/default.html:16
 msgid "Inicio"
 msgstr "Home"
 
@@ -317,12 +316,10 @@ msgstr "Multimedia"
 
 #: templates/cambiaahora/base.html:140 templates/flatpages/contactenos.html:17
 #: templates/flatpages/contactenos.html:23
-#| msgid "Contactenos"
 msgid "Contáctenos"
 msgstr "Contact Us"
 
 #: templates/cambiaahora/base.html:196
-#| msgid "Contactenos"
 msgid "Contáctos"
 msgstr "Contact Us"
 
@@ -335,7 +332,6 @@ msgid "Departamento de Estado de los Estados Unidos"
 msgstr "United States Department of State"
 
 #: templates/cambiaahora/base.html:272
-#| msgid "Elaborado por"
 msgid "Desarrollado por"
 msgstr "Developed by "
 
@@ -343,67 +339,72 @@ msgstr "Developed by "
 msgid "cambia ahora"
 msgstr "Change Now"
 
-#: templates/cambiaahora/index.html:162
+#: templates/cambiaahora/index.html:147
 msgid "Hecha un vistazo a lo que esta pasando."
 msgstr "Take a look at what is happening."
 
-#: templates/cambiaahora/index.html:162
+#: templates/cambiaahora/index.html:147
 #: templates/cambiaahora/noticias/noticias_list.html:21
-#| msgid "Ultimas Noticias"
 msgid "Últimas Noticias"
 msgstr "Last News"
 
-#: templates/cambiaahora/index.html:188
+#: templates/cambiaahora/index.html:173
 msgid "Tema:"
 msgstr "Theme"
 
-#: templates/cambiaahora/index.html:194 templates/cambiaahora/index.html:489
+#: templates/cambiaahora/index.html:176 templates/cambiaahora/index.html:456
 msgid "LEER MÁS"
 msgstr "READ MORE"
 
-#: templates/cambiaahora/index.html:202
+#: templates/cambiaahora/index.html:182
 msgid "VER MÁS NOTICIAS"
 msgstr "MORE NEWS"
 
-#: templates/cambiaahora/index.html:217
+#: templates/cambiaahora/index.html:194
 msgid "Opina"
 msgstr "Review"
 
-#: templates/cambiaahora/index.html:309
+#: templates/cambiaahora/index.html:286
 msgid "Tema"
 msgstr "Theme"
 
-#: templates/cambiaahora/index.html:317
-#| msgid "LEER MÁS"
+#: templates/cambiaahora/index.html:294
 msgid "VER MÁS"
 msgstr "READ MORE"
 
-#: templates/cambiaahora/index.html:364
+#: templates/cambiaahora/index.html:339
 msgid "Series Radiofónica"
 msgstr "Radiofónica series"
 
-#: templates/cambiaahora/index.html:456
+#: templates/cambiaahora/index.html:368
+msgid "Serie radiofónica"
+msgstr "Radiofónica series"
+
+#: templates/cambiaahora/index.html:405
+msgid "Redes Sociales"
+msgstr "Social Media"
+
+#: templates/cambiaahora/index.html:428
 msgid "Información de la Campaña"
 msgstr "Information Campaign"
 
-#: templates/cambiaahora/index.html:473
+#: templates/cambiaahora/index.html:442
 msgid "Objetivo"
 msgstr "Objective"
 
-#: templates/cambiaahora/index.html:477
+#: templates/cambiaahora/index.html:446
 msgid "Territorio"
 msgstr "Territory"
 
-#: templates/cambiaahora/index.html:481
+#: templates/cambiaahora/index.html:450
 msgid "Acciones"
 msgstr "Actions"
 
-#: templates/cambiaahora/index.html:505
+#: templates/cambiaahora/index.html:472
 msgid "Apoyan la campaña"
 msgstr "Supporting the campaign"
 
 #: templates/cambiaahora/multimedia/audios_list.html:8
-#| msgid "Audios"
 msgid "audios"
 msgstr "Audios"
 
@@ -413,30 +414,27 @@ msgstr "Audios"
 #: templates/cambiaahora/multimedia/multimedia.html:20
 #: templates/cambiaahora/multimedia/multimedia.html:26
 #: templates/cambiaahora/multimedia/videos_list.html:27
-#| msgid "Multimedia"
 msgid "Multimedias"
 msgstr "Multimedia"
 
 #: templates/cambiaahora/multimedia/audios_list.html:53
 #: templates/cambiaahora/multimedia/documentales_list.html:55
 #: templates/cambiaahora/multimedia/fotos_list.html:54
-#: templates/cambiaahora/multimedia/fotos_list.html:69
+#: templates/cambiaahora/multimedia/fotos_list.html:70
 #: templates/cambiaahora/multimedia/multimedia.html:51
 #: templates/cambiaahora/multimedia/videos_list.html:55
 msgid "Galerias de fotos"
 msgstr "Photo galleries"
 
-#: templates/cambiaahora/multimedia/documentales_detail.html:22
-#| msgid "Documentales"
+#: templates/cambiaahora/multimedia/documentales_detail.html:47
 msgid "Documental"
 msgstr "Documentaries"
 
 #: templates/cambiaahora/multimedia/documentales_list.html:10
-#| msgid "Documentales"
 msgid "documentales"
 msgstr "Documentaries"
 
-#: templates/cambiaahora/multimedia/fotos_detail.html:16
+#: templates/cambiaahora/multimedia/fotos_detail.html:40
 #: templates/cambiaahora/multimedia/fotos_list.html:9
 #: templates/cambiaahora/multimedia/fotos_list.html:20
 #: templates/cambiaahora/multimedia/fotos_list.html:29
@@ -444,7 +442,7 @@ msgstr "Documentaries"
 msgid "Galerias"
 msgstr "Galleries"
 
-#: templates/cambiaahora/multimedia/fotos_detail.html:22
+#: templates/cambiaahora/multimedia/fotos_detail.html:46
 msgid "Galeria"
 msgstr "Gallery"
 
@@ -453,16 +451,14 @@ msgid "multimedias"
 msgstr "Multimedia"
 
 #: templates/cambiaahora/multimedia/videos_list.html:10
-#| msgid "Videos"
 msgid "videos"
 msgstr "Videos"
 
-#: templates/cambiaahora/noticias/noticias_detail.html:86
+#: templates/cambiaahora/noticias/noticias_detail.html:114
 msgid "Noticias Relacionadas"
 msgstr "Related news"
 
 #: templates/flatpages/contactenos.html:6
-#| msgid "Contactenos"
 msgid "contáctenos"
 msgstr "Contact Us"
 
@@ -490,20 +486,19 @@ msgstr "Send"
 msgid "Ubíquenos"
 msgstr "Locate us"
 
-#: templates/flatpages/default.html:18
-#| msgid "Sobre FADCANIC "
+#: templates/flatpages/default.html:19
 msgid "Sobre FADCANIC"
 msgstr "About FADCANIC"
 
-#: templates/flatpages/default.html:60
+#: templates/flatpages/default.html:61
 msgid "Conoce a Nuestro Equipo"
 msgstr "Meet Our Team"
 
-#: templates/flatpages/default.html:79
+#: templates/flatpages/default.html:80
 msgid "Cargo"
 msgstr "Charge"
 
-#: templates/flatpages/default.html:82
+#: templates/flatpages/default.html:83
 msgid "Edad"
 msgstr "Age"
 
