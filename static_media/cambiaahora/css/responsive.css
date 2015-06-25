@@ -721,7 +721,7 @@ margin-top: 25px;
 		width: auto;
 	}
 	.primary-header .brand {
-		position: relative;
+		/*position: relative;*/
 		top: 6px;
 		float:left;
 		width:auto;
