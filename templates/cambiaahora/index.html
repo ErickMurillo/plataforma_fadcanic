@@ -453,7 +453,12 @@
                         </div>
                      {% endfor %}
                      		<div class="">
-                            	<a href="" class="btn-campana pull-right">{% trans "LEER MÁS" %}</a>
+                     			{% if LANGUAGE_CODE == 'en' %}
+                     				<a href="/campaign-change-now/" class="btn-campana pull-right">{% trans "LEER MÁS" %}</a>
+                     			{% else %}
+                     				<a href="/campana-cambia-ahora/" class="btn-campana pull-right">{% trans "LEER MÁS" %}</a>
+                     			{% endif %}
+                            	
                             </div>
                     </div>
 

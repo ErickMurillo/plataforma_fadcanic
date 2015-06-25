@@ -11,10 +11,14 @@
 {% block share_fb %}
 <meta property="og:title" content="{{object.nombre}}" />
 <meta property="og:type" content="article" />
-<meta property="og:image" content="http://web.cambiaahora.com/media/{{object.foto}}">
+{% if object.foto %}
+	<meta property="og:image" content="http://web.cambiaahora.com/media/{{object.foto}}">
+{% else %}
+	<meta property="og:image" content="http://web.cambiaahora.com/static/cambiaahora/img/audio.png">
+{% endif %}
 <meta property="og:image:width" content="300" />
 <meta property="og:image:height" content="300" />
-<meta property="og:description" content="{{object.descripcion}}" />
+<meta property="og:description" content="{{object.descripcion|striptags}}" />
 <meta property="og:url" content="http://web.cambiaahora.com{{request.path}}" />
 <meta property="og:locale" content="es_ES" />
 {% endblock share_fb %}
