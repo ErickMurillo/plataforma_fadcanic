@@ -24,6 +24,10 @@ class MonotireoAdmin(admin.ModelAdmin):
                                           ('representantes','autoridades','comunitarios')]}),
     ]
     form = MonitoreoForm
+    list_display = ('recolector', 'fecha', 'eje', 'resultado')
+    list_filter = ('recolector__nombre','eje__nombre','resultado__nombre_corto') 
+    search_fields = ('recolector__nombre',)
+
 # Register your models here.
 admin.site.register(Monitoreo, MonotireoAdmin)
 admin.site.register(Recolector)

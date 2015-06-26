@@ -65,7 +65,8 @@ class Monitoreo(models.Model):
         verbose_name = "Monitoreo Actividad"
         verbose_name_plural = "Monitoreo Actividades"
 
-    
+    def __unicode__(self):
+        return self.recolector.nombre
 
 
     
