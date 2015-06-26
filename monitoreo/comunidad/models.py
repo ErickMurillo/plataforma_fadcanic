@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from django.db import models
 from sorl.thumbnail import ImageField
 from cambiaahora.utils import get_file_path
