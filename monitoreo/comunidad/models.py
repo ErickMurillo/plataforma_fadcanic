@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from django.db import models
 from sorl.thumbnail import ImageField
 from cambiaahora.utils import get_file_path
@@ -66,7 +65,8 @@ class Monitoreo(models.Model):
         verbose_name = "Monitoreo Actividad"
         verbose_name_plural = "Monitoreo Actividades"
 
-    
+    def __unicode__(self):
+        return self.recolector.nombre
 
 
     
