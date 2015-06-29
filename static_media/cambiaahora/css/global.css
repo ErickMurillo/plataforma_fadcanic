@@ -1968,4 +1968,8 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 	 .social-links {
 	  float: none !important;
 	}
+
+	.in-banner, .banner-heading{
+		display: none;
+	}
 }
