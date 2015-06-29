@@ -25,12 +25,15 @@ INSTALLED_APPS = (
     'actividades.fadcanic',
     'actividades.lugar',
     'actividades.clippy',
+    #monitoreo comunidad
+    'monitoreo.comunidad',
     #extras apps
     'ckeditor',
     'smart_selects',
     'sorl.thumbnail',
     'embed_video',
     'endless_pagination',
+    'multiselectfield',
 )
 
 MIDDLEWARE_CLASSES = (
