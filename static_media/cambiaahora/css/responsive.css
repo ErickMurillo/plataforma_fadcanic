@@ -727,58 +727,22 @@ margin-top: 25px;
 		width:auto;
 	}
 
-	/*banner Section*/
-	.main-slider {
-		position: relative;
-	}
-	.main-slider .tp-bullets {
-		margin-left: -48% !important;
-		bottom: 20px !important;
-	}
-	.revslider-initialised {
-		height: 332px !important;
-	}
-	.banner-slider h2 {
-		margin-top: 50px;
-		margin-top: 28px;
-	}
-	.banner-slider h2, .main-slider .banner-slider h2 ,.bottom-animation h2 strong{
-		font-size: 21px;
-	}
-	.main-slider .banner-slider h2 {
-		margin-bottom: 14px;
-		margin-top: 14px;
-	}
-	.main-slider .banner-summary, .main-slider .banner-heading {
-		width: 300px;
-	}
-	.banner-slider p {
-		padding-top: 20px;
-	}
-	.banner-slider p, .main-slider .banner-slider p {
-		line-height: 1.2;
-		font-size: 14px;
-	}
-	.main-slider .banner-slider p {
-		padding-top: 20px;
-	}
-	.tp-caption .btn.btn-default {
-		margin-top: 50px;
-	}
-	.tp-caption {
-		left: 15px !important;
-	}
-	.tparrows {
-		display: none;
-	}
-	.banner-slider p, .main-slider .banner-slider p {
-		line-height: 1.2;
-		font-size: 14px;
-		padding-top: 0px;
-	}
-	.tp-caption .btn.btn.btn-default {
-		margin-top: 20px;
-	}
+    /*banner Section*/     .main-slider {         position: relative;     }
+.main-slider .tp-bullets {         margin-left: -48% !important;
+bottom: 20px !important;     }     /*.revslider-initialised {         height:
+332px !important;     }*/     .banner-slider h2 {         margin-top: 50px;
+margin-top: 28px;     }     .banner-slider h2, .main-slider .banner-slider h2
+,.bottom-animation h2 strong{         font-size: 21px;     }     .main-slider
+.banner-slider h2 {         margin-bottom: 14px;         margin-top: 14px;
+}     .main-slider .banner-summary, .main-slider .banner-heading {
+width: 300px;     }     .banner-slider p {         padding-top: 20px;     }
+.banner-slider p, .main-slider .banner-slider p {         line-height: 1.2;
+font-size: 14px;     }     .main-slider .banner-slider p {         padding-
+top: 20px;     }     .tp-caption .btn.btn-default {         margin-top: 50px;
+}     .tp-caption {         left: 15px !important;     }     .tparrows {
+display: none;     }     .banner-slider p, .main-slider .banner-slider p {
+line-height: 1.2;         font-size: 14px;         padding-top: 0px;     }
+.tp-caption .btn.btn.btn-default {         margin-top: 20px;     }
 
 	/*banner Section End*/
 	/*Causes Section*/

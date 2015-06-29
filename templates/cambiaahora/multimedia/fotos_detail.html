@@ -38,7 +38,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<h1>{% trans "Galerias" %}</h1>
-				<ul class="breadcrumb">
+				<ul class="breadcrumb bread-principal">
 					<li>
 						<a href="/">{% trans "Inicio" %}</a>
 					</li>
@@ -86,15 +86,15 @@
 								<p class="">
 									{{object.descripcion|safe}}
 								</p>
-					<div class="popup-detalle">
-					{% for vd in object.subirfotos_set.all %}
-						<a href="/media/{{vd.foto}}" title="{{vd.titulo}}">
-							{% thumbnail vd.foto "272x200" as img %}
-								<img src="/media/{{img}}" alt="">
-							{% endthumbnail %}
-						</a>
-					{% endfor %}
-					</div>
+								<div class="popup-detalle">
+								{% for vd in object.subirfotos_set.all %}
+									<a href="/media/{{vd.foto}}" title="{{vd.titulo}}">
+										{% thumbnail vd.foto "272x200" as img %}
+											<img src="/media/{{img}}" alt="">
+										{% endthumbnail %}
+									</a>
+								{% endfor %}
+								</div>
 							</div>
 						</div>
 			</div>
