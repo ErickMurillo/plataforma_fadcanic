@@ -312,16 +312,172 @@ CHOICE_20 = ((1, 'Falta de educación'),
                     (4, 'Falta de vigilancia policial en la ciudad'),
                     (5, 'La comunidad sabe pero no denuncia'),
                     (6, 'Por abuso de droga y alcohol'),
+                    (7, 'No responde'),
+                    (8, 'No sabe'),
+            )
+
+#III- Prácticas sobre el tema de violencia y abuso de drogas
+
+CHOICE_21 = ((1, 'La defiendo, ejerciendo la fuerza'),
+                    (2, 'No hago nada'),
+                    (3, 'Hago denuncia a las autoridades'),
+                    (4, 'Lo denuncio con un familiar de la víctima'),
                     (5, 'No responde'),
                     (6, 'No sabe'),
             )
 
+CHOICE_22 = ((1, 'Participo de actividades de prevención en mi lugar'),
+                    (2, 'Trato de informarme'),
+                    (3, 'Evito discusión o acciones que generé violencia'),
+                    (4, 'Protejo a mi familia'),
+                    (5, 'Hago denuncia pública'),
+                    (6, 'No hago nada'),
+                    (7, 'No sé que hacer'),
+            )
 
 
+CHOICE_23 = ((1, 'La defendería'),
+                    (2, 'Poner denuncia ante la Policía'),
+                    (3, 'No hago nada'),
+                    (4, 'Me alejo del problema'),
+                    (5, 'No responde'),
+            )
+
+CHOICE_24 = ((1, 'Mayor vigilancia policial'),
+                    (2, 'Generar oportunidades de empleo'),
+                    (3, 'Mayor acceso a la educación'),
+                    (4, 'Un sistema de justicia más beligerante'),
+                    (5, 'Mayor unión familiar'),
+                    (6, 'Mayor organización de la comunidad'),
+                    (7, 'No responde'),
+                    (8, 'No sabe'),
+            )
 
 
+#IV- Percepción sobre el tema de violencia y abuso de drogas
+
+CHOICE_25 = ((1, 'Niñas, niños'),
+                    (2, 'Jóvenes (mujeres y hombres)'),
+                    (3, 'Mujeres'),
+                    (4, 'La familia'),
+                    (5, 'La persona violenta'),
+                    (6, 'La comunidad'),
+                    (7, 'El país'),
+            )
 
 
+CHOICE_26 = ((1, 'La familia'),
+                    (2, 'La Comunidad'),
+                    (3, 'El Estado'),
+                    (4, 'La Policía'),
+                    (5, 'Medios de Comunicación'),
+                    (6, 'Gobiernos Autónomos'),
+                    (7, 'Las Iglesias'),
+                    (8, 'ONGs'),
+            )
 
+CHOICE_27 = ((1, 'Familias pobres'),
+                    (2, 'Familias de clase media'),
+                    (3, 'Familias adineradas'),
+                    (4, 'Todas por igual'),
+            )
 
+CHOICE_28 = ((1, 'Educan a la población'),
+                    (2, 'Dan seguimiento a los casos'),
+                    (3, 'Revictimizan a las victimas'),
+                    (4, 'Brindan asistencia psicológica a la víctimas'),
+                    (5, 'No hacen nada'),
+            )
 
+CHOICE_29 = ((1, 'Porque no reciben tratamientos especializado'),
+                    (2, 'Faltan centros especializados'),
+                    (3, 'No reciben el apoyo de sus familias'),
+                    (4, 'Los marginans'),
+                    (5, 'La policía no actuá para apresarlos'),
+                    (6, 'Baja autoestima'),
+            )
+
+CHOICE_30 = ((1, 'Denunciar a las autoridades'),
+                    (2, 'Organizar promotores para la prevención'),
+                    (3, 'Campañas públicas abordando el tema'),
+                    (4, 'Campañas de información en escuelas'),
+            )
+
+CHOICE_31 = ((1, 'Si'),
+                    (2, 'No'),
+                    (3, 'Es posible'),
+                    (4, 'No responde'),
+            )
+
+CHOICE_32 = ((1, 'Educan a la población'),
+                    (2, 'Dan seguimiento a los casos'),
+                    (3, 'Revictimizan a las victimas'),
+                    (4, 'Brindan asistencia psicológica a la víctimas'),
+                    (5, 'No hacen nada'),
+            )
+
+CHOICE_33 = ((1, 'Si'),
+                    (2, 'No'),
+                    (3, 'Es posible'),
+                    (4, 'No responde'),
+            )
+
+CHOICE_34 = ((1, 'Varones adultos'),
+                    (2, 'Mujeres adultas'),
+                    (3, 'Varones jóvenes'),
+                    (4, 'Mujeres jóvenes'),
+                    (5, 'Varones adolescentes'),
+                    (6, 'Mujeres adolescentes'),
+            )
+
+CHOICE_35_37_38 = ((1, 'Si'),
+                    (2, 'No'),
+                    (3, 'No responde'),
+            )
+
+CHOICE_36 = ((1, 'Si'),
+                    (2, 'No'),
+                    (3, 'Es posible'),
+                    (4, 'No responde'),
+            )
+
+#Estado actual sobre sobre el tema de violencia y abuso de drogas
+
+CHOICE_40_41 = ((1, 'No es un problema'),
+            (2, 'Es un problema'),
+            (3, 'Es un problema grave'),
+            )
+
+CHOICE_42 = ((1, 'Si'),
+            (2, 'No'),
+            (3, 'No sabe'),
+            )
+
+class Acciones(models.Model):
+    accion = models.CharField(max_length=250)
+
+    def __unicode__(self):
+        return self.accion
+
+CHOICE_43 = ((1, 'Si'),
+            (2, 'No'),
+            )
+
+class LugaresComunidad(models.Model):
+    lugar = models.CharField(max_length=250)
+
+    def __unicode__(self):
+        return self.lugar
+
+CHOICE_44 = ((1, 'Atención psicológica'),
+            (2, 'Atención Jurídica'),
+            (3, 'Atención médica'),
+            (4, 'Acompañamiento de los casos'),
+            (5, 'Desconoce'),
+        )
+
+CHOICE_45 = ((1, 'Viaja a otro municipio/comunidad'),
+            (2, 'Paga psicóloga o abogados particulares'),
+            (3, 'No hace nada'),
+            (4, 'No sabe'),
+        )
