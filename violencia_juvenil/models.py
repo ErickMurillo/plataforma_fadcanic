@@ -256,11 +256,65 @@ class Conocimiento(models.Model):
 
 #II- Actitud sobre los temas de violencia y abuso de drogas. Favor marcar X donde corresponda.
 
+CHOICE_VALORA_14 = ((1, 'Alta'),
+                    (2, 'Media'),
+                    (3, 'Baja'),
+                    (4, 'No responde'),
+                    (5, 'No sabe'),
+            )
 
+CHOICE_PERSONAS_15 = ((1, 'Son enfermos'),
+                    (2, 'Criminales/delincuentes'),
+                    (3, 'Personas que se equivocan'),
+                    (4, 'No cuentan con la educación suficiente'),
+                    (5, 'Fueron víctimas de violencia'),
+                    (6, 'Personas violentas de acuerdo a su Etnia'),
+                    (7, 'No responde'),
+                    (8, 'No sabe'),
+            )
 
+CHOICE_16 = ((1, 'Hay que brindarles ayuda'),
+                    (2, 'Es pasajero, no lo necesita'),
+                    (3, 'El/ella se lo busco'),
+                    (4, 'No responde'),
+                    (5, 'No sabe'),
+            )
 
+CHOICE_17 = ((1, 'Mayor orientación de la familia'),
+                    (2, 'Organizando a la comunidad'),
+                    (3, 'Mayores niveles de información'),
+                    (4, 'Acceso a la educación'),
+                    (5, 'Generando oportunidades de empleo'),
+                    (6, 'No responde'),
+                    (7, 'No sabe'),
+            )
 
+CHOICE_18 = ((1, 'Falta de información'),
+                    (2, 'Maltrato físico en el seno familiar'),
+                    (3, 'Carencia afectiva de la familia'),
+                    (4, 'Desintegración de la familia'),
+                    (5, 'Por el grupo étnico al que pertenece'),
+                    (6, 'Viene en la sangre (genes)'),
+                    (7, 'No sabe'),
+            )
 
+CHOICE_19 = ((1, 'Masoquismo'),
+                    (2, 'Porque le ama y cree que puede cambiar'),
+                    (3, 'No cuenta con apoyo para mantenerse'),
+                    (4, 'No recibió apoyo de las instituciones'),
+                    (5, 'No responde'),
+                    (6, 'No sabe'),
+            )
+
+CHOICE_20 = ((1, 'Falta de educación'),
+                    (2, 'Falta de información'),
+                    (3, 'La no protección de los padres a sus hijos/hijas'),
+                    (4, 'Falta de vigilancia policial en la ciudad'),
+                    (5, 'La comunidad sabe pero no denuncia'),
+                    (6, 'Por abuso de droga y alcohol'),
+                    (5, 'No responde'),
+                    (6, 'No sabe'),
+            )
 
 
 
