@@ -26,11 +26,31 @@ class ConocimientoInline(admin.TabularInline):
 	extra = 1
 	max_num = 1
 
+class ActitudInline(admin.TabularInline):
+	model = Actitud
+	extra = 1
+	max_num = 1
 
+class PracticasInline(admin.TabularInline):
+	model = Practicas
+	extra = 1
+	max_num = 1
 
+class PercepcionInline(admin.TabularInline):
+	model = Percepcion
+	extra = 1
+	max_num = 1
+
+class EstadoActualInline(admin.TabularInline):
+	model = EstadoActual
+	extra = 1
+	max_num = 1
 
 class EncuestaAdmin(admin.ModelAdmin):
-	pass
+	inlines = [InformacionInline,EscolaridadInline,ParticipaOrganizacionInline,
+				RespuetaSiInline,ConocimientoInline,ActitudInline,PracticasInline,
+				PercepcionInline,EstadoActualInline]
+	list_display = ('fecha', 'encuestador')
 
 
 # Register your models here.

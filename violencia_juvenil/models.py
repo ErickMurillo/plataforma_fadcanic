@@ -88,9 +88,8 @@ class Escolaridad(models.Model):
     varones = models.IntegerField()
     mujeres = models.IntegerField()
 
-
-    def __unicode__(self):
-        return u'%s' % (str(self.get_escolaridad_display())
+    #def __unicode__(self):
+    #    return u'%s' % (str(self.get_escolaridad_display())
 
     class Meta:
         verbose_name_plural = 'Nivel de escolaridad'
@@ -209,7 +208,7 @@ CHOICE_ABUSO_SEXUAL_10 = ((1, 'Actividad sexual entre dos o más personas sin c
 CHOICE_LUGARES_11 = ((1, 'Casa'),
                     (2, 'Escuela (dentro o fuera)'),
                     (3, 'Calle'),
-                    (4, 'Comunidades rurales')
+                    (4, 'Comunidades rurales'),
                     (5, 'En la ciudad'),
                     (6, 'En la iglesia'),
                     (7, 'No sabe'),
@@ -424,23 +423,11 @@ CHOICE_30 = ((1, 'Denunciar a las autoridades'),
                     (4, 'Campañas de información en escuelas'),
             )
 
-CHOICE_31 = ((1, 'Si'),
-                    (2, 'No'),
-                    (3, 'Es posible'),
-                    (4, 'No responde'),
-            )
-
 CHOICE_32 = ((1, 'Educan a la población'),
                     (2, 'Dan seguimiento a los casos'),
                     (3, 'Revictimizan a las victimas'),
                     (4, 'Brindan asistencia psicológica a la víctimas'),
                     (5, 'No hacen nada'),
-            )
-
-CHOICE_33 = ((1, 'Si'),
-                    (2, 'No'),
-                    (3, 'Es posible'),
-                    (4, 'No responde'),
             )
 
 CHOICE_34 = ((1, 'Varones adultos'),
@@ -456,7 +443,7 @@ CHOICE_35_37_38 = ((1, 'Si'),
                     (3, 'No responde'),
             )
 
-CHOICE_36 = ((1, 'Si'),
+CHOICE_31_33_36 = ((1, 'Si'),
                     (2, 'No'),
                     (3, 'Es posible'),
                     (4, 'No responde'),
@@ -464,24 +451,24 @@ CHOICE_36 = ((1, 'Si'),
 
 class Percepcion(models.Model):
     encuesta = models.ForeignKey(Encuesta)
-    pregunta25 = models.IntegerField(choices=CHOICE_25, verbose_name='1-¿Para Usted que es Violencia Juvenil?')
-    pregunta26 = models.IntegerField(choices=CHOICE_26, verbose_name='2-¿Qué es abuso de drogas para usted?')
-    pregunta27 = models.IntegerField(choices=CHOICE_27, verbose_name='3-¿Qué tipo violencia afecta más a tu comunidad?')
-    pregunta28 = models.IntegerField(choices=CHOICE_28, verbose_name='4-¿Qué lugares considera usted que genera más violencia?')
-    pregunta29 = models.IntegerField(choices=CHOICE_29, verbose_name='5-¿Qué es lo que conlleva a un joven a ser violento y consuma drogas?')
-    pregunta30 = models.IntegerField(choices=CHOICE_30, verbose_name='6-¿Quiénes son los más perjudicados por la violencia juvenil y abuso de drogas?')
-    pregunta31 = models.IntegerField(choices=CHOICE_31, verbose_name='7-¿Qué soluciones ve Usted para prevenir la violencia juvenil?')
-    pregunta32 = models.IntegerField(choices=CHOICE_32, verbose_name='8-¿Quiénes son los responsables de aportar a la prevención de la violencia juvenil?')
-    pregunta33 = models.IntegerField(choices=CHOICE_33, verbose_name='9-¿Qué entiendes por feminicidio?')
-    pregunta34 = models.IntegerField(choices=CHOICE_34, verbose_name='10-¿Qué es el abuso sexual?')
-    pregunta35 = models.IntegerField(choices=CHOICE_35, verbose_name='11-¿En qué lugares ocurren más el abuso sexual?')
-    pregunta36 = models.IntegerField(choices=CHOICE_36, verbose_name='12-¿Qué hacer para prevenir el abuso sexual?')
-    pregunta37 = models.IntegerField(choices=CHOICE_37, verbose_name='13-¿Qué entiendes por seguridad ciudadana?')
-    pregunta38 = models.IntegerField(choices=CHOICE_38, verbose_name='13-¿Qué entiendes por seguridad ciudadana?')
+    pregunta25 = models.IntegerField(choices=CHOICE_25, verbose_name='25-¿Quiénes son los más afectados por la violencia?')
+    pregunta26 = models.IntegerField(choices=CHOICE_26, verbose_name='26- ¿Quiénes deben ser protagonistas de la prevención de la violencia juvenil y abuso de drogas?')
+    pregunta27 = models.IntegerField(choices=CHOICE_27, verbose_name='27- ¿En que familias se da más frecuentemente el abuso sexual?')
+    pregunta28 = models.IntegerField(choices=CHOICE_28, verbose_name='28- ¿Qué piensa del rol de las autoridades en la prevención de la violencia juvenil y abuso de drogas?')
+    pregunta29 = models.IntegerField(choices=CHOICE_29, verbose_name='29- ¿Por qué los jóvenes que consumen droga se vuelven adictos?')
+    pregunta30 = models.IntegerField(choices=CHOICE_30, verbose_name='30- ¿Para usted que acciones se puede hacer desde la comunidad para la prevención de la violencia juvenil y abuso de drogas?')
+    pregunta31 = models.IntegerField(choices=CHOICE_31_33_36, verbose_name='31- ¿Cree Usted que la población se organizara para prevenir la violencia y abuso de drogas se disminuiría?')
+    pregunta32 = models.IntegerField(choices=CHOICE_32, verbose_name='32- ¿Qué piensa del rol de las autoridades en la prevención de la violencia juvenil y abuso de drogas?')
+    pregunta33 = models.IntegerField(choices=CHOICE_31_33_36, verbose_name='33- ¿Consideras usted que los piropos constituyen una forma de violencia?')
+    pregunta34 = models.IntegerField(choices=CHOICE_34, verbose_name='34- ¿Quiénes consideras que son más violentos?')
+    pregunta35 = models.IntegerField(choices=CHOICE_35_37_38, verbose_name='35- ¿Cree usted que el narcotráfico es un problema?')
+    pregunta36 = models.IntegerField(choices=CHOICE_31_33_36, verbose_name='36- ¿Cree usted que el narcotráfico ayuda a las comunidades?')
+    pregunta37 = models.IntegerField(choices=CHOICE_35_37_38, verbose_name='37- ¿Crees que Nicaragua es un país seguro?')
+    pregunta38 = models.IntegerField(choices=CHOICE_35_37_38, verbose_name='38- ¿Crees que tu comunidad/barrio es seguro (a)?')
 
 
     class Meta:
-        verbose_name_plural = 'I-Conocimiento sobre los temas de violencia y abuso de drogas'
+        verbose_name_plural = 'IV-Percepción sobre el tema de violencia y abuso de drogas'
 
 #Estado actual sobre sobre el tema de violencia y abuso de drogas
 
@@ -523,3 +510,18 @@ CHOICE_45 = ((1, 'Viaja a otro municipio/comunidad'),
             (3, 'No hace nada'),
             (4, 'No sabe'),
         )
+
+class EstadoActual(models.Model):
+    encuesta = models.ForeignKey(Encuesta)
+    pregunta40 = models.IntegerField(choices=CHOICE_40_41, verbose_name='40- ¿Usted considera que la violencia juvenil y abuso de drogas es un problema en su comunidad?')
+    pregunta41 = models.IntegerField(choices=CHOICE_40_41, verbose_name='41- ¿Usted considera que la violencia juvenil y abuso de drogas es un problema del país?')
+    pregunta42 = models.IntegerField(choices=CHOICE_42, verbose_name='42- ¿Sabe si la comunidad hace acciones comunitarias para la prevención de la violencia juvenil y abuso de drogas?')
+    si_respuesta_42 = models.ForeignKey(Acciones, null=True, blank=True, verbose_name='Si responde Si, favor mencione tipos de acción')
+    pregunta43 = models.IntegerField(choices=CHOICE_43, verbose_name='43- ¿Sabe si hay lugares en esta comunidad que atienden a personas que vivieron la violencia juvenil y abuso de drogas?')
+    si_respuesta_43 = models.ManyToManyField(LugaresComunidad, blank=True, verbose_name='Si responde SI favor mencione los lugares')
+    pregunta44 = models.IntegerField(choices=CHOICE_44, verbose_name='44- ¿Usted sabe qué tipo de atención brindan en esos lugares?')
+    pregunta45 = models.IntegerField(choices=CHOICE_45, verbose_name='45- ¿Si no hay ningún lugar en su comunidad donde se atiende a las personas víctimas violencia juvenil y abuso de drogas a dónde van para recibir atención?')
+
+
+    class Meta:
+        verbose_name_plural = 'V-Estado actual sobre sobre el tema de violencia y abuso de drogas'
