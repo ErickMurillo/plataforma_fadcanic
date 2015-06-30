@@ -250,11 +250,10 @@ class Conocimiento(models.Model):
     pregunta12 = models.IntegerField(choices=CHOICE_PREVENIR_ABUSO_12, verbose_name='12-¿Qué hacer para prevenir el abuso sexual?')
     pregunta13 = models.IntegerField(choices=CHOICE_SEGURIDAD_CIUDADA_13, verbose_name='13-¿Qué entiendes por seguridad ciudadana?')
 
-
     class Meta:
         verbose_name_plural = 'I-Conocimiento sobre los temas de violencia y abuso de drogas'
 
-#II- Actitud sobre los temas de violencia y abuso de drogas. Favor marcar X donde corresponda.
+#II- Actitud sobre los temas de violencia y abuso de drogas.
 
 CHOICE_VALORA_14 = ((1, 'Alta'),
                     (2, 'Media'),
@@ -316,6 +315,19 @@ CHOICE_20 = ((1, 'Falta de educación'),
                     (8, 'No sabe'),
             )
 
+class Actitud(models.Model):
+    encuesta = models.ForeignKey(Encuesta)
+    pregunta14 = models.IntegerField(choices=CHOICE_VALORA_14, verbose_name='14 -¿Cómo valora la situación de la violencia juvenil y abuso de drogas en su localidad?')
+    pregunta15 = models.IntegerField(choices=CHOICE_PERSONAS_15, verbose_name='15- ¿Qué piensa usted de las personas violentas y abusadores de droga?')
+    pregunta16 = models.IntegerField(choices=CHOICE_16, verbose_name='16- ¿Qué piensa de las personas víctimas de la violencia juvenil?')
+    pregunta17 = models.IntegerField(choices=CHOICE_17, verbose_name='17- ¿Cómo prevenir la violencia juvenil y abuso de drogas?')
+    pregunta18 = models.IntegerField(choices=CHOICE_18, verbose_name='18- ¿Cuáles cree usted son las principales causas de la violencia juvenil?')
+    pregunta19 = models.IntegerField(choices=CHOICE_19, verbose_name='19- ¿Por qué crees que muchas mujeres después vivir violencia, perdonan a sus parejas o abusadores?')
+    pregunta20 = models.IntegerField(choices=CHOICE_20, verbose_name='20- ¿Cuáles cree Usted son las causas de abuso sexual?')
+   
+    class Meta:
+        verbose_name_plural = 'II-Actitud sobre los temas de violencia y abuso de drogas'
+
 #III- Prácticas sobre el tema de violencia y abuso de drogas
 
 CHOICE_21 = ((1, 'La defiendo, ejerciendo la fuerza'),
@@ -353,6 +365,15 @@ CHOICE_24 = ((1, 'Mayor vigilancia policial'),
                     (8, 'No sabe'),
             )
 
+class Practicas(models.Model):
+    encuesta = models.ForeignKey(Encuesta)
+    pregunta21 = models.IntegerField(choices=CHOICE_21, verbose_name='21- ¿Qué harías si en tu presencia alguien es víctimade violencia juvenil?')
+    pregunta22 = models.IntegerField(choices=CHOICE_22, verbose_name='22- ¿Qué hace usted para prevenir la violencia juvenil y abuso de droga?')
+    pregunta23 = models.IntegerField(choices=CHOICE_23, verbose_name='23- ¿Qué harías si en tu presencia una mujer es víctima de violencia?')
+    pregunta24 = models.IntegerField(choices=CHOICE_24, verbose_name='24- ¿Qué hacer para que los jóvenes no caigan en el problema de narcotráfico?')
+   
+    class Meta:
+        verbose_name_plural = 'III-Prácticas sobre el tema de violencia y abuso de drogas'
 
 #IV- Percepción sobre el tema de violencia y abuso de drogas
 
@@ -440,6 +461,27 @@ CHOICE_36 = ((1, 'Si'),
                     (3, 'Es posible'),
                     (4, 'No responde'),
             )
+
+class Percepcion(models.Model):
+    encuesta = models.ForeignKey(Encuesta)
+    pregunta25 = models.IntegerField(choices=CHOICE_25, verbose_name='1-¿Para Usted que es Violencia Juvenil?')
+    pregunta26 = models.IntegerField(choices=CHOICE_26, verbose_name='2-¿Qué es abuso de drogas para usted?')
+    pregunta27 = models.IntegerField(choices=CHOICE_27, verbose_name='3-¿Qué tipo violencia afecta más a tu comunidad?')
+    pregunta28 = models.IntegerField(choices=CHOICE_28, verbose_name='4-¿Qué lugares considera usted que genera más violencia?')
+    pregunta29 = models.IntegerField(choices=CHOICE_29, verbose_name='5-¿Qué es lo que conlleva a un joven a ser violento y consuma drogas?')
+    pregunta30 = models.IntegerField(choices=CHOICE_30, verbose_name='6-¿Quiénes son los más perjudicados por la violencia juvenil y abuso de drogas?')
+    pregunta31 = models.IntegerField(choices=CHOICE_31, verbose_name='7-¿Qué soluciones ve Usted para prevenir la violencia juvenil?')
+    pregunta32 = models.IntegerField(choices=CHOICE_32, verbose_name='8-¿Quiénes son los responsables de aportar a la prevención de la violencia juvenil?')
+    pregunta33 = models.IntegerField(choices=CHOICE_33, verbose_name='9-¿Qué entiendes por feminicidio?')
+    pregunta34 = models.IntegerField(choices=CHOICE_34, verbose_name='10-¿Qué es el abuso sexual?')
+    pregunta35 = models.IntegerField(choices=CHOICE_35, verbose_name='11-¿En qué lugares ocurren más el abuso sexual?')
+    pregunta36 = models.IntegerField(choices=CHOICE_36, verbose_name='12-¿Qué hacer para prevenir el abuso sexual?')
+    pregunta37 = models.IntegerField(choices=CHOICE_37, verbose_name='13-¿Qué entiendes por seguridad ciudadana?')
+    pregunta38 = models.IntegerField(choices=CHOICE_38, verbose_name='13-¿Qué entiendes por seguridad ciudadana?')
+
+
+    class Meta:
+        verbose_name_plural = 'I-Conocimiento sobre los temas de violencia y abuso de drogas'
 
 #Estado actual sobre sobre el tema de violencia y abuso de drogas
 
