@@ -9,14 +9,21 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script>
 	var LocationData = [
-	[14.733333, -83.96666700000003, "Waspam" ], 
-	[14.0333, -83.38329999999996, "Bilwi" ], 
-	[12.0111402, -83.77036929999997, "Bluefields" ], 
-	[12.3390296, -83.67473419999999, "Laguna de Perlas" ], 
-	[12.9371143, -84.83960409999997, "Desembocadura de Rio Grande" ],
-	[12.165456, -86.35788600000001, "Ciudad Sandino" ],
-	[12.136389, -86.25138900000002, "Managua" ],
-	[12.233333, -86.433333, "Mateare" ],
+	[14.733333, -83.96666700000003, "Waspam<br>Participantes:{% for x in sum_municipio_waspan.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_waspan_f.values %}{{x}} Mujeres{% endfor %}" ], 
+
+	[14.0333, -83.38329999999996, "Bilwi<br>Participantes:{% for x in sum_municipio_bilwi.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_bilwi_f.values %}{{x}} Mujeres{% endfor %}" ], 
+
+	[12.0111402, -83.77036929999997, "Bluefields<br>Participantes:{% for x in sum_municipio_blue.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_blue_f.values %}{{x}} Mujeres{% endfor %}" ], 
+
+	[12.3390296, -83.67473419999999, "Laguna de Perlas<br>Participantes:{% for x in sum_municipio_laguna.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_laguna_f.values %}{{x}} Mujeres{% endfor %}" ], 
+
+	[12.9371143, -84.83960409999997, "Desembocadura de Rio Grande<br>Participantes:{% for x in sum_municipio_rio.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_rio_f.values %}{{x}} Mujeres{% endfor %}" ],
+
+	[12.165456, -86.35788600000001, "Ciudad Sandino<br>Participantes:{% for x in sum_municipio_sandino.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_sandino_f.values %}{{x}} Mujeres{% endfor %}" ],
+
+	[12.136389, -86.25138900000002, "Managua<br>Participantes:{% for x in sum_municipio_managua.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_managua_f.values %}{{x}} Mujeres{% endfor %}" ],
+
+	[12.233333, -86.433333, "Mateare<br>Participantes:{% for x in sum_municipio_mateare.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_mateare_f.values %}{{x}} Mujeres{% endfor %}" ],
 	];
 
 	function initialize()
@@ -25,6 +32,7 @@
 		new google.maps.Map(document.getElementById('map-canvas'));
 		var bounds = new google.maps.LatLngBounds();
 		var infowindow = new google.maps.InfoWindow();
+		//var image = new google.maps.MarkerImage('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m2.png');
 
 
 		for (var i in LocationData)
@@ -33,10 +41,12 @@
 			var latlng = new google.maps.LatLng(p[0], p[1]);
 			bounds.extend(latlng);
 
+			
 			var marker = new google.maps.Marker({
 				position: latlng,
 				map: map,
-				title: p[2]
+				title: p[2],
+				//icon: image,
 			});
 
 			google.maps.event.addListener(marker, 'click', (function(mm, tt) {
@@ -62,28 +72,29 @@
 		height: 500px;
 		width: 100%;
 		margin: 0px;
-		padding: 0px
+		padding: 0px;
 	}
 
 	.map{
-		margin-bottom: 30px
+		margin-bottom: 50px
 	}
 
 	h6 {
 		margin-bottom: 0px !important;
 	}
 	.numero {
-		color: rgb(244, 115, 23)
+		color: rgb(244, 115, 23);
+		margin: 0 10px 0 10px;
 	}
 </style>
 <div class="container">
-	<h3>Actividades de las Comunidades</h3>
+	<h3 align="center">Actividades de las Comunidades</h3>
 	<div class="map col-md-8">
 		<div id="map-canvas"></div>
 	</div>
 
 	<div class="col-md-4">
-		<h5 align="center">Participantes</h5>
+		<h5 align="center">Total de participantes</h5>
 		{% for y in masculino.values %}
 		<h6><i class="fa fa-male fa-2x"></i> <span class="numero">{{y}}</span> Hombres</h6>
 		{% endfor %}
@@ -92,6 +103,11 @@
 		<h6><i class="fa fa-female fa-2x"></i> <span class="numero">{{y}}</span> Mujeres</h6>
 		{% endfor %}
 		<hr>
+		
+		<h6><i class="fa fa-list-alt fa-2x"></i> <span class="numero">{{actividades}}</span> Total de Actividades</h6>
+		
+		<hr>
+		<a class="btn btn-default" href="#" role="button">Explorar datos</a>
 	</div>
 
 </div>
