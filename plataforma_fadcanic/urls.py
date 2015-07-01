@@ -23,6 +23,10 @@ from cambiaahora.multimedias import urls as multimedias_urls
 from django.conf.urls.i18n import i18n_patterns
 from cambiaahora.noticias import views
 
+admin.site.site_header = "FADCANIC administration"
+admin.site.site_title = "FADCANIC site admin"
+
+
 urlpatterns = [
     
 	url(r'', include('cambiaahora.noticias.urls')),
