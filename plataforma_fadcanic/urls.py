@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """plataforma_fadcanic URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -23,8 +24,8 @@ from cambiaahora.multimedias import urls as multimedias_urls
 from django.conf.urls.i18n import i18n_patterns
 from cambiaahora.noticias import views
 
-admin.site.site_header = "FADCANIC administration"
-admin.site.site_title = "FADCANIC site admin"
+admin.site.site_header = "FADCANIC administración"
+admin.site.site_title = "FADCANIC sitio admin"
 
 
 urlpatterns = [
