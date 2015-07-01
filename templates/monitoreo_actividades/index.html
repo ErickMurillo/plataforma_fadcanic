@@ -6,58 +6,43 @@
 {% endblock titulo %}
 
 {% block extra_js %}
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <script>
-	var LocationData = [
-	[14.733333, -83.96666700000003, "Waspam<br>Participantes:{% for x in sum_municipio_waspan.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_waspan_f.values %}{{x}} Mujeres{% endfor %}" ], 
-
-	[14.0333, -83.38329999999996, "Bilwi<br>Participantes:{% for x in sum_municipio_bilwi.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_bilwi_f.values %}{{x}} Mujeres{% endfor %}" ], 
-
-	[12.0111402, -83.77036929999997, "Bluefields<br>Participantes:{% for x in sum_municipio_blue.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_blue_f.values %}{{x}} Mujeres{% endfor %}" ], 
-
-	[12.3390296, -83.67473419999999, "Laguna de Perlas<br>Participantes:{% for x in sum_municipio_laguna.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_laguna_f.values %}{{x}} Mujeres{% endfor %}" ], 
-
-	[12.9371143, -84.83960409999997, "Desembocadura de Rio Grande<br>Participantes:{% for x in sum_municipio_rio.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_rio_f.values %}{{x}} Mujeres{% endfor %}" ],
-
-	[12.165456, -86.35788600000001, "Ciudad Sandino<br>Participantes:{% for x in sum_municipio_sandino.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_sandino_f.values %}{{x}} Mujeres{% endfor %}" ],
-
-	[12.136389, -86.25138900000002, "Managua<br>Participantes:{% for x in sum_municipio_managua.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_managua_f.values %}{{x}} Mujeres{% endfor %}" ],
-
-	[12.233333, -86.433333, "Mateare<br>Participantes:{% for x in sum_municipio_mateare.values %}{{x}} Hombres,{% endfor %} {% for x in sum_municipio_mateare_f.values %}{{x}} Mujeres{% endfor %}" ],
-	];
-
 	function initialize()
 	{
-		var map = 
-		new google.maps.Map(document.getElementById('map-canvas'));
+		var myLatlng = new google.maps.LatLng(13,-85);
+		var myOptions = {
+            zoom: 7,
+            center: myLatlng, 
+        }
+		var map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 		var bounds = new google.maps.LatLngBounds();
 		var infowindow = new google.maps.InfoWindow();
 		//var image = new google.maps.MarkerImage('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m2.png');
-
-
-		for (var i in LocationData)
-		{
-			var p = LocationData[i];
-			var latlng = new google.maps.LatLng(p[0], p[1]);
-			bounds.extend(latlng);
-
-			
-			var marker = new google.maps.Marker({
-				position: latlng,
-				map: map,
-				title: p[2],
-				//icon: image,
-			});
+		
+		$.getJSON("{% url 'obtener-lista' %}", function(data){
+                $.each(data, function(i, elemento){
+					var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
+					bounds.extend(latlng);	
+					var marker = new google.maps.Marker({
+					position: latlng,
+					map: map,
+					title: elemento.nombre,
+					//icon: image,
+				});
 
 			google.maps.event.addListener(marker, 'click', (function(mm, tt) {
 				return function() {
 					infowindow.setContent(tt);
 					infowindow.open(map, mm);
 				}
-			})(marker, p[2]));
-		}
-
-		map.fitBounds(bounds);
+			})(marker, elemento.nombre));
+                                       
+                });
+                
+            });
+		//map.fitBounds(bounds);	
 	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
@@ -111,4 +96,5 @@
 	</div>
 
 </div>
+
 {% endblock contenido %}

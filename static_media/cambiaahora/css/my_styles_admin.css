@@ -1,5 +1,6 @@
-.inline-group .checkbox input {
-  margin: 1px;
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox] {
+  position: relative !important;
+
 }
 
 .sidebar-menu {

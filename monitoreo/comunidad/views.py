@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.views.generic import ListView, DetailView
 from .models import *
 from django.db.models import Sum
+import json as simplejson
 
 
 # Create your views here.
@@ -17,6 +18,7 @@ class MonitoreoView(TemplateView):
         context['masculino'] = Monitoreo.objects.all().aggregate(Sum('masculino'))
         context['femenino'] = Monitoreo.objects.all().aggregate(Sum('femenino'))
         context['actividades'] = Monitoreo.objects.all().count()
+        
 
         #sumatoria municipios masculino
         context['sum_municipio_waspan'] =  Monitoreo.objects.filter(municipio__nombre='Waspán').aggregate(Sum('masculino'))
@@ -39,3 +41,16 @@ class MonitoreoView(TemplateView):
         context['sum_municipio_mateare_f'] =  Monitoreo.objects.filter(municipio__nombre='Mateare').aggregate(Sum('femenino'))
 
         return context
+
+def obtener_lista(request):
+    if request.is_ajax():
+        lista = []
+        for objeto in Monitoreo.objects.all():
+            dicc = dict(nombre=objeto.municipio.nombre, id=objeto.id,
+                        lon=float(objeto.municipio.longitud) ,
+                        lat=float(objeto.municipio.latitud)
+                        )
+            lista.append(dicc)
+
+        serializado = simplejson.dumps(lista)
+        return HttpResponse(serializado, content_type='application/json')
