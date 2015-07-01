@@ -3,6 +3,7 @@ from django.db import models
 from actividades.lugar.models import Departamento, Municipio
 from smart_selects.db_fields import ChainedForeignKey
 from multiselectfield import MultiSelectField
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -22,6 +23,8 @@ class Encuesta(models.Model):
     encuestador = models.ForeignKey(Encuestador)
 
     year = models.IntegerField(editable=False)
+
+    user = models.ForeignKey(User)
 
     def save(self):
         self.year = self.fecha.year
@@ -61,13 +64,14 @@ class InformacionEntrevistado(models.Model):
                                 show_all=False, auto_choose=True,null=True, blank=True)
     residencia = models.IntegerField(choices=CHOICE_AREA)
     habita = models.IntegerField(choices=CHOICE_HABITA)
+    sexo = models.IntegerField(choices=CHOICE_SEXO)
 
 
     def __unicode__(self):
         return self.etnia.nombre
 
     class Meta:
-        verbose_name_plural = 'b-Información del Entrevistado'
+        verbose_name_plural = 'Información del Entrevistado'
 
 #c- Nivel de escolaridad
 CHOICE_ESCOLARIDAD = ((1,'No sabe leer'),(2,'Alfabeto'),
