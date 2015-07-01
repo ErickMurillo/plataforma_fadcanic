@@ -27,6 +27,8 @@ INSTALLED_APPS = (
     'actividades.clippy',
     #monitoreo comunidad
     'monitoreo.comunidad',
+    #caps violencia
+    'violencia_juvenil',
     #extras apps
     'ckeditor',
     'smart_selects',

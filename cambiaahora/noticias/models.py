@@ -24,7 +24,7 @@ class Categoria(models.Model):
 
 class Noticias(models.Model):
     titulo = models.CharField(_(u'Titulo'),max_length=450)
-    slug = models.SlugField(editable=False)
+    slug = models.SlugField(editable=False, max_length=450)
     fecha = models.DateField(_(u'Fecha'))
     foto = ImageField(_(u'Foto principal'), upload_to=get_file_path, blank=True, null=True)
     url = models.URLField(_(u'url del video como portada'), blank=True, null=True)
