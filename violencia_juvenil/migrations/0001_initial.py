@@ -4,11 +4,13 @@ from __future__ import unicode_literals
 from django.db import models, migrations
 import smart_selects.db_fields
 import multiselectfield.db.fields
+from django.conf import settings
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('lugar', '0001_initial'),
     ]
 
@@ -127,13 +129,14 @@ class Migration(migrations.Migration):
                 ('edad', models.IntegerField()),
                 ('residencia', models.IntegerField(choices=[(1, b'Urbano'), (2, b'Rural')])),
                 ('habita', models.IntegerField(choices=[(1, b'Barrio'), (2, b'Comunidad')])),
+                ('sexo', models.IntegerField(choices=[(1, b'Mujer'), (2, b'Hombre')])),
                 ('departamento', models.ForeignKey(to='lugar.Departamento')),
                 ('encuesta', models.ForeignKey(to='violencia_juvenil.Encuesta')),
                 ('etnia', models.ForeignKey(to='violencia_juvenil.Etnias')),
                 ('municipio', smart_selects.db_fields.ChainedForeignKey(chained_model_field=b'departamento', chained_field=b'departamento', blank=True, auto_choose=True, to='lugar.Municipio', null=True)),
             ],
             options={
-                'verbose_name_plural': 'b-Informaci\xf3n del Entrevistado',
+                'verbose_name_plural': 'Informaci\xf3n del Entrevistado',
             },
         ),
         migrations.CreateModel(
@@ -212,6 +215,11 @@ class Migration(migrations.Migration):
             model_name='encuesta',
             name='encuestador',
             field=models.ForeignKey(to='violencia_juvenil.Encuestador'),
+        ),
+        migrations.AddField(
+            model_name='encuesta',
+            name='user',
+            field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
         ),
         migrations.AddField(
             model_name='conocimiento',
