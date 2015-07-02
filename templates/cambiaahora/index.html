@@ -198,10 +198,11 @@
 								{% for obj in ultimas_testimonios %}
 									<li class="list-opinion">
 									<div class="item-testimonial">
-										<div class="avatar">
+										<div class="avatar prueba-border ">
 										{% if obj.foto %}
 											{% thumbnail obj.foto "250x250" as img %}
-												<img src="/media/{{img}}" alt="" class="img-circle">
+												<img src="/media/{{img}}" alt="" class="img-circle ">
+												<div class="luna"></div>
 											{% endthumbnail %}
 										{% else %}
 											<img src="http://placehold.it/250x250" alt="" class="img-circle">
