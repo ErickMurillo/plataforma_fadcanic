@@ -36,7 +36,7 @@ class IndexView(TemplateView):
         if cur_language == 'en':
             context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')[:6]
             context['ultimas_historia'] = Historias.objects.filter(aprobacion=2,idioma=2).order_by('fecha')[:6]
-            context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2,idioma=2).order_by('fecha')[:6]
+            context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')[:6]
             context['albunes'] = Fotos.objects.filter(aprobacion=2,idioma=2).order_by('id')[:1]
             context['audios'] = Audios.objects.filter(aprobacion=2,idioma=2).order_by('id')[:3]
             context['videos'] = Videos.objects.filter(aprobacion=2,idioma=2).order_by('id')[:3]
@@ -45,7 +45,7 @@ class IndexView(TemplateView):
         else:
             context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:6]
             context['ultimas_historia'] = Historias.objects.filter(aprobacion=2,idioma=1).order_by('fecha')[:6]
-            context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2,idioma=1).order_by('fecha')[:6]
+            context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:6]
             context['albunes'] = Fotos.objects.filter(aprobacion=2,idioma=1).order_by('id')[:1]
             context['audios'] = Audios.objects.filter(aprobacion=2,idioma=1).order_by('id')[:3]
             context['videos'] = Videos.objects.filter(aprobacion=2,idioma=1).order_by('id')[:3]
