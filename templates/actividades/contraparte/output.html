@@ -308,11 +308,16 @@ function loadCell(key, key2){
 </div>
 
 <div class="col-md-12 space">
+  <a class="btn btn-success" href="/actividades/" role="button">Ir a Inicio</a>
 	<a class="btn btn-default guardarXLS" href="#" role="button" onclick="exportarXLS('result_table'); return false;">Exportar</a>
 	{% if not noshare %}
-		<a class="btn btn-default" href="#inline" id="sharesave" role="button" data-toggle="modal" data-target="#myModal">Guardar para informe</a>
+		<!--<a class="btn btn-default" href="#inline" id="sharesave" role="button" data-toggle="modal" data-target="#myModal">Guardar para informe</a>
 		<a class="btn btn-default" href="#file" id="generatefile" role="button" data-toggle="modal" data-target="#myModal2">Generar informe</a>
-		<a class="btn btn-default" href="#" id="share" role="button">Compartir</a>
+		<a class="btn btn-default" href="#" id="share" role="button">Compartir</a>-->
+
+    <a href="#inline" id="sharesave" class=" btn btn-default">Guardar para informe</a>
+      <a href="#file" id="generatefile" class=" btn btn-default">Generar informe</a>
+      <a href="#" id="share" class=" btn btn-default">Compartir</a>
 		<div id="copiador" style="display: none;">
 			<span id="clippy_117"></span>{% clippy "clippy_117" "14x14" "#FFFFFF" "opaque" %}
 		</div>
@@ -367,7 +372,7 @@ function loadCell(key, key2){
   </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -388,10 +393,10 @@ function loadCell(key, key2){
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Modal -->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -423,6 +428,35 @@ function loadCell(key, key2){
     </div>
   </div>
 </div>
+ -->
 
+<div style="display: none;">
+  <div id="inline">
+    <form method="POST" action="." class="form">{% csrf_token %}
+      <label>Comentario: </label>
+      <textarea rows="5" cols="50" name="comentario" id="id_comentario"></textarea><br><br>
+      <input type="submit" id="guardarfile" value="Guardar" title="Guardar">
+    </form>
+  </div>
+  <div id="file">
+    <div class="banner banner-filtros en_inline">
+      <center class="banner_title">Generar reporte</center> 
+    </div>        
+    <table class="result_table reporte_tabla" width="100%">
+      <thead>
+        <tr>
+          <th><input id="id_todos" type="checkbox" name="todos" title="Marcar todos"></th>
+          <th>Dirección</th>
+          <th>Fecha</th>
+          <th>Comentario</th>                   
+        </tr>
+      </thead>
+      <tbody id="reportbodytable">        
+      </tbody>
+    </table><br>
+    <input type="submit" id="generate_report" value="Generar Reporte" title="Generar Reporte" class="optionsbutton">    
+    <input type="submit" id="delete_report" value="Eliminar" title="Eliminar" class="optionsbutton">
+  </div>
+</div>
 
 {% endblock %}
