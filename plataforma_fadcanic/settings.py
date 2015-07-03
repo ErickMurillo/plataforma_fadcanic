@@ -25,8 +25,10 @@ INSTALLED_APPS = (
     'actividades.fadcanic',
     'actividades.lugar',
     'actividades.clippy',
+
     #monitoreo
-    'monitoreo.comunidad',
+    #'monitoreo.comunidad',
+    
     #caps violencia
     'violencia_juvenil',
     #extras apps
