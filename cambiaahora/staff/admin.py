@@ -11,8 +11,8 @@ class StaffAdmin(admin.ModelAdmin):
 		obj.user = request.user
 		obj.save()
 
-	exclude = ('user',)
-	list_display = ('titulo', 'profesion', 'cargo', 'fecha', 'idioma')
+	exclude = ('user','texto','profesion','fecha')
+	list_display = ('titulo', 'cargo', 'idioma')
 	list_filter = ('idioma', 'user', 'aprobacion')
 	search_fields = ('titulo',)
 # Register your models here.
