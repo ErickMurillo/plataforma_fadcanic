@@ -35,6 +35,12 @@
 	.section-header {
 		padding-bottom: 0.01px !important; 
 	}
+	.opinion {
+   		text-align: center !important;
+	}
+	.opinion p {
+	   font-size: 16px !important;
+	}
 </style>
 <div id="main">
 	<!--Breadcrumb Section Start Here-->
@@ -103,44 +109,45 @@
 
 	</div>
 
-	<!-- Our Team Section Start Here -->
+	
 	{% if request.get_full_path = "/campaign-change-now/" or request.get_full_path = "/campana-cambia-ahora/" %}
-	<div class="container">
-		<div class="our-team text-center row">
-			<div class="col-xs-12">
-				<header class="team-info section-header">
-					<h2><strong class="border-none">{% trans "Conoce a nuestro equipo" %}</strong></h2>
-				</header>
-				<div class="row">
-					{% for obj in equipo %}
-					<div class="col-xs-12 col-sm-3 anim-section">
-						<div class="thumbnail">
-							<figure class="team-photo">
-								{% if obj.foto %}
-								{% thumbnail obj.foto "250x250" as img %}
-								<img src="/media/{{img}}" alt="" class="img-circle">
-								{% endthumbnail %}
-								{% else %}
-								<img src="http://placehold.it/250x250" alt="" class="img-circle">
-								{% endif %}
-							</figure>
-							<div class="caption">
-								<h3>{{obj.titulo}}</h3>
-								<ul class="staff-info">
-									<li>
-										<a href="#"><strong>{% trans "Cargo" %}: {{obj.cargo}}</strong> </a>
-									</li>
-									
-									</ul>
+	<!-- Our Team Section Start Here -->
+	<section class="testimonial ">
+					<div class="container anim-section">
+						<div class="row">
+							<div class="col-xs-12">
+								<header class="page-header section-header clearfix">
+									<h2>{% trans "Conoce a nuestro equipo" %}</h2>
+								</header>
+								<div class="article-list flexslider article-slider row">
+								<ul class="slides">
+								{% for obj in equipo %}
+									<li class="list-opinion">
+									<div class="item-testimonial">
+										<div class="avatar prueba-border ">
+										{% if obj.foto %}
+											{% thumbnail obj.foto "200x200" as img %}
+												<img src="/media/{{img}}" alt="" class="img-circle ">
+												<div class="luna"></div>
+											{% endthumbnail %}
+										{% else %}
+											<img src="http://placehold.it/200x200" alt="" class="img-circle">
+										{% endif %}
+										
+										</div>
+										<div class="opinion">
+											<p><strong>{{obj.titulo}}</strong></p><br>
+											<p><strong>{% trans "Cargo" %}: {{obj.cargo}}</strong></p>
+										</div>
+									</div>
+								</li>
+								{% endfor %}
+								</ul>	
 								</div>
 							</div>
 						</div>
-						{% endfor %}
-
 					</div>
-				</div>
-			</div>
-		</div>
+				</section>
 		{% endif %}
-	</div>
+	
 	{% endblock contenido %}
