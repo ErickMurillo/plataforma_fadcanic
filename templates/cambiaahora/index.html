@@ -10,6 +10,9 @@
 {% endblock titulo %}
 
 {% block contenido %}
+<style>
+	
+</style>
 <section class="rev_slider_wrapperc main-slider">
 	<div  class="rev_slider banner-slider">
 		<ul>
@@ -187,14 +190,14 @@
 	</section>
 <!-- Latest News Section End Here -->
 <!--Testimonial Section Start Here-->
-				<section class="testimonial ">
+				<section class="testimonial container ">
 					<div class="container anim-section">
 						<div class="row">
 							<div class="col-xs-12">
 								<header class="page-header section-header clearfix">
 									<h2>{% trans "Cambia Ahora" %}<strong> {% trans "Opina" %}</strong></h2>
 								</header>
-								<div class="article-list flexslider2 article-slider row">
+								<div class="article-list flexslider article-slider row">
 								<ul class="slides">
 								{% for obj in ultimas_testimonios %}
 									<li class="list-opinion">
@@ -231,7 +234,7 @@
 				</section>
 <!--Testimonial Section End Here -->
 <!-- Gallery Section Start Here-->
-	<section class="galeria-fotos">
+	<section class="galeria-fotos container">
 		<div class="container anim-section">
 			<div class="row">
 				<div class="col-xs-12">			
@@ -469,7 +472,7 @@
 <!-- ABOUT US Section End Here -->
 
 <!--Apoyan Start Here -->
-			<section class="apoyan ">
+			<section class="apoyan container">
 					<div class="container anim-section">
 						<div class="row">
 							<div class="col-xs-12">

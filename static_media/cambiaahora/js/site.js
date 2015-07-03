@@ -221,6 +221,7 @@ $(window).ready(function() {
 
 		// Flexsliderfunction function
 		$(window).load(function() {
+
 			if($('.flexslider').length){
 			
 		$('.latest-news .flexslider').flexslider({
@@ -235,13 +236,38 @@ $(window).ready(function() {
 			}
 		});
 		
-			$('.testimonial .flexslider, .galeria-fotos .flexslider, .apoyan .flexslider').flexslider({
+			$('.galeria-fotos').flexslider({
 				
 			animation : "slide",
-			animationLoop : false
+			animationLoop : false,
+			itemWidth :200,
+			itemMargin : 0,
+			slideToStart: 0,
+			
+		});
+			$('.testimonial').flexslider({
+				
+			animation : "slide",
+			animationLoop : false,
+			itemWidth :360,
+			itemMargin : 30,
+			slideToStart: 0,
+			move:1,
+
+			
+		});
+			$('.apoyan').flexslider({
+				
+			animation : "slide",
+			animationLoop : false,
+			itemWidth :200,
+			itemMargin : 20,
+			slideToStart: 0,
+
 			
 		});
 		}
+
 		
 	});
 
@@ -278,11 +304,7 @@ $(window).ready(function() {
 	// 		if($('.flexslider').length){
 			
 	// 	$('.apoyan .flexslider').flexslider({
-	// 		animation : "slide",
-	// 		animationLoop : false,
-	// 		itemWidth :200,
-	// 		itemMargin : 20,
-	// 		slideToStart: 0,
+	// 		
  			
 	// 		start : function(slider) {
 	// 			$('body').removeClass('loading');
