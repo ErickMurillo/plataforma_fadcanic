@@ -491,6 +491,9 @@ aside.media .pull-left{
 .holders .flexslider {
     margin-top: 12px;
 }
+.holders .flexslider2 {
+    margin-top: 12px;
+}
 .holders {
     padding-bottom: 27px;
 }
@@ -764,6 +767,10 @@ line-height: 1.2;         font-size: 14px;         padding-top: 0px;     }
 	}
 
 	.article-list.flexslider {
+		width: 290px;
+		margin: 0 auto;
+	}
+	.article-list.flexslider2 {
 		width: 290px;
 		margin: 0 auto;
 	}
@@ -1230,6 +1237,9 @@ margin-top:10px;
 .holders .flexslider {
     margin-top: 12px;
 }
+.holders .flexslider2 {
+    margin-top: 12px;
+}
 .holders {
     padding-bottom: 27px;
 }
@@ -1426,6 +1436,9 @@ border:none;
 		bottom: -49px;
 	}
 	.holders .flexslider .flex-control-paging {
+		margin: 15px 0;
+	}
+	.holders .flexslider2 .flex-control-paging {
 		margin: 15px 0;
 	}
 	.holders{

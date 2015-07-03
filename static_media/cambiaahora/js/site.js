@@ -248,9 +248,9 @@ $(window).ready(function() {
 
 	// Flexsliderfunction function
 		$(window).load(function() {
-			if($('.flexslider').length){
+			if($('.flexslider2').length){
 			
-		$('.testimonial .flexslider3').flexslider({
+		$('.testimonial .flexslider2').flexslider({
 			animation : "slide",
 			animationLoop : false,
 			itemWidth :360,
@@ -277,7 +277,7 @@ $(window).ready(function() {
 		$(window).load(function() {
 			if($('.flexslider').length){
 			
-		$('.apoyan .flexslider2').flexslider({
+		$('.apoyan .flexslider').flexslider({
 			animation : "slide",
 			animationLoop : false,
 			itemWidth :200,

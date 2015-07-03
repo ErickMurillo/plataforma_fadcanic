@@ -1358,6 +1358,12 @@ form {
 
 }
 
+.flexslider2 .flex-control-paging {
+  list-style: none;
+  padding: 0;
+
+}
+
 .latest-news .article-list ol{
   text-align: center;
 }
@@ -1391,6 +1397,11 @@ form {
   background: #4d4641;
 }
 .flexslider .flex-control-paging {
+  list-style: none;
+  padding: 0;
+
+}
+.flexslider2.flex-control-paging {
   list-style: none;
   padding: 0;
 
