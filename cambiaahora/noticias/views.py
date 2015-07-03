@@ -52,8 +52,6 @@ class IndexView(TemplateView):
             context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=1).order_by('fecha')[:3]
             context['informacion'] = Informacion.objects.filter(id=1, idioma=1)
         
-        
-        
         context['config'] = Configuracion.objects.all()[:3]
         return context
 

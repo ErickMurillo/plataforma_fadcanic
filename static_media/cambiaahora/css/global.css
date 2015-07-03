@@ -1973,7 +1973,9 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 
 	.brand img {
 
-	  width: 25%;
+	  width: 65%;
+	  margin-top: 17px;
+	  background-color: transparent !important;
 
 	}
 
@@ -2002,5 +2004,68 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
  }
  	.detail-description {
   	padding: 5px !important;
+	}
+}
+
+
+
+
+/* pruebas de diseno*/
+
+
+/*.brand img {
+
+  background: #26211d;
+  padding-bottom: 14px;
+}*/
+
+
+
+/*.img-circle{
+box-shadow: 12px 0px 7px -2px #970012;
+
+}
+.luna {
+    width: 100px;
+    height: 100px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    -moz-box-shadow: 30px 10px 0 #d9534f;
+    -webkit-box-shadow: 30px 10px 0 #d9534f;
+    box-shadow: 30px 10px 0 #d9534f;
+}*/
+.avatar {
+	height: 270px;
+}
+.luna {
+
+width: 250px;
+  	-moz-border-radius: 50%;
+  	-moz-box-shadow: 30px 10px 0 #d9534f;
+  	-webkit-border-radius: 50%;
+  	-webkit-box-shadow: 30px 10px 0 #d9534f;
+  	border-radius: 50%;
+ 	height: 255px;
+  	left: 31px;
+  	position: relative;
+  	top: -252px;
+	box-shadow: 8px 2px 0 #d9534f;
+  }
+
+  .img-circle{
+  	border: 5px solid;
+  	border-color: #389500;
+  }
+  @media (max-width: 767px)  {
+	.avatar {
+		height: 230 !important;
+	}
+
+	.luna{
+		display: none;
+	}
+	.testimonial img {
+		height: 230px !important;
 	}
 }
