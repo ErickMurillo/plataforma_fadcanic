@@ -1932,6 +1932,14 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
     right: -50px;
     z-index: 100;
 }
+#share img{
+	width: 20%;
+	transition: all .2s ease-in-out;
+	padding-right: 10px;
+}
+#share {	
+	display: none;
+}
 
 #share-buttons img:hover { transform: scale(1.05); }
 
@@ -1949,9 +1957,18 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 	margin-bottom: 20px;
 }
 
+@media (min-width: 300px) and (max-width: 1100px){
+	#share-buttons{
+		display: none
+	}
+	#share{
+		display: inline-block;
+	}
+}
 
 @media (min-width: 593px) and (max-width:767px)  {
 
+	
 	.brand img {
 
 	  width: 20%;
@@ -1970,7 +1987,7 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 }
 
 @media (max-width: 593px)  {
-
+	
 	.brand img {
 
 	  width: 65%;

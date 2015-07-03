@@ -4,6 +4,11 @@
 {% load thumbnail %}
 
 {% block contenido %}
+<style>
+.section-header {
+   padding-bottom: 0.01px !important; 
+}
+</style>
 	<div id="main">
 				<!--Breadcrumb Section Start Here-->
 				<div class="breadcrumb-section">
@@ -33,19 +38,13 @@
 				<div class="content-wrapper" id="page-info">
 					<div class="container">
 						<!-- Our Story Section Start Here -->
-						<section class="our-story row">
+						<section class=" row">
 							<div class="col-xs-12">
 								<header class="story-heading section-header">
 									<h2><strong>{{flatpage.title}}</strong></h2>
 								</header>
-								<div class="row">
-									
-										<p class="">
-											
-											{{ flatpage.content|safe }}
-											
-										</p>
-									
+								<div class="row detail-description">
+									{{ flatpage.content|safe }}
 								</div>
 							</div>
 						</section>
@@ -54,6 +53,7 @@
 					</div>
 
 					<!-- Our Team Section Start Here -->
+					{% if request.get_full_path = "/campaign-change-now/" or request.get_full_path = "/campana-cambia-ahora/" %}
 					<div class="container">
 						<div class="our-team text-center row">
 							<div class="col-xs-12">
@@ -94,5 +94,6 @@
 							</div>
 						</div>
 					</div>
+					{% endif %}
 				</div>
 {% endblock contenido %}

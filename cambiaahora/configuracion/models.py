@@ -44,6 +44,7 @@ class LogoApoyan(models.Model):
         return u'%s' % (self.nombre)
 
     class Meta:
+        ordering = ['-id',]
         verbose_name = _(u'Logo apoyan')
         verbose_name_plural = _(u'Logo apoyan')
 

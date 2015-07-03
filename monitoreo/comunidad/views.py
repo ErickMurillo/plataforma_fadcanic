@@ -54,3 +54,6 @@ def obtener_lista(request):
 
         serializado = simplejson.dumps(lista)
         return HttpResponse(serializado, content_type='application/json')
+
+class DatosView(TemplateView):
+    template_name = 'monitoreo_actividades/datos.html'
