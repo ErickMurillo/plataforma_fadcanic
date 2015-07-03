@@ -235,7 +235,7 @@ $(window).ready(function() {
 			}
 		});
 		
-			$('.testimonial .flexslider, .donation-holder .flexslider,.flex-slide.flexslider').flexslider({
+			$('.testimonial .flexslider, .galeria-fotos .flexslider, .apoyan .flexslider').flexslider({
 				
 			animation : "slide",
 			animationLoop : false
@@ -247,82 +247,82 @@ $(window).ready(function() {
 
 
 	// Flexsliderfunction function
-		$(window).load(function() {
-			if($('.flexslider2').length){
+	// 	$(window).load(function() {
+	// 		if($('.flexslider2').length){
 			
-		$('.testimonial .flexslider2').flexslider({
-			animation : "slide",
-			animationLoop : false,
-			itemWidth :360,
-			itemMargin : 30,
-			slideToStart: 0,
-			move:1,
+	// 	$('.testimonial .flexslider2').flexslider({
+	// 		animation : "slide",
+	// 		animationLoop : false,
+	// 		itemWidth :360,
+	// 		itemMargin : 30,
+	// 		slideToStart: 0,
+	// 		move:1,
 
-			start : function(slider) {
-				$('body').removeClass('loading');
-			}
-		});
+	// 		start : function(slider) {
+	// 			$('body').removeClass('loading');
+	// 		}
+	// 	});
 		
-			$('.testimonial .flexslider, .donation-holder .flexslider,.flex-slide.flexslider').flexslider({
+	// 		$('.testimonial .flexslider, .donation-holder .flexslider,.flex-slide.flexslider').flexslider({
 				
-			animation : "slide",
-			animationLoop : false
+	// 		animation : "slide",
+	// 		animationLoop : false
 			
-		});
-		}
+	// 	});
+	// 	}
 		
-	});
+	// });
 
 
-		$(window).load(function() {
-			if($('.flexslider').length){
+	// 	$(window).load(function() {
+	// 		if($('.flexslider').length){
 			
-		$('.apoyan .flexslider').flexslider({
-			animation : "slide",
-			animationLoop : false,
-			itemWidth :200,
-			itemMargin : 20,
-			slideToStart: 0,
+	// 	$('.apoyan .flexslider').flexslider({
+	// 		animation : "slide",
+	// 		animationLoop : false,
+	// 		itemWidth :200,
+	// 		itemMargin : 20,
+	// 		slideToStart: 0,
  			
-			start : function(slider) {
-				$('body').removeClass('loading');
-			}
-		});
+	// 		start : function(slider) {
+	// 			$('body').removeClass('loading');
+	// 		}
+	// 	});
 		
-			$('.testimonial .flexslider, .donation-holder .flexslider,.flex-slide.flexslider').flexslider({
+	// 		$('.testimonial .flexslider, .donation-holder .flexslider,.flex-slide.flexslider').flexslider({
 				
-			animation : "slide",
-			animationLoop : false
+	// 		animation : "slide",
+	// 		animationLoop : false
 			
-		});
-		}
+	// 	});
+	// 	}
 		
-	});
+	// });
 		
-		$(window).load(function() {
-			if($('.flexslider').length){
+	// 	$(window).load(function() {
+	// 		if($('.flexslider').length){
 			
-		$('.galeria-fotos .flexslider').flexslider({
-			animation : "slide",
-			animationLoop : false,
-			itemWidth :200,
-			itemMargin : 0,
-			slideToStart: 0,
+	// 	$('.galeria-fotos .flexslider').flexslider({
+	// 		animation : "slide",
+	// 		animationLoop : false,
+	// 		itemWidth :200,
+	// 		itemMargin : 0,
+	// 		slideToStart: 0,
  			
-			start : function(slider) {
-				$('body').removeClass('loading');
-			}
-		});
+	// 		start : function(slider) {
+	// 			$('body').removeClass('loading');
+	// 		}
+	// 	});
 		
-			$('.galeria-fotos.flexslider, .donation-holder .flexslider,.flex-slide.flexslider').flexslider({
+	// 		$('.galeria-fotos.flexslider, .donation-holder .flexslider,.flex-slide.flexslider').flexslider({
 				
-			animation : "slide",
-			animationLoop : false
+	// 		animation : "slide",
+	// 		animationLoop : false
 			
-		});
-		}
+	// 	});
+	// 	}
 		
-	});
+	// });
 
 
 
