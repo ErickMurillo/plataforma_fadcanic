@@ -198,6 +198,21 @@
 	list-style: none;
 	padding: 0;
 }
+
+.flexslider2 ul, .flexslider2 ol {
+	list-style: none;
+}
+.flexslider2 .flex-control-paging {
+	list-style: none;
+	padding: 0;
+}
+.flexslider3 ul, .flexslider3 ol {
+	list-style: none;
+}
+.flexslider3 .flex-control-paging {
+	list-style: none;
+	padding: 0;
+}
 .our-causes .flex-control-paging {
 	margin-top: 44px;
 	margin-bottom: 91px;
@@ -1021,6 +1036,12 @@
 	background: none;
 }
 .holders .flexslider {
+	margin-top: 31px;
+}
+.holders .flexslider2 {
+	margin-top: 31px;
+}
+.holders .flexslider3 {
 	margin-top: 31px;
 }
 .photo-frame {
