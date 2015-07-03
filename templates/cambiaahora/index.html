@@ -354,9 +354,8 @@
 			  <div class="tab-content">
 			  	{% for obj in audios %}
 			    <div role="tabpanel" class="tab-pane {% if forloop.counter == 1 %}active{% endif %} " id="radio{{forloop.counter}}">
-			    <div class="container">
-					<div class="row">
-						<div class="col-xs-12">
+			    
+						<div class="">
 						    <div class="audio-radio ">
 								<div class="col-xs-12 col-sm-7 col-md-6">
 									{% if  obj.foto %}
@@ -385,8 +384,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>	
+			
 			    </div>
 			    {% endfor %}
 
