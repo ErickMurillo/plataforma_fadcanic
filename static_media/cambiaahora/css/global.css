@@ -1939,6 +1939,7 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 }
 #share {	
 	display: none;
+	margin-bottom: 15px;
 }
 
 #share-buttons img:hover { transform: scale(1.05); }
