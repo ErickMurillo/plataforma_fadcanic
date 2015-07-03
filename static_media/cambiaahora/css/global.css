@@ -2011,8 +2011,9 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 	  height: 500px;
 	}
 	.logo-fadcanic {
-	  width: 25%;
+	  width: 40%;
 	}
+
 }
 
 
@@ -2022,6 +2023,13 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
  }
  	.detail-description {
   	padding: 5px !important;
+	}
+
+	.serie-radio .tab-content{
+		padding: 0px !important
+	}
+	.audiojs .scrubber {
+		width: 250px;
 	}
 }
 
