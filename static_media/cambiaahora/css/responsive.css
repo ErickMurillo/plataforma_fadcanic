@@ -161,7 +161,14 @@ padding-bottom: 100px;
 		width: 750px;
 		margin: 0 auto;
 	}
-
+	.article-list.flexslider2 {
+		width: 750px;
+		margin: 0 auto;
+	}
+	.article-list.flexslider3 {
+		width: 750px;
+		margin: 0 auto;
+	}
 	.our-causes .slides > li + li +li {
     display: none;
 }
@@ -1397,6 +1404,10 @@ border:none;
 		display: inline-block;
 	}
 	.testimonial-slider.flexslider {
+		width: 290px;
+		margin: 0 auto;
+	}
+	.testimonial-slider.flexslider2 {
 		width: 290px;
 		margin: 0 auto;
 	}
