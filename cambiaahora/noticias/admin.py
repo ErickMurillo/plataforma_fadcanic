@@ -7,11 +7,11 @@ class NoticiasAdmin(admin.ModelAdmin):
 			return Noticias.objects.all()
 		return Noticias.objects.filter(user=request.user)
 
-	def save_model(self, request, obj, form, change):
-		obj.user = request.user
-		obj.save()
+	# def save_model(self, request, obj, form, change):
+	# 	obj.user = request.user
+	# 	obj.save()
 
-	exclude = ('user',)
+	# exclude = ('user',)
 	list_display = ('titulo', 'fecha', 'aprobacion', 'idioma', 'user')
 	list_filter = ('idioma', 'user', 'aprobacion')
 	search_fields = ('titulo',)
