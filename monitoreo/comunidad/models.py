@@ -39,9 +39,9 @@ class Monitoreo(models.Model):
     femenino = models.IntegerField(default='0')
     #participantes por edad
     menor_12 = models.IntegerField('Menor a 12 años',default='0')
-    mayor_12 = models.IntegerField('12 a 18 años',default='0')
-    mayor_18 = models.IntegerField('18 a 30 años',default='0')
-    mayor_30 = models.IntegerField('30 a más años',default='0')
+    mayor_12 = models.IntegerField('13 a 18 años',default='0')
+    mayor_18 = models.IntegerField('19 a 30 años',default='0')
+    mayor_30 = models.IntegerField('31 a más años',default='0')
     #identidad etnica
     creole = models.IntegerField(default='0')
     miskito = models.IntegerField(default='0')

@@ -99,20 +99,47 @@ class Actividad(models.Model):
     #participantes por sexo
     hombres = models.IntegerField(default=0)
     mujeres = models.IntegerField(default=0)
+    
+    #participantes por edad
+    # no_dato = models.BooleanField(verbose_name='No hay datos')
+    # adultos = models.IntegerField(default=0, verbose_name=u'Adultos/as')
+    # jovenes = models.IntegerField(default=0, verbose_name=u'Jóvenes')
+    # ninos = models.IntegerField(default=0, verbose_name=u'Niños/as')
+    #participantes por tipo
+    # no_dato1 = models.BooleanField(verbose_name='No hay datos')
+    # autoridades = models.IntegerField(default=0, verbose_name=u'Autoridades públicas')
+    # maestros = models.IntegerField(default=0)
+    # lideres = models.IntegerField(default=0, verbose_name=u'Lideres/zas Comunitarios')
+    # pobladores = models.IntegerField(default=0, verbose_name=u'Pobladores/as')
+    # estudiantes = models.IntegerField(default=0)
+    # miembros = models.IntegerField(default=0, verbose_name=u'Miembros de organizaciones comunitarias')
+    # tecnicos = models.IntegerField(default=0, verbose_name=u'Técnicas/os de Organizaciones Copartes de FADCANIC')
+
     #participantes por edad
     no_dato = models.BooleanField(verbose_name='No hay datos')
-    adultos = models.IntegerField(default=0, verbose_name=u'Adultos/as')
-    jovenes = models.IntegerField(default=0, verbose_name=u'Jóvenes')
-    ninos = models.IntegerField(default=0, verbose_name=u'Niños/as')
-    #participantes por tipo
+    menor_12 = models.IntegerField('Menor a 12 años',default='0')
+    mayor_12 = models.IntegerField('13 a 18 años',default='0')
+    mayor_18 = models.IntegerField('19 a 30 años',default='0')
+    mayor_30 = models.IntegerField('31 a más años',default='0')
+    #identidad etnica
     no_dato1 = models.BooleanField(verbose_name='No hay datos')
-    autoridades = models.IntegerField(default=0, verbose_name=u'Autoridades públicas')
-    maestros = models.IntegerField(default=0)
-    lideres = models.IntegerField(default=0, verbose_name=u'Lideres/zas Comunitarios')
-    pobladores = models.IntegerField(default=0, verbose_name=u'Pobladores/as')
-    estudiantes = models.IntegerField(default=0)
-    miembros = models.IntegerField(default=0, verbose_name=u'Miembros de organizaciones comunitarias')
-    tecnicos = models.IntegerField(default=0, verbose_name=u'Técnicas/os de Organizaciones Copartes de FADCANIC')
+    creole = models.IntegerField(default='0')
+    miskito = models.IntegerField(default='0')
+    ulwa = models.IntegerField(default='0')
+    rama = models.IntegerField(default='0')
+    mestizo = models.IntegerField(default='0')
+    mayagna = models.IntegerField(default='0')
+    garifuna = models.IntegerField(default='0')
+    extranjero = models.IntegerField(default='0')
+    #tipos de actores
+    no_dato2 = models.BooleanField(verbose_name='No hay datos')
+    estudiante = models.IntegerField(default='0')
+    docente = models.IntegerField(default='0')
+    periodista = models.IntegerField('Periodista/comunicador',default='0')
+    lideres = models.IntegerField('Líderes comunitarios',default='0')
+    representantes = models.IntegerField('Representantes de Organizaciones',default='0')
+    autoridades = models.IntegerField('Autoridades comunitarias',default='0')
+    comunitarios = models.IntegerField('Comunitarios/Pobladores',default='0')
     resultado = ChainedForeignKey(Resultado, 
                                   chained_field="proyecto",
                                   chained_model_field="proyecto", 
@@ -181,8 +208,11 @@ class Actividad(models.Model):
     
     def clean(self):
         suma_base = self.hombres + self.mujeres
-        suma_edad = self.adultos + self.jovenes + self.ninos
-        suma_tipo = self.autoridades + self.maestros + self.lideres + self.pobladores + self.estudiantes + self.miembros + self.tecnicos
+        #suma_edad = self.adultos + self.jovenes + self.ninos
+        suma_edad = self.menor_12 + self.mayor_12 + self.mayor_18 + self.mayor_30
+        #suma_tipo = self.autoridades + self.maestros + self.lideres + self.pobladores + self.estudiantes + self.miembros + self.tecnicos
+        suma_tipo = self.estudiante + self.docente + self.periodista + self.lideres + self.representantes + self.autoridades + self.comunitarios
+        suma_etnia = self.estudiante + self.miskito + self.ulwa + self.rama + self.mestizo + self.mayagna + self.garifuna + self.extranjero
         
         if not self.no_dato:
             if suma_base != suma_edad:
@@ -191,6 +221,10 @@ class Actividad(models.Model):
         if not self.no_dato1:
             if suma_base != suma_tipo:
                 raise ValidationError('La suma de los participantes por tipo no concuerda')
+
+        if not self.no_dato2:
+            if suma_base != suma_etnia:
+                raise ValidationError('La suma de los participantes por identidad étnica no concuerda')
     
     class Meta:
         verbose_name_plural = u'Actividades' 
