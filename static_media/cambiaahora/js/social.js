@@ -33,16 +33,16 @@
   });
 
 $(document).ready(function() {
-        var posicion = $("#share-buttons").offset();
-      var margenSuperior = 150;
+      var posicion = $("#share-buttons").offset();
+      var margenSuperior = 150;     
        $(window).scroll(function() {
-           if ($(window).scrollTop() > posicion.top) {
+           if ($(window).scrollTop() > posicion.top && $(window).scrollTop() <= ($("#page-info").height() + $(".navb-navar").height())) {
                $("#share-buttons").stop().animate({
                    marginTop: $(window).scrollTop() - posicion.top + margenSuperior
                });
            } else {
                $("#share-buttons").stop().animate({
-                   marginTop: 100
+                   marginTop: 90
                });
            };
        });

@@ -50,9 +50,12 @@ class ActividadAdmin(admin.ModelAdmin):
                            'municipio', 'comunidad']}),
         ('Tipo, tema y ejes de actividad', {'fields': ['tipo_actividad', 'tema_actividad', 'ejes_transversales']}),
         ('Participantes por sexo', {'fields': [('hombres', 'mujeres'),]}),
-        ('Participantes por edad', {'fields': [('adultos', 'jovenes', 'ninos', 'no_dato'),]}),
-        ('Participantes por tipo', {'fields': [('autoridades', 'maestros', 'lideres', 'no_dato1'), 
-                                               ('pobladores', 'estudiantes', 'miembros', 'tecnicos')]}),
+        ('Participantes por edad', {'fields': [('menor_12', 'mayor_12', 'mayor_18', 'mayor_30', 'no_dato'),]}),
+        ('Participantes por identidad étnica', {'fields': [('creole', 'miskito', 'ulwa', 'no_dato1'), 
+                                               ('rama', 'mestizo', 'mayagna', 'garifuna'),
+                                               ('extranjero',)]}),
+        ('Participantes por tipo', {'fields': [('estudiante', 'docente', 'periodista', 'no_dato2'), 
+                                               ('lideres', 'representantes', 'autoridades', 'comunitarios')]}),
         (None, {'fields': ['resultado',]}),
         ('Evaluacion de hombres', {'fields': [('relevancia', 'efectividad'), ('aprendizaje', 'empoderamiento'), 'participacion']}),
         ('Evaluacion de mujeres', {'fields': [('relevancia_m', 'efectividad_m'), ('aprendizaje_m', 'empoderamiento_m'), 'participacion_m']}),
@@ -78,7 +81,7 @@ class ActividadAdmin(admin.ModelAdmin):
         return Actividad.objects.filter(organizacion__admin=request.user)
     
     class Media:
-        js = ('/files/js/actividad.js', )        
+        js = ('/static/actividades/js/actividad.js', )        
     
 admin.site.register(Actividad, ActividadAdmin)
 

@@ -58,9 +58,11 @@ first_class = {'tipo_actividad': ['tipo_actividad'],
                'ejes_transversales': ['ejes_transversales']}
 
 participantes = {'participantes_por_sexo': ['hombres', 'mujeres'],
-                 'participantes_por_edad': ['adultos', 'jovenes', 'ninos'],
-                 'participantes_por_tipo': ['autoridades', 'maestros', 'lideres', 
-                                            'pobladores', 'estudiantes', 'miembros', 'tecnicos']}
+                 'participantes_por_edad': ['menor_12', 'mayor_12', 'mayor_18', 'mayor_30'],
+                 'participantes_por_etnia': ['creole', 'miskito', 'ulwa','rama', 'mestizo',
+                                             'mayagna', 'garifuna','extranjero'],
+                 'participantes_por_tipo': ['estudiante', 'docente', 'periodista',
+                                            'lideres', 'representantes', 'autoridades', 'comunitarios']}
 
 evaluacion = {'importancia_del_tema': 'relevancia',
               'efectividad_de_la_accion': 'efectividad',
