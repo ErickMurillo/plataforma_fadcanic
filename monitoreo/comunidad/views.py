@@ -18,27 +18,6 @@ class MonitoreoView(TemplateView):
         context['masculino'] = Monitoreo.objects.all().aggregate(Sum('masculino'))
         context['femenino'] = Monitoreo.objects.all().aggregate(Sum('femenino'))
         context['actividades'] = Monitoreo.objects.all().count()
-        
-
-        #sumatoria municipios masculino
-        context['sum_municipio_waspan'] =  Monitoreo.objects.filter(municipio__nombre='Waspán').aggregate(Sum('masculino'))
-        context['sum_municipio_blue'] =  Monitoreo.objects.filter(municipio__nombre='Bluefields').aggregate(Sum('masculino'))
-        context['sum_municipio_bilwi'] =  Monitoreo.objects.filter(municipio__nombre='Bilwi').aggregate(Sum('masculino'))
-        context['sum_municipio_laguna'] = Monitoreo.objects.filter(municipio__nombre='Laguna de Perlas').aggregate(Sum('masculino'))
-        context['sum_municipio_rio'] =  Monitoreo.objects.filter(municipio__nombre='Desembocadura de Río Grande').aggregate(Sum('masculino'))
-        context['sum_municipio_sandino'] =  Monitoreo.objects.filter(municipio__nombre='Ciudad Sandino').aggregate(Sum('masculino'))
-        context['sum_municipio_managua'] =  Monitoreo.objects.filter(municipio__nombre='Managua').aggregate(Sum('masculino'))
-        context['sum_municipio_mateare'] =  Monitoreo.objects.filter(municipio__nombre='Mateare').aggregate(Sum('masculino'))
-        
-        #sumatoria municipios femenino
-        context['sum_municipio_waspan_f'] =  Monitoreo.objects.filter(municipio__nombre='Waspán').aggregate(Sum('femenino'))
-        context['sum_municipio_blue_f'] =  Monitoreo.objects.filter(municipio__nombre='Bluefields').aggregate(Sum('femenino'))
-        context['sum_municipio_bilwi_f'] =  Monitoreo.objects.filter(municipio__nombre='Bilwi').aggregate(Sum('femenino'))
-        context['sum_municipio_laguna_f'] = Monitoreo.objects.filter(municipio__nombre='Laguna de Perlas').aggregate(Sum('femenino'))
-        context['sum_municipio_rio_f'] =  Monitoreo.objects.filter(municipio__nombre='Desembocadura de Río Grande').aggregate(Sum('femenino'))
-        context['sum_municipio_sandino_f'] =  Monitoreo.objects.filter(municipio__nombre='Ciudad Sandino').aggregate(Sum('femenino'))
-        context['sum_municipio_managua_f'] =  Monitoreo.objects.filter(municipio__nombre='Managua').aggregate(Sum('femenino'))
-        context['sum_municipio_mateare_f'] =  Monitoreo.objects.filter(municipio__nombre='Mateare').aggregate(Sum('femenino'))
 
         return context
 

@@ -14,7 +14,7 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import include, url
+from django.conf.urls import *
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 import settings
@@ -23,6 +23,7 @@ from cambiaahora.noticias import urls as noticias_urls
 from cambiaahora.multimedias import urls as multimedias_urls
 from django.conf.urls.i18n import i18n_patterns
 from cambiaahora.noticias import views
+from actividades.views import *
 
 admin.site.site_header = "FADCANIC administración"
 admin.site.site_title = "FADCANIC sitio admin"
@@ -36,7 +37,6 @@ urlpatterns = [
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^actividades/', include('actividades.urls')),
-    url(r'^monitoreo/', include('monitoreo.comunidad.urls')),
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'actividades/login.html'}),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'template_name': 'actividades/logout.html'}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
@@ -46,6 +46,12 @@ urlpatterns += i18n_patterns('',
     url(r'^noticias/', include(noticias_urls)),
     url(r'^multimedias/', include(multimedias_urls)),
     url(r'^admin/', include(admin.site.urls)),
+)
+
+urlpatterns += patterns('actividades.views',
+    url(r'^monitoreo/$', MonitoreoView.as_view(), name='monitoreo'),
+    url(r'^mapa/$', 'obtener_lista', name='obtener-lista'),
+    url(r'^datos/$', DatosView.as_view(), name='obtener-datos'),
 )
 
 urlpatterns += staticfiles_urlpatterns()
