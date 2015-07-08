@@ -8,40 +8,51 @@
 {% block extra_js %}
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script type="text/javascript" src="/static/monitoreo/js/markerclusterer.js"></script>
+<script type="text/javascript" src="/static/monitoreo/js/infobox.js"></script>
 <script>
+	var markers = [];
 	function initialize()
-	{
+	{	
+		var infowindow = new google.maps.InfoWindow();
 		var myLatlng = new google.maps.LatLng(13,-85);
 		var myOptions = {
-            zoom: 7,
-            center: myLatlng, 
-        }
+			zoom: 7,
+			center: myLatlng, 
+		}
+
 		var map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
 		var bounds = new google.maps.LatLngBounds();
 		var infowindow = new google.maps.InfoWindow();
-		//var image = new google.maps.MarkerImage('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m2.png');
+		var image = new google.maps.MarkerImage('/static/monitoreo/img/m2.png');
+		
 		
 		$.getJSON("{% url 'obtener-lista' %}", function(data){
-                $.each(data, function(i, elemento){
-					var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
-					bounds.extend(latlng);	
-					var marker = new google.maps.Marker({
+			$.each(data, function(i, elemento){
+				var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
+				bounds.extend(latlng);	
+				var marker = new google.maps.Marker({
 					position: latlng,
 					map: map,
 					title: elemento.nombre,
-					//icon: image,
+					icon: image,
+					item: '',
+                    id: elemento.id
 				});
+				markers.push(marker);
 
-			google.maps.event.addListener(marker, 'click', (function(mm, tt) {
-				return function() {
-					infowindow.setContent(tt);
-					infowindow.open(map, mm);
-				}
-			})(marker, elemento.nombre));
-                                       
-                });
-                
-            });
+				google.maps.event.addListener(marker, 'click', (function(mm, tt) {
+					return function() {
+						infowindow.setContent(tt);
+						infowindow.open(map, mm);
+					}
+				})(marker, elemento.nombre));
+				
+			});
+			var markerCluster = new MarkerClusterer(map, markers);
+
+		});
+		
 		//map.fitBounds(bounds);	
 	}
 
@@ -92,7 +103,7 @@
 		<h6><i class="fa fa-list-alt fa-2x"></i> <span class="numero">{{actividades}}</span> Total de Actividades</h6>
 		
 		<hr>
-		<a class="btn btn-default" href="/datos/" role="button">Explorar datos</a>
+		<a class="btn btn-default" href="/municipios/" role="button">Explorar datos</a>
 	</div>
 
 </div>

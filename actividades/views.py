@@ -17,16 +17,13 @@ def home(request):
     return render_to_response('actividades/index.html', RequestContext(request, locals()))
 
 #Monitoreo de actividades
-class MonitoreoView(TemplateView):
-    template_name = "monitoreo_actividades/index.html"
+def monitoreo_index(request,template='monitoreo_actividades/index.html'):
+	masculino = Actividad.objects.all().aggregate(Sum('hombres'))
+	femenino = Actividad.objects.all().aggregate(Sum('mujeres'))
+	actividades = Actividad.objects.all().count()
 
-    def get_context_data(self, **kwargs):
-        context = super(MonitoreoView, self).get_context_data(**kwargs)
-        context['masculino'] = Actividad.objects.all().aggregate(Sum('hombres'))
-        context['femenino'] = Actividad.objects.all().aggregate(Sum('mujeres'))
-        context['actividades'] = Actividad.objects.all().count()
-  
-        return context
+	return render(request, template, locals())
+
 
 def obtener_lista(request):
     if request.is_ajax():
@@ -41,5 +38,10 @@ def obtener_lista(request):
         serializado = simplejson.dumps(lista)
         return HttpResponse(serializado, content_type='application/json')
 
-class DatosView(TemplateView):
-    template_name = 'monitoreo_actividades/datos.html'
+def datos(request,template='monitoreo_actividades/datos.html'):
+	lista = []
+	for x in Actividad.objects.all():
+		municipios = Municipio.objects.filter(nombre=x.municipio.nombre).distinct()
+		lista.append(municipios)
+
+	return render(request, template, locals())

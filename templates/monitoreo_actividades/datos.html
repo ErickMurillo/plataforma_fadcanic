@@ -11,5 +11,18 @@
 	
 {% block contenido %}
 
-
+<!--<div class="container">
+	<h3 align="center">Sitios donde se realizan las actividades</h3>
+	<div class="row">
+		<div class="col-md-12">
+			{% for municipio in lista  %}
+				{% for m in municipio %}
+				<div class="col-md-4">
+					<a href="#" class="btn btn-primary btn-lg" role="button">{{m}}</a><br>
+				</div>
+				{% endfor %}
+			{% endfor %}
+		</div>
+	</div>
+</div>-->
 {% endblock contenido %}

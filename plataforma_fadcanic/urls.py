@@ -49,9 +49,9 @@ urlpatterns += i18n_patterns('',
 )
 
 urlpatterns += patterns('actividades.views',
-    url(r'^monitoreo/$', MonitoreoView.as_view(), name='monitoreo'),
+    url(r'^monitoreo/$', 'monitoreo_index', name='monitoreo'),
     url(r'^mapa/$', 'obtener_lista', name='obtener-lista'),
-    url(r'^datos/$', DatosView.as_view(), name='obtener-datos'),
+    url(r'^municipios/$', 'datos', name='obtener-datos'),
 )
 
 urlpatterns += staticfiles_urlpatterns()
