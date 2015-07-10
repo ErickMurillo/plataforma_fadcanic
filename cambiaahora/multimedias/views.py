@@ -40,9 +40,9 @@ class ListAudiosView(ListView):
     def get_queryset(self):
         cur_language = translation.get_language()
         if cur_language == 'en':
-            queryset = Audios.objects.filter(aprobacion=2,idioma=2).order_by('-id')
+            queryset = Audios.objects.filter(aprobacion=2,idioma=2).order_by('titulo')
         else:
-            queryset = Audios.objects.filter(aprobacion=2,idioma=1).order_by('-id')
+            queryset = Audios.objects.filter(aprobacion=2,idioma=1).order_by('titulo')
         return queryset
 
 class ListFotosView(ListView):

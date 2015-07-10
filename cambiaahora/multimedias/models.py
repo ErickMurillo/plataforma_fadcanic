@@ -105,7 +105,7 @@ class SubirAudios(models.Model):
     class Meta:
         verbose_name=_(u'Subir audio')
         verbose_name_plural=_(u'Subir audios')
-        ordering = ('titulo', '-id', )
+        ordering = ('titulo', )
 
 class SubirFotos(models.Model):
     fotos = models.ForeignKey(Fotos)

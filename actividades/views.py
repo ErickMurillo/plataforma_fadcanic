@@ -40,8 +40,27 @@ def obtener_lista(request):
 
 def datos(request,template='monitoreo_actividades/datos.html'):
 	lista = []
-	for x in Actividad.objects.all():
-		municipios = Municipio.objects.filter(nombre=x.municipio.nombre).distinct()
-		lista.append(municipios)
+	municipios = {}
+	# for x in Actividad.objects.all():
+	# 	municipios = Municipio.objects.filter(nombre=x.municipio.nombre).distinct().order_by('nombre')
+	# 	lista.append(municipios)
+
+	for y in Municipio.objects.all():
+		sum_hombres = Actividad.objects.filter(municipio__nombre=y.nombre).aggregate(Sum('hombres'))
+		sum_mujeres = Actividad.objects.filter(municipio__nombre=y.nombre).aggregate(Sum('mujeres'))
+		actividades = Actividad.objects.filter(municipio__nombre=y.nombre).count()
+		municipios[y.nombre] = (actividades,sum_hombres,sum_mujeres)
+		
+
+	for xd,yd in municipios.items():
+		for asd in yd[1].values():
+			if asd != None:
+				print  '%s : %s' % (xd, asd)
+		for asd in yd[2].values():
+			if asd != None:
+				print  '%s : %s' % (xd, asd)
+		if yd[0] != 0:
+			print  'Actividades : %s' % (yd[2])
+
 
 	return render(request, template, locals())
