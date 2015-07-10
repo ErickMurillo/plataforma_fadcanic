@@ -39,28 +39,28 @@ def obtener_lista(request):
         return HttpResponse(serializado, content_type='application/json')
 
 def datos(request,template='monitoreo_actividades/datos.html'):
-	lista = []
 	municipios = {}
-	# for x in Actividad.objects.all():
-	# 	municipios = Municipio.objects.filter(nombre=x.municipio.nombre).distinct().order_by('nombre')
-	# 	lista.append(municipios)
-
 	for y in Municipio.objects.all():
 		sum_hombres = Actividad.objects.filter(municipio__nombre=y.nombre).aggregate(Sum('hombres'))
 		sum_mujeres = Actividad.objects.filter(municipio__nombre=y.nombre).aggregate(Sum('mujeres'))
+		sum_menor_12 = Actividad.objects.filter(municipio__nombre=y.nombre).aggregate(Sum('menor_12'))
+		sum_mayor_12 = Actividad.objects.filter(municipio__nombre=y.nombre).aggregate(Sum('mayor_12'))
+		sum_mayor_18 = Actividad.objects.filter(municipio__nombre=y.nombre).aggregate(Sum('mayor_18'))
+		sum_mayor_30 = Actividad.objects.filter(municipio__nombre=y.nombre).aggregate(Sum('mayor_30'))
 		actividades = Actividad.objects.filter(municipio__nombre=y.nombre).count()
-		municipios[y.nombre] = (actividades,sum_hombres,sum_mujeres)
-		
 
-	for xd,yd in municipios.items():
-		for asd in yd[1].values():
-			if asd != None:
-				print  '%s : %s' % (xd, asd)
-		for asd in yd[2].values():
-			if asd != None:
-				print  '%s : %s' % (xd, asd)
-		if yd[0] != 0:
-			print  'Actividades : %s' % (yd[2])
+		if actividades != 0:
+			municipios[y.nombre] = (actividades,sum_hombres,sum_mujeres,sum_menor_12,sum_mayor_12,
+										sum_mayor_18,sum_mayor_30)
 
+	# for xd,yd in municipios.items():
+	# 	for asd in yd[1].values():
+	# 		if asd != None:
+	# 			print  '%s : %s' % (xd, asd)
+	# 	for asd in yd[2].values():
+	# 		if asd != None:
+	# 			print  '%s : %s' % (xd, asd)
+	# 	if yd[0] != 0:
+	# 		print  'Actividades : %s' % (yd[2])
 
 	return render(request, template, locals())

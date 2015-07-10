@@ -12,53 +12,37 @@
 {% block contenido %}
 
 <div class="container">
-	<h3 align="center">Sitios donde se realizan las actividades</h3>
+	<h3 align="center">Sitios donde se realizaron las actividades</h3>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-			{% for key,value in municipios.items  %}
-				{% if forloop.counter == 1 %}
-					{% for municipio in value.0 %}
-						{% if municipio != None %}
-							<div class="panel panel-default">
-							    <div class="panel-heading" role="tab" id="headingOne">
-							      <h4 class="panel-title">
-							        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							          {{key}}
-							        </a>
-							      </h4>
-							    </div>
-							    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-							      <div class="panel-body">
-							        Activididades
-							      </div>
-							    </div>
-							  </div>
-						{% endif %}
-					 {% endfor %}
-				{% else %}
+			{% for key,value in municipios.items %}
+					<div class="panel panel-default">
+					    <div class="panel-heading" role="tab" id="heading{{forloop.counter}}">
+					      <h4 class="panel-title">
+					        <a {% if forloop.counter != 1 %}class="collapsed"{% endif %} role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{forloop.counter}}" aria-expanded="{% if forloop.counter == 1 %}true{% else %}false{% endif %}" aria-controls="collapse{{forloop.counter}}">
+					          {{key}}
+					        </a>
+					      </h4>
+					    </div>
+					    <div id="collapse{{forloop.counter}}" class="panel-collapse collapse {% if forloop.counter == 1 %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{forloop.counter}}">
+					      <div class="panel-body">
+					        Activididades : {{value.0}}<br>
+					        Participantes hombres : {% for sum_part_hombres in value.1.values %}{{sum_part_hombres}}{% endfor %}<br>
+					        Participantes mujeres : {% for sum_part_mujeres in value.2.values %}{{sum_part_mujeres}}{% endfor %}<br>
+					        Participantes menores de 12 : {% for sum_menor_12 in value.3.values %}{{sum_menor_12}}{% endfor %}<br>
+					        Participantes de 13-18 : {% for sum_mayor_12 in value.4.values %}{{sum_mayor_12}}{% endfor %}<br>
+					        Participantes 19-30 : {% for sum_mayor_18 in value.5.values %}{{sum_mayor_18}}{% endfor %}<br>
+					        Participantes 31 a mas : {% for sum_mayor_30 in value.6.values %}{{sum_mayor_30}}{% endfor %}<br>
+					      </div>
+					    </div>
+					  </div>
 				
-					<!--{% for m in municipio %}
-							
-							<div class="panel panel-default">
-						    <div class="panel-heading" role="tab" id="headingTwo">
-						      <h4 class="panel-title">
-						        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-						          {{m|slice:"2:"}}
-						        </a>
-						      </h4>
-						    </div>
-						    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-						      <div class="panel-body">
-						        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-						      </div>
-						    </div>
-						  </div>
-						
-					{% endfor %}-->	
-				{% endif %}
-				
+					
 			{% endfor %}
+				
+					<!---->	
+		
 		</div>
 	</div>
 	</div>
