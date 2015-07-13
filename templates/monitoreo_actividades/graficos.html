@@ -1,0 +1,202 @@
+<!-- graficos -->
+<div id="etnia{{forloop.counter}}" class="col-xs-10 col-sm-10 col-md-offset-2 col-md-5"></div>
+<div id="edad{{forloop.counter}}" class="col-xs-10 col-sm-10 col-md-5"></div>
+<div id="actores{{forloop.counter}}" class="col-xs-10 col-sm-10 col-md-offset-1 col-md-5 col-md-offset-1"></div>
+
+<!-- js highcharts -->
+<script>
+		$(document).ready(function () {
+
+        // Build the chart
+        $('#edad{{forloop.counter}}').highcharts({
+        	chart: {
+        		plotBackgroundColor: null,
+        		plotBorderWidth: null,
+        		plotShadow: false,
+        		type: 'pie'
+        	},
+        	title: {
+        		text: 'Participantes por rangos de edad'
+        	},
+        	tooltip: {
+        		pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        	},
+        	plotOptions: {
+        		pie: {
+        			allowPointSelect: true,
+        			cursor: 'pointer',
+        			dataLabels: {
+        				enabled: false
+        			},
+        			showInLegend: true
+        		}
+        	},
+        	series: [{
+        		name: "Porcentaje",
+        		colorByPoint: true,
+        		data: [
+        		{
+        			name: "Menor de 12 años",
+        			y: {% for sum_menor_12 in value.3.values %}{{sum_menor_12}}{% endfor %}
+        		}, 
+        		{
+        			name: "Entre 13 y 18 años",
+        			y: {% for sum_mayor_12 in value.4.values %}{{sum_mayor_12}}{% endfor %}
+        		}, 
+        		{
+        			name: "Entre 19 y 30 años",
+        			y: {% for sum_mayor_18 in value.5.values %}{{sum_mayor_18}}{% endfor %}
+        		}, 
+        		{
+        			name: "De 31 años a más",
+        			y: {% for sum_mayor_30 in value.6.values %}{{sum_mayor_30}}{% endfor %}
+        		},
+        		]
+        	}]
+        });
+});
+	
+	$(function () {
+    // Create the chart
+    $('#etnia{{forloop.counter}}').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Participantes por identidad étnica'
+        },
+        xAxis: {
+            type: 'category'
+        },
+        yAxis: {
+            title: {
+                text: 'Total de participantes'
+            }
+
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y}'
+                }
+            }
+        },
+
+        
+
+        series: [{
+            
+            colorByPoint: true,
+            data: [
+        		{
+        			name: "Creole",
+        			y: {% for sum_creole in value.7.values %}{{sum_creole}}{% endfor %}
+        		}, 
+        		{
+        			name: "Miskito",
+        			y: {% for sum_miskito in value.8.values %}{{sum_miskito}}{% endfor %}
+        		}, 
+        		{
+        			name: "Ulwa",
+        			y: {% for sum_ulwa in value.9.values %}{{sum_ulwa}}{% endfor %}
+        		}, 
+        		{
+        			name: "Rama",
+        			y: {% for sum_rama in value.10.values %}{{sum_rama}}{% endfor %}
+        		},
+        		{
+        			name: "Mestizo",
+        			y: {% for sum_mestizo in value.11.values %}{{sum_mestizo}}{% endfor %}
+        		},
+        		{
+        			name: "Mayagna",
+        			y: {% for sum_mayagna in value.12.values %}{{sum_mayagna}}{% endfor %}
+        		},
+        		{
+        			name: "Garifuna",
+        			y: {% for sum_garifuna in value.13.values %}{{sum_garifuna}}{% endfor %}
+        		},
+        		{
+        			name: "Extranjero",
+        			y: {% for sum_extranjero in value.14.values %}{{sum_extranjero}}{% endfor %}
+        		},
+        		]
+        }],
+        
+    });
+});
+
+$(function () {
+    // Create the chart
+    $('#actores{{forloop.counter}}').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Participantes por tipo de actores'
+        },
+        xAxis: {
+            type: 'category'
+        },
+        yAxis: {
+            title: {
+                text: 'Total de participantes'
+            }
+
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y}'
+                }
+            }
+        },
+        series: [{
+            
+            colorByPoint: true,
+            data: [
+        		{
+        			name: "Estudiante",
+        			y: {% for sum_estudiante in value.14.values %}{{sum_estudiante}}{% endfor %}
+        		}, 
+        		{
+        			name: "Docente",
+        			y: {% for sum_docente in value.15.values %}{{sum_docente}}{% endfor %}
+        		}, 
+        		{
+        			name: "Periodista",
+        			y: {% for sum_periodista in value.16.values %}{{sum_periodista}}{% endfor %}
+        		}, 
+        		{
+        			name: "Lideres",
+        			y: {% for sum_lideres in value.17.values %}{{sum_lideres}}{% endfor %}
+        		},
+        		{
+        			name: "Representantes",
+        			y: {% for sum_representantes in value.18.values %}{{sum_representantes}}{% endfor %}
+        		},
+        		{
+        			name: "Autoridades",
+        			y: {% for sum_autoridades in value.19.values %}{{sum_autoridades}}{% endfor %}
+        		},
+        		{
+        			name: "Comunitarios",
+        			y: {% for sum_comunitarios in value.20.values %}{{sum_comunitarios}}{% endfor %}
+        		},
+        		]
+        }],
+        
+    });
+});
+</script>
+

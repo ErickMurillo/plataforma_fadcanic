@@ -5,56 +5,52 @@
 :: {% trans 'Actividades' %} ::
 {% endblock titulo %}
 
+{% block extra_head %}
+<link rel="stylesheet" href="/static/monitoreo/css/style.css">
+{% endblock extra_head %}
+
 {% block extra_js %}
-
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/modules/drilldown.js"></script>
 {% endblock extra_js %}
-	
-{% block contenido %}
 
+{% block contenido %}
 <div class="container">
 	<h3 align="center">Sitios donde se realizaron las actividades</h3>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-			{% for key,value in municipios.items %}
-					<div class="panel panel-default">
-					    <div class="panel-heading" role="tab" id="heading{{forloop.counter}}">
-					      <h4 class="panel-title">
-					        <a {% if forloop.counter != 1 %}class="collapsed"{% endif %} role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{forloop.counter}}" aria-expanded="{% if forloop.counter == 1 %}true{% else %}false{% endif %}" aria-controls="collapse{{forloop.counter}}">
-					          {{key}}
-					        </a>
-					      </h4>
-					    </div>
-					    <div id="collapse{{forloop.counter}}" class="panel-collapse collapse {% if forloop.counter == 1 %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{forloop.counter}}">
-					      <div class="panel-body">
-					        Activididades : {{value.0}}<br>
-					        Participantes hombres : {% for sum_part_hombres in value.1.values %}{{sum_part_hombres}}{% endfor %}<br>
-					        Participantes mujeres : {% for sum_part_mujeres in value.2.values %}{{sum_part_mujeres}}{% endfor %}<br>
-					        Participantes menores de 12 : {% for sum_menor_12 in value.3.values %}{{sum_menor_12}}{% endfor %}<br>
-					        Participantes de 13-18 : {% for sum_mayor_12 in value.4.values %}{{sum_mayor_12}}{% endfor %}<br>
-					        Participantes 19-30 : {% for sum_mayor_18 in value.5.values %}{{sum_mayor_18}}{% endfor %}<br>
-					        Participantes 31 a mas : {% for sum_mayor_30 in value.6.values %}{{sum_mayor_30}}{% endfor %}<br>
-					      </div>
-					    </div>
-					  </div>
-				
-					
-			{% endfor %}
-				
-					<!---->	
-		
+				{% for key,value in municipios.items %}
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading{{forloop.counter}}">
+						<h4 class="panel-title">
+							<a class="{% if forloop.counter != 1 %}collapsed{% endif %}" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{forloop.counter}}" aria-expanded="{% if forloop.counter == 1 %}true{% else %}false{% endif %}" aria-controls="collapse{{forloop.counter}}">
+								{{key}}
+							</a>
+						</h4>
+					</div>
+					<div id="collapse{{forloop.counter}}" class="panel-collapse collapse {% if forloop.counter == 1 %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{forloop.counter}}">
+						<div class="panel-body">
+							<div>
+								<div class="col-xs-12 col-sm-12 col-md-4">
+									<h6><i class="fa fa-file-text"></i> Activididades : {{value.0}}</h6>
+									<h6><i class="fa fa-male"></i> Participantes hombres : {% for sum_part_hombres in value.1.values %}{{sum_part_hombres}}{% endfor %}</h6>
+									<h6><i class="fa fa-female"></i> Participantes mujeres : {% for sum_part_mujeres in value.2.values %}{{sum_part_mujeres}}{% endfor %}</h6>
+								</div>
+							</div>
+							<div>
+								{% include "monitoreo_actividades/graficos.html" %}
+							</div>
+									
+							
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
-	</div>
-
-
-
-
-
-
-
 </div>
-
-
-
 {% endblock contenido %}
