@@ -38,18 +38,18 @@ class IndexView(TemplateView):
             context['ultimas_historia'] = Historias.objects.filter(aprobacion=2,idioma=2).order_by('fecha')[:6]
             context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2,idioma=2).order_by('-fecha')[:6]
             context['albunes'] = Fotos.objects.filter(aprobacion=2,idioma=2).order_by('id')[:1]
-            context['audios'] = Audios.objects.filter(aprobacion=2,idioma=2).order_by('-id')[:3]
+            context['audios'] = Audios.objects.filter(aprobacion=2,idioma=2).order_by('-id')[:4]
             context['videos'] = Videos.objects.filter(aprobacion=2,idioma=2).order_by('id')[:3]
-            context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=2).order_by('fecha')[:4]
+            context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=2).order_by('fecha')[:3]
             context['informacion'] = Informacion.objects.filter(idioma=2).order_by('id')[:1]
         else:
             context['ultimas_noticias'] = Noticias.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:6]
             context['ultimas_historia'] = Historias.objects.filter(aprobacion=2,idioma=1).order_by('fecha')[:6]
             context['ultimas_testimonios'] = Testimonios.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:6]
             context['albunes'] = Fotos.objects.filter(aprobacion=2,idioma=1).order_by('id')[:1]
-            context['audios'] = Audios.objects.filter(aprobacion=2,idioma=1).order_by('-id')[:3]
+            context['audios'] = Audios.objects.filter(aprobacion=2,idioma=1).order_by('-id')[:4]
             context['videos'] = Videos.objects.filter(aprobacion=2,idioma=1).order_by('id')[:3]
-            context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=1).order_by('fecha')[:4]
+            context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=1).order_by('fecha')[:3]
             context['informacion'] = Informacion.objects.filter(id=1, idioma=1)
         
         context['config'] = Configuracion.objects.all()[:3]
