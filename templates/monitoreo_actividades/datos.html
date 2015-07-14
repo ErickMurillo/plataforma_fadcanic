@@ -17,10 +17,7 @@
 {% endblock extra_js %}
 
 {% block contenido %}
-<div class="container">
 	<h3 align="center">Sitios donde se realizaron las actividades</h3>
-	<div class="row">
-		<div class="col-md-12">
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				{% for key,value in municipios.items %}
 				<div class="panel panel-default">
@@ -49,8 +46,5 @@
 					</div>
 				</div>
 				{% endfor %}
-			</div>
 		</div>
-	</div>
-</div>
 {% endblock contenido %}

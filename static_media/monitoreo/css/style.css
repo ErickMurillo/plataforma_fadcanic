@@ -7,3 +7,17 @@
 .panel-title {
   font-size: 18px !important;
 }
+
+#accordion {
+	margin: 0px 15px 20px 15px
+}
+
+.margin-div {
+	margin-left: -30px !important
+}
+
+@media (max-width: 375px) {
+	.highcharts-container {
+		width: 
+	}
+}
