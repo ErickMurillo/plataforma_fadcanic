@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-08 17:05+0000\n"
+"POT-Creation-Date: 2015-07-14 21:12+0000\n"
 "PO-Revision-Date: 2015-06-23 21:06+0000\n"
 "Last-Translator:   <carlos@simas.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -345,7 +345,7 @@ msgid "cambia ahora"
 msgstr "Change Now"
 
 #: templates/cambiaahora/index.html:150
-msgid "Echa un vistazo a lo que esta pasando."
+msgid "Dale un vistazo a lo que está pasando."
 msgstr "Take a look at what is happening."
 
 #: templates/cambiaahora/index.html:150

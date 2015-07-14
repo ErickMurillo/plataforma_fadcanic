@@ -147,7 +147,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<header class="page-header section-header clearfix">
-					<h2>{% trans 'Echa un vistazo a lo que esta pasando.' %} <strong>{% trans 'Últimas Noticias' %}</strong></h2>
+					<h2>{% trans 'Dale un vistazo a lo que está pasando.' %} <strong>{% trans 'Últimas Noticias' %}</strong></h2>
 				</header>
 
 				<div class="article-list flexslider article-slider row">
@@ -380,7 +380,7 @@
 									{% for audios in obj.subiraudios_set.all|dictsort:"titulo" %}
 										<li class="list-group-item">
 									        <span class="fa"></span>
-									        <a href="#"  data-src="/media/{{audios.audio}}">{{audios.titulo}}</a>
+									        <a href="#"  data-src="/media/{{audios.audio}}" preload="auto">{{audios.titulo}}</a>
 								        </li>
 									{% endfor %}
 								        
