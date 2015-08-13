@@ -1,0 +1,1 @@
+default_app_config = 'cambiaahora.testimonios.apps.OpinionConfig'
