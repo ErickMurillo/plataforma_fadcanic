@@ -88,6 +88,6 @@ admin.site.register(Actividad, ActividadAdmin)
 class OutputAdmin(admin.ModelAdmin):
     list_display = ['_hash', 'date', 'time']
     
-admin.site.register(Output, OutputAdmin)    
+#admin.site.register(Output, OutputAdmin)    
     
     
