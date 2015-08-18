@@ -8,20 +8,20 @@
 {% if request.get_full_path = "/campana-cambia-ahora/"  %}
 	<meta property="og:title" content="{{flatpage.title|slice:"1"}}" />
 	<meta property="og:type" content="article" />
-	<meta property="og:image" content="http://web.cambiaahora.com/static/cambiaahora/img/es.png"/>
+	<meta property="og:image" content="http://cambiaahora.com/static/cambiaahora/img/es.png"/>
 	<meta property="og:image:width" content="300" />
 	<meta property="og:image:height" content="300" />
 	<meta property="og:description" content="{{flatpage.content|slice:"1"}}" />
-	<meta property="og:url" content="http://web.cambiaahora.com{{request.path}}" />
+	<meta property="og:url" content="http://cambiaahora.com{{request.path}}" />
 	<meta property="og:locale" content="es_ES" />
 {% elif request.get_full_path = "/campaign-change-now/" %}
 	<meta property="og:title" content="{{flatpage.title|slice:"2"}}" />
 	<meta property="og:type" content="article" />
-	<meta property="og:image" content="http://web.cambiaahora.com/static/cambiaahora/img/es.png"/>
+	<meta property="og:image" content="http://cambiaahora.com/static/cambiaahora/img/es.png"/>
 	<meta property="og:image:width" content="300" />
 	<meta property="og:image:height" content="300" />
 	<meta property="og:description" content="{{flatpage.content|slice:"2"}}" />
-	<meta property="og:url" content="http://web.cambiaahora.com{{request.path}}" />
+	<meta property="og:url" content="http://cambiaahora.com{{request.path}}" />
 	<meta property="og:locale" content="es_ES" />
 {% endif %}
 {% endblock share_fb %}
