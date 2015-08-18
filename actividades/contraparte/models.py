@@ -212,7 +212,7 @@ class Actividad(models.Model):
         suma_edad = self.menor_12 + self.mayor_12 + self.mayor_18 + self.mayor_30
         #suma_tipo = self.autoridades + self.maestros + self.lideres + self.pobladores + self.estudiantes + self.miembros + self.tecnicos
         suma_tipo = self.estudiante + self.docente + self.periodista + self.lideres + self.representantes + self.autoridades + self.comunitarios
-        suma_etnia = self.estudiante + self.miskito + self.ulwa + self.rama + self.mestizo + self.mayagna + self.garifuna + self.extranjero
+        suma_etnia = self.creole + self.miskito + self.ulwa + self.rama + self.mestizo + self.mayagna + self.garifuna + self.extranjero
         
         if not self.no_dato:
             if suma_base != suma_edad:
