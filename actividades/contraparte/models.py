@@ -10,11 +10,14 @@ from actividades.utils import get_file_path
 from actividades import short
 import datetime
 import urlparse, urllib, json, time
+from ckeditor.fields import RichTextField
 
 #from south.modelsinspector import add_introspection_rules
 #add_introspection_rules([], ["^actividades\.thumbs\.ImageWithThumbsField"])
 
 SI_NO = ((1, u'Si'), (2, u'No'))
+
+CHOICE_APROBACION = ((1,'Borrador'),(2,'Aprobado'))
 
 class Proyecto(models.Model):
     organizacion = models.ForeignKey(Organizacion)
@@ -70,8 +73,8 @@ TEMA_ACTIVIDAD = ((1, u'Derechos Humanos'), (2, u'Empoderamiento'),
 EJES = ((1, u'Interculturalidad'), (2, u'Género'), 
         (3, u'Medio ambiente'), (4, u'Generacional'))
 
-EVALUACION = ((99, u'No aplica'), (1, u'Muy bueno'), (2, u'Bueno'),
-              (3, u'Regular'), (4, u'Malo'), (5, u'Muy malo'))
+EVALUACION = ((99, u'No aplica'), (1, u'Muy bueno (90-100%)'), (2, u'Bueno (60-80%)'),
+              (3, u'Regular (50%)'), (4, u'Malo (menor al 30%)'))
 
 class Actividad(models.Model):
     organizacion = models.ForeignKey(Organizacion)
@@ -82,6 +85,7 @@ class Actividad(models.Model):
                                  auto_choose=True)    
     persona_organiza = models.ForeignKey(Organizador, verbose_name=u'Persona que organiza la actividad')
     nombre_actividad = models.CharField(max_length=150)
+    objetivo_actividad = models.CharField(max_length=400,null=True,blank=True)
     fecha = models.DateTimeField()
     municipio = ChainedForeignKey(Municipio, 
                                  chained_field="proyecto",
@@ -147,28 +151,33 @@ class Actividad(models.Model):
                                   auto_choose=True,
                                   verbose_name=u'Resultado al que aporta')    
     #evaluaciones de hombres
-    relevancia = models.IntegerField(choices=EVALUACION, verbose_name=u'Importancia del tema/acción')
-    efectividad = models.IntegerField(choices=EVALUACION, verbose_name='Efectividad de la acción')
-    aprendizaje = models.IntegerField(choices=EVALUACION, verbose_name=u'Grado de aprendizaje')
-    empoderamiento = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de apropiación')
-    participacion = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de participación')
+    relevancia = models.IntegerField(choices=EVALUACION, verbose_name=u'Importancia del tema/acción',null=True,blank=True)
+    efectividad = models.IntegerField(choices=EVALUACION, verbose_name='Efectividad de la acción',null=True,blank=True)
+    aprendizaje = models.IntegerField(choices=EVALUACION, verbose_name=u'Grado de aprendizaje',null=True,blank=True)
+    empoderamiento = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de apropiación',null=True,blank=True)
+    participacion = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de participación',null=True,blank=True)
     
     #evaluaciones de mujeres
-    relevancia_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Importancia del tema/acción')
-    efectividad_m = models.IntegerField(choices=EVALUACION, verbose_name='Efectividad de la acción')
-    aprendizaje_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Grado de aprendizaje')
-    empoderamiento_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de apropiación')
-    participacion_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de participación')
+    relevancia_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Importancia del tema/acción',null=True,blank=True)
+    efectividad_m = models.IntegerField(choices=EVALUACION, verbose_name='Efectividad de la acción',null=True,blank=True)
+    aprendizaje_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Grado de aprendizaje',null=True,blank=True)
+    empoderamiento_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de apropiación',null=True,blank=True)
+    participacion_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de participación',null=True,blank=True)
     
     #recursos
-    comentarios = models.TextField(blank=True, default='')
-    acuerdos = models.TextField(blank=True, default='')
+    comentarios = models.TextField(blank=True, default='',verbose_name='Descripción de la Actividad')
+    dificultades = models.TextField(blank=True, default='',verbose_name='Dificultades')
+    logros = models.TextField(blank=True, default='',verbose_name='Logros')
+    acuerdos = models.TextField(blank=True, default='',verbose_name='Acuerdos')
     #foto1 = models.ImageField(upload_to='fotos', blank=True, null=True)
     foto1 = ImageWithThumbsField(upload_to=get_file_path, sizes=((128, 96), (640, 480)), blank=True, null=True)   
     foto2 = ImageWithThumbsField(upload_to=get_file_path, sizes=((128, 96), (640, 480)), blank=True, null=True)
     foto3 = ImageWithThumbsField(upload_to=get_file_path, sizes=((128, 96), (640, 480)), blank=True, null=True)
     video = models.CharField(max_length=300, blank=True, default='')
-    
+    #nuevos campos
+    aprobacion = models.IntegerField(choices=CHOICE_APROBACION, default='1', verbose_name='Aprobación')
+    user = models.ForeignKey(User)
+
     mes = models.IntegerField(editable=False)
     year = models.IntegerField(editable=False)    
     
@@ -211,7 +220,7 @@ class Actividad(models.Model):
         #suma_edad = self.adultos + self.jovenes + self.ninos
         suma_edad = self.menor_12 + self.mayor_12 + self.mayor_18 + self.mayor_30
         #suma_tipo = self.autoridades + self.maestros + self.lideres + self.pobladores + self.estudiantes + self.miembros + self.tecnicos
-        suma_tipo = self.estudiante + self.docente + self.periodista + self.lideres + self.representantes + self.autoridades + self.comunitarios
+        suma_tipo = self.estudiante + self.docente + self.periodista + self.lideres + self.representantes + self.comunitarios
         suma_etnia = self.creole + self.miskito + self.ulwa + self.rama + self.mestizo + self.mayagna + self.garifuna + self.extranjero
         
         if not self.no_dato:

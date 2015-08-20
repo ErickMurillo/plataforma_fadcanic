@@ -2,6 +2,7 @@
 from django.contrib import admin
 from .models import *
 from django import forms
+from ckeditor.widgets import CKEditorWidget
 
 class ResultadoInline(admin.TabularInline):
     model = Resultado
@@ -46,7 +47,7 @@ class ActividadAdmin(admin.ModelAdmin):
     list_display = ['nombre_actividad', 'organizacion', 'fecha']
     
     fieldsets = [
-        (None, {'fields': [('organizacion', 'proyecto'), 'persona_organiza', 'nombre_actividad', 'fecha',
+        (None, {'fields': [('organizacion', 'proyecto'), 'persona_organiza', 'nombre_actividad','objetivo_actividad','fecha',
                            'municipio', 'comunidad']}),
         ('Tipo, tema y ejes de actividad', {'fields': ['tipo_actividad', 'tema_actividad', 'ejes_transversales']}),
         ('Participantes por sexo', {'fields': [('hombres', 'mujeres'),]}),
@@ -55,15 +56,17 @@ class ActividadAdmin(admin.ModelAdmin):
                                                ('rama', 'mestizo', 'mayagna', 'garifuna'),
                                                ('extranjero',)]}),
         ('Participantes por tipo', {'fields': [('estudiante', 'docente', 'periodista', 'no_dato2'), 
-                                               ('lideres', 'representantes', 'autoridades', 'comunitarios')]}),
+                                               ('lideres', 'representantes', 'comunitarios')]}),
         (None, {'fields': ['resultado',]}),
         ('Evaluacion de hombres', {'fields': [('relevancia', 'efectividad'), ('aprendizaje', 'empoderamiento'), 'participacion']}),
         ('Evaluacion de mujeres', {'fields': [('relevancia_m', 'efectividad_m'), ('aprendizaje_m', 'empoderamiento_m'), 'participacion_m']}),
-        ('Recursos', {'fields': [('foto1', 'foto2', 'foto3'), 'video', ('comentarios', 'acuerdos')]}),                                                          
+        ('Recursos', {'fields': [('foto1', 'foto2', 'foto3'), 'video', 'comentarios','dificultades','logros','acuerdos']}), 
+        (None, {'fields': ['aprobacion','user']}),                                                       
     ]
     
     formfield_overrides = {
-        models.TextField: {'widget': forms.Textarea(attrs={'cols': 50, 'rows':4, 'class': 'docx'})},        
+        models.TextField: {'widget': forms.Textarea(attrs={'cols': 50, 'rows':4, 'class': 'docx'})},
+        models.TextField: {'widget': CKEditorWidget()},       
     }
     
     def get_form(self, request, obj=None, ** kwargs):
