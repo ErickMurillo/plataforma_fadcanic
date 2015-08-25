@@ -60,7 +60,7 @@ class ActividadAdmin(admin.ModelAdmin):
         (None, {'fields': ['resultado',]}),
         ('Evaluacion de hombres', {'fields': [('relevancia', 'efectividad'), ('aprendizaje', 'empoderamiento'), 'participacion']}),
         ('Evaluacion de mujeres', {'fields': [('relevancia_m', 'efectividad_m'), ('aprendizaje_m', 'empoderamiento_m'), 'participacion_m']}),
-        ('Recursos', {'fields': [('foto1', 'foto2', 'foto3'), 'video', 'comentarios','dificultades','logros','acuerdos']}), 
+        ('Recursos', {'fields': [('foto1', 'foto2', 'foto3'), 'video', 'comentarios','logros','dificultades','acuerdos']}), 
         (None, {'fields': ['aprobacion','user']}),                                                       
     ]
     
@@ -74,7 +74,7 @@ class ActividadAdmin(admin.ModelAdmin):
             form = super(ActividadAdmin, self).get_form(request, ** kwargs)
         else:
             form = super(ActividadAdmin, self).get_form(request, ** kwargs)
-            form.base_fields['organizacion'].queryset = request.user.organizacion_set.all()                      
+            #form.base_fields['organizacion'].queryset = request.user.organizacion_set.all()                      
         return form
     
     #sobreescribiendo el metodo para filtrar los objetos    
