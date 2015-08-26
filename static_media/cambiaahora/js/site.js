@@ -21,7 +21,7 @@ jQuery(function($) {"use strict";
 					revslider_showDoubleJqueryError('.banner-slider');
 				else {
 					revSlider = $('.banner-slider').revolution({
-						delay : 10000,
+						delay : 22100,
 						startheight : 600,
 						startwidth : 1442,
 						navigationType : "bullet",
