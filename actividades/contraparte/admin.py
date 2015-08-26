@@ -41,9 +41,13 @@ admin.site.register(Proyecto, ProyectoAdmin)
 admin.site.register(Resultado)
 admin.site.register(Organizador)
 
+class Precedencia_Participantes_Inline(admin.TabularInline):
+    model = Precedencia_Participantes
+    extra = 1
+
 class ActividadAdmin(admin.ModelAdmin):
     list_filter = ['resultado__aporta_a', 'organizacion', 'proyecto', 'persona_organiza', 'fecha']
-    search_fields = ['nombre_actividad', 'organizacion__nombre_corto', 'persona_organiza__nombre']
+    search_fields = ['nombre_actividad', 'organizacion__nombre_corto', 'persona_organiza__nombre','municipio__nombre']
     list_display = ['nombre_actividad', 'organizacion', 'fecha']
     
     fieldsets = [
@@ -68,6 +72,8 @@ class ActividadAdmin(admin.ModelAdmin):
         models.TextField: {'widget': forms.Textarea(attrs={'cols': 50, 'rows':4, 'class': 'docx'})},
         models.TextField: {'widget': CKEditorWidget()},       
     }
+
+    inlines = [Precedencia_Participantes_Inline]
     
     def get_form(self, request, obj=None, ** kwargs):
         if request.user.is_superuser:        
