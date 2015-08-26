@@ -126,7 +126,7 @@ STATICFILES_DIRS = (
 #ckeditor
 CKEDITOR_CONFIGS = {
     'default': {
-        'extraPlugins': 'youtube',
+        'extraPlugins': 'image2',
         'toolbar': [
             { 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ], 'items': [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
             { 'name': 'clipboard', 'groups': [ 'clipboard', 'undo' ], 'items': [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },

@@ -34,7 +34,7 @@ class HistoriasAdmin(admin.ModelAdmin):
 	search_fields = ('titulo',)
 
 # Register your models here.
-admin.site.register(Historias, HistoriasAdmin)
+#admin.site.register(Historias, HistoriasAdmin)
 # We have to unregister the normal admin, and then reregister ours
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageAdmin)
