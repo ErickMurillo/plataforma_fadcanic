@@ -85,7 +85,7 @@ class Actividad(models.Model):
                                  auto_choose=True)    
     persona_organiza = models.ForeignKey(Organizador, verbose_name=u'Persona que organiza la actividad')
     nombre_actividad = models.CharField(max_length=150)
-    objetivo_actividad = models.CharField(max_length=400,null=True,blank=True)
+    objetivo_actividad = models.TextField(null=True,blank=True)
     fecha = models.DateTimeField()
     municipio = ChainedForeignKey(Municipio, 
                                  chained_field="proyecto",
@@ -220,24 +220,38 @@ class Actividad(models.Model):
         #suma_edad = self.adultos + self.jovenes + self.ninos
         suma_edad = self.menor_12 + self.mayor_12 + self.mayor_18 + self.mayor_30
         #suma_tipo = self.autoridades + self.maestros + self.lideres + self.pobladores + self.estudiantes + self.miembros + self.tecnicos
-        suma_tipo = self.estudiante + self.docente + self.periodista + self.lideres + self.representantes + self.comunitarios
         suma_etnia = self.creole + self.miskito + self.ulwa + self.rama + self.mestizo + self.mayagna + self.garifuna + self.extranjero
-        
+        suma_tipo = self.estudiante + self.docente + self.periodista + self.lideres + self.representantes + self.comunitarios
+       
         if not self.no_dato:
             if suma_base != suma_edad:
                 raise ValidationError('La suma de los participantes por edad no concuerda')
             
-        if not self.no_dato1:
+        if not self.no_dato2:
             if suma_base != suma_tipo:
                 raise ValidationError('La suma de los participantes por tipo no concuerda')
 
-        if not self.no_dato2:
+        if not self.no_dato1:
             if suma_base != suma_etnia:
                 raise ValidationError('La suma de los participantes por identidad étnica no concuerda')
     
     class Meta:
         verbose_name_plural = u'Actividades' 
-        
+
+class Precedencia_Participantes(models.Model):
+    municipio = models.ForeignKey(Municipio)    
+    comunidad = ChainedForeignKey(Comunidad, 
+                                 chained_field="municipio",
+                                 chained_model_field="municipio", 
+                                 show_all=False,
+                                 auto_choose=True)
+    conteo = models.IntegerField()
+    actividad = models.ForeignKey(Actividad)
+
+    class Meta:
+        verbose_name = u'Procedencia de los participantes'
+        verbose_name_plural = u'Procedencia de los participantes'
+
 class Output(models.Model):
     user = models.ForeignKey(User, blank=True, null=True)
     date = models.DateField()

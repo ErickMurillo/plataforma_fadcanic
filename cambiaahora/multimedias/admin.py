@@ -12,6 +12,7 @@ class InlineSubirAudios(admin.TabularInline):
 class InlineSubirFotos(admin.TabularInline):
 	model = SubirFotos
 	extra = 1
+	max_num = 10
 
 class InlineSubirDocumentos(admin.TabularInline):
 	model = SubirDocumentales
