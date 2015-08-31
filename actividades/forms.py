@@ -55,14 +55,15 @@ class ProgramaForm(forms.Form):
 #--- parametros para creacion del form de cruces ----
 first_class = {'tipo_actividad': ['tipo_actividad'], 
                'tema_actividad': ['tema_actividad'], 
-               'ejes_transversales': ['ejes_transversales']}
+               'ejes_transversales': ['ejes_transversales'],
+               'objetivo_actividad': ['objetivo_actividad']}
 
 participantes = {'participantes_por_sexo': ['hombres', 'mujeres'],
                  'participantes_por_edad': ['menor_12', 'mayor_12', 'mayor_18', 'mayor_30'],
                  'participantes_por_etnia': ['creole', 'miskito', 'ulwa','rama', 'mestizo',
                                              'mayagna', 'garifuna','extranjero'],
                  'participantes_por_tipo': ['estudiante', 'docente', 'periodista',
-                                            'lideres', 'representantes', 'autoridades', 'comunitarios']}
+                                            'lideres', 'representantes', 'comunitarios']}
 
 evaluacion = {'importancia_del_tema': 'relevancia',
               'efectividad_de_la_accion': 'efectividad',
