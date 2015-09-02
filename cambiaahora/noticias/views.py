@@ -14,7 +14,7 @@ from django.utils import translation
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from .serializers import NoticiasSerializer
-from rest_framework.views import APIView
+from rest_framework import viewsets
 
 # Create your views here.
 def set_lang(request, lang_code):
@@ -101,14 +101,21 @@ class JSONResponse(HttpResponse):
         kwargs['content_type'] = 'application/json'
         super(JSONResponse, self).__init__(content, **kwargs)
 
-class NoticiasList(APIView):
-    def get_object(self, pk):
-        try:
-            return Noticias.objects.get(pk=pk)
-        except Noticias.DoesNotExist:
-            raise Http404
+class NewsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Noticias.objects.all()
+    serializer_class = NoticiasSerializer
 
-    def get(self, request, format=None):
-        noticias = Noticias.objects.all()
-        serializer = NoticiasSerializer(noticias, many=True)
-        return JSONResponse(serializer.data)
+# class NoticiasList(APIView):
+#     def get_object(self, pk):
+#         try:
+#             return Noticias.objects.get(pk=pk)
+#         except Noticias.DoesNotExist:
+#             raise Http404
+
+#     def get(self, request, format=None):
+#         noticias = Noticias.objects.all()
+#         serializer = NoticiasSerializer(noticias, many=True)
+#         return JSONResponse(serializer.data)
