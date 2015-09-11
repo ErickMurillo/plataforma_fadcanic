@@ -72,11 +72,11 @@ class DocumentosAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Videos, VideosAdmin)
-admin.site.register(Audios, AudiosAdmin)
+#admin.site.register(Audios, AudiosAdmin)
 admin.site.register(Fotos, FotosAdmin)
 admin.site.register(Documentales, DocumentosAdmin)
 #los inlines
-admin.site.register(SubirVideos)
+#admin.site.register(SubirVideos)
 admin.site.register(SubirAudios)
 admin.site.register(SubirFotos)
 admin.site.register(SubirDocumentales)
