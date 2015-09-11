@@ -28,7 +28,7 @@ INSTALLED_APPS = (
 
     #monitoreo
     #'monitoreo.comunidad',
-    
+
     #caps violencia
     'violencia_juvenil',
     #extras apps
@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'embed_video',
     'endless_pagination',
     'multiselectfield',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,7 +97,7 @@ LANGUAGE_CODE = 'es'
 LANGUAGES = (
     ('es', 'Español'),
     ('en', 'English'),
-    
+
 )
 
 TIME_ZONE = 'UTC'
@@ -141,7 +142,7 @@ CKEDITOR_CONFIGS = {
             { 'name': 'styles', 'items': [ 'Styles', 'Format', 'Font', 'FontSize' ] },
             { 'name': 'colors', 'items': [ 'TextColor', 'BGColor' ] },
             { 'name': 'tools', 'items': [ 'Maximize', 'ShowBlocks', ] },
-        
+
         ],
         'height': 'auto',
         'width': 'auto',
@@ -160,3 +161,10 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/actividades/'
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'PAGE_SIZE': 10
+}

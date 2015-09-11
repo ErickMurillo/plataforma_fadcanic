@@ -22,15 +22,19 @@ from django.conf.urls.static import static
 from cambiaahora.noticias import urls as noticias_urls
 from cambiaahora.multimedias import urls as multimedias_urls
 from django.conf.urls.i18n import i18n_patterns
-from cambiaahora.noticias import views
+from cambiaahora.noticias import views as viewsNews
 from actividades.views import *
+from rest_framework import routers
 
 admin.site.site_header = "FADCANIC administración"
 admin.site.site_title = "FADCANIC sitio admin"
 
+router = routers.DefaultRouter()
+router.register(r'news', viewsNews.NewsViewSet)
+
 
 urlpatterns = [
-    
+
 	url(r'', include('cambiaahora.noticias.urls')),
     url(r'^multimedias/', include(multimedias_urls)),
     url(r'^admin/', include(admin.site.urls)),
@@ -52,6 +56,8 @@ urlpatterns += patterns('actividades.views',
     url(r'^monitoreo/$', 'monitoreo_index', name='monitoreo'),
     url(r'^mapa/$', 'obtener_lista', name='obtener-lista'),
     url(r'^municipios/$', 'datos', name='obtener-datos'),
+    url(r'^jsonnews/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 )
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.conf import settings
 from django.views.generic import TemplateView
 from django.views.generic import ListView, DetailView
@@ -10,6 +10,11 @@ from cambiaahora.multimedias.models import *
 from cambiaahora.testimonios.models import Testimonios
 from cambiaahora.configuracion.models import Configuracion, Informacion
 from django.utils import translation
+
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from .serializers import NoticiasSerializer
+from rest_framework import viewsets
 
 # Create your views here.
 def set_lang(request, lang_code):
@@ -51,7 +56,7 @@ class IndexView(TemplateView):
             #context['videos'] = Videos.objects.filter(aprobacion=2,idioma=1).order_by('id')[:3]
             context['documentales'] = Documentales.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')[:3]
             context['informacion'] = Informacion.objects.filter(id=1, idioma=1)
-        
+
         context['config'] = Configuracion.objects.all()[:3]
         return context
 
@@ -68,8 +73,8 @@ class ListNewsView(ListView):
         else:
             queryset = Noticias.objects.filter(aprobacion=2,idioma=1).order_by('-fecha')
         return queryset
-    
-    
+
+
 
 class DetailNewsView(DetailView):
     template_name = "cambiaahora/noticias/noticias_detail.html"
@@ -86,3 +91,31 @@ class DetailNewsView(DetailView):
 
 class ContactView(TemplateView):
     template_name = "cambiaahora/noticias/contactenos.html"
+
+class JSONResponse(HttpResponse):
+    """
+    An HttpResponse that renders its content into JSON.
+    """
+    def __init__(self, data, **kwargs):
+        content = JSONRenderer().render(data)
+        kwargs['content_type'] = 'application/json'
+        super(JSONResponse, self).__init__(content, **kwargs)
+
+class NewsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Noticias.objects.all()
+    serializer_class = NoticiasSerializer
+
+# class NoticiasList(APIView):
+#     def get_object(self, pk):
+#         try:
+#             return Noticias.objects.get(pk=pk)
+#         except Noticias.DoesNotExist:
+#             raise Http404
+
+#     def get(self, request, format=None):
+#         noticias = Noticias.objects.all()
+#         serializer = NoticiasSerializer(noticias, many=True)
+#         return JSONResponse(serializer.data)
