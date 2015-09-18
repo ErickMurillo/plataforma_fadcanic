@@ -55,8 +55,7 @@ class ProgramaForm(forms.Form):
 #--- parametros para creacion del form de cruces ----
 first_class = {'tipo_actividad': ['tipo_actividad'], 
                'tema_actividad': ['tema_actividad'], 
-               'ejes_transversales': ['ejes_transversales'],
-               'objetivo_actividad': ['objetivo_actividad']}
+               'ejes_transversales': ['ejes_transversales']}
 
 participantes = {'participantes_por_sexo': ['hombres', 'mujeres'],
                  'participantes_por_edad': ['menor_12', 'mayor_12', 'mayor_18', 'mayor_30'],

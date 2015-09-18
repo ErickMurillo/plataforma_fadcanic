@@ -11,6 +11,7 @@ from actividades import short
 import datetime
 import urlparse, urllib, json, time
 from ckeditor.fields import RichTextField
+from mapeo.models import *
 
 #from south.modelsinspector import add_introspection_rules
 #add_introspection_rules([], ["^actividades\.thumbs\.ImageWithThumbsField"])
@@ -76,14 +77,20 @@ EJES = ((1, u'Interculturalidad'), (2, u'Género'),
 EVALUACION = ((99, u'No aplica'), (1, u'Muy bueno (90-100%)'), (2, u'Bueno (60-80%)'),
               (3, u'Regular (50%)'), (4, u'Malo (menor al 30%)'))
 
+TIPO_CHOICES = (
+        (1,'Persona'),
+        (2,'Comité comunal'),
+    )
 class Actividad(models.Model):
     organizacion = models.ForeignKey(Organizacion)
     proyecto = ChainedForeignKey(Proyecto, 
                                  chained_field="organizacion",
                                  chained_model_field="organizacion", 
                                  show_all=False,
-                                 auto_choose=True)    
-    persona_organiza = models.ForeignKey(Organizador, verbose_name=u'Persona que organiza la actividad')
+                                 auto_choose=True)
+    tipo = models.IntegerField(choices=TIPO_CHOICES,null=True,blank=True)    
+    persona_organiza = models.ForeignKey(Organizador, verbose_name=u'Persona que organiza la actividad',null=True,blank=True)
+    comite = models.ForeignKey(Organizaciones,null=True,blank=True,verbose_name='Comité comunal que organiza la actividad')
     nombre_actividad = models.CharField(max_length=150)
     objetivo_actividad = models.TextField(null=True,blank=True)
     fecha = models.DateTimeField()
