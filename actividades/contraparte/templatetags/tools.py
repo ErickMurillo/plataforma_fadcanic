@@ -60,7 +60,7 @@ def total_per_query_key(value, arg):
 def total_general(tabla, qs=None):   
     '''donde tabla es un dicc donde estan todos los valores'''    
     if qs==1:
-        return sum([sum(len(a) for a in value.values()) for value in tabla.values()])       
+        return sum([sum(len(a) for a in value.values()) for value in tabla.values()])     
     return sum([sum(value.values()) for value in tabla.values()]) 
 
 MESES = {1: 'Ene', 2: 'Feb', 3: 'Mar',

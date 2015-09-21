@@ -23,7 +23,7 @@ class ProyectoForm(FormFKAutoFill):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
         super(ProyectoForm, self).__init__(*args, **kwargs)
-        if not self.request.user.has_perm('trocaire.view_programa') or not self.request.user.is_superuser:                    
+        if not self.request.user.has_perm('fadcanic.view_programa') or not self.request.user.is_superuser:                    
             self.fields['organizacion'].queryset = Organizacion.objects.filter(admin=self.request.user)
     
     organizacion = forms.ModelChoiceField(queryset=Organizacion.objects.all(), 
