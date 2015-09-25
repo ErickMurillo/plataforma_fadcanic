@@ -11,7 +11,7 @@ class NoticiasAdmin(admin.ModelAdmin):
         return Noticias.objects.filter(user=request.user)
 
     def save_model(self, request, obj, form, change):
-        subject, from_email, to = 'Nueva Noticia de Cambia ahora', 'crocha09.09@gmail.com', 'crocha09.09@gmail.com'
+        subject, from_email, to = 'Nueva Noticia de Cambia ahora', 'noreply@cambiaahora.com', 'crocha09.09@gmail.com'
         text_content = str(obj.texto)
         html_content = str(obj.texto)
         msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
