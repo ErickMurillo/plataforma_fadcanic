@@ -108,3 +108,7 @@ class SubFiltroForm(forms.Form):
             raise forms.ValidationError("Solo puede seleccionar una segunda variable")                            
         
         return cleaned_data
+
+class PanelForm(forms.Form):
+    fecha_inicio = forms.DateField(required=False)
+    fecha_fin = forms.DateField(required=False) 

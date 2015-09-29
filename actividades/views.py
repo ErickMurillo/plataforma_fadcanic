@@ -10,10 +10,20 @@ from django.db.models import Sum
 import json as simplejson
 from fadcanic.models import *
 from django.contrib.auth.decorators import login_required
+from .forms import *
+
+
+def _consulta_query(request):
+	pass
 
 @login_required
 def home(request):
     organizaciones = Organizacion.objects.all()
+    form = PanelForm()
+    total_personas = 5
+
+
+
     return render_to_response('actividades/index.html', RequestContext(request, locals()))
 
 #Monitoreo de actividades

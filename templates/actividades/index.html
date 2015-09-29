@@ -1,57 +1,85 @@
 {% extends "actividades/base.html" %}
 {% load thumbnail %}
+{% load staticfiles %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'actividades/js/bootstrap-datepicker.js' %}"></script>
+<script type="text/javascript">
+$(function() {
+    $('#id_fecha_inicio, #id_fecha_fin').datepicker({
+        format: "dd/mm/yy",
+        todayBtn: "linked",
+        language: "es",
+        todayHighlight: true
+    });
+});
+
+</script>	
+{% endblock extra_js %}
 
 {% block contenido %}
 <div class="container contenido">
 	<div class="col-md-8">
 		<div class="col-md-12">
 			<div class="row">
-				<div class="col-sm-3 col-md-4">
-					<a href="/actividades/programa/">
-						<div class="thumbnail">
-							<i class="fa fa-file fa-4x"></i>
-							<div class="caption">
-								<p>Filtro de actividades</p>
-								<h5>Programa</h5>
-
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="col-sm-3 col-md-4">
-					<a href="/actividades/proyecto/">
-						<div class="thumbnail">
-							<i class="fa fa-clipboard fa-4x"></i>
-							<div class="caption">
-								<p>Filtro de actividades</p>
-								<h5>Proyecto</h5>
-							</div>
-						</div>
-					</a>
-				</div>
-
-				<div class="col-sm-3 col-md-4">
-					<a href="">
-						<div class="thumbnail">
-							<i class="fa fa-book fa-4x"></i>
-							<div class="caption">
-								<p>Manual de usuario</p>
-								<h5>Manual</h5>
-							</div>
-						</div>
-					</a>
-				</div>
+				<h2>Panel de activiades</h2>
+			</div>
+			<div class="row">
+				<h4>Consultar</h4>
+				<form>
+					{{form.as_table}}
+				</form>
+			</div>
+			<div class="row">
+				<h2>Conteos</h2>
+				<ul>
+					<li>Personas total: </li>
+					<li>Hombres: </li>
+					<li>Mujeres: </li>
+				</ul>
+				<h2>Por etnias</h2>
+				<ul>
+					<li>miskitus: </li>
+					<li>creole: </li>
+					<li>mestiza: </li>
+					<li>garifuno: </li>
+					<li>ramas: </li>
+				</ul>
+				<h2>Por rango de edad</h2>
+				<ul>
+					<li>edad 1 - 2:</li>
+					<li>edad 1 - 2:</li>
+					<li>edad 1 - 2:</li>
+					<li>edad 1 - 2:</li>
+					<li>edad 1 - 2:</li>
+					<li>edad 1 - 2:</li>
+				</ul>
+				<h2>Conteos comites comunales</h2>
+				<ul>
+					<li>Personas total: </li>
+					<li>Hombres: </li>
+					<li>Mujeres: </li>
+				</ul>
+				<h2>Por etnias</h2>
+				<ul>
+					<li>miskitus: </li>
+					<li>creole: </li>
+					<li>mestiza: </li>
+					<li>garifuno: </li>
+					<li>ramas: </li>
+				</ul>
+				<h2>Por rango de edad</h2>
+				<ul>
+					<li>edad 1 - 2:</li>
+					<li>edad 1 - 2:</li>
+					<li>edad 1 - 2:</li>
+					<li>edad 1 - 2:</li>
+					<li>edad 1 - 2:</li>
+					<li>edad 1 - 2:</li>
+				</ul>
 			</div>
 		</div>
-		
-		<div id="text">
-		
-		<p>Lundium turpis nisi, placerat? Porttitor magna? Dis et? Augue magna integer sagittis, augue dictumst phasellus, urna nunc odio et phasellus, penatibus rhoncus phasellus augue placerat placerat arcu enim. Arcu adipiscing! Ac a, quis, cum pulvinar nisi, eu eu in pulvinar ac vel in facilisis proin risus tempor, quis pulvinar scelerisque arcu amet est in pid, nascetur scelerisque sed scelerisque sit? Augue sed, velit nunc ac egestas in aliquet, egestas ridiculus magnis et. Enim ultricies in tincidunt. Rhoncus porttitor augue hac dictumst penatibus, a nec turpis? Auctor! Pulvinar elementum lacus nisi parturient a a ac tempor sed, elementum enim! Tristique ac, diam turpis in tincidunt, auctor phasellus nisi sed, odio tincidunt lorem ut sit ridiculus penatibus turpis urna sit elementum magna..</p>
-
-		<p>Lundium turpis nisi, placerat? Porttitor magna? Dis et? Augue magna integer sagittis, augue dictumst phasellus, urna nunc odio et phasellus, penatibus rhoncus phasellus augue placerat placerat arcu enim. Arcu adipiscing! Ac a, quis, cum pulvinar nisi, eu eu in pulvinar ac vel in facilisis proin risus tempor, quis pulvinar scelerisque arcu amet est in pid, nascetur scelerisque sed scelerisque sit? Augue sed, velit nunc ac egestas in aliquet, egestas ridiculus magnis et. Enim ultricies in tincidunt. Rhoncus porttitor augue hac dictumst penatibus, a nec turpis? Auctor! Pulvinar elementum lacus nisi parturient a a ac tempor sed, elementum enim! Tristique ac, diam turpis in tincidunt, auctor phasellus nisi sed, odio tincidunt lorem ut sit ridiculus penatibus turpis urna sit elementum magna.</p>
 	</div>
-</div>
 
 
 <div class="col-md-4">
