@@ -24,7 +24,7 @@ class NoticiasAdmin(admin.ModelAdmin):
             html_content = "Una nueva noticia ha sido enviada, del usuario " + \
                             str(obj.user) + ', ' + \
                             ' Si decia revisarla dar clic al siguiente enlace' + \
-                            ' http://www.cambiaahora.com/noticias/noticias/' + str(obj.id)
+                            ' http://www.cambiaahora.com/admin/noticias/noticias/' + str(obj.id)
             msg = EmailMultiAlternatives(subject, text_content, from_email, arreglo_mail)
             msg.attach_alternative(html_content, "text/html")
             msg.send()
