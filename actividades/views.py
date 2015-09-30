@@ -20,8 +20,44 @@ def _consulta_query(request):
 def home(request):
     organizaciones = Organizacion.objects.all()
     form = PanelForm()
-    total_personas = 5
 
+    #salidas por organizacion
+    personas_hombre_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('hombres'))['suma']
+    personas_mujer_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('mujeres'))['suma']
+    total_personas_org = personas_hombre_org + personas_mujer_org
+    #salida por etnias
+    creole_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('creole'))['suma']
+    miskito_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('miskito'))['suma']
+    ulwa_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('ulwa'))['suma']
+    rama_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('rama'))['suma']
+    mestizo_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('mestizo'))['suma']
+    mayagna_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('mayagna'))['suma']
+    garifuna_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('garifuna'))['suma']
+    extranjero_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('extranjero'))['suma']
+    #salida por rango de edad
+    menor_12_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('menor_12'))['suma']
+    mayor_12_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('mayor_12'))['suma']
+    mayor_18_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('mayor_18'))['suma']
+    mayor_30_org = Actividad.objects.filter(tipo=1).aggregate(suma=Sum('mayor_30'))['suma']
+
+    #salidas por comites comunales
+    personas_hombre_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('hombres'))['suma']
+    personas_mujer_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('mujeres'))['suma']
+    total_personas_comunal = personas_hombre_comunal + personas_mujer_comunal
+    #salida por etnias
+    creole_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('creole'))['suma']
+    miskito_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('miskito'))['suma']
+    ulwa_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('ulwa'))['suma']
+    rama_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('rama'))['suma']
+    mestizo_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('mestizo'))['suma']
+    mayagna_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('mayagna'))['suma']
+    garifuna_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('garifuna'))['suma']
+    extranjero_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('extranjero'))['suma']
+    #salida por rango de edad
+    menor_12_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('menor_12'))['suma']
+    mayor_12_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('mayor_12'))['suma']
+    mayor_18_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('mayor_18'))['suma']
+    mayor_30_comunal = Actividad.objects.filter(tipo=2).aggregate(suma=Sum('mayor_30'))['suma']
 
 
     return render_to_response('actividades/index.html', RequestContext(request, locals()))

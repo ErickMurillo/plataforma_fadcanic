@@ -48,7 +48,7 @@ class Precedencia_Participantes_Inline(admin.TabularInline):
 class ActividadAdmin(admin.ModelAdmin):
     list_filter = ['resultado__aporta_a', 'organizacion', 'proyecto', 'persona_organiza', 'fecha']
     search_fields = ['nombre_actividad', 'organizacion__nombre_corto', 'persona_organiza__nombre','municipio__nombre']
-    list_display = ['nombre_actividad', 'organizacion', 'fecha']
+    list_display = ['nombre_actividad', 'organizacion', 'fecha', 'tipo']
     
     fieldsets = [
         (None, {'fields': [('organizacion', 'proyecto'), 'tipo', 'persona_organiza', 'comite', 'nombre_actividad','objetivo_actividad','fecha',
