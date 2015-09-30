@@ -23,7 +23,7 @@ class ProyectoForm(FormFKAutoFill):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
         super(ProyectoForm, self).__init__(*args, **kwargs)
-        if not self.request.user.has_perm('trocaire.view_programa') or not self.request.user.is_superuser:                    
+        if not self.request.user.has_perm('fadcanic.view_programa') or not self.request.user.is_superuser:                    
             self.fields['organizacion'].queryset = Organizacion.objects.filter(admin=self.request.user)
     
     organizacion = forms.ModelChoiceField(queryset=Organizacion.objects.all(), 
@@ -62,7 +62,7 @@ participantes = {'participantes_por_sexo': ['hombres', 'mujeres'],
                  'participantes_por_etnia': ['creole', 'miskito', 'ulwa','rama', 'mestizo',
                                              'mayagna', 'garifuna','extranjero'],
                  'participantes_por_tipo': ['estudiante', 'docente', 'periodista',
-                                            'lideres', 'representantes', 'autoridades', 'comunitarios']}
+                                            'lideres', 'representantes', 'comunitarios']}
 
 evaluacion = {'importancia_del_tema': 'relevancia',
               'efectividad_de_la_accion': 'efectividad',

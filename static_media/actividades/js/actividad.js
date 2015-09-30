@@ -30,3 +30,25 @@ function showCustomPopup(dicc, triggeringLink) {
     win.focus();
     return false;
 }
+
+// codigo nuevo
+(function($) {	
+$(document).ready( function() 
+	{
+		$('.field-persona_organiza').hide();
+		$('.field-comite').hide();
+
+		$('#id_tipo').change(function(){
+			var valor_tipo = $('#id_tipo').val();
+			if (valor_tipo === '1' ) {
+				$('.field-persona_organiza').show();
+				$('.field-comite').hide();
+			}else{
+				$('.field-persona_organiza').hide();
+				$('.field-comite').show();
+			};
+		});
+
+	} );
+
+})(jQuery || django.jQuery);

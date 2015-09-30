@@ -82,7 +82,7 @@ def datos(request,template='monitoreo_actividades/datos.html'):
 			municipios[y.nombre] = (actividades,sum_hombres,sum_mujeres,sum_menor_12,sum_mayor_12,
 										sum_mayor_18,sum_mayor_30,sum_creole,sum_miskito,sum_ulwa,
 										sum_rama,sum_mestizo,sum_mayagna,sum_garifuna,sum_extranjero,
-										sum_estudiante,sum_docente,sum_periodista,sum_lideres,
+										sum_estudiante,sum_docente,sum_periodista,
 										sum_representantes,sum_autoridades,sum_comunitarios)
 
 	return render(request, template, locals())

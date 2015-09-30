@@ -51,7 +51,7 @@ class ActividadAdmin(admin.ModelAdmin):
     list_display = ['nombre_actividad', 'organizacion', 'fecha']
     
     fieldsets = [
-        (None, {'fields': [('organizacion', 'proyecto'), 'persona_organiza', 'nombre_actividad','objetivo_actividad','fecha',
+        (None, {'fields': [('organizacion', 'proyecto'), 'tipo', 'persona_organiza', 'comite', 'nombre_actividad','objetivo_actividad','fecha',
                            'municipio', 'comunidad']}),
         ('Tipo, tema y ejes de actividad', {'fields': ['tipo_actividad', 'tema_actividad', 'ejes_transversales']}),
         ('Participantes por sexo', {'fields': [('hombres', 'mujeres'),]}),
