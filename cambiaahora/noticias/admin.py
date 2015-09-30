@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Noticias, Categoria
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
+from cambiaahora.utils import *
 
 class NoticiasAdmin(admin.ModelAdmin):
 
@@ -11,14 +12,22 @@ class NoticiasAdmin(admin.ModelAdmin):
         return Noticias.objects.filter(user=request.user)
 
     def save_model(self, request, obj, form, change):
-        subject, from_email, to = 'Nueva Noticia de Cambia ahora', 'noreply@cambiaahora.com', 'crocha09.09@gmail.com'
-        text_content = str(obj.texto)
-        html_content = str(obj.texto)
-        msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-        msg.attach_alternative(html_content, "text/html")
-        msg.send()
-
+        #guarda todos los objectos   
         obj.save()
+        #envio de correo
+        if not obj.user.is_superuser:
+            subject, from_email, to = 'Nueva Noticia de Cambia ahora', 'noreply@cambiaahora.com', arreglo_mail
+            text_content = "Una nueva noticia ha sido enviada, del usuario " + \
+                            str(obj.user) + ', ' + \
+                            ' Si decia revisarla dar clic al siguiente enlace' + \
+                            ' http://www.cambiaahora.com/noticias/noticias/' + str(obj.id)
+            html_content = "Una nueva noticia ha sido enviada, del usuario " + \
+                            str(obj.user) + ', ' + \
+                            ' Si decia revisarla dar clic al siguiente enlace' + \
+                            ' http://www.cambiaahora.com/noticias/noticias/' + str(obj.id)
+            msg = EmailMultiAlternatives(subject, text_content, from_email, arreglo_mail)
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
 
     # exclude = ('user',)
     list_display = ('titulo', 'fecha', 'aprobacion', 'idioma', 'user')
