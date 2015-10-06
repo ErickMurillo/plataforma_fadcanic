@@ -25,7 +25,7 @@
 						{% trans "Multimedias" %}
 					</li>
 					<li class="active">
-						{% trans "Audios" %}
+						{% trans "Series Radiofónicas" %}
 					</li>
 				</ul>
 
@@ -59,14 +59,14 @@
 						<a href="/multimedias/documentales/" class="">{% trans "Documentales" %}</a>
 					</li>
 					<li>
-						<a href="/multimedias/audios/" class="">{% trans "Audios" %}</a>
+						<a href="/multimedias/audios/" class="">{% trans "Series Radiofónicas" %}</a>
 					</li>
 
 				</ol>
 				<!--Sub Breadcrumb Section End Here-->
 				{% paginate object_list %}
 				<div class="row gallery">
-				<h2>{% trans "Audios" %}</h2>
+				<h2>{% trans "Series Radiofónicas" %}</h2>
 				{% for obj in object_list %}
 					<div class="cols-xs-12 col-sm-6">
 						{% if  obj.foto %}

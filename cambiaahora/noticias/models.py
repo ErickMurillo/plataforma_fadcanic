@@ -47,3 +47,18 @@ class Noticias(models.Model):
     class Meta:
         verbose_name= _(u'Noticia')
         verbose_name_plural= _(u'Noticias')
+
+class NoticiasAudios(models.Model):
+    audios = models.ForeignKey(Noticias)
+    titulo = models.CharField(_(u'Titulo'),max_length=250)
+    audio = models.FileField(_(u'Audio'),)
+
+    fileDir = 'subirNoticiasAudios/'
+
+    def __unicode__(self):
+        return self.titulo
+
+    class Meta:
+        verbose_name=_(u'Subir audio')
+        verbose_name_plural=_(u'Subir audios')
+        ordering = ('-titulo', )
