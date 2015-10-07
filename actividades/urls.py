@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^report/$', 'actividades.contraparte.views.generate_report', name='generate_report' ),    
     url(r'^ajax/proyectos/$', 'actividades.contraparte.views.get_proyectos', name='get_proyectos' ),
     url(r'^ajax/salidas/$', 'actividades.contraparte.views.get_salidas', name='get_salidas' ),
+    url(r'^actividades_pdf/(?P<id_actividad>[0-9]+)/$', 'actividades.views.actividad_pdf', name='actividad_pdf'),
     url(r'^fillout/', include('actividades.formutils.urls')),
     url(r'^proyecto/', include('actividades.contraparte.urls')),
     url(r'^programa/', include('actividades.fadcanic.urls')),    

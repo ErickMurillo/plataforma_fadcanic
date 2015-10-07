@@ -83,6 +83,17 @@ $(function() {
 				</ul>
 			</div>
 		</div>
+
+
+	<h1>todas las actividades</h1>
+
+	<ul>
+	{% for obj in actividad %}
+		<li> <a href="/actividades/actividades_pdf/{{obj.id}}">{{obj.nombre_actividad}}</a></li>
+	{% endfor %}
+	</ul>
+
+
 	</div>
 
 
