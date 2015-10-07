@@ -13,7 +13,9 @@ html5lib==0.999
 htmlmin==0.1.5
 Markdown==2.6.2
 Pillow==2.8.2
+pisa==3.0.33
 psycopg2==2.6.1
+reportlab==2.6
 requests==2.7.0
 six==1.9.0
 sorl-thumbnail==12.2
