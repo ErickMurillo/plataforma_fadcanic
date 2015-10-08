@@ -1,18 +1,224 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    {% for obj in actividad %}
-    <p>Organización: {{ obj.organizacion }} -- Proyecto: {{ obj.proyecto }}</p>
-    <p>Tipo: {{ obj.get_tipo_display }}</p>
-    <p>Persona que organiza: {{obj.persona_organiza}}</p>
-        <h1>{{ obj.nombre_actividad }}</h1>
-        <p>{{ obj.objetivo_actividad|safe }}</p>
-        <p>{{ obj.fecha }}</p>
-    {% endfor %}
+	<style>
+		h1 {
+			font-size: 18px
+		}
+		p{
+			font-size: 13px
+		}
+		table {
+			border-collapse: collapse;
+			font-size: 12px
+		}
 
-    etc ... etc
+		table, td, th {
+			border: 1px solid black;
+			padding: 3px
+		}
+
+		img {
+			display: block;
+			margin:0 auto
+		}
+	</style>
+	<div class="contenido">
+		{% for obj in actividad %}
+		<div id="info">
+		<h1 align="center">Organización: {{ obj.organizacion }} -- Proyecto: {{ obj.proyecto }}</h1>
+		<!--<h2>Tipo: {{ obj.get_tipo_display }}</h2>-->
+			<table width="100%">
+				<tr>
+					<td><b>Fecha de la actividad</b></td>
+					<td>{{obj.fecha}}</td>		
+				</tr>
+				<tr>
+				{% if obj.tipo == 1 %}
+					<td><b>Persona que organiza la actividad</b></td>
+					<td>{{obj.persona_organiza}}</td>
+				{% else %}
+					<td><b>Comité comunal que organiza la actividad</b></td>
+					<td>{{obj.comite}}}</td>
+				{% endif %}		
+				</tr>
+				<tr>
+					<td><b>Nombre de la actividad</b></td>
+					<td>{{ obj.nombre_actividad }}</td>
+				</tr>
+				<tr>
+					<td><b>Municipio</b></td>
+					<td>{{obj.municipio}}</td>
+				</tr>
+				<tr>
+					<td><b>Comunidad</b></td>
+					<td>{{obj.comunidad}}</td>
+				</tr>
+				<tr>
+					<td><b>Tipo</b></td>
+					<td>{{obj.tipo_actividad}}</td>
+				</tr>
+				<tr>
+					<td><b>Tema</b></td>
+					<td>{{obj.tema_actividad}}</td>
+				</tr>
+				<tr>
+					<td><b>Eje transversal</b></td>
+					<td>{{obj.ejes_transversales}}</td>
+				</tr>
+			</table>
+		</div>
+
+		<h2>Objetivo de la actividad: </h2>
+		<p>{{obj.objetivo_actividad|safe}}</p>
+
+		<h1 align="center">Participantes</h1>
+		<div id="participantes">
+			<table width="70%">
+				<thead>
+					<tr>
+						<th>Hombres</th>
+						<th>Mujeres</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td align="center">{{obj.hombres}}</td>
+						<td align="center">{{obj.mujeres}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="edad">
+			<h2>Participantes por edades</h2>
+			<table width="70%">
+				<thead>
+					<tr>
+						<th>Menor a 12 años</th>
+						<th>13 a 18 años</th>
+						<th>19 a 30 años</th>
+						<th>31 a más años</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td align="center">{{obj.mayor_12}}</td>
+						<td align="center">{{obj.mayor_12}}</td>
+						<td align="center">{{obj.mayor_18}}</td>
+						<td align="center">{{obj.mayor_30}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="etnia">
+			<h2>Participantes por identidad étnica</h2>
+			<table width="100%">
+				<thead>
+					<tr>
+						<th>Creole</th>
+						<th>Miskito</th>
+						<th>Ulwa</th>
+						<th>Rama</th>
+						<th>Mestizo</th>
+						<th>Mayagna</th>
+						<th>Garifuna</th>
+						<th>Extranjero</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td align="center">{{obj.creole}}</td>
+						<td align="center">{{obj.miskito}}</td>
+						<td align="center">{{obj.ulwa}}</td>
+						<td align="center">{{obj.rama}}</td>
+						<td align="center">{{obj.mestizo}}</td>
+						<td align="center">{{obj.mayagna}}</td>
+						<td align="center">{{obj.garifuna}}</td>
+						<td align="center">{{obj.extranjero}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="tipos_actores">
+			<h2>Participantes por tipo</h2>
+			<table width="100%">
+				<thead>
+					<tr>
+						<th>Estudiante</th>
+						<th>Docente</th>
+						<th>Periodista/comunicador</th>
+						<th>Líderes comunitarios</th>
+						<th>Representantes de Organizaciones</th>
+						<th>Comunitarios/Pobladores</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td align="center">{{obj.estudiante}}</td>
+						<td align="center">{{obj.docente}}</td>
+						<td align="center">{{obj.periodista}}</td>
+						<td align="center">{{obj.lideres}}</td>
+						<td align="center">{{obj.representantes}}</td>
+						<td align="center">{{obj.comunitarios}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<pdf:nextpage>
+
+		<h2>Descripción:</h2>
+		<p>{{ obj.comentarios|safe }}</p>
+		<h2>Dificultades:</h2>
+		<p>{{ obj.dificultades|safe }}</p>
+		<h2>Logros:</h2>
+		<p>{{ obj.logros|safe }}</p>
+		<h2>Acuerdos:</h2>
+		<p>{{ obj.acuerdos|safe }}</p>
+
+		<pdf:nextpage>
+
+		<div id="recursos">
+			<h1 align="center">Recursos</h1>
+			{% if obj.video %}
+			<h2>Url del video: </h2><h2 style="color:blue">{{obj.video}}</h2>
+			{% endif %}
+			{% if obj.foto1 %}
+			<div>
+				<img src="{{ obj.foto1.path }}" width="500" />
+			</div>
+			<br />
+			{% endif %}
+
+			{% if obj.foto2 %}
+			<div>
+				<img src="{{ obj.foto2.path }}" width="500"/>
+			</div>
+			<br />
+			{% endif %}
+
+			{% if obj.foto3 %}
+			<div>
+				<img src="{{ obj.foto3.path }}" width="500" />
+			</div>
+			<br />
+			{% endif %}
+
+		</div>
+
+		{% endfor %}
+	</div>
+
+
 </body>
 </html>

@@ -3,6 +3,9 @@ from django.contrib import admin
 from .models import *
 from django import forms
 from ckeditor.widgets import CKEditorWidget
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from cambiaahora.utils import *
 
 class ResultadoInline(admin.TabularInline):
     model = Resultado
@@ -65,7 +68,7 @@ class ActividadAdmin(admin.ModelAdmin):
         ('Evaluacion de hombres', {'fields': [('relevancia', 'efectividad'), ('aprendizaje', 'empoderamiento'), 'participacion']}),
         ('Evaluacion de mujeres', {'fields': [('relevancia_m', 'efectividad_m'), ('aprendizaje_m', 'empoderamiento_m'), 'participacion_m']}),
         ('Recursos', {'fields': [('foto1', 'foto2', 'foto3'), 'video', 'comentarios','logros','dificultades','acuerdos']}), 
-        (None, {'fields': ['aprobacion','user']}),                                                       
+                                                               
     ]
     
     formfield_overrides = {
@@ -76,19 +79,42 @@ class ActividadAdmin(admin.ModelAdmin):
     inlines = [Precedencia_Participantes_Inline]
     
     def get_form(self, request, obj=None, ** kwargs):
-        if request.user.is_superuser:        
-            form = super(ActividadAdmin, self).get_form(request, ** kwargs)
+        if request.user.is_superuser:
+            self.exclude = () 
+            self.fieldsets += [(None, {'fields': ['aprobacion','user']}),]
         else:
-            form = super(ActividadAdmin, self).get_form(request, ** kwargs)
+            self.exclude = ('aprobacion',)
+            self.fieldsets += [(None, {'fields': ['user',]}),]
             #form.base_fields['organizacion'].queryset = request.user.organizacion_set.all()                      
-        return form
+        return super(ActividadAdmin, self).get_form(request, obj=None, **kwargs)
     
     #sobreescribiendo el metodo para filtrar los objetos    
     def queryset(self, request):       
         if request.user.is_superuser or request.user.has_perm('fadcanic.view_programa'):
             return Actividad.objects.all()
         return Actividad.objects.filter(organizacion__admin=request.user)
-    
+
+    def save_model(self, request, obj, form, change):
+        #guarda todos los objectos   
+        obj.save()
+        #envio de correo
+        if not obj.user.is_superuser:
+            try:
+                subject, from_email, to = 'Nueva Actividad de Cambia ahora', 'noreply@cambiaahora.com', arreglo_mail
+                text_content = "Una nueva actividad ha sido enviada, del usuario " + \
+                                str(obj.user) + ', ' + \
+                                ' Si decia revisarla dar clic al siguiente enlace' + \
+                                ' http://www.cambiaahora.com/admin/contraparte/actividad/' + str(obj.id)
+                html_content = "Una nueva actividad ha sido enviada, del usuario " + \
+                                str(obj.user) + ', ' + \
+                                ' Si decia revisarla dar clic al siguiente enlace' + \
+                                ' http://www.cambiaahora.com/admin/contraparte/actividad/' + str(obj.id)
+                msg = EmailMultiAlternatives(subject, text_content, from_email, arreglo_mail)
+                msg.attach_alternative(html_content, "text/html")
+                msg.send()
+            except:
+                pass
+
     class Media:
         js = ('/static/actividades/js/actividad.js', )        
     

@@ -5,122 +5,134 @@
 {% block extra_js %}
 <script type="text/javascript" src="{% static 'actividades/js/bootstrap-datepicker.js' %}"></script>
 <script type="text/javascript">
-$(function() {
-    $('#id_fecha_inicio, #id_fecha_fin').datepicker({
-        format: "dd/mm/yy",
-        todayBtn: "linked",
-        language: "es",
-        todayHighlight: true
-    });
-});
+	$(function() {
+		$('#id_fecha_inicio, #id_fecha_fin').datepicker({
+			format: "dd/mm/yy",
+			todayBtn: "linked",
+			language: "es",
+			todayHighlight: true
+		});
+	});
 
 </script>	
 {% endblock extra_js %}
 
 {% block contenido %}
+<style>
+	.nav li a{
+		color: black !important
+	}
+</style>
 <div class="container contenido">
 	<div class="col-md-8">
-		<div class="col-md-12">
-			<div class="row">
-				<h2>Panel de activiades</h2>
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Panel de actividades</a></li>
+			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Lista de actividades</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home">
+				<div class="col-md-12">
+					<div class="row">
+						<h2>Panel de activiades</h2>
+					</div>
+					<div class="row">
+						<h4>Consultar</h4>
+						<form>
+							{{form.as_table}}
+						</form>
+					</div>
+					<div class="row">
+						<h2>Conteos de la organización</h2>
+						<ul>
+							<li>Personas total: {{total_personas_org}}</li>
+							<li>Hombres: {{personas_hombre_org}}</li>
+							<li>Mujeres: {{personas_mujer_org}}</li>
+						</ul>
+						<h2>Por etnias</h2>
+						<ul>
+
+							<li>Creole: {{creole_org}}</li>
+							<li>Miskitus: {{miskito_org}}</li>
+							<li>Ulwa: {{ulwa_org}}</li>
+							<li>Ramas: {{rama_org}}</li>
+							<li>Mestizo: {{mestizo_org}}</li>
+							<li>Mayagna: {{mayagna_org}}</li>
+							<li>Garifuna: {{garifuna_org}}</li>
+							<li>Extrangero: {{extranjero_org}}</li>
+						</ul>
+						<h2>Por rango de edad</h2>
+						<ul>
+							<li>Menor a 12 años: {{menor_12_org}}</li>
+							<li>13 a 18 años: {{mayor_12_org}}</li>
+							<li>19 a 30 años: {{mayor_18_org}}</li>
+							<li>31 a más años: {{mayor_30_org}}</li>
+						</ul>
+						<h2>Conteos comites comunales</h2>
+						<ul>
+							<li>Personas total: {{total_personas_comunal}}</li>
+							<li>Hombres: {{personas_hombre_comunal}}</li>
+							<li>Mujeres: {{personas_mujer_comunal}}</li>
+						</ul>
+						<h2>Por etnias</h2>
+						<ul>
+
+							<li>Creole: {{creole_comunal}}</li>
+							<li>Miskitus: {{miskito_comunal}}</li>
+							<li>Ulwa: {{ulwa_comunal}}</li>
+							<li>Ramas: {{rama_comunal}}</li>
+							<li>Mestizo: {{mestizo_comunal}}</li>
+							<li>Mayagna: {{mayagna_comunal}}</li>
+							<li>Garifuna: {{garifuna_comunal}}</li>
+							<li>Extrangero: {{extranjero_comunal}}</li>
+						</ul>
+						<h2>Por rango de edad</h2>
+						<ul>
+							<li>Menor a 12 años: {{menor_12_comunal}}</li>
+							<li>13 a 18 años: {{mayor_12_comunal}}</li>
+							<li>19 a 30 años: {{mayor_18_comunal}}</li>
+							<li>31 a más años: {{mayor_30_comunal}}</li>
+						</ul>
+					</div>
+				</div>
 			</div>
-			<div class="row">
-				<h4>Consultar</h4>
-				<form>
-					{{form.as_table}}
-				</form>
-			</div>
-			<div class="row">
-				<h2>Conteos de la organización</h2>
+			<div role="tabpanel" class="tab-pane" id="profile">
+				<h3>Todas las actividades</h3>
 				<ul>
-					<li>Personas total: {{total_personas_org}}</li>
-					<li>Hombres: {{personas_hombre_org}}</li>
-					<li>Mujeres: {{personas_mujer_org}}</li>
-				</ul>
-				<h2>Por etnias</h2>
-				<ul>
-					
-					<li>Creole: {{creole_org}}</li>
-					<li>Miskitus: {{miskito_org}}</li>
-					<li>Ulwa: {{ulwa_org}}</li>
-					<li>Ramas: {{rama_org}}</li>
-					<li>Mestizo: {{mestizo_org}}</li>
-					<li>Mayagna: {{mayagna_org}}</li>
-					<li>Garifuna: {{garifuna_org}}</li>
-					<li>Extrangero: {{extranjero_org}}</li>
-				</ul>
-				<h2>Por rango de edad</h2>
-				<ul>
-					<li>Menor a 12 años: {{menor_12_org}}</li>
-					<li>13 a 18 años: {{mayor_12_org}}</li>
-					<li>19 a 30 años: {{mayor_18_org}}</li>
-					<li>31 a más años: {{mayor_30_org}}</li>
-				</ul>
-				<h2>Conteos comites comunales</h2>
-				<ul>
-					<li>Personas total: {{total_personas_comunal}}</li>
-					<li>Hombres: {{personas_hombre_comunal}}</li>
-					<li>Mujeres: {{personas_mujer_comunal}}</li>
-				</ul>
-				<h2>Por etnias</h2>
-				<ul>
-					
-					<li>Creole: {{creole_comunal}}</li>
-					<li>Miskitus: {{miskito_comunal}}</li>
-					<li>Ulwa: {{ulwa_comunal}}</li>
-					<li>Ramas: {{rama_comunal}}</li>
-					<li>Mestizo: {{mestizo_comunal}}</li>
-					<li>Mayagna: {{mayagna_comunal}}</li>
-					<li>Garifuna: {{garifuna_comunal}}</li>
-					<li>Extrangero: {{extranjero_comunal}}</li>
-				</ul>
-				<h2>Por rango de edad</h2>
-				<ul>
-					<li>Menor a 12 años: {{menor_12_comunal}}</li>
-					<li>13 a 18 años: {{mayor_12_comunal}}</li>
-					<li>19 a 30 años: {{mayor_18_comunal}}</li>
-					<li>31 a más años: {{mayor_30_comunal}}</li>
-				</ul>
+					{% for obj in actividad %}
+					<li> <a href="/actividades/actividades_pdf/{{obj.id}}">{{obj.nombre_actividad}}</a></li>
+					{% endfor %}
+				</ul></div>
 			</div>
 		</div>
 
 
-	<h1>todas las actividades</h1>
+		<div class="col-md-4">
 
-	<ul>
-	{% for obj in actividad %}
-		<li> <a href="/actividades/actividades_pdf/{{obj.id}}">{{obj.nombre_actividad}}</a></li>
-	{% endfor %}
-	</ul>
-
-
-	</div>
-
-
-<div class="col-md-4">
-
-	<h4>Organizaciones</h4>
-	{% for org in organizaciones %}
-	<div class="thumbnail organizaciones">
-		<div class="panel-body">
-			<div class="col-md-9">
-				<div class="nombre-corto">{{org.nombre_corto|upper}}</div>
-				<div class="nombre-largo">{{org.nombre}}</div>
-				<div class="actcount">Última actividad registrada el: 
-					<b style="color: red;">{{org.last_register|date:"d F Y"}}</b></div>
+			<h4>Organizaciones</h4>
+			{% for org in organizaciones %}
+			<div class="thumbnail organizaciones">
+				<div class="panel-body">
+					<div class="col-md-9">
+						<div class="nombre-corto">{{org.nombre_corto|upper}}</div>
+						<div class="nombre-largo">{{org.nombre}}</div>
+						<div class="actcount">Última actividad registrada el: 
+							<b style="color: red;">{{org.last_register|date:"d F Y"}}</b></div>
+						</div>
+						<div class="col-md-3 imglogo">
+							{% if org.logo %}
+							<img src="/media/{{org.logo}}" alt="" width="60px">
+							{% else %}
+							<img src="http://placehold.it/70x70" alt="{{org.nombre_corto}}">
+							{% endif %}
+						</div>
+					</div>
 				</div>
-				<div class="col-md-3 imglogo">
-					{% if org.logo %}
-					<img src="/media/{{org.logo}}" alt="" width="60px">
-					{% else %}
-					<img src="http://placehold.it/70x70" alt="{{org.nombre_corto}}">
-					{% endif %}
-				</div>
+				{% endfor %}
 			</div>
 		</div>
-		{% endfor %}
-	</div>
-</div>
 
 
-{% endblock contenido %}
+		{% endblock contenido %}

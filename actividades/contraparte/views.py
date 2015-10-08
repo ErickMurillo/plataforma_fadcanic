@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.template.context import RequestContext
-#from django.db.models.loading import get_model
+from django.db.models.loading import get_model
 from django.db.models import Sum
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.sites.models import Site
@@ -28,13 +28,13 @@ def filtro_proyecto(request):
             proy_params['organizacion__id'] = form.cleaned_data['organizacion'].id
             proy_params['proyecto__id'] = form.cleaned_data['proyecto'].id
             proy_params['resultado__id'] = form.cleaned_data['resultado'].id
-            proy_params['fecha__range'] = (form.cleaned_data['fecha_inicio'], form.cleaned_data['fecha_fin'])
+            #proy_params['fecha__range'] = (form.cleaned_data['fecha_inicio'], form.cleaned_data['fecha_fin'])
 
             #guardando los filtros seleccionados para pintarlos en plantilla
             filtro['organizacion'] = [form.cleaned_data['organizacion'], ]
             filtro['proyecto'] = [form.cleaned_data['proyecto'], ]
-            filtro['fecha_inicio'] = form.cleaned_data['fecha_inicio']
-            filtro['fecha_fin'] = form.cleaned_data['fecha_fin']
+            #filtro['fecha_inicio'] = form.cleaned_data['fecha_inicio']
+            #filtro['fecha_fin'] = form.cleaned_data['fecha_fin']
             filtro['salida'] = 'Por proyecto'
             filtro['resultado'] = form.cleaned_data['resultado'].nombre_corto
 

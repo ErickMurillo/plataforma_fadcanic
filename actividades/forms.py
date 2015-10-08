@@ -32,8 +32,8 @@ class ProyectoForm(FormFKAutoFill):
                                       widget=forms.Select(attrs={'class':'form-large'}))
     resultado = forms.ModelChoiceField(queryset=Resultado.objects.all(), 
                                       widget=forms.Select(attrs={'class':'form-large'}))
-    fecha_inicio = forms.DateField(required=False, widget=forms.TextInput(attrs={'style':'width: 320px'}))
-    fecha_fin = forms.DateField(required=False, widget=forms.TextInput(attrs={'style':'width: 320px'})) 
+    # fecha_inicio = forms.DateField(required=False, widget=forms.TextInput(attrs={'style':'width: 320px'}))
+    # fecha_fin = forms.DateField(required=False, widget=forms.TextInput(attrs={'style':'width: 320px'})) 
         
     class Foo:
         config = [{'on_change': {'field': 'organizacion'},
@@ -75,6 +75,7 @@ evaluacion_m = {'importancia_del_tema': 'relevancia_m',
               'grado_de_aprendizaje': 'aprendizaje_m',
               'nivel_de_apropiacion': 'empoderamiento_m',
               'nivel_de_participacion': 'participacion_m'}
+
 
     
 class SubFiltroForm(forms.Form):    
