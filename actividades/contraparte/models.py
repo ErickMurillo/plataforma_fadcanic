@@ -30,36 +30,36 @@ class Proyecto(models.Model):
     monto_contrapartida = models.IntegerField()
     contacto = models.CharField(max_length=100, verbose_name='Persona de contacto')
     aporta_fadcanic = models.IntegerField(choices=SI_NO, verbose_name=u'Aporta a Fadcanic')
-    municipios = models.ManyToManyField(Municipio)    
-    
+    municipios = models.ManyToManyField(Municipio)
+
     def __unicode__(self):
         return u'%s-%s' % (self.organizacion.nombre_corto, self.codigo)
-    
+
     class Meta:
         verbose_name_plural = u'Proyectos'
-        
-class Resultado(models.Model):    
+
+class Resultado(models.Model):
     nombre_corto = models.CharField(max_length=50)
     descripcion = models.TextField()
     aporta_a = models.ForeignKey(ResultadoPrograma)
     proyecto = models.ForeignKey(Proyecto)
-    
+
     def __unicode__(self):
         return u'%s' % self.nombre_corto
-    
+
     class Meta:
         verbose_name = u'Resultado del proyecto'
-        verbose_name_plural = u'Resultados del proyecto' 
-        
+        verbose_name_plural = u'Resultados del proyecto'
+
 class Organizador(models.Model):
     nombre = models.CharField(max_length=200)
-    
+
     def __unicode__(self):
         return u'%s' % self.nombre
-    
+
     class Meta:
         verbose_name_plural = u'Organizadores'
-        
+
 TIPO_ACTIVIDAD = ((1, u'Encuentro'), (2, u'Taller'),
                   (3, u'Cabildo'), (4, u'Reunión Comunitaria'),
                   (5, u'Campamento'), (6, u'Festival'),
@@ -71,7 +71,7 @@ TEMA_ACTIVIDAD = ((1, u'Derechos Humanos'), (2, u'Empoderamiento'),
                   (5, u'Marco Jurídico Nacional'), (6, u'Género'),
                   (7, u'Fortalecimiento de capacidades de la organización'))
 
-EJES = ((1, u'Interculturalidad'), (2, u'Género'), 
+EJES = ((1, u'Interculturalidad'), (2, u'Género'),
         (3, u'Medio ambiente'), (4, u'Generacional'))
 
 EVALUACION = ((99, u'No aplica'), (1, u'Muy bueno (90-100%)'), (2, u'Bueno (60-80%)'),
@@ -83,25 +83,25 @@ TIPO_CHOICES = (
     )
 class Actividad(models.Model):
     organizacion = models.ForeignKey(Organizacion)
-    proyecto = ChainedForeignKey(Proyecto, 
+    proyecto = ChainedForeignKey(Proyecto,
                                  chained_field="organizacion",
-                                 chained_model_field="organizacion", 
+                                 chained_model_field="organizacion",
                                  show_all=False,
                                  auto_choose=True)
-    tipo = models.IntegerField(choices=TIPO_CHOICES,null=True,blank=True)    
+    tipo = models.IntegerField(choices=TIPO_CHOICES,null=True,blank=True)
     persona_organiza = models.ForeignKey(Organizador, verbose_name=u'Persona que organiza la actividad',null=True,blank=True)
     comite = models.ForeignKey(Organizaciones,null=True,blank=True,verbose_name='Comité comunal que organiza la actividad')
     nombre_actividad = models.CharField(max_length=150)
     objetivo_actividad = models.TextField(null=True,blank=True)
     fecha = models.DateTimeField()
-    municipio = ChainedForeignKey(Municipio, 
+    municipio = ChainedForeignKey(Municipio,
                                  chained_field="proyecto",
-                                 chained_model_field="proyecto", 
+                                 chained_model_field="proyecto",
                                  show_all=False,
-                                 auto_choose=True)    
-    comunidad = ChainedForeignKey(Comunidad, 
+                                 auto_choose=True)
+    comunidad = ChainedForeignKey(Comunidad,
                                  chained_field="municipio",
-                                 chained_model_field="municipio", 
+                                 chained_model_field="municipio",
                                  show_all=False,
                                  auto_choose=True)
     tipo_actividad = models.ForeignKey(TipoActividad)
@@ -110,7 +110,7 @@ class Actividad(models.Model):
     #participantes por sexo
     hombres = models.IntegerField(default=0)
     mujeres = models.IntegerField(default=0)
-    
+
     #participantes por edad
     # no_dato = models.BooleanField(verbose_name='No hay datos')
     # adultos = models.IntegerField(default=0, verbose_name=u'Adultos/as')
@@ -151,33 +151,33 @@ class Actividad(models.Model):
     representantes = models.IntegerField('Representantes de Organizaciones',default='0')
     autoridades = models.IntegerField('Autoridades comunitarias',default='0')
     comunitarios = models.IntegerField('Comunitarios/Pobladores',default='0')
-    resultado = ChainedForeignKey(Resultado, 
+    resultado = ChainedForeignKey(Resultado,
                                   chained_field="proyecto",
-                                  chained_model_field="proyecto", 
+                                  chained_model_field="proyecto",
                                   show_all=False,
                                   auto_choose=True,
-                                  verbose_name=u'Resultado al que aporta')    
+                                  verbose_name=u'Resultado al que aporta')
     #evaluaciones de hombres
     relevancia = models.IntegerField(choices=EVALUACION, verbose_name=u'Importancia del tema/acción',null=True,blank=True)
     efectividad = models.IntegerField(choices=EVALUACION, verbose_name='Efectividad de la acción',null=True,blank=True)
     aprendizaje = models.IntegerField(choices=EVALUACION, verbose_name=u'Grado de aprendizaje',null=True,blank=True)
     empoderamiento = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de apropiación',null=True,blank=True)
     participacion = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de participación',null=True,blank=True)
-    
+
     #evaluaciones de mujeres
     relevancia_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Importancia del tema/acción',null=True,blank=True)
     efectividad_m = models.IntegerField(choices=EVALUACION, verbose_name='Efectividad de la acción',null=True,blank=True)
     aprendizaje_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Grado de aprendizaje',null=True,blank=True)
     empoderamiento_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de apropiación',null=True,blank=True)
     participacion_m = models.IntegerField(choices=EVALUACION, verbose_name=u'Nivel de participación',null=True,blank=True)
-    
+
     #recursos
     comentarios = models.TextField(blank=True, default='',verbose_name='Descripción de la Actividad')
     dificultades = models.TextField(blank=True, default='',verbose_name='Dificultades')
     logros = models.TextField(blank=True, default='',verbose_name='Logros')
     acuerdos = models.TextField(blank=True, default='',verbose_name='Acuerdos')
     #foto1 = models.ImageField(upload_to='fotos', blank=True, null=True)
-    foto1 = ImageWithThumbsField(upload_to=get_file_path, sizes=((128, 96), (640, 480)), blank=True, null=True)   
+    foto1 = ImageWithThumbsField(upload_to=get_file_path, sizes=((128, 96), (640, 480)), blank=True, null=True)
     foto2 = ImageWithThumbsField(upload_to=get_file_path, sizes=((128, 96), (640, 480)), blank=True, null=True)
     foto3 = ImageWithThumbsField(upload_to=get_file_path, sizes=((128, 96), (640, 480)), blank=True, null=True)
     video = models.CharField(max_length=300, blank=True, default='')
@@ -186,42 +186,42 @@ class Actividad(models.Model):
     user = models.ForeignKey(User)
 
     mes = models.IntegerField(editable=False)
-    year = models.IntegerField(editable=False)    
-    
+    year = models.IntegerField(editable=False)
+
     fileDir = 'fotos'
-    
+
     def save(self, *args, **kwargs):
         #guardando fecha de ultima edición
         self.organizacion.last_register = datetime.datetime.now()
         self.organizacion.save()
-        
+
         #obteniendo mes and year por motivos de filtros
         self.mes = self.fecha.month
         self.year = self.fecha.year
         super(Actividad, self).save(*args, **kwargs)
-            
+
     def __unicode__(self):
         return u'%s - %s' % (self.nombre_actividad, self.fecha)
-    
+
     def get_video_id(self):
-        if self.video:            
+        if self.video:
             url_data = urlparse.urlparse(self.video)
             query = urlparse.parse_qs(url_data.query)
             return query["v"][0]
-        return None                        
-        
+        return None
+
     def get_vthumb(self):
         id = self.get_video_id()
         if id:
             return '<img width="128" height="96" src="http://img.youtube.com/vi/%s/2.jpg" alt="thumb">' % id
         return ''
-    
+
     def get_video(self):
         id = self.get_video_id()
         if id:
             return """http://www.youtube.com/embed/%s??showsearch=0&showinfo=0&iv_load_policy=3&autoplay=1""" % id
         return ''
-    
+
     def clean(self):
         suma_base = self.hombres + self.mujeres
         #suma_edad = self.adultos + self.jovenes + self.ninos
@@ -229,11 +229,11 @@ class Actividad(models.Model):
         #suma_tipo = self.autoridades + self.maestros + self.lideres + self.pobladores + self.estudiantes + self.miembros + self.tecnicos
         suma_etnia = self.creole + self.miskito + self.ulwa + self.rama + self.mestizo + self.mayagna + self.garifuna + self.extranjero
         suma_tipo = self.estudiante + self.docente + self.periodista + self.lideres + self.representantes + self.comunitarios
-       
+
         if not self.no_dato:
             if suma_base != suma_edad:
                 raise ValidationError('La suma de los participantes por edad no concuerda')
-            
+
         if not self.no_dato2:
             if suma_base != suma_tipo:
                 raise ValidationError('La suma de los participantes por tipo no concuerda')
@@ -241,15 +241,15 @@ class Actividad(models.Model):
         if not self.no_dato1:
             if suma_base != suma_etnia:
                 raise ValidationError('La suma de los participantes por identidad étnica no concuerda')
-    
+
     class Meta:
-        verbose_name_plural = u'Actividades' 
+        verbose_name_plural = u'Actividades'
 
 class Precedencia_Participantes(models.Model):
-    municipio = models.ForeignKey(Municipio)    
-    comunidad = ChainedForeignKey(Comunidad, 
+    municipio = models.ForeignKey(Municipio)
+    comunidad = ChainedForeignKey(Comunidad,
                                  chained_field="municipio",
-                                 chained_model_field="municipio", 
+                                 chained_model_field="municipio",
                                  show_all=False,
                                  auto_choose=True)
     conteo = models.IntegerField()
@@ -262,7 +262,7 @@ class Precedencia_Participantes(models.Model):
 class Output(models.Model):
     user = models.ForeignKey(User, blank=True, null=True)
     date = models.DateField()
-    time = models.TimeField(blank=True, null=True)    
+    time = models.TimeField(blank=True, null=True)
     params = models.TextField()
     comment = models.TextField(blank=True, default='')
     file = models.BooleanField()
@@ -273,14 +273,14 @@ class Output(models.Model):
     html_table = models.TextField(blank=True, default='')
     bar_chart = models.TextField(blank=True, default='') # bar chart params if exists
     pie_chart_one = models.TextField(blank=True, default='') # first pie chart params if exists
-    pie_chart_two = models.TextField(blank=True, default='') # second pie chart params if exists    
-    
+    pie_chart_two = models.TextField(blank=True, default='') # second pie chart params if exists
+
     def _hash(self):
         if self.id:
             return short.encode_url(self.id)
-        
+
     hash = property(_hash)
-    
+
     class Meta:
         ordering = ['-id']
         verbose_name = u'Salida'

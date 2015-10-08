@@ -5,8 +5,14 @@
 </head>
 <body>
     {% for obj in actividad %}
+    <p>Organización: {{ obj.organizacion }} -- Proyecto: {{ obj.proyecto }}</p>
+    <p>Tipo: {{ obj.get_tipo_display }}</p>
+    <p>Persona que organiza: {{obj.persona_organiza}}</p>
         <h1>{{ obj.nombre_actividad }}</h1>
-        <p>{{ obj.persona_organiza }}</p>
+        <p>{{ obj.objetivo_actividad|safe }}</p>
+        <p>{{ obj.fecha }}</p>
     {% endfor %}
+
+    etc ... etc
 </body>
 </html>
