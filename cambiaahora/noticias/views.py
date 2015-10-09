@@ -108,14 +108,26 @@ class NewsViewSet(viewsets.ModelViewSet):
     queryset = Noticias.objects.all()
     serializer_class = NoticiasSerializer
 
-# class NoticiasList(APIView):
-#     def get_object(self, pk):
-#         try:
-#             return Noticias.objects.get(pk=pk)
-#         except Noticias.DoesNotExist:
-#             raise Http404
+def listar_noticias_imagen(request, template="cambiaahora/noticias/noticias_list.html"):
+    cur_language = translation.get_language()
+    if cur_language == 'en':
+        object_list = Noticias.objects.filter(aprobacion=2,idioma=2).exclude(foto__exact='').order_by('-fecha')
+    else:
+        object_list = Noticias.objects.filter(aprobacion=2,idioma=1).exclude(foto__exact='').order_by('-fecha')
+    return render(request, template, locals())
 
-#     def get(self, request, format=None):
-#         noticias = Noticias.objects.all()
-#         serializer = NoticiasSerializer(noticias, many=True)
-#         return JSONResponse(serializer.data)
+def listar_noticias_video(request, template="cambiaahora/noticias/noticias_list.html"):
+    cur_language = translation.get_language()
+    if cur_language == 'en':
+        object_list = Noticias.objects.filter(aprobacion=2,idioma=2).exclude(url__exact='').order_by('-fecha')
+    else:
+        object_list = Noticias.objects.filter(aprobacion=2,idioma=1).exclude(url__exact='').order_by('-fecha')
+    return render(request, template, locals())
+
+def listar_noticias_audio(request, template="cambiaahora/noticias/noticias_list.html"):
+    cur_language = translation.get_language()
+    if cur_language == 'en':
+        object_list = Noticias.objects.filter(aprobacion=2,idioma=2).exclude(noticiasaudios__titulo__exact='').order_by('-fecha')
+    else:
+        object_list = Noticias.objects.filter(aprobacion=2,idioma=1).exclude(noticiasaudios__titulo__exact='').order_by('-fecha')
+    return render(request, template, locals())
