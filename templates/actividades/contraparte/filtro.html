@@ -73,16 +73,17 @@
 
 
 {% block extra_js %}
-<script>
-$( "#id_fecha_inicio, #id_fecha_fin" ).datepicker({
-	altFormat: "dd/mm/yy",
-	monthNamesShort: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
-						"Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
-	dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sab'],
-	rRange: '2014:2018',
-	changeMonth: true,
-	changeYear: true,
-});
+<link href="{% static 'actividades/css/bootstrap-datepicker3.css' %}" rel="stylesheet">
+<script type="text/javascript" src="{% static 'actividades/js/bootstrap-datepicker.js' %}"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#id_fecha_inicio, #id_fecha_fin').datepicker({
+			format: "yyyy-mm-dd",
+			autoclose: true,
+    		todayHighlight: true
+		});
+	});
+
 </script>
 
 {% endblock extra_js %}
