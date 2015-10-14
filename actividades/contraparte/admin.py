@@ -53,24 +53,6 @@ class ActividadAdmin(admin.ModelAdmin):
     search_fields = ['nombre_actividad', 'organizacion__nombre_corto', 'persona_organiza__nombre','municipio__nombre']
     list_display = ['nombre_actividad', 'organizacion', 'fecha', 'tipo']
     
-    fieldsets = [
-        (None, {'fields': [('organizacion', 'proyecto'), 'tipo', 'persona_organiza', 'comite', 'nombre_actividad','objetivo_actividad','fecha',
-                           'municipio', 'comunidad']}),
-        ('Tipo, tema y ejes de actividad', {'fields': ['tipo_actividad', 'tema_actividad', 'ejes_transversales']}),
-        ('Participantes por sexo', {'fields': [('hombres', 'mujeres'),]}),
-        ('Participantes por edad', {'fields': [('menor_12', 'mayor_12', 'mayor_18', 'mayor_30', 'no_dato'),]}),
-        ('Participantes por identidad étnica', {'fields': [('creole', 'miskito', 'ulwa', 'no_dato1'), 
-                                               ('rama', 'mestizo', 'mayagna', 'garifuna'),
-                                               ('extranjero',)]}),
-        ('Participantes por tipo', {'fields': [('estudiante', 'docente', 'periodista', 'no_dato2'), 
-                                               ('lideres', 'representantes', 'comunitarios')]}),
-        (None, {'fields': ['resultado',]}),
-        ('Evaluacion de hombres', {'fields': [('relevancia', 'efectividad'), ('aprendizaje', 'empoderamiento'), 'participacion']}),
-        ('Evaluacion de mujeres', {'fields': [('relevancia_m', 'efectividad_m'), ('aprendizaje_m', 'empoderamiento_m'), 'participacion_m']}),
-        ('Recursos', {'fields': [('foto1', 'foto2', 'foto3'), 'video', 'comentarios','logros','dificultades','acuerdos']}), 
-                                                               
-    ]
-    
     formfield_overrides = {
         models.TextField: {'widget': forms.Textarea(attrs={'cols': 50, 'rows':4, 'class': 'docx'})},
         models.TextField: {'widget': CKEditorWidget()},       
@@ -81,10 +63,42 @@ class ActividadAdmin(admin.ModelAdmin):
     def get_form(self, request, obj=None, ** kwargs):
         if request.user.is_superuser:
             self.exclude = () 
-            self.fieldsets += [(None, {'fields': ['aprobacion','user']}),]
+            self.fieldsets = [
+                    (None, {'fields': [('organizacion', 'proyecto'), 'tipo', 'persona_organiza', 'comite', 'nombre_actividad','objetivo_actividad','fecha',
+                                       'municipio', 'comunidad']}),
+                    ('Tipo, tema y ejes de actividad', {'fields': ['tipo_actividad', 'tema_actividad', 'ejes_transversales']}),
+                    ('Participantes por sexo', {'fields': [('hombres', 'mujeres'),]}),
+                    ('Participantes por edad', {'fields': [('menor_12', 'mayor_12', 'mayor_18', 'mayor_30', 'no_dato'),]}),
+                    ('Participantes por identidad étnica', {'fields': [('creole', 'miskito', 'ulwa', 'no_dato1'), 
+                                                           ('rama', 'mestizo', 'mayagna', 'garifuna'),
+                                                           ('extranjero',)]}),
+                    ('Participantes por tipo', {'fields': [('estudiante', 'docente', 'periodista', 'no_dato2'), 
+                                                           ('lideres', 'representantes', 'comunitarios')]}),
+                    (None, {'fields': ['resultado',]}),
+                    ('Evaluacion de hombres', {'fields': [('relevancia', 'efectividad'), ('aprendizaje', 'empoderamiento'), 'participacion']}),
+                    ('Evaluacion de mujeres', {'fields': [('relevancia_m', 'efectividad_m'), ('aprendizaje_m', 'empoderamiento_m'), 'participacion_m']}),
+                    ('Recursos', {'fields': [('foto1', 'foto2', 'foto3'), 'video', 'comentarios','logros','dificultades','acuerdos']}), 
+                    (None, {'fields': ['aprobacion','user']}),                                                 
+                ]
         else:
             self.exclude = ('aprobacion',)
-            self.fieldsets += [(None, {'fields': ['user',]}),]
+            self.fieldsets = [
+                    (None, {'fields': [('organizacion', 'proyecto'), 'tipo', 'persona_organiza', 'comite', 'nombre_actividad','objetivo_actividad','fecha',
+                                       'municipio', 'comunidad']}),
+                    ('Tipo, tema y ejes de actividad', {'fields': ['tipo_actividad', 'tema_actividad', 'ejes_transversales']}),
+                    ('Participantes por sexo', {'fields': [('hombres', 'mujeres'),]}),
+                    ('Participantes por edad', {'fields': [('menor_12', 'mayor_12', 'mayor_18', 'mayor_30', 'no_dato'),]}),
+                    ('Participantes por identidad étnica', {'fields': [('creole', 'miskito', 'ulwa', 'no_dato1'), 
+                                                           ('rama', 'mestizo', 'mayagna', 'garifuna'),
+                                                           ('extranjero',)]}),
+                    ('Participantes por tipo', {'fields': [('estudiante', 'docente', 'periodista', 'no_dato2'), 
+                                                           ('lideres', 'representantes', 'comunitarios')]}),
+                    (None, {'fields': ['resultado',]}),
+                    ('Evaluacion de hombres', {'fields': [('relevancia', 'efectividad'), ('aprendizaje', 'empoderamiento'), 'participacion']}),
+                    ('Evaluacion de mujeres', {'fields': [('relevancia_m', 'efectividad_m'), ('aprendizaje_m', 'empoderamiento_m'), 'participacion_m']}),
+                    ('Recursos', {'fields': [('foto1', 'foto2', 'foto3'), 'video', 'comentarios','logros','dificultades','acuerdos']}), 
+                    (None, {'fields': ['user',]}),                                                 
+                ]
             #form.base_fields['organizacion'].queryset = request.user.organizacion_set.all()                      
         return super(ActividadAdmin, self).get_form(request, obj=None, **kwargs)
     
