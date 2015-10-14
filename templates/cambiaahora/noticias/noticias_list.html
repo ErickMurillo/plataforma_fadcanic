@@ -89,9 +89,6 @@
 								{% endif %}
 								
 								<h3 class="h3"><a href="{% url 'noticia-detail' noticia.slug %}">{{noticia.titulo}}</a></h3>
-								<p>
-									{{noticia.texto|safe|truncatewords:12}}
-								</p>
 							</div>
 						</div>
 					{% endfor %}
