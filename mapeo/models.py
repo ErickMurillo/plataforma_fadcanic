@@ -37,6 +37,8 @@ class Acciones_Apoyo(models.Model):
 TIPO_CHOICES = (
 		(1,'Organización que apoya y participa con la Campaña'),
 		(2,'Comité comunal'),
+		(3,'Diplomado de promotoría'),
+		(4,'Diplomado de comunicación'),
 	)
 
 class Organizaciones(models.Model):

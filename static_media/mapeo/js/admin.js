@@ -27,7 +27,7 @@
 				$('.field-mayor_19').hide();
 				$('.field-mayor_30').hide();
 			
-			}else if (valor_tipo == '2'){
+			}else if (valor_tipo != '1'){
 				$('.field-persona_contacto').hide();
 				$('.field-direccion').hide();
 				$('.field-celular').hide();

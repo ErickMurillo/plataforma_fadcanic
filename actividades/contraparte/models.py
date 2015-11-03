@@ -79,7 +79,7 @@ EVALUACION = ((99, u'No aplica'), (1, u'Muy bueno (90-100%)'), (2, u'Bueno (60-8
 
 TIPO_CHOICES = (
         (1,'Persona'),
-        (2,'Comité comunal'),
+        (2,'Acción comité comunal'),
     )
 class Actividad(models.Model):
     organizacion = models.ForeignKey(Organizacion)
