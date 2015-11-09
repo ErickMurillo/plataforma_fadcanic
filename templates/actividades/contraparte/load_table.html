@@ -17,7 +17,19 @@
 			{% if tipo == 'choice' %}
 			<th>{{value.1}}</th>
 			{% else %}
-			<th>{{value|title}}</th>
+			<th>
+			{% if value == 'menor_12' %}
+				Menor a 12 años
+			{% elif value == 'mayor_12' %}
+				13 a 18 años
+			{% elif value == 'mayor_18' %}
+				19 a 30 años
+			{% elif value == 'mayor_30' %}
+				31 a más años
+			{% else %}
+				{{value|title}}
+			{% endif %}
+			</th>
 			{% endif %}
 			{% endfor %}
 		</tr>

@@ -6,7 +6,7 @@ from actividades.contraparte.views import checkParams
 from actividades.forms import *
 from django.contrib.auth.decorators import login_required
 
-@login_required
+#@login_required
 def filtro_programa(request):
     if not request.user.has_perm('fadcanic.view_programa'):
         error = '''<h1>Acceso restringido. Redirigiendo en 3 segundos.</h1>
