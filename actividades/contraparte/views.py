@@ -20,6 +20,9 @@ import urllib
 
 #@login_required
 def filtro_proyecto(request):
+    actividad = Actividad.objects.all()
+    organizaciones = Organizacion.objects.all()
+    
     proy_params = {}
     filtro = {}
     if request.method == 'POST':
@@ -50,7 +53,8 @@ def filtro_proyecto(request):
         form = ProyectoForm()
         #form = ProyectoForm(request=request)
 
-    return render_to_response('actividades/contraparte/filtro.html', RequestContext(request, locals()))
+    #return render_to_response('actividades/contraparte/filtro.html', RequestContext(request, locals()))
+    return render_to_response('actividades/index.html', RequestContext(request, locals()))
 
 def _get_query(params):
     return Actividad.objects.filter(**params)

@@ -20,7 +20,7 @@ from plataforma_fadcanic.settings import MEDIA_ROOT, DEBUG
 
 urlpatterns = [
     #url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'actividades.views.home', name='home'),    
+    url(r'^$', 'actividades.contraparte.views.filtro_proyecto', name='home'),    
     url(r'^xls/$', 'actividades.utils.save_as_xls', name='save_xls' ),
     url(r'^report/$', 'actividades.contraparte.views.generate_report', name='generate_report' ),    
     url(r'^ajax/proyectos/$', 'actividades.contraparte.views.get_proyectos', name='get_proyectos' ),

@@ -9,6 +9,8 @@
 <link href="{% static 'actividades/css/formee/css/form-style.css' %}" rel="stylesheet" type="text/css"/>
 <link href="{% static 'actividades/css/jquery.multiselect.css' %}" rel="stylesheet" type="text/css"/>
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link href="{% static 'actividades/css/select2.min.css' %}" rel="stylesheet">
+<script type="text/javascript" src="{% static 'actividades/js/select2.min.js' %}"></script>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <style type="text/css">
@@ -31,11 +33,11 @@
 	.select2-container--default .select2-selection--multiple .select2-selection__choice {
 	  padding: 2px 5px !important;
 	  font-size: 16px;
-	  height: 20px;
+	  height: auto;
 	}
 
 	.select2-container--default .select2-selection--multiple .select2-selection__rendered {
-  	 	height: 35px !important 
+  	 	min-height: 35px !important 
 	}
 
 </style>
@@ -54,7 +56,11 @@
 		});
 	});
 
-</script>	
+$(document).ready(function() {
+  $("#id_municipio").select2();
+});
+</script>
+
 {% endblock extra_js %}
 
 {% block contenido %}
@@ -67,7 +73,7 @@
 	<div class="col-md-8">
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Panel de actividades</a></li>
+			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Filtro de actividades</a></li>
 			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Lista de actividades</a></li>
 		</ul>
 
@@ -112,8 +118,6 @@
 			<input class="form-button" type="submit" value="Consultar" />	
 		</form>		
 		</center>
-
-
 				<!--<div class="col-md-12">
 					<div class="row">
 						<h2>Panel de activiades</h2>
@@ -215,6 +219,4 @@
 				{% endfor %}
 			</div>
 		</div>
-
-
 		{% endblock contenido %}
