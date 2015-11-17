@@ -21,6 +21,7 @@ import settings
 from django.conf.urls.static import static
 from cambiaahora.noticias import urls as noticias_urls
 from cambiaahora.multimedias import urls as multimedias_urls
+from mapeo import urls as mapeo_urls
 from django.conf.urls.i18n import i18n_patterns
 from cambiaahora.noticias import views as viewsNews
 from actividades.views import *
@@ -58,6 +59,11 @@ urlpatterns += patterns('actividades.views',
     url(r'^municipios/$', 'datos', name='obtener-datos'),
     url(r'^jsonnews/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+)
+
+#mapeo
+urlpatterns += patterns('mapeo.views',
+    url(r'^mapeo/$', include(mapeo_urls)),
 )
 
 urlpatterns += staticfiles_urlpatterns()

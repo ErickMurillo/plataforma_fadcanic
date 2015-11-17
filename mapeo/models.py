@@ -3,6 +3,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from actividades.lugar.models import *
 from smart_selects.db_fields import ChainedForeignKey
+from django.template.defaultfilters import slugify
 
 class Acciones_Violencia(models.Model):
 	nombre = models.CharField(max_length=200)
@@ -80,6 +81,7 @@ class Organizaciones(models.Model):
 	acciones_violencia = models.ManyToManyField(Acciones_Violencia,blank=True)
 	acciones_consumo_drogas = models.ManyToManyField(Acciones_Consumo_Drogas,blank=True)
 	acciones_apoyo = models.ManyToManyField(Acciones_Apoyo,blank=True)
+	slug = models.SlugField(editable=False, max_length=450)
 
 	def __unicode__(self):
 		return self.nombre
@@ -87,3 +89,7 @@ class Organizaciones(models.Model):
 	class Meta:
 		verbose_name = "Organización"
 		verbose_name_plural = "Organizaciones"
+
+	def save(self, *args, **kwargs):
+		self.slug = (slugify(self.nombre))
+		super(Organizaciones, self).save(*args, **kwargs)
