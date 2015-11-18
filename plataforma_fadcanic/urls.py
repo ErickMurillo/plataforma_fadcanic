@@ -63,7 +63,7 @@ urlpatterns += patterns('actividades.views',
 
 #mapeo
 urlpatterns += patterns('mapeo.views',
-    url(r'^mapeo/$', include(mapeo_urls)),
+    url(r'^mapeo/', include(mapeo_urls)),
 )
 
 urlpatterns += staticfiles_urlpatterns()
