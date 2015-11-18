@@ -31,8 +31,13 @@ INSTALLED_APPS = (
 
     #caps violencia
     'violencia_juvenil',
+
     #mapeo actores
     'mapeo',
+
+    #biblioteca
+    'biblioteca',
+
     #extras apps
     'ckeditor',
     'smart_selects',
