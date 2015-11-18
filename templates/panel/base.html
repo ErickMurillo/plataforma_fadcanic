@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,17 +9,17 @@
 		<!-- google fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Lato:400,300italic,300,700%7CPlayfair+Display:400,700italic%7CRoboto:300%7CMontserrat:400,700%7COpen+Sans:400,300%7CLibre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
 		<!-- Bootstrap -->
-		<link href="../../static_media/cambiaahora/css/bootstrap.min.css" rel="stylesheet">
-		<link href="../../static_media/cambiaahora/css/bootstrap-theme.css" rel="stylesheet">
-		<link href="../../static_media/cambiaahora/css/font-awesome.min.css" rel="stylesheet">
+		<link href="{% static 'cambiaahora/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'cambiaahora/css/bootstrap-theme.css' %}" rel="stylesheet">
+		<link href="{% static 'cambiaahora/css/font-awesome.min.css' %}" rel="stylesheet">
 
-		<link href="../../static_media/cambiaahora/css/global.css" rel="stylesheet">
-		<link href="../../static_media/panel/css/style.css" rel="stylesheet">
-		<link href="../../static_media/cambiaahora/css/responsive.css" rel="stylesheet">
+		<link href="{% static 'cambiaahora/css/global.css' %}" rel="stylesheet">
+		<link href="{% static 'panel/css/style.css' %}" rel="stylesheet">
+		<link href="{% static 'cambiaahora/css/responsive.css' %}" rel="stylesheet">
 		<!-- Font -->
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-        <script src="../../static_media/cambiaahora/js/jquery.min.js"></script>
+        <script src="{% static 'cambiaahora/js/jquery.min.js' %}"></script>
 	
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -28,7 +29,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
-		<script src="../../static_media/panel/js/modernizr.custom.js"></script>
+		<script src="{% static 'panel/js/modernizr.custom.js' %}"></script>
 
 	</head>
 	<body>
@@ -38,21 +39,17 @@
 
 			<header  id="header">
 				<div class="container">
-					<div class="row primary-header">
-						
-									
+					<div class="row primary-header">		
 				
-							<a href="/" class="col-xs-6 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="../../static_media/cambiaahora/img/es.png"  alt="Cambia Ahora"></a>	
-					
+							<a href="/" class="col-xs-6 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="{% static 'cambiaahora/img/es.png' %}"  alt="Cambia Ahora"></a>	
 
-						
 
 						<div class="social-links col-xs-6 col-sm-10">
 							<a href="/lang/en" class=" btn btn-default btn-idioma">
-									<img src="../../static_media/cambiaahora/img/eeuu.jpg" alt=""> ENGLISH
+									<img src="{% static 'cambiaahora/img/eeuu.jpg' %}" alt=""> ENGLISH
 							</a>
 							<a href="/lang/es" class=" btn btn-default btn-idioma">
-									<img src="../../static_media/cambiaahora/img/spanish.jpg" alt=""> SPANISH
+									<img src="{% static 'cambiaahora/img/spanish.jpg' %}" alt=""> SPANISH
 							</a>
 							<ul class="social-icons hidden-xs">
 								<li>
@@ -77,39 +74,39 @@
 			<div class="main-panel">
 				<ul id="og-grid" class="og-grid">
 					<li>
-						<a href="" data-largesrc="../../static_media/panel/img/1.jpg" data-title="Sitio web Cambia Ahora" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
+						<a href="" data-largesrc="{% static 'panel/img/1.jpg' %}" data-title="Sitio web Cambia Ahora" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
 							<h5>Sitio Web</h5>
-							<img class="center-block" src="../../static_media/panel/img/thumbs/web.png" alt="Cambia Ahora Sitio Web"/>
+							<img class="center-block" src="{% static 'panel/img/thumbs/web.png' %}" alt="Cambia Ahora Sitio Web"/>
 						</a>
 					</li>
 					<li>
-						<a href="" data-largesrc="../../static_media/panel/img/2.jpg" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
+						<a href="" data-largesrc="{% static 'panel/img/2.jpg' %}" data-title="Veggies sunt bona vobis" data-description="Komatsuna prairie turnip wattle seed artichoke mustard horseradish taro rutabaga ricebean carrot black-eyed pea turnip greens beetroot yarrow watercress kombu.">
 							<h5>Actividades</h5>
-							<img class="center-block" src="../../static_media/panel/img/thumbs/actividades.png" alt="Cambia Ahora Sitio Web"/>
+							<img class="center-block" src="{% static 'panel/img/thumbs/actividades.png' %}" alt="Cambia Ahora Sitio Web"/>
 						</a>
 					</li>
 					<li>
-						<a href="" data-largesrc="../../static_media/panel/img/3.jpg" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
+						<a href="" data-largesrc="{% static 'panel/img/3.jpg' %}" data-title="Dandelion horseradish" data-description="Cabbage bamboo shoot broccoli rabe chickpea chard sea lettuce lettuce ricebean artichoke earthnut pea aubergine okra brussels sprout avocado tomato.">
 							<h5>Mapeo Actores</h5>
-							<img class="center-block" src="../../static_media/panel/img/thumbs/mapeo.png" alt="Cambia Ahora Sitio Web"/>
+							<img class="center-block" src="{% static 'panel/img/thumbs/mapeo.png' %}" alt="Cambia Ahora Sitio Web"/>
 						</a>
 					</li>
 					<li>
-						<a href="" data-largesrc="../../static_media/panel/img/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
+						<a href="" data-largesrc="{% static 'panel/img/1.jpg' %}" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
 							<h5>Biblioteca</h5>
-							<img class="center-block" src="../../static_media/panel/img/thumbs/biblioteca.png" alt="Cambia Ahora Sitio Web"/>
+							<img class="center-block" src="{% static 'panel/img/thumbs/biblioteca.png' %}" alt="Cambia Ahora Sitio Web"/>
 						</a>
 					</li>
 					<li>
-						<a href="" data-largesrc="../../static_media/panel/img/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
+						<a href="" data-largesrc="{% static 'panel/img/1.jpg' %}" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
 							<h5>Dashboard</h5>
-							<img class="center-block" src="../../static_media/panel/img/thumbs/dashboard.png" alt="Cambia Ahora Sitio Web"/>
+							<img class="center-block" src="{% static 'panel/img/thumbs/dashboard.png' %}" alt="Cambia Ahora Sitio Web"/>
 						</a>
 					</li>
 					<li>
-						<a href="" data-largesrc="../../static_media/panel/img/1.jpg" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
+						<a href="" data-largesrc="{% static 'panel/img/1.jpg' %}" data-title="Azuki bean" data-description="Swiss chard pumpkin bunya nuts maize plantain aubergine napa cabbage soko coriander sweet pepper water spinach winter purslane shallot tigernut lentil beetroot.">
 							<h5>Apps Android</h5>
-							<img class="center-block" src="../../static_media/panel/img/thumbs/android.png" alt="Cambia Ahora Sitio Web"/>
+							<img class="center-block" src="{% static 'panel/img/thumbs/android.png' %}" alt="Cambia Ahora Sitio Web"/>
 						</a>
 					</li>
 				</ul>
@@ -118,12 +115,9 @@
 
 	<!--Footer Section Start Here -->
 
-
+		<script src="{% static 'cambiaahora/js/bootstrap.min.js' %}"></script>
 		
-		
-		<script src="../../static_media/cambiaahora/js/bootstrap.min.js"></script>
-		
-		<script src="../../static_media/panel/js/grid.js"></script>
+		<script src="{% static 'panel/js/grid.js' %}"></script>
 		<script>
 			$(function() {
 				Grid.init();
