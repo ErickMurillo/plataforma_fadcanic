@@ -18,17 +18,22 @@ import thread
 import urllib
 
 
-@login_required
+#@login_required
 def filtro_proyecto(request):
+    actividad = Actividad.objects.all()
+    organizaciones = Organizacion.objects.all()
+    
     proy_params = {}
     filtro = {}
     if request.method == 'POST':
-        form = ProyectoForm(request.POST, request=request)
+        #form = ProyectoForm(request.POST, request=request)
+        form = ProyectoForm(request.POST)
         if form.is_valid():
             proy_params['organizacion__id'] = form.cleaned_data['organizacion'].id
             proy_params['proyecto__id'] = form.cleaned_data['proyecto'].id
             proy_params['resultado__id'] = form.cleaned_data['resultado'].id
             proy_params['fecha__range'] = (form.cleaned_data['fecha_inicio'], form.cleaned_data['fecha_fin'])
+            proy_params['municipio__in'] = form.cleaned_data['municipio']
 
             #guardando los filtros seleccionados para pintarlos en plantilla
             filtro['organizacion'] = [form.cleaned_data['organizacion'], ]
@@ -37,6 +42,7 @@ def filtro_proyecto(request):
             filtro['fecha_fin'] = form.cleaned_data['fecha_fin']
             filtro['salida'] = 'Por proyecto'
             filtro['resultado'] = form.cleaned_data['resultado'].nombre_corto
+            filtro['municipio'] = form.cleaned_data['municipio']
 
             proy_params = checkParams(proy_params)
             request.session['filtro'] = filtro
@@ -44,9 +50,11 @@ def filtro_proyecto(request):
 
             return HttpResponseRedirect('/actividades/variables/')
     else:
-        form = ProyectoForm(request=request)
+        form = ProyectoForm()
+        #form = ProyectoForm(request=request)
 
-    return render_to_response('actividades/contraparte/filtro.html', RequestContext(request, locals()))
+    #return render_to_response('actividades/contraparte/filtro.html', RequestContext(request, locals()))
+    return render_to_response('actividades/index.html', RequestContext(request, locals()))
 
 def _get_query(params):
     return Actividad.objects.filter(**params)
@@ -54,7 +62,7 @@ def _get_query(params):
 #verificar que no existan parametros vacios
 checkParams = lambda x: dict((k, v) for k, v in x.items() if x[k])
 
-@login_required
+#@login_required
 def variables(request):
     filtro = request.session['filtro']
     if request.method == 'POST':

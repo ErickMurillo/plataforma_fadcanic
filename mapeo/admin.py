@@ -13,6 +13,10 @@ class OrganizacionesAdmin(admin.ModelAdmin):
 								'acciones_violencia','acciones_consumo_drogas','acciones_apoyo'
 								]}),
 		]
+		
+	list_display = ['nombre','tipo']
+	list_filter = ['tipo']
+	search_fields = ['nombre',]
 
 	class Media:
 		js = ('/static/mapeo/js/admin.js', ) 

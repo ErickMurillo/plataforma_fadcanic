@@ -1,0 +1,12 @@
+{% extends "cambiaahora/base.html" %}
+
+{% block extra_js %}
+
+{% endblock extra_js %}
+
+{% block contenido %}
+<div class="container">
+	{{object}}
+	{{object.get_tipo_display}}
+</div>
+{% endblock contenido %}

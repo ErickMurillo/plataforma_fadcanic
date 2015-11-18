@@ -175,7 +175,28 @@
 			</table>
 		</div>
 
-		<pdf:nextpage>
+		<div id="tipos_actores">
+			<h2>Procedencia de los participantes</h2>
+			<table width="100%">
+				<thead>
+					<tr>
+						<th>Municipio</th>
+						<th>Comunidad</th>
+						<th>Conteo</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for valor in obj.precedencia_participantes_set.all %}
+					<tr>
+						<td align="center">{{valor.municipio}}</td>
+						<td align="center">{{valor.comunidad}}</td>
+						<td align="center">{{valor.conteo}}</td>
+					</tr>
+				{% endfor %}
+					
+				</tbody>
+			</table>
+		</div>
 
 		<h2>Descripción:</h2>
 		<p>{{ obj.comentarios|safe }}</p>

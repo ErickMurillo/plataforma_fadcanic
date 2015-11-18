@@ -28,7 +28,7 @@ def _consulta_query(request):
     return actividad
 
 
-@login_required
+#@login_required
 def home(request):
     organizaciones = Organizacion.objects.all()
     form = PanelForm()
@@ -119,10 +119,10 @@ def home(request):
         except:
             pass
 
-    if request.user.is_superuser:
-        actividad = Actividad.objects.all()
-    else:
-        actividad = Actividad.objects.filter(user=request.user)
+    # if request.user.is_superuser:
+    actividad = Actividad.objects.all()
+    # else:
+    #     actividad = Actividad.objects.filter(user=request.user)
 
     return render_to_response('actividades/index.html', RequestContext(request, locals()))
 

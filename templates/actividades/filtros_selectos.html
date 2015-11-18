@@ -28,6 +28,16 @@
 			{{filtro.resultado}}
 		</li>
 		{% endif %}
+		
+		
+		<li>
+			<a href="#">Municipios: </a>
+			{% for municipio in filtro.municipio %}
+				{{municipio}},
+			{% endfor %}
+				
+		</li>
+		
 
 		{%if filtro.fecha_inicio %}
 		<li>
