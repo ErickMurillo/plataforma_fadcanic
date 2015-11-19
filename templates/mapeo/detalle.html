@@ -6,7 +6,23 @@
 
 {% block contenido %}
 <div class="container">
-	{{object}}
-	{{object.get_tipo_display}}
+	{{object}} <br>
+
+	{{object.get_tipo_display}}<br>
+
+	{% if object.persona_contacto %}
+		{{object.persona_contacto}}<br>
+	{% endif %}
+
+	{% if object.direccion %}
+		{{object.direccion}}<br>
+	{% endif %}
+
+	{{object.departamento}}<br>
+	{{object.municipio}}<br>
+
+	{% if object.comunidad %}
+		{{object.comunidad}}<br>
+	{% endif %}
 </div>
 {% endblock contenido %}
