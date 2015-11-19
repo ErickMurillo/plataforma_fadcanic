@@ -26,6 +26,7 @@ from django.conf.urls.i18n import i18n_patterns
 from cambiaahora.noticias import views as viewsNews
 from actividades.views import *
 from rest_framework import routers
+from django.views.generic import TemplateView
 
 admin.site.site_header = "FADCANIC administración"
 admin.site.site_title = "FADCANIC sitio admin"
@@ -54,7 +55,7 @@ urlpatterns += i18n_patterns('',
 )
 
 urlpatterns += patterns('actividades.views',
-    url(r'^monitoreo/$', 'monitoreo_index', name='monitoreo'),
+    url(r'^monitoreo/$', TemplateView.as_view(template_name="panel/base.html"), name='monitoreo-panel'),
     url(r'^mapa/$', 'obtener_lista', name='obtener-lista'),
     url(r'^municipios/$', 'datos', name='obtener-datos'),
     url(r'^jsonnews/', include(router.urls)),
