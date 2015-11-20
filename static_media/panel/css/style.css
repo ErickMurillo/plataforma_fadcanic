@@ -1,4 +1,4 @@
-.main-panel{
+body{
 	background: url(../img/puerto.jpg) no-repeat center center fixed;
 	background-size: cover;
 	/*linear-gradient(rgba(244,115,23,0.2),rgba(244,115,23,0.2)),*/ 
@@ -8,27 +8,30 @@
 	padding-top: 24px;
 	margin: 0 auto;
 	text-align: center;
-	width: 75%;
+	width: 60%;
 	
 }
 
 .og-grid li {
 	display: inline-block;
-	margin: 10px 5px 0 5px;
+	margin: 30px 5px 0 5px;
 	vertical-align: top;
-	height: 250px;
-	width: 250px;
-	background: rgba(244,115,23,.9);
+	height: 160px;
+	width: 160px;
+	background: rgba(56, 149, 0, .75);
 	margin-bottom: 20px;
 }
-
+.og-grid li:hover{
+	background: rgba(56, 149, 0, 1);
+}
 .og-grid li > a,
 .og-grid li > a img {
 	border: none;
 	outline: none;
-	display: block;
 	position: relative;
-	margin-bottom: 40px;
+	width: 30%;
+	margin-bottom: 48px;
+
 }
 .og-grid li > a h5{
 	font-weight: bold;
