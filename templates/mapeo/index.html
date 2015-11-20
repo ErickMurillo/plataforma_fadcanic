@@ -15,8 +15,6 @@
 
 		var map = new google.maps.Map(document.getElementById('map'), myOptions);
 
-		
-
 		{% for municipio in municipios %}
 
 		var contentString{{forloop.counter}} = '<div id="content">'+
