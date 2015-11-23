@@ -18,11 +18,107 @@
 		{{object.direccion}}<br>
 	{% endif %}
 
-	{{object.departamento}}<br>
 	{{object.municipio}}<br>
 
 	{% if object.comunidad %}
 		{{object.comunidad}}<br>
+	{% endif %}
+
+	{% if object.convencional %}
+		{{object.convencional}}<br>
+	{% endif %}
+
+	{% if object.celular %}
+		{{object.celular}}<br>
+	{% endif %}
+
+	{% if object.correo %}
+		{{object.correo}}<br>
+	{% endif %}
+
+	{% if object.web %}
+		{{object.web}}<br>
+	{% endif %}
+
+	{% if object.facebook %}
+		{{object.facebook}}<br>
+	{% endif %}
+
+	{% if object.twitter %}
+		{{object.twitter}}<br>
+	{% endif %}
+
+	{% if object.youtube %}
+		{{object.youtube}}<br>
+	{% endif %}
+
+	{% if object.otro %}
+		{{object.otro}}<br>
+	{% endif %}
+
+	{% if object.cobertura %}
+	<h5>Cobertura</h5>
+	<ul>
+		{% for obj in object.cobertura.all %}
+  			<li>{{obj}}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	{% if object.masculino %}
+		<h6>Integrantes masculinos: {{object.masculino}}</h6>
+	{% endif %}
+
+	{% if object.femenino %}
+		<h6>Integrantes femeninos: {{object.femenino}}</h6>
+	{% endif %}
+
+	{% if object.integrantes %}
+		<h6>Nombre de los integrantes:</h6>
+		{{object.integrantes|safe}}
+	{% endif %}
+
+	{% if object.tipo != 1 %}
+		Edades de los integrantes:
+		{% if object.mayor_13 %}
+			13 a 18 años: {{object.mayor_13}}
+		{% endif %}
+
+		{% if object.mayor_19 %}
+			19 a 30 años: {{object.mayor_19}}
+		{% endif %}
+		
+		{% if object.mayor_30 %}
+			31 a más años: {{object.mayor_30}}
+		{% endif %}
+		
+	{% endif %}
+
+	{% if object.acciones_violencia %}
+	<h6>Acciones de Violencia</h6>
+	<ul>
+		{% for obj in object.acciones_violencia.all %}
+  			<li>{{obj}}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	{% if object.acciones_consumo_drogas %}
+	<h6>Acciones consumo de drogas</h6>
+	<ul>
+		{% for obj in object.acciones_consumo_drogas.all %}
+  			<li>{{obj}}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	{% if object.acciones_apoyo %}
+	<h6>Acciones de apoyo</h6>
+	<ul>
+		{% for obj in object.acciones_apoyo.all %}
+  			<li>{{obj}}</li>
+		{% endfor %}
+	</ul>
 	{% endif %}
 </div>
 {% endblock contenido %}
