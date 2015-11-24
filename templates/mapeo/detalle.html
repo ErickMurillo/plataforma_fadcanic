@@ -79,17 +79,17 @@
 	{% endif %}
 
 	{% if object.tipo != 1 %}
-		Edades de los integrantes:
+		<h6>Edades de los integrantes:</h6>
 		{% if object.mayor_13 %}
-			13 a 18 años: {{object.mayor_13}}
+			13 a 18 años: {{object.mayor_13}}<br>
 		{% endif %}
 
 		{% if object.mayor_19 %}
-			19 a 30 años: {{object.mayor_19}}
+			19 a 30 años: {{object.mayor_19}}<br>
 		{% endif %}
 		
 		{% if object.mayor_30 %}
-			31 a más años: {{object.mayor_30}}
+			31 a más años: {{object.mayor_30}}<br>
 		{% endif %}
 		
 	{% endif %}
