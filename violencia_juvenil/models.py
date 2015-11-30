@@ -17,13 +17,19 @@ class Encuestador(models.Model):
         verbose_name='Encuestadores'
 
 #a- Datos de Recoleccion
+GRUPOS_CHOICES = ((1,'Adolescente o Joven'),
+                 (2,'Comité comunal'),
+                 (3,'Diplomado/Promotoría'),
+                 (4,'Diplomado/comunicación'),
+                 (5,'Poblador general +30'))
 
 class Encuesta(models.Model):
     fecha = models.DateField()
+    grupos = models.IntegerField(choices=GRUPOS_CHOICES)
     encuestador = models.ForeignKey(Encuestador)
-
+    latitud = models.FloatField(editable=False)
+    longitud = models.FloatField(editable=False)
     year = models.IntegerField(editable=False)
-
     user = models.ForeignKey(User)
 
     def save(self):
@@ -52,23 +58,26 @@ class Etnias(models.Model):
     class Meta:
         verbose_name='Etnias'
 
+EDAD_CHOICES = ((1,'13 a 18'),(2,'19 a 30'),(3,'30 a +'))
+
+ETNIAS_CHOICES = ((1,'Mestiza'),(2,'Ulwa'),(3,'Miskitu'),(4,'Creole'))
+
 class InformacionEntrevistado(models.Model):
     encuesta = models.ForeignKey(Encuesta)
-    edad = models.IntegerField()
-    etnia = models.ForeignKey(Etnias)
+    edad = models.IntegerField(choices=EDAD_CHOICES)
+    etnia = models.IntegerField(choices=ETNIAS_CHOICES)
     departamento = models.ForeignKey(Departamento)
     municipio = ChainedForeignKey(
                                 Municipio,
                                 chained_field="departamento", 
                                 chained_model_field="departamento",
                                 show_all=False, auto_choose=True,null=True, blank=True)
-    residencia = models.IntegerField(choices=CHOICE_AREA)
-    habita = models.IntegerField(choices=CHOICE_HABITA)
+    # residencia = models.IntegerField(choices=CHOICE_AREA)
+    # habita = models.IntegerField(choices=CHOICE_HABITA)
     sexo = models.IntegerField(choices=CHOICE_SEXO)
 
-
-    def __unicode__(self):
-        return self.etnia.nombre
+    # def __unicode__(self):
+    #     return self.etnia.nombre
 
     class Meta:
         verbose_name_plural = 'Información del Entrevistado'
@@ -77,7 +86,7 @@ class InformacionEntrevistado(models.Model):
 CHOICE_ESCOLARIDAD = ((1,'No sabe leer'),(2,'Alfabeto'),
                       (3,'Primaria completa'),(4,'Primaria incompleta'),
                       (5,'Secundaria completa'),(6,'Secundaria incompleta'),
-                      (7,'Técnico'),(8,'Universitario'))
+                      (7,'Técnico'),(8,'Universitario a más'))
 
 CHOICE_CIVIL = ((1,'Soltero/Soltera'),(2,'Casado/casada'),
                       (3,'Unión de hecho estable'),(4,'Divorciado/divorciada'),
@@ -85,21 +94,24 @@ CHOICE_CIVIL = ((1,'Soltero/Soltera'),(2,'Casado/casada'),
 
 CHOICE_SI_NO = ((1,'Si'),(2,'No'))
 
+CANTIDAD_HIJOS_CHOICES = ((1,'1 a 3'),(2,'4 a 6'),(3,'6 a más'))
+
 class Escolaridad(models.Model):
     encuesta = models.ForeignKey(Encuesta)
     escolaridad = models.IntegerField(choices=CHOICE_ESCOLARIDAD)
     civil = models.IntegerField(choices=CHOICE_CIVIL)
-    varones = models.IntegerField(default='0')
-    mujeres = models.IntegerField(default='0')
+    hijos = models.IntegerField(choices=CHOICE_SI_NO)
+    cantidad = models.IntegerField(choices=CANTIDAD_HIJOS_CHOICES)
+    # varones = models.IntegerField(default='0')
+    # mujeres = models.IntegerField(default='0')
 
-    #def __unicode__(self):
-    #    return u'%s' % (str(self.get_escolaridad_display())
+    def __unicode__(self):
+       return u'%s' % (str(self.get_escolaridad_display())
 
     class Meta:
         verbose_name_plural = 'Nivel de escolaridad'
 
 #f- Favor indicar
-
 class ParticipaOrganizacion(models.Model):
     encuesta = models.ForeignKey(Encuesta)
     participado = models.IntegerField(choices=CHOICE_SI_NO)
@@ -108,7 +120,7 @@ class ParticipaOrganizacion(models.Model):
         return u'%s' % (str(self.get_participado_display))
 
     class Meta:
-        verbose_name_plural = 'participa o ha participado en alguna orga. que previene la violencia juvenil y abuso de drogas?'
+        verbose_name_plural = 'Participa o ha participado en alguna orga. que previene la violencia juvenil y abuso de drogas?'
 
 CHOICE_RESPUESTA_SI = (('a', 'Promotor/Promotora'),
                        ('b', 'Asistiendo a charlas que se brinda'),
@@ -124,44 +136,46 @@ class RespuetaSi(models.Model):
 
 #I- Conocimiento sobre los temas de violencia y abuso de drogas
 CHOICE_VIOLENCIA_1 = (('a', 'Actos violentos realizados por jóvenes'),
-                    ('b', 'Acción que afecta negativamente a otra persona'),
-                    ('c', 'Daños físicos (golpes, gritos)'),
-                    ('d', 'Daños psicológicos (descalificaciones, burlas, insultos)'),
-                    ('e', 'Todas las anteriores'),
+                    ('b', 'Daños físicos y psicológicos realizado por adultos a los jóvenes'),
+                    ('c', 'Problema social que daña tanto a las víctimas como a los victimarios'),
+                    ('d', 'Todas las anteriores'),
+                    ('e', 'NS/NR'),
                 )
 
 CHOICE_ABUSO_DROGA_2 = (('a', 'Problema de salud pública'),
-                        ('b', 'Uso de cualquier tipo de droga ilícita'),
-                        ('c', 'Consumo de droga'),
-                        ('d', 'No responde'),
+                        ('b', 'Uso de cualquier tipo de droga ilícita/ilegal'),
+                        ('c', 'Consumo de todo tipo de químicos '),
+                        ('d', 'NS/NR'),
                     )
 
 CHOICE_TIPO_VIOLENCIA_3 = (('a', 'Violencia hacia las mujeres'),
-                        ('b', 'Violencia hacia personas con opciones sexual diferente'),
-                        ('c', 'Acoso sexual'),
-                        ('d', 'Abuso sexual'),
-                        ('e', 'Violencia en la escuela'),
-                        ('f', 'Aumento de expendio de drogas'),
-                        ('g', 'Aumento del consumo de drogas'),
-                        ('h', 'Pleito entre pandillas'),
-                        ('i', 'Aumento del grupos delictivos'),
-                        ('j', 'Conflictos étnicos'),
+                        ('b', 'Violencia intrafamiliar '),
+                        ('c', 'Violencia hacia personas con opciones sexuales diferentes'),
+                        ('d', 'Acoso sexual'),
+                        ('e', 'Abuso sexual'),
+                        ('f', 'Violencia en la escuela'),
+                        ('g', 'Aumento de expendios de drogas'),
+                        ('h', 'Aumento de jóvenes adictos'),
+                        ('i', 'Pleito entre pandillas'),
+                        ('j', 'Conflictos étnicos y territoriales'),
+                        ('k', 'NS/NR')
                     )
 
-CHOICE_LUGARES_4 = (('a', 'En el hogar'),
+CHOICE_LUGARES_4 = (('a', 'En el hogar y las familias'),
                         ('b', 'En la escuela (dentro y alrededor de ellas)'),
                         ('c', 'En las calles o espacios abiertos'),
                         ('d', 'En los centros de trabajo'),
                         ('e', 'En instituciones manejadas por el Estado'),
+                        ('f', 'NS/NR')
                     )
 
 CHOICE_JOVEN_VIOLENTO_5 = (('a', 'Nivel de pobreza en su familia'),
-                        ('b', 'Sufrió maltrato físico y psicológico en el hogar'),
-                        ('c', 'Falta de atención de su familia'),
-                        ('d', 'Experimentó con drogas'),
+                        ('b', 'Sufrió maltrato físico y psicológico en el hogar'),
+                        ('c', 'Falta de atención y consejos de su familia'),
+                        ('d', 'Influencia de otros jóvenes con problemas'),
                         ('e', 'Falta de acceso a la educación'),
-                        ('f', 'Participación en pandillas juveniles'),
-                        ('g', 'No responde'),
+                        ('f', 'Falta de empleos y oportunidades'),
+                        ('g', 'NS/NR'),
                     )
 
 CHOICE_PERJUDICADOS_6 = (('a', 'La familia'),
@@ -169,19 +183,20 @@ CHOICE_PERJUDICADOS_6 = (('a', 'La familia'),
                         ('c', 'Las mujeres'),
                         ('d', 'Los hombres'),
                         ('e', 'Las y los jóvenes'),
-                        ('f', 'Niñas y niños'),
+                        ('f', 'Niñas y niños'),
                         ('g', 'La sociedad en general'),
+                        ('h', 'NS/NR')
                     )
 
 CHOICE_SOLUCIONES_7 = (('a', 'Prisión para los que ejercen violencia'),
-                        ('b', 'Prisión para los expendedores de droga'),
-                        ('c', 'Prisión para los que consumen drogas'),
+                        ('b', 'Prisión para expendedores de droga'),
+                        ('c', 'Prisión para consumidores  de drogas'),
                         ('d', 'Tomar la justicia por sus propias manos'),
                         ('e', 'Buscar ayuda psicológica'),
-                        ('f', 'Brindar mayor nivel de información sobre el tema'),
-                        ('g', 'Acompañar procesos de capacitación sobre los temas'),
+                        ('f', 'Brindar mayor nivel de información'),
+                        ('g', 'Acompañar procesos de capacitación'),
                         ('h', 'Organizar a la comunidad y barrio'),
-                        ('i', 'Mayor nivel de organización de la población y las instituciones para prevenir delitos'),
+                        ('i', 'Mayor nivel de organización de la población y las instituciones'),
                     )
 
 CHOICE_RESPONSABLES_8 = (('a', 'La Policía'),
@@ -195,18 +210,17 @@ CHOICE_RESPONSABLES_8 = (('a', 'La Policía'),
                         ('j', 'Organizaciones sin fin de lucro (ONG)'),
                     )
 
-CHOICE_FEMINICIDIO_9 = (('a', 'Es un delito'),
+CHOICE_FEMINICIDIO_9 = (('a', 'Mujeres violentas contra los hombres'),
                         ('b', 'Cuando el hombre asesina a una mujer'),
-                        ('c', 'No es un delito'),
-                        ('d', 'No sabe'),
-                        ('e', 'No responde'),
+                        ('c', 'Cuando el esposo, novio o familiar le quita la vida a una mujer'),
+                        ('d', 'NS/NR'),
                     )
 
-CHOICE_ABUSO_SEXUAL_10 = (('a', 'Actividad sexual entre dos o más personas sin consentimiento de una persona'),
-                        ('b', 'Acto sexual que se ejerce bajo presión'),
-                        ('c', 'Relación sexual entre dos personas'),
-                        ('d', 'No sabe'),
-                        ('e', 'No responde'),
+CHOICE_ABUSO_SEXUAL_10 = (('a', 'Actividad sexual entre dos o más personas sin consentimiento de una de ellas'),
+                        ('b', 'Todo acto con fines sexuales hacia niñas, niños y adolescentes'),
+                        ('c', 'Presionar a una pareja para tener relaciones sexuales'),
+                        ('d', 'Relación sexual entre dos personas'),
+                        ('e', 'NS/NR'),
                     )
 
 CHOICE_LUGARES_11 = (('a', 'Casa'),
@@ -215,44 +229,49 @@ CHOICE_LUGARES_11 = (('a', 'Casa'),
                     ('d', 'Comunidades rurales'),
                     ('e', 'En la ciudad'),
                     ('f', 'En la iglesia'),
-                    ('g', 'No sabe'),
-                    ('h', 'No responde'),
+                    ('g', 'NS/NR'),
             )
 
 CHOICE_PREVENIR_ABUSO_12 = (('a', 'Denunciar al agreso'),
                     ('b', 'Apoyo moral y psicológico a la víctima'),
                     ('c', 'Promover campañas de sensibilización contra el AS'),
                     ('d', 'Mejor comunicación entre los miembros de la familia'),
-                    ('e', 'No sabe'),
-                    ('f', 'No responde'),
+                    ('e', 'Organizarnos en la comunidad'),
+                    ('f', 'NS/NR'),
             )
 
-CHOICE_SEGURIDAD_CIUDADA_13 = (('a', 'Derecho a vivir con paz'),
+CHOICE_SEGURIDAD_CIUDADA_13 = (('a', 'Vivir en paz y armonía'),
                     ('b', 'Prevención de los delitos'),
-                    ('c', 'Derecho a vivir en un ambiente pacifico'),
+                    ('c', 'Más cárceles y mano dura contra los delincuentes'),
                     ('d', 'Erradicar la violencia de cualquier tipo'),
-                    ('e', 'Falta contra las personas y sus bienes'),
-                    ('f', 'No responde'),
-                    ('g', 'No sabe'),
+                    ('e', 'Un trabajo de la Policía nacional'),
+                    ('f', 'NS/NR'),
             )
 
+CHOICE_EDUCAR_NINOS_14 = (('a', 'Con la faja o con las manos'),
+                    ('b', 'Mejor castigarles pero no pegarles'),
+                    ('c', 'Hay que pegarles para que sepan respetar'),
+                    ('d', 'Hablarles fuerte o gritarles pero no pegarles'),
+                    ('e', 'NS/NR'),
+            )
 
 class Conocimiento(models.Model):
     encuesta = models.ForeignKey(Encuesta)
-    pregunta1 = MultiSelectField(choices=CHOICE_VIOLENCIA_1, verbose_name='1-¿Para Usted que es Violencia Juvenil?')
-    pregunta2 = MultiSelectField(choices=CHOICE_ABUSO_DROGA_2, verbose_name='2-¿Qué es abuso de drogas para usted?')
+    pregunta1 = MultiSelectField(choices=CHOICE_VIOLENCIA_1, verbose_name='1-¿Para Usted, que es Violencia Juvenil?')
+    pregunta2 = MultiSelectField(choices=CHOICE_ABUSO_DROGA_2, verbose_name='2-¿Para usted, qué es el abuso de drogas?')
     pregunta3 = MultiSelectField(choices=CHOICE_TIPO_VIOLENCIA_3, verbose_name='3-¿Qué tipo violencia afecta más a tu comunidad?')
-    pregunta4 = MultiSelectField(choices=CHOICE_LUGARES_4, verbose_name='4-¿Qué lugares considera usted que genera más violencia?')
-    pregunta5 = MultiSelectField(choices=CHOICE_JOVEN_VIOLENTO_5, verbose_name='5-¿Qué es lo que conlleva a un joven a ser violento y consuma drogas?')
-    pregunta6 = MultiSelectField(choices=CHOICE_PERJUDICADOS_6, verbose_name='6-¿Quiénes son los más perjudicados por la violencia juvenil y abuso de drogas?')
-    pregunta7 = MultiSelectField(choices=CHOICE_SOLUCIONES_7, verbose_name='7-¿Qué soluciones ve Usted para prevenir la violencia juvenil?')
-    pregunta8 = MultiSelectField(choices=CHOICE_RESPONSABLES_8, verbose_name='8-¿Quiénes son los responsables de aportar a la prevención de la violencia juvenil?')
-    pregunta9 = MultiSelectField(choices=CHOICE_FEMINICIDIO_9, verbose_name='9-¿Qué entiendes por feminicidio?')
+    pregunta4 = MultiSelectField(choices=CHOICE_LUGARES_4, verbose_name='4-¿Qué lugares considera que genera más violencia?')
+    pregunta5 = MultiSelectField(choices=CHOICE_JOVEN_VIOLENTO_5, verbose_name='5-¿Qué lleva a un joven a ser violento?')
+    pregunta6 = MultiSelectField(choices=CHOICE_PERJUDICADOS_6, verbose_name='6-¿Quiénes son los más perjudicados por la violencia juvenil y el abuso de drogas?')
+    pregunta7 = MultiSelectField(choices=CHOICE_SOLUCIONES_7, verbose_name='7-¿Qué soluciones hay para prevenir la violencia juvenil?')
+    pregunta8 = MultiSelectField(choices=CHOICE_RESPONSABLES_8, verbose_name='8-¿Quiénes deben ser los responsables de prevenir la violencia juvenil?')
+    pregunta9 = MultiSelectField(choices=CHOICE_FEMINICIDIO_9, verbose_name='9-¿Qué entiende por femicidio?')
     pregunta10 = MultiSelectField(choices=CHOICE_ABUSO_SEXUAL_10, verbose_name='10-¿Qué es el abuso sexual?')
-    pregunta11 = MultiSelectField(choices=CHOICE_LUGARES_11, verbose_name='11-¿En qué lugares ocurren más el abuso sexual?')
+    pregunta11 = MultiSelectField(choices=CHOICE_LUGARES_11, verbose_name='11-¿En qué lugares ocurren más los abusos sexuales?')
     pregunta12 = MultiSelectField(choices=CHOICE_PREVENIR_ABUSO_12, verbose_name='12-¿Qué hacer para prevenir el abuso sexual?')
-    pregunta13 = MultiSelectField(choices=CHOICE_SEGURIDAD_CIUDADA_13, verbose_name='13-¿Qué entiendes por seguridad ciudadana?')
-
+    pregunta13 = MultiSelectField(choices=CHOICE_SEGURIDAD_CIUDADA_13, verbose_name='13-¿Qué entiende por seguridad ciudadana?')
+    pregunta14 = MultiSelectField(choices=CHOICE_EDUCAR_NINOS_14,verbose_name='14-¿Para educar a los niños y niñas se les debe pegar?')
+    
     class Meta:
         verbose_name_plural = 'I-Conocimiento sobre los temas de violencia y abuso de drogas'
 
