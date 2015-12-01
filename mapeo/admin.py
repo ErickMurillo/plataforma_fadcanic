@@ -8,7 +8,7 @@ class OrganizacionesAdmin(admin.ModelAdmin):
 	filter_horizontal = ('cobertura','acciones_violencia','acciones_consumo_drogas','acciones_apoyo')
 	fieldsets = [
 			(None, {'fields' : ['tipo','nombre','persona_contacto','direccion','departamento','municipio','comunidad',
-								('convencional','celular','correo'),('web','facebook','twitter'),('youtube','otro'),
+								('convencional_1','celular_1','correo'),('web','facebook','twitter'),('youtube','otro'),
 								'cobertura',('masculino','femenino'),'integrantes',('mayor_13','mayor_19','mayor_30'),
 								'acciones_violencia','acciones_consumo_drogas','acciones_apoyo'
 								]}),

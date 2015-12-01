@@ -3,7 +3,7 @@ from .models import *
 
 class InformacionInline(admin.StackedInline):
     model = InformacionEntrevistado
-    fields = (('sexo','residencia','habita'),('edad','etnia','departamento','municipio'))
+    fields = (('sexo','edad','etnia'),('departamento','municipio'))
     extra = 1
     max_num = 1
 
@@ -27,14 +27,14 @@ class ConocimientoInline(admin.StackedInline):
     fields = (('pregunta1','pregunta2'),('pregunta3','pregunta4'),
                 ('pregunta5','pregunta6'),('pregunta7','pregunta8'),
                 ('pregunta9','pregunta10'),('pregunta11','pregunta12'),
-                ('pregunta13'))
+                ('pregunta13','pregunta14'))
     extra = 1
     max_num = 1
 
 class ActitudInline(admin.StackedInline):
     model = Actitud
-    fields = (('pregunta14','pregunta15'),('pregunta16','pregunta17'),
-                ('pregunta18','pregunta19'),('pregunta20'))
+    fields = (('pregunta15','pregunta16'),('pregunta17','pregunta18'),
+                ('pregunta19','pregunta20'))
     extra = 1
     max_num = 1
 
@@ -48,16 +48,15 @@ class PracticasInline(admin.StackedInline):
 class PercepcionInline(admin.StackedInline):
     model = Percepcion
     fields = (('pregunta25','pregunta26'),('pregunta27','pregunta28'),
-                ('pregunta29','pregunta30'),('pregunta31','pregunta32'),
-                ('pregunta33','pregunta34'),('pregunta35','pregunta36'),
-                ('pregunta37','pregunta38'))
+                ('pregunta29_1','pregunta30'),('pregunta31','pregunta32_1'),
+                ('pregunta33',))
     extra = 1
     max_num = 1
 
 class EstadoActualInline(admin.StackedInline):
     model = EstadoActual
-    fields = (('pregunta40','pregunta41'),('pregunta42','si_respuesta_42'),
-                ('pregunta43','si_respuesta_43'),('pregunta44','pregunta45'))
+    fields = (('pregunta34','si_respuesta_34'),('pregunta35','si_respuesta_35'),
+                ('pregunta36','pregunta37'),('pregunta38','pregunta39'))
     extra = 1
     max_num = 1
 
@@ -67,11 +66,11 @@ class EncuestaAdmin(admin.ModelAdmin):
         obj.save()
 
     exclude = ('user',)
-    fields = (('fecha','encuestador'),)
+    fields = (('fecha','grupos'),('encuestador',))
     inlines = [InformacionInline,EscolaridadInline,ParticipaOrganizacionInline,
                 RespuetaSiInline,ConocimientoInline,ActitudInline,PracticasInline,
                 PercepcionInline,EstadoActualInline]
-    list_display = ('fecha', 'encuestador')
+    list_display = ('fecha','grupos','encuestador')
 
     class Media:
         css = {
