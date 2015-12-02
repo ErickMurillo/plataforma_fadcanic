@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'endless_pagination',
     'multiselectfield',
     'rest_framework',
+    'import_export',
 )
 
 MIDDLEWARE_CLASSES = (

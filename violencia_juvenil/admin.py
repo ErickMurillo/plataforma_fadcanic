@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import *
+from import_export.admin import ImportExportActionModelAdmin
 
-class InformacionInline(admin.StackedInline):
+class InformacionInline(admin.TabularInline):
     model = InformacionEntrevistado
     fields = (('sexo','edad','etnia'),('departamento','municipio'))
     extra = 1
@@ -60,7 +61,8 @@ class EstadoActualInline(admin.StackedInline):
     extra = 1
     max_num = 1
 
-class EncuestaAdmin(admin.ModelAdmin):
+#ImportExportActionModelAdmin
+class EncuestaAdmin(ImportExportActionModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.user = request.user
         obj.save()
@@ -82,3 +84,25 @@ class EncuestaAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Encuesta, EncuestaAdmin)
 admin.site.register(Encuestador)
+
+#export import
+class InformacionAdmin(ImportExportActionModelAdmin):
+    model = InformacionEntrevistado
+
+class EscolaridadAdmin(ImportExportActionModelAdmin):
+    model = Escolaridad
+
+class ParticipaOrganizacionAdmin(ImportExportActionModelAdmin):
+    model = ParticipaOrganizacion
+
+class RespuetaSiAdmin(ImportExportActionModelAdmin):
+    model = RespuetaSi
+
+class ConocimientoAdmin(ImportExportActionModelAdmin):
+    model = Conocimiento
+
+admin.site.register(InformacionEntrevistado,InformacionAdmin)
+admin.site.register(Escolaridad,EscolaridadAdmin)
+admin.site.register(ParticipaOrganizacion,ParticipaOrganizacionAdmin)
+admin.site.register(RespuetaSi,RespuetaSiAdmin)
+admin.site.register(Conocimiento,ConocimientoAdmin) 

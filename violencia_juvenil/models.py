@@ -28,8 +28,8 @@ class Encuesta(models.Model):
 	fecha = models.DateField()
 	grupos = models.IntegerField(choices=GRUPOS_CHOICES)
 	encuestador = models.ForeignKey(Encuestador)
-	latitud = models.FloatField(editable=False)
-	longitud = models.FloatField(editable=False)
+	latitud = models.FloatField(editable=False,null=True,blank=True)
+	longitud = models.FloatField(editable=False,null=True,blank=True)
 	year = models.IntegerField(editable=False)
 	user = models.ForeignKey(User)
 
@@ -117,8 +117,8 @@ class ParticipaOrganizacion(models.Model):
 	encuesta = models.ForeignKey(Encuesta)
 	participado = models.IntegerField(choices=CHOICE_SI_NO)
 
-	def __unicode__(self):
-		return u'%s' % (str(self.get_participado_display))
+	# def __unicode__(self):
+	# 	return u'%s' % (str(self.get_participado_display))
 
 	class Meta:
 		verbose_name_plural = 'Participa o ha participado en alguna orga. que previene la violencia juvenil y abuso de drogas?'
