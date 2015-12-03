@@ -1,0 +1,13 @@
+{% extends "cambiaahora/base.html" %}
+
+{% block contenido %}
+	<div class="consulta">
+		<form action="." method="POST">{% csrf_token %}
+            <div>
+            	<label>Año:</label>
+                 {{form.year}}      
+                 <input type="submit" value="Consultar" name="consulta"/>         
+        	</div>
+        </form>
+	</div>
+{% endblock contenido %}
