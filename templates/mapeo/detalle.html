@@ -6,55 +6,104 @@
 
 {% block contenido %}
 <div class="container">
-	{{object}} <br>
 
-	{{object.get_tipo_display}}<br>
+	<div class="row">
+		<h4>{{object}} </h4>
+		<div class="col-lg-6">
+			<div class="table-responsive">
+				<table class="" border="0">
+					<tbody>
+						<tr>
+							<td>Tipo:</td>
+							<td>{{object.get_tipo_display}}</td>
+						</tr>
 
-	{% if object.persona_contacto %}
-		{{object.persona_contacto}}<br>
-	{% endif %}
+						{% if object.persona_contacto %}
+							<tr>
+								<td>Persona de Contacto:</td>
+								<td>{{object.persona_contacto}}</td>
+							</tr>
+						{% endif %}
 
-	{% if object.direccion %}
-		{{object.direccion}}<br>
-	{% endif %}
+						<tr>
+							<td>Municipio</td>
+							<td>{{object.municipio}}</td>
+						</tr>
 
-	{{object.municipio}}<br>
+						{% if object.comunidad %}
+							<tr>
+								<td>Comunidad</td>
+								<td>{{object.comunidad}}</td>
+							</tr>
+						{% endif %}
 
-	{% if object.comunidad %}
-		{{object.comunidad}}<br>
-	{% endif %}
 
-	{% if object.convencional %}
-		{{object.convencional}}<br>
-	{% endif %}
+						{% if object.direccion %}
+						<tr>
+							<td>Dirección</td>
+							<td>{{object.direccion}}</td>
+						</tr>
+						{% endif %}
 
-	{% if object.celular %}
-		{{object.celular}}<br>
-	{% endif %}
+						{% if object.convencional %}
+						<tr>
+							<td>Convencional:</td>
+							<td>{{object.convencional}}</td>
+						</tr>
+						{% endif %}
 
-	{% if object.correo %}
-		{{object.correo}}<br>
-	{% endif %}
+						{% if object.celular %}
+						<tr>
+							<td>Celular:</td>
+							<td>{{object.celular}}</td>
+						</tr>
+						{% endif %}
+						
+						{% if object.correo %}
+						<tr>
+							<td>Correo:</td>
+							<td>{{object.correo}}</td>
+						</tr>
+						{% endif %}
+						{% if object.web %}
+						<tr>
+							<td>Sitio Web:</td>
+							<td>{{object.web}}</td>
+						</tr>
+						{% endif %}
 
-	{% if object.web %}
-		{{object.web}}<br>
-	{% endif %}
+						{% if object.otro %}
+						<tr>
+							<td>Otro:</td>
+							<td>{{object.otro}}</td>
+						</tr>
+						{% endif %}
+						<tr>
+							<td>Redes Sociales:</td>
+							<td class="social-mapeo" >
+									{% if object.facebook %}
+									<a href="{{object.facebook}}" target="_blank"><span>Facebook</span></a>
+									{% endif %}
+									{% if object.twitter %}
+									<a href="{{object.twitter}}" target="_blank"><span>Twitter</span></a>
+									{% endif %}
+									{% if object.youtube %}
+									<a href="{{object.youtube}}" target="_blank"><span>Youtube</span></a>
+									{% endif %}
 
-	{% if object.facebook %}
-		{{object.facebook}}<br>
-	{% endif %}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			
+		</div>
+	</div>
 
-	{% if object.twitter %}
-		{{object.twitter}}<br>
-	{% endif %}
 
-	{% if object.youtube %}
-		{{object.youtube}}<br>
-	{% endif %}
 
-	{% if object.otro %}
-		{{object.otro}}<br>
-	{% endif %}
 
 	{% if object.cobertura %}
 	<h5>Cobertura</h5>
