@@ -1,13 +1,219 @@
 {% extends "cambiaahora/base.html" %}
 
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="/static/violencia_juvenil/js/highcharts.js"></script>
+<script src="/static/violencia_juvenil/js/exporting.js"></script>
+<script>
+	$(function () {
+		$('#sexo').highcharts({
+			chart: {
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
+			},
+			title: {
+				text: 'sexo'
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					dataLabels: {
+						enabled: true,
+						format: '<b>{point.name}</b>: {point.percentage:.2f} %',
+						style: {
+							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+						}
+					}
+				}
+			},
+			series: [{
+				name: 'Procentaje',
+				colorByPoint: true,
+				data: [
+				{% for k,v in sexo.items %}
+				{
+					name: '{{k}}',
+					y: {{v}},
+					{% if forloop.counter == 1 %}
+					sliced: true,
+					selected: true
+					{% endif %}
+				},
+				{% endfor %}
+				]
+			}]
+		});
+	});
+
+	$(function () {
+		$('#edad').highcharts({
+			chart: {
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
+			},
+			title: {
+				text: 'edad'
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					dataLabels: {
+						enabled: true,
+						format: '<b>{point.name}</b>: {point.percentage:.2f} %',
+						style: {
+							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+						}
+					}
+				}
+			},
+			series: [{
+				name: 'Procentaje',
+				colorByPoint: true,
+				data: [
+				{% for k,v in edad.items %}
+				{
+					name: '{{k}}',
+					y: {{v}},
+					{% if forloop.counter == 1 %}
+					sliced: true,
+					selected: true
+					{% endif %}
+				},
+				{% endfor %}
+				]
+			}]
+		});
+	});
+
+	$(function () {
+		$('#etnia').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: 'etnia'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Etnias',
+
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in etnia.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+
+			},
+			{% endfor %}
+			]
+		});
+	});
+</script>
+<!-- script de las graficas-->
+{% include "violencia_juvenil/conocimiento.html" %}
+
+<!-- end script de las graficas-->
+
+{% endblock extra_js %}
+
 {% block contenido %}
-	<div class="consulta">
-		<form action="." method="POST">{% csrf_token %}
-            <div>
-            	<label>Año:</label>
-                 {{form.year}}      
-                 <input type="submit" value="Consultar" name="consulta"/>         
-        	</div>
-        </form>
+<style>
+	.nav-tabs > li > a {
+		color: black !important; 
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="consulta">
+			<form action="." method="POST">{% csrf_token %}
+				<div>
+					<label>Año:</label>
+					{{form.year}}      
+					<input type="submit" value="Consultar" name="consulta"/>         
+				</div>
+			</form>
+		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-6" id="sexo" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+		<div class="col-md-6" id="edad" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+		<div class="col-md-6" id="etnia" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+	</div>
+
+	<div class="row">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#conocimiento" aria-controls="conocimiento" role="tab" data-toggle="tab">Conocimiento</a></li>
+			<li role="presentation"><a href="#actitud" aria-controls="actitud" role="tab" data-toggle="tab">Actitud</a></li>
+			<li role="presentation"><a href="#practicas" aria-controls="practicas" role="tab" data-toggle="tab">Prácticas</a></li>
+			<li role="presentation"><a href="#percepcion" aria-controls="percepcion" role="tab" data-toggle="tab">Percepción</a></li>
+			<li role="presentation"><a href="#estado" aria-controls="estado" role="tab" data-toggle="tab">Estado actual</a></li>
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="conocimiento">
+				<div class="col-md-12" id="pregunta3" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+
+				<div class="col-md-12" id="pregunta4" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+				
+				<div class="col-md-12" id="pregunta7" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+
+				<div class="col-md-12" id="pregunta9" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+
+				<div class="col-md-12" id="pregunta13" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="actitud">...</div>
+			<div role="tabpanel" class="tab-pane" id="practicas">...</div>
+			<div role="tabpanel" class="tab-pane" id="percepcion">...</div>
+			<div role="tabpanel" class="tab-pane" id="estado">...</div>
+		</div>
+	</div>
+</div>
+
 {% endblock contenido %}
