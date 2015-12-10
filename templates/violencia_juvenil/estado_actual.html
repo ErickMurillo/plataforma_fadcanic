@@ -1,11 +1,11 @@
 <script>
 	$(function () {
-		$('#pregunta23').highcharts({
+		$('#pregunta36').highcharts({
 			chart: {
 				type: 'column'
 			},
 			title: {
-				text: '¿Qué haría si ve que una mujer está siendo violentada?'
+				text: 'Si no hay lugares en la comunidad, ¿dónde se atienden las víctimas?'
 			},
 
 			credits: {
@@ -46,7 +46,7 @@
 				}
 			},
 			series: [
-			{% for k,v in pregunta23.items %}
+			{% for k,v in pregunta36.items %}
 			{
 				name: '{{k}}',
 				data: [{{v}}],
@@ -58,60 +58,48 @@
 	});
 
 	$(function () {
-		$('#pregunta24').highcharts({
+		$('#pregunta37').highcharts({
 			chart: {
-				type: 'column'
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
 			},
 			title: {
-				text: '¿Qué hacer para que los jóvenes no se conviertan en expendedores de droga?'
+				text: '¿Ha escuchado de la Campaña: Cambia ahora solo hazlo?'
 			},
-
-			credits: {
-				enabled: false
-			},
-
 			tooltip: {
-				formatter: function() {
-					return ''+
-					this.series.name +': '+ this.y +'%';
-				}
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			xAxis: {
-				categories: [
-				'Respuesta',
-				
-				],
-				crosshair: true
+				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
 			},
 			plotOptions: {
-				series: {
-					borderWidth: 0,
-					groupPadding: 0.1,
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
 					dataLabels: {
 						enabled: true,
-						format: '{point.y:.1f}%',
-						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						format: '<b>{point.name}</b>: {point.percentage:.2f} %',
 						style: {
-							textShadow: '0 0 3px white'
+							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 						}
 					}
 				}
 			},
-			series: [
-			{% for k,v in pregunta24.items %}
-			{
-				name: '{{k}}',
-				data: [{{v}}],
-				
-			},
-			{% endfor %}
-			]
+			series: [{
+				name: 'Procentaje',
+				colorByPoint: true,
+				data: [
+				{% for k,v in pregunta37.items %}
+				{
+					name: '{{k}}',
+					y: {{v}},
+					{% if forloop.counter == 1 %}
+					sliced: true,
+					selected: true
+					{% endif %}
+				},
+				{% endfor %}
+				]
+			}]
 		});
 	});
 </script>

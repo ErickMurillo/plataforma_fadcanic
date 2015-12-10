@@ -1,11 +1,11 @@
 <script>
-	$(function () {
-		$('#pregunta23').highcharts({
+		$(function () {
+		$('#pregunta30').highcharts({
 			chart: {
 				type: 'column'
 			},
 			title: {
-				text: '¿Qué haría si ve que una mujer está siendo violentada?'
+				text: '¿Quiénes considera que son más violentos?'
 			},
 
 			credits: {
@@ -46,7 +46,7 @@
 				}
 			},
 			series: [
-			{% for k,v in pregunta23.items %}
+			{% for k,v in pregunta30.items %}
 			{
 				name: '{{k}}',
 				data: [{{v}}],
@@ -58,12 +58,12 @@
 	});
 
 	$(function () {
-		$('#pregunta24').highcharts({
+		$('#pregunta31').highcharts({
 			chart: {
 				type: 'column'
 			},
 			title: {
-				text: '¿Qué hacer para que los jóvenes no se conviertan en expendedores de droga?'
+				text: '¿Qué opina del narcotráfico?'
 			},
 
 			credits: {
@@ -104,7 +104,7 @@
 				}
 			},
 			series: [
-			{% for k,v in pregunta24.items %}
+			{% for k,v in pregunta31.items %}
 			{
 				name: '{{k}}',
 				data: [{{v}}],
