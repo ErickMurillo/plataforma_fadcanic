@@ -74,6 +74,32 @@ def index(request,template="violencia_juvenil/index.html"):
 				for obj in CHOICE_SEGURIDAD_CIUDADA_13:
 					conteo = Conocimiento.objects.filter(pregunta13__contains=obj[0],encuesta__year=year).count()
 					pregunta13[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+				#tab actitud-------------------------------------------------------
+				#preg 15
+				pregunta15 = collections.OrderedDict()
+				for obj in CHOICE_15:
+					conteo = Actitud.objects.filter(pregunta15__contains=obj[0],encuesta__year=year).count()
+					pregunta15[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+				#preg 19
+				pregunta19 = collections.OrderedDict()
+				for obj in CHOICE_19:
+					conteo = Actitud.objects.filter(pregunta19__contains=obj[0],encuesta__year=year).count()
+					pregunta19[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+					
+				#tab practicas-------------------------------------------------------
+				#preg 23
+				pregunta23 = collections.OrderedDict()
+				for obj in CHOICE_23:
+					conteo = Practicas.objects.filter(pregunta23__contains=obj[0],encuesta__year=year).count()
+					pregunta23[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+				
+				#preg 24
+				pregunta24 = collections.OrderedDict()
+				for obj in CHOICE_24:
+					conteo = Practicas.objects.filter(pregunta24__contains=obj[0],encuesta__year=year).count()
+					pregunta24[obj[1]] = saca_porcentajes(conteo,encuestas,False)
 				#fin salidas-------------------------------------------------------
 
 			except:
@@ -124,10 +150,37 @@ def index(request,template="violencia_juvenil/index.html"):
 				pregunta9[obj[1]] = saca_porcentajes(conteo,encuestas,False)
 
 			#preg 13
-				pregunta13 = collections.OrderedDict()
-				for obj in CHOICE_SEGURIDAD_CIUDADA_13:
-					conteo = Conocimiento.objects.filter(pregunta13__contains=obj[0]).count()
-					pregunta13[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+			pregunta13 = collections.OrderedDict()
+			for obj in CHOICE_SEGURIDAD_CIUDADA_13:
+				conteo = Conocimiento.objects.filter(pregunta13__contains=obj[0]).count()
+				pregunta13[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+			#tab actitud-------------------------------------------------------
+			#preg 15
+			pregunta15 = collections.OrderedDict()
+			for obj in CHOICE_15:
+				conteo = Actitud.objects.filter(pregunta15__contains=obj[0]).count()
+				pregunta15[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+			
+			#preg 19
+			pregunta19 = collections.OrderedDict()
+			for obj in CHOICE_19:
+				conteo = Actitud.objects.filter(pregunta19__contains=obj[0]).count()
+				pregunta19[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+			#tab practicas-------------------------------------------------------
+			#preg 23
+			pregunta23 = collections.OrderedDict()
+			for obj in CHOICE_23:
+				conteo = Practicas.objects.filter(pregunta23__contains=obj[0]).count()
+				pregunta23[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+			
+			#preg 24
+			pregunta24 = collections.OrderedDict()
+			for obj in CHOICE_24:
+				conteo = Practicas.objects.filter(pregunta24__contains=obj[0]).count()
+				pregunta24[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
 			#fin salidas-------------------------------------------------------
 
 			del request.session['tipo']
