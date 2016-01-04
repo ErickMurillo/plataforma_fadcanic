@@ -58,8 +58,10 @@ class Organizaciones(models.Model):
 								chained_field="municipio",
 								chained_model_field="municipio",
 								show_all=False, auto_choose=True,blank=True,null=True)
-	convencional = models.IntegerField(blank=True,null=True)
-	celular = models.IntegerField(blank=True,null=True)
+	#convencional = models.IntegerField(blank=True,null=True)
+	convencional_1 = models.CharField(max_length=50,blank=True,null=True,verbose_name='Convencional')
+	#celular = models.IntegerField(blank=True,null=True)
+	celular_1 = models.CharField(max_length=50,blank=True,null=True,verbose_name='Celular')
 	correo = models.EmailField(blank=True,null=True)
 	web = models.URLField(blank=True,null=True)
 	facebook = models.URLField(blank=True,null=True)

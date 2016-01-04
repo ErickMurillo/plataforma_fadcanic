@@ -7,8 +7,8 @@
 				$('.field-municipio').show();
 				$('.field-persona_contacto').show();
 				$('.field-direccion').show();
-				$('.field-celular').show();
-				$('.field-convencional').show();
+				$('.field-celular_1').show();
+				$('.field-convencional_1').show();
 				$('.field-correo').show();
 				$('.field-web').show();
 				$('.field-facebook').show();
@@ -29,8 +29,8 @@
 			}else if (valor_tipo != '1'){
 				$('.field-persona_contacto').hide();
 				$('.field-direccion').hide();
-				$('.field-celular').hide();
-				$('.field-convencional').hide();
+				$('.field-celular_1').hide();
+				$('.field-convencional_1').hide();
 				$('.field-correo').hide();
 				$('.field-web').hide();
 				$('.field-facebook').hide();
@@ -56,8 +56,8 @@
 				$('.field-municipio').show();
 				$('.field-persona_contacto').show();
 				$('.field-direccion').show();
-				$('.field-celular').show();
-				$('.field-convencional').show();
+				$('.field-celular_1').show();
+				$('.field-convencional_1').show();
 				$('.field-correo').show();
 				$('.field-web').show();
 				$('.field-facebook').show();
@@ -78,8 +78,8 @@
 			}else if (valor_tipo != '1'){
 				$('.field-persona_contacto').hide();
 				$('.field-direccion').hide();
-				$('.field-celular').hide();
-				$('.field-convencional').hide();
+				$('.field-celular_1').hide();
+				$('.field-convencional_1').hide();
 				$('.field-correo').hide();
 				$('.field-web').hide();
 				$('.field-facebook').hide();
