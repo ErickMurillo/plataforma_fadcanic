@@ -4,7 +4,7 @@ from import_export.admin import ImportExportActionModelAdmin
 
 class InformacionInline(admin.TabularInline):
     model = InformacionEntrevistado
-    fields = (('sexo','edad','etnia'),('departamento','municipio'))
+    fields = (('sexo','edad','etnia'),('departamento','municipio1'))
     extra = 1
     max_num = 1
 
@@ -83,47 +83,48 @@ class EncuestaAdmin(ImportExportActionModelAdmin):
 
 # Register your models here.
 admin.site.register(Encuesta, EncuestaAdmin)
+admin.site.register(Encuestador)
 
-class EncuestadorAdmin(ImportExportActionModelAdmin):
-    model = Encuestador
+#export import **********************************************************
 
-admin.site.register(Encuestador,EncuestadorAdmin)
-# admin.site.register(Encuestador)
+# class EncuestadorAdmin(ImportExportActionModelAdmin):
+#     model = Encuestador
 
-#export import
-class InformacionAdmin(ImportExportActionModelAdmin):
-    model = InformacionEntrevistado
+# admin.site.register(Encuestador,EncuestadorAdmin)
 
-class EscolaridadAdmin(ImportExportActionModelAdmin):
-    model = Escolaridad
+# class InformacionAdmin(ImportExportActionModelAdmin):
+#     model = InformacionEntrevistado
 
-class ParticipaOrganizacionAdmin(ImportExportActionModelAdmin):
-    model = ParticipaOrganizacion
+# class EscolaridadAdmin(ImportExportActionModelAdmin):
+#     model = Escolaridad
 
-class RespuetaSiAdmin(ImportExportActionModelAdmin):
-    model = RespuetaSi
+# class ParticipaOrganizacionAdmin(ImportExportActionModelAdmin):
+#     model = ParticipaOrganizacion
 
-class ConocimientoAdmin(ImportExportActionModelAdmin):
-    model = Conocimiento
+# class RespuetaSiAdmin(ImportExportActionModelAdmin):
+#     model = RespuetaSi
 
-class ActitudAdmin(ImportExportActionModelAdmin):
-    model = Actitud
+# class ConocimientoAdmin(ImportExportActionModelAdmin):
+#     model = Conocimiento
 
-class PracticasAdmin(ImportExportActionModelAdmin):
-    model = Practicas
+# class ActitudAdmin(ImportExportActionModelAdmin):
+#     model = Actitud
 
-class PercepcionAdmin(ImportExportActionModelAdmin):
-    model = Percepcion
+# class PracticasAdmin(ImportExportActionModelAdmin):
+#     model = Practicas
 
-class EstadoActualAdmin(ImportExportActionModelAdmin):
-    model = EstadoActual
+# class PercepcionAdmin(ImportExportActionModelAdmin):
+#     model = Percepcion
 
-admin.site.register(InformacionEntrevistado,InformacionAdmin)
-admin.site.register(Escolaridad,EscolaridadAdmin)
-admin.site.register(ParticipaOrganizacion,ParticipaOrganizacionAdmin)
-admin.site.register(RespuetaSi,RespuetaSiAdmin)
-admin.site.register(Conocimiento,ConocimientoAdmin) 
-admin.site.register(Actitud,ActitudAdmin) 
-admin.site.register(Practicas,PracticasAdmin)
-admin.site.register(Percepcion,PercepcionAdmin)
-admin.site.register(EstadoActual,EstadoActualAdmin)
+# class EstadoActualAdmin(ImportExportActionModelAdmin):
+#     model = EstadoActual
+
+# admin.site.register(InformacionEntrevistado,InformacionAdmin)
+# admin.site.register(Escolaridad,EscolaridadAdmin)
+# admin.site.register(ParticipaOrganizacion,ParticipaOrganizacionAdmin)
+# admin.site.register(RespuetaSi,RespuetaSiAdmin)
+# admin.site.register(Conocimiento,ConocimientoAdmin) 
+# admin.site.register(Actitud,ActitudAdmin) 
+# admin.site.register(Practicas,PracticasAdmin)
+# admin.site.register(Percepcion,PercepcionAdmin)
+# admin.site.register(EstadoActual,EstadoActualAdmin)
