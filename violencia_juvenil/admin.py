@@ -4,7 +4,7 @@ from import_export.admin import ImportExportActionModelAdmin
 
 class InformacionInline(admin.TabularInline):
     model = InformacionEntrevistado
-    fields = (('sexo','edad','etnia'),('departamento','municipio'))
+    fields = (('sexo','edad','etnia'),('departamento','municipio1'))
     extra = 1
     max_num = 1
 
@@ -62,7 +62,7 @@ class EstadoActualInline(admin.StackedInline):
     max_num = 1
 
 #ImportExportActionModelAdmin
-class EncuestaAdmin(admin.ModelAdmin):
+class EncuestaAdmin(ImportExportActionModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.user = request.user
         obj.save()
@@ -85,7 +85,13 @@ class EncuestaAdmin(admin.ModelAdmin):
 admin.site.register(Encuesta, EncuestaAdmin)
 admin.site.register(Encuestador)
 
-#export import
+#export import **********************************************************
+
+# class EncuestadorAdmin(ImportExportActionModelAdmin):
+#     model = Encuestador
+
+# admin.site.register(Encuestador,EncuestadorAdmin)
+
 # class InformacionAdmin(ImportExportActionModelAdmin):
 #     model = InformacionEntrevistado
 
