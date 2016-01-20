@@ -70,6 +70,7 @@ urlpatterns += patterns('mapeo.views',
 #violencia juvenil
 urlpatterns += patterns('violencia_juvenil.views',
     url(r'^violencia_juvenil/',  'index', name='index-violencia'),
+    url(r'^ajax/munis/$', 'get_munis', name='get-munis'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

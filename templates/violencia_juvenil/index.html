@@ -4,6 +4,8 @@
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
 <script src="/static/violencia_juvenil/js/highcharts.js"></script>
 <script src="/static/violencia_juvenil/js/exporting.js"></script>
+<script type="text/javascript" src="/static/violencia_juvenil/js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="/static/violencia_juvenil/css/bootstrap-multiselect.css" type="text/css"/>
 <script>
 	$(function () {
 		$('#sexo').highcharts({
@@ -153,6 +155,93 @@
 			]
 		});
 	});
+
+// filtros
+
+$(document).ready(function() {
+
+	$('#id_departamento').multiselect({
+            buttonWidth: '250px',
+            maxHeight: 250,
+            includeSelectAllOption: true,
+            selectAllText: 'Seleccionar todos',
+            buttonText: function(options, select) {
+                if (options.length === 0) {
+                    return 'Sin selección ...';
+                }
+                else if (options.length > 3) {
+                    return 'Varias opciones seleccionadas!';
+                }
+                 else {
+                     var labels = [];
+                     options.each(function() {
+                         if ($(this).attr('label') !== undefined) {
+                             labels.push($(this).attr('label'));
+                         }
+                         else {
+                             labels.push($(this).html());
+                         }
+                     });
+                     return labels.join(', ') + '';
+                 }
+            }
+        });
+	$('#id_municipio').multiselect({
+            enableCollapsibleOptGroups: true,
+            buttonWidth: '250px',
+            maxHeight: 250,
+            includeSelectAllOption: true,
+            selectAllText: 'Seleccionar todos',
+            buttonText: function(options, select) {
+                if (options.length === 0) {
+                    return 'Sin selección ...';
+                }
+                else if (options.length > 3) {
+                    return 'Varias opciones seleccionadas!';
+                }
+                 else {
+                     var labels = [];
+                     options.each(function() {
+                         if ($(this).attr('label') !== undefined) {
+                             labels.push($(this).attr('label'));
+                         }
+                         else {
+                             labels.push($(this).html());
+                         }
+                     });
+                     return labels.join(', ') + '';
+                 }
+            }
+         });
+         $("#id_municipio").multiselect('disable');
+});
+var foo = [];
+$(document).on('change','#id_departamento',function(){
+	$('#id_municipio').html('');
+    $('#id_departamento :selected').each(function(i, selected){ 
+        foo[i] = $(selected).val();      
+    });
+    $.getJSON('/ajax/munis/?ids='+foo.join(","), function(data){
+        $("#id_municipio").multiselect('enable');
+        var municipio = $('#id_municipio')
+        if(data){
+            
+           $.each(data, function(i, item){
+            $.each(item, function(j, item2){
+                var group = $('<optgroup></optgroup>').attr('label', j);
+                $.each(item2, function(k, item3){
+                    group.append($('<option></option>').val(item3.id).html(item3.nombre));
+                });
+                group.appendTo(municipio);
+                $('#id_municipio').multiselect('rebuild');
+            });
+
+        });
+       }
+   });
+
+    });
+
 </script>
 <!-- script de las graficas-->
 {% include "violencia_juvenil/conocimiento.html" %}
@@ -176,7 +265,13 @@
 			<form action="." method="POST">{% csrf_token %}
 				<div>
 					<label>Año:</label>
-					{{form.year}}      
+					{{form.year}}   
+					<label>Grupos:</label>
+					{{form.grupos}}
+					<label>Departamentos:</label>
+					{{form.departamento}}
+					<label>Municipios:</label>
+					{{form.municipio}}
 					<input type="submit" value="Consultar" name="consulta"/>         
 				</div>
 			</form>
