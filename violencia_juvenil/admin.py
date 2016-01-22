@@ -83,3 +83,4 @@ class EncuestaAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Encuesta, EncuestaAdmin)
 admin.site.register(Encuestador)
+admin.site.register(Etnias)
