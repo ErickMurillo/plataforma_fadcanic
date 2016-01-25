@@ -5,21 +5,25 @@
 
 {% block extra_head %}
 <style>
-.banner-filtros{	
-	height: 60px;
-	margin-top: -5px;
-	border-top: 6px #fff solid;	
-}
+	.banner-filtros{	
+		height: 60px;
+		margin-top: -5px;
+		border-top: 6px #fff solid;	
+	}
 
-ul, label {
-	list-style: none;
-	font-size: 16px
-}
+	ul, label {
+		list-style: none;
+		font-size: 16px
+	}
 
-p {
-	padding:10px;
-	font-size: 16px;
-}
+	p {
+		padding:10px;
+		font-size: 16px;
+	}
+	
+	.nav-tabs > li > a {
+	  color: black !important;
+	}
 </style>
 <script type="text/javascript" src="{% static 'actividades/js/underscore-min.js' %}"></script>
 <link href="{% static 'actividades/css/form.css' %}" rel="stylesheet" type="text/css"/>
@@ -54,76 +58,99 @@ p {
 
 {% block contenido %}
 {% include "actividades/filtros_selectos.html" %}
+<div>
 
-<div class="jumbotron">
-  <h4>Combinaciones de variables</h4>
-</div>	
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Combinaciones de variables</a></li>
+		<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Lista de actividades</a></li>
+	</ul>
 
-<div class="container-fluid">
-<form action="." method="post">
-	{% csrf_token %}
-	<div class="col-md-4">
-		<h5>PASO 1</h5>
-		<div class="col-md-12">
-			<p>Variable Principal</p>
-			<div>{{form.main_var}}</div>			
-			
-		</div>		
-	</div>
-
-	<div class="col-md-4">
-		<h5>PASO 2</h5>
-		<div class="col-md-12">
-			<div>
-				<p>{{form.participantes.label}}</p>
-				{{form.participantes}}
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="home">
+			<div class="jumbotron">
+				<h4>Combinaciones de variables</h4>
 			</div>	
-			<br>
-			<div>
-				<p>{{form.evaluacion.label}}</p>
-				{{form.eval_tipo}}
+
+			<div class="container-fluid">
+				<form action="." method="post">
+					{% csrf_token %}
+					<div class="col-md-4">
+						<h5>PASO 1</h5>
+						<div class="col-md-12">
+							<p>Variable Principal</p>
+							<div>{{form.main_var}}</div>			
+
+						</div>		
+					</div>
+
+					<div class="col-md-4">
+						<h5>PASO 2</h5>
+						<div class="col-md-12">
+							<div>
+								<p>{{form.participantes.label}}</p>
+								{{form.participantes}}
+							</div>	
+							<br>
+							<div>
+								<p>{{form.evaluacion.label}}</p>
+								{{form.eval_tipo}}
+							</div>
+							<br>			
+							<div>				
+								{{form.evaluacion}}
+							</div>
+							<div class="clean"></div>
+						</div>		
+					</div>
+					<div class="col-md-4">
+						<h5>PASO 3</h5>
+						<div class="x1">
+							<p>Opciones de Visualización</p>
+							<div>
+								{{form.total}} <label>{{form.total.label}}</label><br>
+								{{form.bar_graph}} <label>{{form.bar_graph.label}}</label><br>
+								{{form.pie_graph}} <label>{{form.pie_graph.label}}</label>
+							</div>			
+							<div class="clean"></div>
+						</div>
+						<br>
+						<h5>PASO 4</h5>
+						<br>
+						<div>
+							<input type="submit" class="form-button" value="Generar tabla" />
+						</div>		
+					</div>
+				</form>
 			</div>
-			<br>			
-			<div>				
-				{{form.evaluacion}}
-			</div>
-			<div class="clean"></div>
-		</div>		
-	</div>
-	<div class="col-md-4">
-		<h5>PASO 3</h5>
-		<div class="x1">
-			<p>Opciones de Visualización</p>
-			<div>
-				{{form.total}} <label>{{form.total.label}}</label><br>
-				{{form.bar_graph}} <label>{{form.bar_graph.label}}</label><br>
-				{{form.pie_graph}} <label>{{form.pie_graph.label}}</label>
-			</div>			
-			<div class="clean"></div>
 		</div>
-		<br>
-		<h5>PASO 4</h5>
-		<br>
-		<div>
-			<input type="submit" class="form-button" value="Generar tabla" />
-		</div>		
+		<div role="tabpanel" class="tab-pane" id="profile">
+			<h3>Lista de actividades</h3>
+			<ul>
+				{% for obj in actividad %}
+				<li><a href="/actividades/actividades_pdf/{{obj.id}}" target="_black">{{obj.nombre_actividad}}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
 	</div>
-</form>
+
 </div>
+
 {{request.session.var2}}<br>{{request.session.main}}
 
 {% endblock %}
 
 {% block extra_js %}
 <script>
-$( "#id_participantes li" ).click(function() {
-  $("#id_evaluacion_0, #id_evaluacion_1, #id_evaluacion_2, #id_evaluacion_3, #id_evaluacion_4").prop('checked', false);
-});
+	$( "#id_participantes li" ).click(function() {
+		$("#id_evaluacion_0, #id_evaluacion_1, #id_evaluacion_2, #id_evaluacion_3, #id_evaluacion_4").prop('checked', false);
+	});
 
-$( "#id_evaluacion_0, #id_evaluacion_1, #id_evaluacion_2, #id_evaluacion_3, #id_evaluacion_4" ).click(function() {
-  $("#id_participantes_0, #id_participantes_1, #id_participantes_2").prop('checked', false);
-});	
+	$( "#id_evaluacion_0, #id_evaluacion_1, #id_evaluacion_2, #id_evaluacion_3, #id_evaluacion_4" ).click(function() {
+		$("#id_participantes_0, #id_participantes_1, #id_participantes_2").prop('checked', false);
+	});	
 
 </script>
-	
+
 {% endblock extra_js %}

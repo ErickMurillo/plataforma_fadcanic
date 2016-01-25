@@ -1,337 +1,74 @@
 {% extends "cambiaahora/base.html" %}
 
 {% block extra_js %}
-<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-<script src="/static/violencia_juvenil/js/highcharts.js"></script>
-<script src="/static/violencia_juvenil/js/exporting.js"></script>
-<script type="text/javascript" src="/static/violencia_juvenil/js/bootstrap-multiselect.js"></script>
-<link rel="stylesheet" href="/static/violencia_juvenil/css/bootstrap-multiselect.css" type="text/css"/>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script type="text/javascript" src="/static/violencia_juvenil/js/markerclusterer.js"></script>
+<script type="text/javascript" src="/static/violencia_juvenil/js/infobox.js"></script>
 <script>
-	$(function () {
-		$('#sexo').highcharts({
-			chart: {
-				plotBackgroundColor: null,
-				plotBorderWidth: null,
-				plotShadow: false,
-				type: 'pie'
-			},
-			title: {
-				text: 'sexo'
-			},
-			tooltip: {
-				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-			},
-			plotOptions: {
-				pie: {
-					allowPointSelect: true,
-					cursor: 'pointer',
-					dataLabels: {
-						enabled: true,
-						format: '<b>{point.name}</b>: {point.percentage:.2f} %',
-						style: {
-							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-						}
+	var markers = [];
+	function initialize()
+	{	
+		var infowindow = new google.maps.InfoWindow();
+		var myLatlng = new google.maps.LatLng(13,-85);
+		var myOptions = {
+			zoom: 7,
+			center: myLatlng, 
+		}
+
+		var map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+		var bounds = new google.maps.LatLngBounds();
+		var infowindow = new google.maps.InfoWindow();
+		var image = new google.maps.MarkerImage('/static/violencia_juvenil/img/m.png');
+		
+		
+		$.getJSON("{% url 'obtener-lista-violencia' %}", function(data){
+			$.each(data, function(i, elemento){
+				var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
+				bounds.extend(latlng);	
+				var marker = new google.maps.Marker({
+					position: latlng,
+					map: map,
+					title: elemento.nombre,
+					icon: image,
+					item: '',
+                    id: elemento.id
+				});
+				markers.push(marker);
+
+				google.maps.event.addListener(marker, 'click', (function(mm, tt) {
+					return function() {
+						infowindow.setContent(tt);
+						infowindow.open(map, mm);
 					}
-				}
-			},
-			series: [{
-				name: 'Procentaje',
-				colorByPoint: true,
-				data: [
-				{% for k,v in sexo.items %}
-				{
-					name: '{{k}}',
-					y: {{v}},
-					{% if forloop.counter == 1 %}
-					sliced: true,
-					selected: true
-					{% endif %}
-				},
-				{% endfor %}
-				]
-			}]
+				})(marker, elemento.nombre));
+				
+			});
+			var markerCluster = new MarkerClusterer(map, markers);
+
 		});
-	});
+		
+		//map.fitBounds(bounds);	
+	}
 
-	$(function () {
-		$('#edad').highcharts({
-			chart: {
-				plotBackgroundColor: null,
-				plotBorderWidth: null,
-				plotShadow: false,
-				type: 'pie'
-			},
-			title: {
-				text: 'edad'
-			},
-			tooltip: {
-				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-			},
-			plotOptions: {
-				pie: {
-					allowPointSelect: true,
-					cursor: 'pointer',
-					dataLabels: {
-						enabled: true,
-						format: '<b>{point.name}</b>: {point.percentage:.2f} %',
-						style: {
-							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-						}
-					}
-				}
-			},
-			series: [{
-				name: 'Procentaje',
-				colorByPoint: true,
-				data: [
-				{% for k,v in edad.items %}
-				{
-					name: '{{k}}',
-					y: {{v}},
-					{% if forloop.counter == 1 %}
-					sliced: true,
-					selected: true
-					{% endif %}
-				},
-				{% endfor %}
-				]
-			}]
-		});
-	});
-
-	$(function () {
-		$('#etnia').highcharts({
-			chart: {
-				type: 'column'
-			},
-			title: {
-				text: 'etnia'
-			},
-
-			credits: {
-				enabled: false
-			},
-
-			tooltip: {
-				formatter: function() {
-					return ''+
-					this.series.name +': '+ this.y +'%';
-				}
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			xAxis: {
-				categories: [
-				'Etnias',
-
-				],
-				crosshair: true
-			},
-			plotOptions: {
-				series: {
-					borderWidth: 0,
-					dataLabels: {
-						enabled: true,
-						format: '{point.y:.1f}%',
-						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
-						style: {
-							textShadow: '0 0 3px white'
-						}
-					}
-				}
-			},
-			series: [
-			{% for k,v in etnia.items %}
-			{
-				name: '{{k}}',
-				data: [{{v}}],
-
-			},
-			{% endfor %}
-			]
-		});
-	});
-
-// filtros
-
-$(document).ready(function() {
-
-	$('#id_departamento').multiselect({
-            buttonWidth: '250px',
-            maxHeight: 250,
-            includeSelectAllOption: true,
-            selectAllText: 'Seleccionar todos',
-            buttonText: function(options, select) {
-                if (options.length === 0) {
-                    return 'Sin selección ...';
-                }
-                else if (options.length > 3) {
-                    return 'Varias opciones seleccionadas!';
-                }
-                 else {
-                     var labels = [];
-                     options.each(function() {
-                         if ($(this).attr('label') !== undefined) {
-                             labels.push($(this).attr('label'));
-                         }
-                         else {
-                             labels.push($(this).html());
-                         }
-                     });
-                     return labels.join(', ') + '';
-                 }
-            }
-        });
-	$('#id_municipio').multiselect({
-            enableCollapsibleOptGroups: true,
-            buttonWidth: '250px',
-            maxHeight: 250,
-            includeSelectAllOption: true,
-            selectAllText: 'Seleccionar todos',
-            buttonText: function(options, select) {
-                if (options.length === 0) {
-                    return 'Sin selección ...';
-                }
-                else if (options.length > 3) {
-                    return 'Varias opciones seleccionadas!';
-                }
-                 else {
-                     var labels = [];
-                     options.each(function() {
-                         if ($(this).attr('label') !== undefined) {
-                             labels.push($(this).attr('label'));
-                         }
-                         else {
-                             labels.push($(this).html());
-                         }
-                     });
-                     return labels.join(', ') + '';
-                 }
-            }
-         });
-         $("#id_municipio").multiselect('disable');
-});
-var foo = [];
-$(document).on('change','#id_departamento',function(){
-	$('#id_municipio').html('');
-    $('#id_departamento :selected').each(function(i, selected){ 
-        foo[i] = $(selected).val();      
-    });
-    $.getJSON('/ajax/munis/?ids='+foo.join(","), function(data){
-        $("#id_municipio").multiselect('enable');
-        var municipio = $('#id_municipio')
-        if(data){
-            
-           $.each(data, function(i, item){
-            $.each(item, function(j, item2){
-                var group = $('<optgroup></optgroup>').attr('label', j);
-                $.each(item2, function(k, item3){
-                    group.append($('<option></option>').val(item3.id).html(item3.nombre));
-                });
-                group.appendTo(municipio);
-                $('#id_municipio').multiselect('rebuild');
-            });
-
-        });
-       }
-   });
-
-    });
-
+	google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-<!-- script de las graficas-->
-{% include "violencia_juvenil/conocimiento.html" %}
-{% include "violencia_juvenil/actitud.html" %}
-{% include "violencia_juvenil/practicas.html" %}
-{% include "violencia_juvenil/persepcion.html" %}
-{% include "violencia_juvenil/estado_actual.html" %}
-<!-- end script de las graficas-->
-
 {% endblock extra_js %}
 
 {% block contenido %}
 <style>
-	.nav-tabs > li > a {
-		color: black !important; 
+	#map-canvas{
+		width: 100%;
+		height: 500px
 	}
 </style>
 <div class="container">
 	<div class="row">
-		<div class="consulta">
-			<form action="." method="POST">{% csrf_token %}
-				<div>
-					<label>Año:</label>
-					{{form.year}}   
-					<label>Grupos:</label>
-					{{form.grupos}}
-					<label>Departamentos:</label>
-					{{form.departamento}}
-					<label>Municipios:</label>
-					{{form.municipio}}
-					<input type="submit" value="Consultar" name="consulta"/>         
-				</div>
-			</form>
+		<div class="col-md-3">
+			<a class="btn btn-default" href="/violencia_juvenil/consulta">Consulta</a>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6" id="sexo" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-		<div class="col-md-6" id="edad" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-		<div class="col-md-6" id="etnia" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-	</div>
-
-	<div class="row">
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#conocimiento" aria-controls="conocimiento" role="tab" data-toggle="tab">Conocimiento</a></li>
-			<li role="presentation"><a href="#actitud" aria-controls="actitud" role="tab" data-toggle="tab">Actitud</a></li>
-			<li role="presentation"><a href="#practicas" aria-controls="practicas" role="tab" data-toggle="tab">Prácticas</a></li>
-			<li role="presentation"><a href="#percepcion" aria-controls="percepcion" role="tab" data-toggle="tab">Percepción</a></li>
-			<li role="presentation"><a href="#estado" aria-controls="estado" role="tab" data-toggle="tab">Estado actual</a></li>
-		</ul>
-
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="conocimiento">
-				<div class="col-md-12" id="pregunta3" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta4" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-				
-				<div class="col-md-12" id="pregunta7" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta9" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta13" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-			</div>
-
-			<div role="tabpanel" class="tab-pane" id="actitud">
-				<div class="col-md-12" id="pregunta15" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta19" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-			</div>
-
-			<div role="tabpanel" class="tab-pane" id="practicas">
-				<div class="col-md-12" id="pregunta23" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta24" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-			</div>
-
-			<div role="tabpanel" class="tab-pane" id="percepcion">
-				<div class="col-md-12" id="pregunta30" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta31" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-			</div>
-			
-			<div role="tabpanel" class="tab-pane" id="estado">
-				<div class="col-md-12" id="pregunta36" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta37" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
-			</div>
+		<div class="col-md-9">
+			<div id="map-canvas"></div>
 		</div>
 	</div>
 </div>
-
 {% endblock contenido %}

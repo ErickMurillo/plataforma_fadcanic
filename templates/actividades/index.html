@@ -58,6 +58,7 @@
 
 $(document).ready(function() {
   $("#id_municipio").select2();
+  $("#id_resultado").select2();
 });
 </script>
 
@@ -71,18 +72,9 @@ $(document).ready(function() {
 </style>
 <div class="container contenido">
 	<div class="col-md-8">
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Filtro de actividades</a></li>
-			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Lista de actividades</a></li>
-		</ul>
-
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="home">
-			<div class="banner banner-filtros">	
-	<h3 align="center">Filtros de proyectos</h3>
-</div>
+		<div class="banner banner-filtros">	
+			<h3 align="center">Filtros de proyectos</h3>
+		</div>
 			
 		<center>		
 		<form action="." method="post" class="form">
@@ -183,15 +175,7 @@ $(document).ready(function() {
 						</ul>
 					</div>
 				</div>-->
-			</div>
-			<div role="tabpanel" class="tab-pane" id="profile">
-				<h3>Todas las actividades</h3>
-				<ul>
-					{% for obj in actividad %}
-					<li><a href="/actividades/actividades_pdf/{{obj.id}}" target="_black">{{obj.nombre_actividad}}</a></li>
-					{% endfor %}
-				</ul></div>
-			</div>
+
 		</div>
 
 
