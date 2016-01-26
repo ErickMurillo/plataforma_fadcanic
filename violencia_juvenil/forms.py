@@ -16,8 +16,8 @@ def departamentos():
 class ViolenciaConsulta(forms.Form):
     def __init__(self, *args, **kwargs):
         super(ViolenciaConsulta, self).__init__(*args, **kwargs)
-        self.fields['year'] = forms.ChoiceField(label=u'Año',choices=fecha_choice(),required=False)
-        self.fields['grupos'] = forms.ChoiceField(label=u'Grupos',choices=GRUPOS_CHOICES,required=False)
+        self.fields['year'] = forms.MultipleChoiceField(label=u'Año',choices=fecha_choice(),required=True)
+        self.fields['grupos'] = forms.MultipleChoiceField(label=u'Grupos',choices=GRUPOS_CHOICES,required=False)
         self.fields['departamento'] = forms.ModelMultipleChoiceField(queryset=departamentos(), required=False,
         															 label=u'Departamentos')
         self.fields['municipio'] = forms.ModelMultipleChoiceField(queryset=Municipio.objects.all().order_by('nombre'), 

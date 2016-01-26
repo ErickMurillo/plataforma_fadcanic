@@ -27,6 +27,7 @@ from cambiaahora.noticias import views as viewsNews
 from actividades.views import *
 from rest_framework import routers
 from django.views.generic import TemplateView
+from violencia_juvenil import urls as violencia_juvenil_urls
 
 admin.site.site_header = "FADCANIC administración"
 admin.site.site_title = "FADCANIC sitio admin"
@@ -69,7 +70,7 @@ urlpatterns += patterns('mapeo.views',
 
 #violencia juvenil
 urlpatterns += patterns('violencia_juvenil.views',
-    url(r'^violencia_juvenil/',  'index', name='index-violencia'),
+    url(r'^violencia_juvenil/', include(violencia_juvenil_urls)),
     url(r'^ajax/munis/$', 'get_munis', name='get-munis'),
 )
 

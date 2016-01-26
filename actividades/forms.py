@@ -29,8 +29,7 @@ class ProyectoForm(FormFKAutoFill):
 											  widget=forms.Select(attrs={'class':'form-large'}))
 		self.fields['proyecto'] = forms.ModelChoiceField(queryset=Proyecto.objects.all(), required=True,
 										  widget=forms.Select(attrs={'class':'form-large'}))
-		self.fields['resultado'] = forms.ModelChoiceField(queryset=Resultado.objects.all(), required=True, 
-										  widget=forms.Select(attrs={'class':'form-large'}))
+		self.fields['resultado'] = forms.ModelMultipleChoiceField(queryset=Resultado.objects.all(), required=True)
 		self.fields['fecha_inicio'] = forms.DateField(required=False, widget=forms.TextInput(attrs={'style':'width: 320px'}))
 		self.fields['fecha_fin'] = forms.DateField(required=False, widget=forms.TextInput(attrs={'style':'width: 320px'}))
 
@@ -38,7 +37,7 @@ class ProyectoForm(FormFKAutoFill):
 		foo = Actividad.objects.all().order_by('municipio__nombre').distinct().values_list('municipio__id', flat=True)
 		#------------------------------------------------------
 		self.fields['municipio'] = forms.ModelMultipleChoiceField(queryset=Municipio.objects.filter(id__in=foo),
-									 required=True)
+									 required=False)
 		
 	class Foo:
 		config = [{'on_change': {'field': 'organizacion'},
