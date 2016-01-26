@@ -49,7 +49,9 @@
 }
 
 h4 {
-	margin-bottom: 5px;
+	margin-bottom: 5px;    
+	font-size: 32px;
+    font-weight: 300;
 }
 
 .caption h5 {
@@ -101,4 +103,11 @@ h5, .h5 {
 
 .ui-multiselect {
   width: 100% !important;
+}
+
+/****nuevo css*****/
+
+.thumbnail{
+	border: 3px solid #cacaca;
+    border-radius: 0px;
 }

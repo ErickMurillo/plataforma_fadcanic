@@ -14,7 +14,16 @@
   margin-right: 20px
 }
 .parrafo-mapeo h4{
-  margin-top: 33px;
+  font-size: 32px;
+  font-weight: 300;
+}
+h2{
+    font-size: 32px;
+    font-weight: 300;
+}
+.parrafo-mapeo p{
+  line-height:1.6;
+  text-align: justify;
 }
 select#id_tipo {
   /* styling */
@@ -33,8 +42,6 @@ select#id_tipo {
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
-
-
   background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, #FFF, #FFF);
   background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
   background-size: 5px 5px, 5px 5px, 1px 1.5em;
@@ -50,21 +57,19 @@ select#id_tipo:focus {
   background-size: 5px 5px, 5px 5px, 1px 1.5em;
   background-repeat: no-repeat;
   border-color: #901E1E;
-
   outline: 0;
 }
 .btn-mapeo{
   background-color: #A10C12;
   border:2px solid #7B0909;
   color: white;
+  margin-top: 29px;
 }
 .btn-mapeo:hover, .btn-mapeo:focus{
   background-color: #7B0909;
   border-color: white;
 }
 option:checked { display:none; }
-
-
 
 
 .social-mapeo a {
@@ -147,4 +152,66 @@ font-size: 20px;
 .social-mapeo a:nth-of-type(6):before {
 content:'\f1cb';
 font-size: 20px;
+}
+
+
+.encabezado-mapeo{
+  background-color: #373737;
+}
+.titulo-mapeo{
+  color: white;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+.encabezado-mapeo h6{
+  color: white;
+}
+.integrantes h6{
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+.integrantes p{
+  font-size: 15px;
+  color:white;
+  text-align: center;
+}
+.cuerpo-mapeo{
+    
+    margin-right: 15px;
+}
+.aside{
+  height: 1000px;
+  background-color: #373737;
+}
+.info-mapeo{
+  background: #3fbbbd;
+
+}
+.info-mapeo p{
+  font-size: 15px;
+  color: white;
+  padding:20px 0px;
+  text-align: center;
+  font-weight: bold;
+}
+.circulo{
+  border-radius: 50px;
+  background-color: white;
+  color: black;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+
+}
+.fa-map, .fa-map-marker {
+  margin-top: 15px;
+}
+.texto-mapeo{
+    font-size: 15px;
+    color: white;
+    
+}
+.fila{
+  margin-bottom: 20px;
 }

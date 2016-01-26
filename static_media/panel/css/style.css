@@ -1,15 +1,18 @@
 body{
-	background: url(../img/puerto.jpg) no-repeat center center fixed;
+	background: url(../img/fondo.jpg) no-repeat center center fixed;
 	background-size: cover;
 	/*linear-gradient(rgba(244,115,23,0.2),rgba(244,115,23,0.2)),*/ 
+}
+.main-panel{
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 .og-grid {
 	list-style: none;
 	padding-top: 24px;
 	margin: 0 auto;
 	text-align: center;
-	width: 60%;
-	
+	width: 50%;	
 }
 
 .og-grid li {
@@ -18,26 +21,27 @@ body{
 	vertical-align: top;
 	height: 160px;
 	width: 160px;
-	background: rgba(56, 149, 0, .75);
 	margin-bottom: 20px;
 }
 .og-grid li:hover{
-	background: rgba(56, 149, 0, 1);
+
 }
 .og-grid li > a,
 .og-grid li > a img {
 	border: none;
 	outline: none;
 	position: relative;
-	width: 30%;
-	margin-bottom: 48px;
+	width: 44%;
 
 }
 .og-grid li > a h5{
 	font-weight: bold;
-	color: white;
 	margin-bottom: 21px;
-	margin-top: 21px;
+	margin-top: 5px;
+	font-family: Impact;
+	font-size: 20px;
+	min-height: 54px;
+	text-transform: uppercase;
 }
 .og-grid li.og-expanded > a::after {
 	top: auto;
@@ -210,4 +214,43 @@ body{
 	.og-fullimg { display: none; }
 	.og-details { float: none; width: 100%; }
 	
+}
+
+.circulo{
+	background-color: white;
+	height: 120px;
+	width: 120px;
+	border-radius: 100px;
+	margin:0 auto;
+	border:5px solid rgba(56, 149, 0, .75)  ;
+
+}
+.og-grid li > a img{
+	padding-top: 35px;
+}
+.verde{
+	color: #29A000;
+}
+.rojo{
+	color: #A31628;
+}
+
+.panelluna {
+    width: 120px;
+    -moz-border-radius: 50%;
+    -moz-box-shadow: 30px 10px 0 #d9534f;
+    -webkit-border-radius: 50%;
+    -webkit-box-shadow: 30px 10px 0 #d9534f;
+    border-radius: 50%;
+    height: 125px;
+    left: 23px;
+    position: relative;
+    top: -203px;
+    box-shadow: 8px 2px 0 #A31628;
+}
+.og-grid li.og-expanded > a::after{
+	margin-top: -150px;
+}
+.og-expander{
+	margin-top: -120px;
 }
