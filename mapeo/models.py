@@ -4,6 +4,8 @@ from ckeditor.fields import RichTextField
 from actividades.lugar.models import *
 from smart_selects.db_fields import ChainedForeignKey
 from django.template.defaultfilters import slugify
+from cambiaahora.utils import get_file_path
+from sorl.thumbnail import ImageField
 
 class Acciones_Violencia(models.Model):
 	nombre = models.CharField(max_length=200)
@@ -36,7 +38,7 @@ class Acciones_Apoyo(models.Model):
 		verbose_name_plural = "Acciones de apoyo directo a la Campaña"
 
 TIPO_CHOICES = (
-		(1,'Organización que apoya y participa con la Campaña'),
+		(1,'Comité municipal de prevención de violencia'),
 		(2,'Comité comunal'),
 		(3,'Diplomado de promotoría'),
 		(4,'Diplomado de comunicación'),
@@ -83,7 +85,12 @@ class Organizaciones(models.Model):
 	acciones_violencia = models.ManyToManyField(Acciones_Violencia,blank=True)
 	acciones_consumo_drogas = models.ManyToManyField(Acciones_Consumo_Drogas,blank=True)
 	acciones_apoyo = models.ManyToManyField(Acciones_Apoyo,blank=True)
+	#nuevo campo img
+	foto = ImageField('Foto', upload_to=get_file_path, blank=True, null=True)
+	#----------------------------------------------------------------------------
 	slug = models.SlugField(editable=False, max_length=450)
+
+	fileDir = 'mapeo/'
 
 	def __unicode__(self):
 		return self.nombre

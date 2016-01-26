@@ -1,4 +1,5 @@
 {% extends "cambiaahora/base.html" %}
+{% load thumbnail %}
 
 {% block extra_js %}
 
@@ -6,119 +7,108 @@
 
 {% block contenido %}
 <div class="container">
-	{{object}} <br>
 
-	{{object.get_tipo_display}}<br>
+	{% for obj in object %}
+		<h1>Foto</h1>
+		{% thumbnail obj.foto "x200" format="PNG" as img %}
+			<img class="center-block img-detail img-responsive" src="/media/{{img}}">
+		{% empty %}
+			<img class="center-block img-detail img-responsive" src="http://placehold.it/300x200?text=No+Imagen">
+		{% endthumbnail %}
+	
+		{{obj.nombre}} <br>
+		{{obj.get_tipo_display}}<br>
 
-	{% if object.persona_contacto %}
-		{{object.persona_contacto}}<br>
+	{% if obj.persona_contacto %}
+		{{obj.persona_contacto}}<br>
 	{% endif %}
 
-	{% if object.direccion %}
-		{{object.direccion}}<br>
+	{% if obj.direccion %}
+		{{obj.direccion}}<br>
 	{% endif %}
 
-	{{object.municipio}}<br>
+	{{obj.municipio}}<br>
 
-	{% if object.comunidad %}
-		{{object.comunidad}}<br>
+	{% if obj.comunidad %}
+		{{obj.comunidad}}<br>
 	{% endif %}
 
-	{% if object.convencional %}
-		{{object.convencional}}<br>
+	{% if obj.convencional %}
+		{{obj.convencional}}<br>
 	{% endif %}
 
-	{% if object.celular %}
-		{{object.celular}}<br>
+	{% if obj.celular %}
+		{{obj.celular}}<br>
 	{% endif %}
 
-	{% if object.correo %}
-		{{object.correo}}<br>
+	{% if obj.correo %}
+		{{obj.correo}}<br>
 	{% endif %}
 
-	{% if object.web %}
-		{{object.web}}<br>
+	{% if obj.web %}
+		{{obj.web}}<br>
 	{% endif %}
 
-	{% if object.facebook %}
-		{{object.facebook}}<br>
+	{% if obj.facebook %}
+		{{obj.facebook}}<br>
 	{% endif %}
 
-	{% if object.twitter %}
-		{{object.twitter}}<br>
+	{% if obj.twitter %}
+		{{obj.twitter}}<br>
 	{% endif %}
 
-	{% if object.youtube %}
-		{{object.youtube}}<br>
+	{% if obj.youtube %}
+		{{obj.youtube}}<br>
 	{% endif %}
 
-	{% if object.otro %}
-		{{object.otro}}<br>
+	{% if obj.otro %}
+		{{obj.otro}}<br>
 	{% endif %}
 
-	{% if object.cobertura %}
+	{% if obj.cobertura %}
 	<h5>Cobertura</h5>
 	<ul>
-		{% for obj in object.cobertura.all %}
+		{% for obj in obj.cobertura.all %}
   			<li>{{obj}}</li>
 		{% endfor %}
 	</ul>
 	{% endif %}
 
-	{% if object.masculino %}
-		<h6>Integrantes masculinos: {{object.masculino}}</h6>
+	{% if obj.masculino %}
+		<h6>Integrantes masculinos: {{obj.masculino}}</h6>
 	{% endif %}
 
-	{% if object.femenino %}
-		<h6>Integrantes femeninos: {{object.femenino}}</h6>
+	{% if obj.femenino %}
+		<h6>Integrantes femeninos: {{obj.femenino}}</h6>
 	{% endif %}
 
-	{% if object.integrantes %}
+	{% if obj.integrantes %}
 		<h6>Nombre de los integrantes:</h6>
-		{{object.integrantes|safe}}
+		{{obj.integrantes|safe}}
 	{% endif %}
 
-	{% if object.tipo != 1 %}
+	{% if obj.tipo != 1 %}
 		<h6>Edades de los integrantes:</h6>
-		{% if object.mayor_13 %}
-			13 a 18 años: {{object.mayor_13}}<br>
+		{% if obj.mayor_13 %}
+			13 a 18 años: {{obj.mayor_13}}<br>
 		{% endif %}
 
-		{% if object.mayor_19 %}
-			19 a 30 años: {{object.mayor_19}}<br>
-		{% endif %}
-		
-		{% if object.mayor_30 %}
-			31 a más años: {{object.mayor_30}}<br>
+		{% if obj.mayor_19 %}
+			19 a 30 años: {{obj.mayor_19}}<br>
 		{% endif %}
 		
+		{% if obj.mayor_30 %}
+			31 a más años: {{obj.mayor_30}}<br>
+		{% endif %}
+		
 	{% endif %}
 
-	{% if object.acciones_violencia %}
-	<h6>Acciones de Violencia</h6>
-	<ul>
-		{% for obj in object.acciones_violencia.all %}
-  			<li>{{obj}}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-
-	{% if object.acciones_consumo_drogas %}
-	<h6>Acciones consumo de drogas</h6>
-	<ul>
-		{% for obj in object.acciones_consumo_drogas.all %}
-  			<li>{{obj}}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-
-	{% if object.acciones_apoyo %}
-	<h6>Acciones de apoyo</h6>
-	<ul>
-		{% for obj in object.acciones_apoyo.all %}
-  			<li>{{obj}}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
+	<h3>Acciones</h3>
+		<ul>
+			{% for actividad in actividades %}
+				<li><a href="/actividades/actividades_pdf/{{actividad.id}}" target="_black">{{actividad.nombre_actividad}}</a></li>
+			{% endfor %}
+		</ul>
+	{% endfor %}
 </div>
 {% endblock contenido %}

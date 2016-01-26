@@ -45,7 +45,7 @@ def consulta(request,template="violencia_juvenil/consulta.html"):
 			request.session['departamento'] = form.cleaned_data['departamento']
 			request.session['municipio'] = form.cleaned_data['municipio']
 
-			return HttpResponseRedirect('dashboard/')		
+			return HttpResponseRedirect('/violencia_juvenil/dashboard/')		
 	else:
 		form = ViolenciaConsulta()
 		try:

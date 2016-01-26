@@ -28,6 +28,7 @@ from actividades.views import *
 from rest_framework import routers
 from django.views.generic import TemplateView
 from violencia_juvenil import urls as violencia_juvenil_urls
+from actividades.contraparte.views import BusquedaView
 
 admin.site.site_header = "FADCANIC administración"
 admin.site.site_title = "FADCANIC sitio admin"
@@ -46,6 +47,7 @@ urlpatterns = [
     url(r'^actividades/', include('actividades.urls')),
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'actividades/login.html'}),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'template_name': 'actividades/logout.html'}),
+    url(r'^admin/comite/$', BusquedaView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns('',
