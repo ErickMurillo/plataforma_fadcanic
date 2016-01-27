@@ -28,7 +28,7 @@
 <script type="text/javascript" src="{% static 'actividades/js/underscore-min.js' %}"></script>
 <link href="{% static 'actividades/css/form.css' %}" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="{% static 'actividades/js/jquery.easing.1.3.js' %}"></script>
-<script type="text/javascript" src="{% static 'actividades/js/jquery.ibutton.min.js' %}"></script>
+<!--<script type="text/javascript" src="{% static 'actividades/js/jquery.ibutton.min.js' %}"></script>
 <link href="{% static 'actividades/css/jquery.ibutton.min.css' %}" rel="stylesheet" type="text/css"/>
 
 <script type="text/javascript">
@@ -52,8 +52,9 @@
 			, duration: 400
 		});
 	});
-</script>
 
+</script>
+-->
 {% endblock %}
 
 {% block contenido %}
@@ -62,54 +63,57 @@
 
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Combinaciones de variables</a></li>
-		<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Lista de actividades</a></li>
+		<li role="presentation" class="active"><a href="#variable" aria-controls="variable" role="tab" data-toggle="tab">Combinaciones de variables</a></li>
+		<li role="presentation"><a href="#lista" aria-controls="lista" role="tab" data-toggle="tab">Lista de actividades</a></li>
 	</ul>
 
 	<!-- Tab panes -->
 	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="home">
-			<div class="jumbotron">
-				<h4>Combinaciones de variables</h4>
-			</div>	
+		<div role="tabpanel" class="tab-pane active" id="variable">
+			
+			<h4 class="borde">Combinaciones de variables</h4>
+			
 
 			<div class="container-fluid">
 				<form action="." method="post">
 					{% csrf_token %}
 					<div class="col-md-4">
-						<h5>PASO 1</h5>
 						<div class="col-md-12">
-							<p>Variable Principal</p>
+							<label>Variable Principal</label>
 							<div>{{form.main_var}}</div>			
 
-						</div>		
-					</div>
-
-					<div class="col-md-4">
-						<h5>PASO 2</h5>
+						</div>
+						
 						<div class="col-md-12">
 							<div>
-								<p>{{form.participantes.label}}</p>
+								<label>{{form.participantes.label}}</label>
 								{{form.participantes}}
 							</div>	
 							<br>
-							<div>
-								<p>{{form.evaluacion.label}}</p>
-								{{form.eval_tipo}}
-							</div>
-							<br>			
-							<div>				
-								{{form.evaluacion}}
-							</div>
+							
 							<div class="clean"></div>
-						</div>		
+						</div>	
 					</div>
 					<div class="col-md-4">
-						<h5>PASO 3</h5>
+						<div>
+								<label>{{form.evaluacion.label}}</label>
+								<br>
+								{{form.eval_tipo}}
+								
+							<label class="labelclean" for=""></label>				
+								{{form.evaluacion}}
+							</div>
+					</div>
+					<div class="col-md-4">
+						
 						<div class="x1">
-							<p>Opciones de Visualización</p>
+							<label>Opciones de Visualización</label>
 							<div>
-								{{form.total}} <label>{{form.total.label}}</label><br>
+							<div class="prueba">
+								{{form.total}}
+								<label for="id_total">{{form.total.label}}</label>
+							</div>
+								<br>
 								{{form.bar_graph}} <label>{{form.bar_graph.label}}</label><br>
 								{{form.pie_graph}} <label>{{form.pie_graph.label}}</label>
 							</div>			
@@ -125,7 +129,7 @@
 				</form>
 			</div>
 		</div>
-		<div role="tabpanel" class="tab-pane" id="profile">
+		<div role="tabpanel" class="tab-pane" id="lista">
 			<h3>Lista de actividades</h3>
 			<ul>
 				{% for obj in actividad %}

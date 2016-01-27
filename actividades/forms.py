@@ -83,16 +83,12 @@ evaluacion_m = {'importancia_del_tema': 'relevancia_m',
 class SubFiltroForm(forms.Form):  
 	def __init__(self, *args, **kwargs):
 		super(SubFiltroForm, self).__init__(*args, **kwargs)  
-		self.fields['main_var'] = forms.ChoiceField(choices=to_choices(first_class.keys()), 
-									 widget=RadioSelect(attrs={'class':'main'}))
-		self.fields['participantes'] = forms.ChoiceField(choices=to_choices(participantes.keys()), 
-										  widget=RadioSelect(attrs={'class':'unique'}),
+		self.fields['main_var'] = forms.ChoiceField(choices=to_choices(first_class.keys()))
+		self.fields['participantes'] = forms.ChoiceField(choices=to_choices(participantes.keys()),
 										  required=False)
-		self.fields['evaluacion'] = forms.ChoiceField(choices=to_choices(evaluacion.keys()), 
-									   widget=RadioSelect(attrs={'class':'unique'}),
+		self.fields['evaluacion'] = forms.ChoiceField(choices=to_choices(evaluacion.keys()),
 									   required=False)
-		self.fields['eval_tipo'] = forms.ChoiceField(choices=((1, 'Hombres'), (2, 'Mujeres')), 
-									  widget=RadioSelect(attrs={'class':'nobutton'}), initial=1)
+		self.fields['eval_tipo'] = forms.ChoiceField(choices=((1, 'Hombres'), (2, 'Mujeres')), initial=1)
 		self.fields['total'] = forms.BooleanField(required=False, label=u"Ver totales")
 		self.fields['bar_graph'] = forms.BooleanField(required=False, label=u"Gráfico de barras")
 		self.fields['pie_graph'] = forms.BooleanField(required=False, label=u"Gráfico de pastel")
