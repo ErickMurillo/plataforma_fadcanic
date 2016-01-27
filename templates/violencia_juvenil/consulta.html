@@ -60,6 +60,58 @@ $(document).ready(function() {
                  }
             }
         });
+    $('#id_etnia').multiselect({
+            buttonWidth: '250px',
+            maxHeight: 250,
+            includeSelectAllOption: true,
+            selectAllText: 'Seleccionar todos',
+            buttonText: function(options, select) {
+                if (options.length === 0) {
+                    return 'Sin selección ...';
+                }
+                else if (options.length > 3) {
+                    return 'Varias opciones seleccionadas!';
+                }
+                 else {
+                     var labels = [];
+                     options.each(function() {
+                         if ($(this).attr('label') !== undefined) {
+                             labels.push($(this).attr('label'));
+                         }
+                         else {
+                             labels.push($(this).html());
+                         }
+                     });
+                     return labels.join(', ') + '';
+                 }
+            }
+        });
+    $('#id_edad').multiselect({
+            buttonWidth: '250px',
+            maxHeight: 250,
+            includeSelectAllOption: true,
+            selectAllText: 'Seleccionar todos',
+            buttonText: function(options, select) {
+                if (options.length === 0) {
+                    return 'Sin selección ...';
+                }
+                else if (options.length > 3) {
+                    return 'Varias opciones seleccionadas!';
+                }
+                 else {
+                     var labels = [];
+                     options.each(function() {
+                         if ($(this).attr('label') !== undefined) {
+                             labels.push($(this).attr('label'));
+                         }
+                         else {
+                             labels.push($(this).html());
+                         }
+                     });
+                     return labels.join(', ') + '';
+                 }
+            }
+        });
 	$('#id_departamento').multiselect({
             buttonWidth: '250px',
             maxHeight: 250,
@@ -141,7 +193,7 @@ $(document).on('change','#id_departamento',function(){
    });
 
     });
-
+$('#id_sexo').append('<option value="" selected="selected">Ambos</option>');
 </script>
 {% endblock extra_js %}
 
@@ -155,6 +207,12 @@ $(document).on('change','#id_departamento',function(){
 					{{form.year}}   
 					<label>Grupos:</label>
 					{{form.grupos}}
+                    <label>Sexo:</label>
+                    {{form.sexo}}
+                    <label>Edad:</label>
+                    {{form.edad}}
+                    <label>Etnia:</label>
+                    {{form.etnia}}
 					<label>Departamentos:</label>
 					{{form.departamento}}
 					<label>Municipios:</label>

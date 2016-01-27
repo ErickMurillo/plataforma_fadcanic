@@ -16,6 +16,15 @@ def _queryset_filtrado(request):
 	if request.session['grupos']:
 		params['grupos__in'] = request.session['grupos']
 
+	if request.session['sexo']:
+		params['informacionentrevistado__sexo'] = request.session['sexo']
+
+	if request.session['edad']:
+		params['informacionentrevistado__edad__in'] = request.session['edad']
+
+	if request.session['etnia']:
+		params['informacionentrevistado__etnia__in'] = request.session['etnia']
+
 	if request.session['departamento']:
 		if not request.session['municipio']:
 			municipios = Municipio.objects.filter(departamento__in=request.session['departamento'])
@@ -42,6 +51,9 @@ def consulta(request,template="violencia_juvenil/consulta.html"):
 		if form.is_valid():
 			request.session['year'] = form.cleaned_data['year']
 			request.session['grupos'] = form.cleaned_data['grupos']
+			request.session['sexo'] = form.cleaned_data['sexo']
+			request.session['edad'] = form.cleaned_data['edad']
+			request.session['etnia'] = form.cleaned_data['etnia']
 			request.session['departamento'] = form.cleaned_data['departamento']
 			request.session['municipio'] = form.cleaned_data['municipio']
 

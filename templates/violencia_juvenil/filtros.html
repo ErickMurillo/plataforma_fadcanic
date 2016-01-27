@@ -27,6 +27,49 @@
 			{% endfor %}
 		</li>
 		{% endif %}
+
+		{% if request.session.sexo %}
+			<li><a href="#">Sexo:</a>
+			{% if request.session.sexo == '1' %}
+				Mujer
+			{% elif request.session.sexo == '2' %}
+				Hombre
+			{% endif %}
+			</li>
+		{% else %}
+			<li><a href="#">Sexo:</a> Ambos</li>
+		{% endif %}
+
+		{% if request.session.edad %}
+		<li><a href="#">Edad(s):</a>
+			{% for edad in request.session.edad %}
+				{% if edad == '1' %}
+					13 a 18{% if not forloop.last %}, {% endif %}
+				{% elif edad == '2' %}
+					19 a 30{% if not forloop.last %}, {% endif %}
+				{% elif edad == '3' %}
+					30 a +{% if not forloop.last %}, {% endif %}
+				{% endif %}
+			{% endfor %}
+		</li>
+		{% endif %}
+
+		{% if request.session.etnia %}
+		<li><a href="#">Etnia(s):</a>
+			{% for etnia in request.session.etnia %}
+				{% if etnia == '1' %}
+					Mestiza{% if not forloop.last %}, {% endif %}
+				{% elif etnia == '2' %}
+					Ulwa{% if not forloop.last %}, {% endif %}
+				{% elif etnia == '3' %}
+					Miskitu{% if not forloop.last %}, {% endif %}
+				{% elif etnia == '4' %}
+					Creole{% if not forloop.last %}, {% endif %}
+				{% endif %}
+			{% endfor %}
+		</li>
+		{% endif %}
+
 		{% if request.session.departamento %}
 		<li><a href="#">Departamento(s):</a>
 			{% for departamento in request.session.departamento %}
@@ -34,6 +77,7 @@
 			{% endfor %}
 		</li>
 		{% endif %}
+
 		{% if request.session.municipio %}
 		<li><a href="#">Municipio(s):</a>
 			{% for municipio in request.session.municipio %}
