@@ -1,6 +1,11 @@
+body {
+    background-color: #F1F2F2;
+}
 .mapeo-contenedor{
   margin-top:50px;
   margin-bottom:50px;
+  background: white;
+  padding:20px;
 }
 
 .mapeo-form{
@@ -72,146 +77,33 @@ select#id_tipo:focus {
 option:checked { display:none; }
 
 
-.social-mapeo a {
-  color:#fff;
-  background: #DB6E82;
-  text-align:center;
-  text-decoration:none;
-  font-family:fontawesome;
-  position: relative;
-  display: inline-block;
-  width:40px;
-  height:40px;
-  padding-top:6px;
-  margin:0 2px;
-  -o-transition:all .5s;
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  transition: all .5s;
-   -webkit-font-smoothing: antialiased;
-}
-.social-mapeo a:hover{
-   background: #ef92a3;
-}
-
-.social-mapeo a span {
-  color:#666;
-  position:absolute;
-  font-family:sans-serif;
-  bottom:0;
-  left:-25px;
-  right:-25px;
-  padding:5px 7px;
-  z-index:-1;
-  border-radius:2px;
-  background:#fff;
-  visibility:hidden;
-  opacity:0;
-  -o-transition:all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  -webkit-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  -moz-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-.social-mapeo a span:before {
-  content:'';
-  width: 0; 
-  height: 0; 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #fff;
-  position:absolute;
-  bottom:-5px;
-  left:40px;
-
-}
-.social-mapeo a:hover span {
-  bottom:50px;
-  visibility:visible;
-  opacity:1;
-}
-.social-mapeo a:nth-of-type(1):before {
-content:'\f09a';
-font-size: 20px;
-}
-.social-mapeo a:nth-of-type(2):before {
-content:'\f099';
-font-size: 20px;
-}
-.social-mapeo a:nth-of-type(3):before {
-content:'\f0d5';
-font-size: 20px;
-}
-.social-mapeo a:nth-of-type(4):before {
-content:'\f113';
-font-size: 20px;
-}
-.social-mapeo a:nth-of-type(5):before {
-content:'\f17d';
-font-size: 20px;
-}
-.social-mapeo a:nth-of-type(6):before {
-content:'\f1cb';
-font-size: 20px;
-}
-
-
-.encabezado-mapeo{
-  background-color: #373737;
-}
-.titulo-mapeo{
-  color: white;
-  margin-top: 40px;
-  margin-bottom: 10px;
-}
-.encabezado-mapeo h6{
-  color: white;
-}
-.integrantes h6{
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 10px;
-}
-.integrantes p{
-  font-size: 15px;
-  color:white;
-  text-align: center;
-}
-.cuerpo-mapeo{
-    
-    margin-right: 15px;
-}
-.aside{
-  height: 1000px;
-  background-color: #373737;
-}
-.info-mapeo{
-  background: #3fbbbd;
-
-}
-.info-mapeo p{
-  font-size: 15px;
-  color: white;
-  padding:20px 0px;
-  text-align: center;
-  font-weight: bold;
-}
-.circulo{
-  border-radius: 50px;
+.mapeo-detalle{
   background-color: white;
-  color: black;
-  height: 40px;
-  width: 40px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding:20px;
+  font-size: 14px;
+  
+}
+.titulos-mapeo{
+  background-color: #860513;
   text-align: center;
+  color: white;
+  font-weight: 300;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  font-family: 'lato', sans-serif;
 
 }
-.fa-map, .fa-map-marker {
-  margin-top: 15px;
-}
-.texto-mapeo{
-    font-size: 15px;
+
+.titulos-mapeo h4 {
+    font-size: 20px;
+    font-weight: 300;
     color: white;
-    
+    margin:0px;
 }
-.fila{
-  margin-bottom: 20px;
+
+.border-mapeo{
+  border:3px solid #cacaca;
 }
