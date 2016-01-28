@@ -1,11 +1,17 @@
+{% extends "cambiaahora/base.html" %}
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="/static/violencia_juvenil/js/highcharts.js"></script>
+<script src="/static/violencia_juvenil/js/exporting.js"></script>
 <script>
 	$(function () {
-		$('#pregunta3').highcharts({
+		$('#pregunta1').highcharts({
 			chart: {
 				type: 'column'
 			},
 			title: {
-				text: '¿Qué tipo violencia afecta más a tu comunidad?'
+				text: '¿Qué es Violencia Juvenil?'
 			},
 
 			credits: {
@@ -18,6 +24,12 @@
 					this.series.name +': '+ this.y +'%';
 				}
 			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
 			legend: {
 				layout: 'vertical',
 				align: 'right',
@@ -26,7 +38,7 @@
 			},
 			xAxis: {
 				categories: [
-				'Tipos de violencia',
+				'Violencia',
 				
 				],
 				crosshair: true
@@ -46,7 +58,7 @@
 				}
 			},
 			series: [
-			{% for k,v in pregunta3.items %}
+			{% for k,v in pregunta1.items %}
 			{
 				name: '{{k}}',
 				data: [{{v}}],
@@ -57,235 +69,522 @@
 		});
 	});
 
-	$(function () {
-		$('#pregunta4').highcharts({
-			chart: {
-				type: 'column'
-			},
+$(function () {
+	$('#pregunta2').highcharts({
+		chart: {
+			type: 'column'
+		},
+		title: {
+			text: '¿Qué es el abuso de drogas?'
+		},
+
+		credits: {
+			enabled: false
+		},
+
+		tooltip: {
+			formatter: function() {
+				return ''+
+				this.series.name +': '+ this.y +'%';
+			}
+		},
+		yAxis: {
+			min: 0,
 			title: {
-				text: '¿Qué lugares considera que genera más violencia?'
-			},
+				text: 'Porcentajes'
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle',
+			borderWidth: 0
+		},
+		xAxis: {
+			categories: [
+			'Abuso de drogas',
 
-			credits: {
-				enabled: false
-			},
-
-			tooltip: {
-				formatter: function() {
-					return ''+
-					this.series.name +': '+ this.y +'%';
-				}
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			xAxis: {
-				categories: [
-				'Lugares',
-				
-				],
-				crosshair: true
-			},
-			plotOptions: {
-				series: {
-					borderWidth: 0,
-					groupPadding: 0.1,
-					dataLabels: {
-						enabled: true,
-						format: '{point.y:.1f}%',
-						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
-						style: {
-							textShadow: '0 0 3px white'
-						}
+			],
+			crosshair: true
+		},
+		plotOptions: {
+			series: {
+				borderWidth: 0,
+				groupPadding: 0.1,
+				dataLabels: {
+					enabled: true,
+					format: '{point.y:.1f}%',
+					color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+					style: {
+						textShadow: '0 0 3px white'
 					}
 				}
-			},
-			series: [
-			{% for k,v in pregunta4.items %}
-			{
-				name: '{{k}}',
-				data: [{{v}}],
-				
-			},
-			{% endfor %}
-			]
-		});
+			}
+		},
+		series: [
+		{% for k,v in pregunta2.items %}
+		{
+			name: '{{k}}',
+			data: [{{v}}],
+
+		},
+		{% endfor %}
+		]
 	});
+});
 
-	$(function () {
-		$('#pregunta7').highcharts({
-			chart: {
-				type: 'column'
-			},
+$(function () {
+	$('#pregunta5').highcharts({
+		chart: {
+			type: 'column'
+		},
+		title: {
+			text: '¿Qué lleva a un joven a ser violento?'
+		},
+
+		credits: {
+			enabled: false
+		},
+
+		tooltip: {
+			formatter: function() {
+				return ''+
+				this.series.name +': '+ this.y +'%';
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle',
+			borderWidth: 0
+		},
+		yAxis: {
+			min: 0,
 			title: {
-				text: '¿Qué soluciones hay para prevenir la violencia juvenil?'
-			},
+				text: 'Porcentajes'
+			}
+		},
+		xAxis: {
+			categories: [
+			'Joven violento',
 
-			credits: {
-				enabled: false
-			},
-
-			tooltip: {
-				formatter: function() {
-					return ''+
-					this.series.name +': '+ this.y +'%';
-				}
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			xAxis: {
-				categories: [
-				'Soluciones',
-				
-				],
-				crosshair: true
-			},
-			plotOptions: {
-				series: {
-					borderWidth: 0,
-					groupPadding: 0.1,
-					dataLabels: {
-						enabled: true,
-						format: '{point.y:.1f}%',
-						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
-						style: {
-							textShadow: '0 0 3px white'
-						}
+			],
+			crosshair: true
+		},
+		plotOptions: {
+			series: {
+				borderWidth: 0,
+				groupPadding: 0.1,
+				dataLabels: {
+					enabled: true,
+					format: '{point.y:.1f}%',
+					color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+					style: {
+						textShadow: '0 0 3px white'
 					}
 				}
-			},
-			series: [
-			{% for k,v in pregunta7.items %}
-			{
-				name: '{{k}}',
-				data: [{{v}}],
-				
-			},
-			{% endfor %}
-			]
-		});
+			}
+		},
+		series: [
+		{% for k,v in pregunta5.items %}
+		{
+			name: '{{k}}',
+			data: [{{v}}],
+
+		},
+		{% endfor %}
+		]
 	});
+});
 
-	$(function () {
-		$('#pregunta9').highcharts({
-			chart: {
-				type: 'column'
-			},
+$(function () {
+	$('#pregunta6').highcharts({
+		chart: {
+			type: 'column'
+		},
+		title: {
+			text: '¿Quiénes son los más perjudicados por la violencia juvenil y el abuso de drogas?'
+		},
+
+		credits: {
+			enabled: false
+		},
+
+		tooltip: {
+			formatter: function() {
+				return ''+
+				this.series.name +': '+ this.y +'%';
+			}
+		},
+		yAxis: {
+			min: 0,
 			title: {
-				text: '¿Qué entiende por femicidio?'
-			},
+				text: 'Porcentajes'
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle',
+			borderWidth: 0
+		},
+		xAxis: {
+			categories: [
+			'Perjudicados',
 
-			credits: {
-				enabled: false
-			},
-
-			tooltip: {
-				formatter: function() {
-					return ''+
-					this.series.name +': '+ this.y +'%';
-				}
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			xAxis: {
-				categories: [
-				'Femicidio',
-				
-				],
-				crosshair: true
-			},
-			plotOptions: {
-				series: {
-					borderWidth: 0,
-					groupPadding: 0.1,
-					dataLabels: {
-						enabled: true,
-						format: '{point.y:.1f}%',
-						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
-						style: {
-							textShadow: '0 0 3px white'
-						}
+			],
+			crosshair: true
+		},
+		plotOptions: {
+			series: {
+				borderWidth: 0,
+				groupPadding: 0.1,
+				dataLabels: {
+					enabled: true,
+					format: '{point.y:.1f}%',
+					color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+					style: {
+						textShadow: '0 0 3px white'
 					}
 				}
-			},
-			series: [
-			{% for k,v in pregunta9.items %}
-			{
-				name: '{{k}}',
-				data: [{{v}}],
-				
-			},
-			{% endfor %}
-			]
-		});
+			}
+		},
+		series: [
+		{% for k,v in pregunta6.items %}
+		{
+			name: '{{k}}',
+			data: [{{v}}],
+
+		},
+		{% endfor %}
+		]
 	});
+});
 
-	$(function () {
-		$('#pregunta13').highcharts({
-			chart: {
-				type: 'column'
-			},
+$(function () {
+	$('#pregunta8').highcharts({
+		chart: {
+			type: 'column'
+		},
+		title: {
+			text: '¿Quiénes deben ser los responsables de prevenir la violencia juvenil?'
+		},
+
+		credits: {
+			enabled: false
+		},
+
+		tooltip: {
+			formatter: function() {
+				return ''+
+				this.series.name +': '+ this.y +'%';
+			}
+		},
+		yAxis: {
+			min: 0,
 			title: {
-				text: '¿Qué entiende por seguridad ciudadana?'
-			},
+				text: 'Porcentajes'
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle',
+			borderWidth: 0
+		},
+		xAxis: {
+			categories: [
+			'Responsables',
 
-			credits: {
-				enabled: false
-			},
-
-			tooltip: {
-				formatter: function() {
-					return ''+
-					this.series.name +': '+ this.y +'%';
-				}
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			xAxis: {
-				categories: [
-				'Seguridad cuidadana',
-				
-				],
-				crosshair: true
-			},
-			plotOptions: {
-				series: {
-					borderWidth: 0,
-					groupPadding: 0.1,
-					dataLabels: {
-						enabled: true,
-						format: '{point.y:.1f}%',
-						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
-						style: {
-							textShadow: '0 0 3px white'
-						}
+			],
+			crosshair: true
+		},
+		plotOptions: {
+			series: {
+				borderWidth: 0,
+				groupPadding: 0.1,
+				dataLabels: {
+					enabled: true,
+					format: '{point.y:.1f}%',
+					color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+					style: {
+						textShadow: '0 0 3px white'
 					}
 				}
-			},
-			series: [
-			{% for k,v in pregunta13.items %}
-			{
-				name: '{{k}}',
-				data: [{{v}}],
-				
-			},
-			{% endfor %}
-			]
-		});
+			}
+		},
+		series: [
+		{% for k,v in pregunta8.items %}
+		{
+			name: '{{k}}',
+			data: [{{v}}],
+
+		},
+		{% endfor %}
+		]
 	});
+});
+
+$(function () {
+	$('#pregunta10').highcharts({
+		chart: {
+			type: 'column'
+		},
+		title: {
+			text: '¿Qué es el abuso sexual?'
+		},
+
+		credits: {
+			enabled: false
+		},
+
+		tooltip: {
+			formatter: function() {
+				return ''+
+				this.series.name +': '+ this.y +'%';
+			}
+		},
+		yAxis: {
+			min: 0,
+			title: {
+				text: 'Porcentajes'
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle',
+			borderWidth: 0
+		},
+		xAxis: {
+			categories: [
+			'Definición',
+
+			],
+			crosshair: true
+		},
+		plotOptions: {
+			series: {
+				borderWidth: 0,
+				groupPadding: 0.1,
+				dataLabels: {
+					enabled: true,
+					format: '{point.y:.1f}%',
+					color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+					style: {
+						textShadow: '0 0 3px white'
+					}
+				}
+			}
+		},
+		series: [
+		{% for k,v in pregunta10.items %}
+		{
+			name: '{{k}}',
+			data: [{{v}}],
+
+		},
+		{% endfor %}
+		]
+	});
+});
+$(function () {
+	$('#pregunta11').highcharts({
+		chart: {
+			type: 'column'
+		},
+		title: {
+			text: '¿En qué lugares ocurren más los abusos sexuales?'
+		},
+		credits: {
+			enabled: false
+		},
+		tooltip: {
+			formatter: function() {
+				return ''+
+				this.series.name +': '+ this.y +'%';
+			}
+		},
+		yAxis: {
+			min: 0,
+			title: {
+				text: 'Porcentajes'
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle',
+			borderWidth: 0
+		},
+		xAxis: {
+			categories: [
+			'Lugares',
+
+			],
+			crosshair: true
+		},
+		plotOptions: {
+			series: {
+				borderWidth: 0,
+				groupPadding: 0.1,
+				dataLabels: {
+					enabled: true,
+					format: '{point.y:.1f}%',
+					color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+					style: {
+						textShadow: '0 0 3px white'
+					}
+				}
+			}
+		},
+		series: [
+		{% for k,v in pregunta11.items %}
+		{
+			name: '{{k}}',
+			data: [{{v}}],
+		},
+		{% endfor %}
+		]
+	});
+});
+
+$(function () {
+	$('#pregunta12').highcharts({
+		chart: {
+			type: 'column'
+		},
+		title: {
+			text: '¿Qué hacer para prevenir el abuso sexual?'
+		},
+		credits: {
+			enabled: false
+		},
+		tooltip: {
+			formatter: function() {
+				return ''+
+				this.series.name +': '+ this.y +'%';
+			}
+		},
+		yAxis: {
+			min: 0,
+			title: {
+				text: 'Porcentajes'
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle',
+			borderWidth: 0
+		},
+		xAxis: {
+			categories: [
+			'Acciones',
+			],
+			crosshair: true
+		},
+		plotOptions: {
+			series: {
+				borderWidth: 0,
+				groupPadding: 0.1,
+				dataLabels: {
+					enabled: true,
+					format: '{point.y:.1f}%',
+					color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+					style: {
+						textShadow: '0 0 3px white'
+					}
+				}
+			}
+		},
+		series: [
+		{% for k,v in pregunta12.items %}
+		{
+			name: '{{k}}',
+			data: [{{v}}],
+		},
+		{% endfor %}
+		]
+	});
+});
+
+$(function () {
+	$('#pregunta14').highcharts({
+		chart: {
+			type: 'column'
+		},
+		title: {
+			text: '¿Para educar a los niños y niñas se les debe pegar?'
+		},
+		credits: {
+			enabled: false
+		},
+		tooltip: {
+			formatter: function() {
+				return ''+
+				this.series.name +': '+ this.y +'%';
+			}
+		},
+		yAxis: {
+			min: 0,
+			title: {
+				text: 'Porcentajes'
+			}
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle',
+			borderWidth: 0
+		},
+		xAxis: {
+			categories: [
+			'Acciones',
+			],
+			crosshair: true
+		},
+		plotOptions: {
+			series: {
+				borderWidth: 0,
+				groupPadding: 0.1,
+				dataLabels: {
+					enabled: true,
+					format: '{point.y:.1f}%',
+					color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+					style: {
+						textShadow: '0 0 3px white'
+					}
+				}
+			}
+		},
+		series: [
+		{% for k,v in pregunta14.items %}
+		{
+			name: '{{k}}',
+			data: [{{v}}],
+		},
+		{% endfor %}
+		]
+	});
+});
 </script>
+{% endblock extra_js %}
+
+{% block contenido %}
+<div class="container">
+	{% include "violencia_juvenil/filtros.html" %}
+	<div class="row">
+		<div class="col-md-12" id="pregunta1" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div class="col-md-12" id="pregunta2" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div class="col-md-12" id="pregunta5" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div class="col-md-12" id="pregunta6" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div class="col-md-12" id="pregunta8" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div class="col-md-12" id="pregunta10" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div class="col-md-12" id="pregunta11" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div class="col-md-12" id="pregunta12" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div class="col-md-12" id="pregunta14" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+	</div>
+</div>
+
+{% endblock contenido %}

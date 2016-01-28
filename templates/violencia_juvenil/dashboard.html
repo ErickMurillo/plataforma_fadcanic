@@ -4,11 +4,11 @@
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
 <script src="/static/violencia_juvenil/js/highcharts.js"></script>
 <script src="/static/violencia_juvenil/js/exporting.js"></script>
-<script type="text/javascript" src="/static/violencia_juvenil/js/bootstrap-multiselect.js"></script>
-<link rel="stylesheet" href="/static/violencia_juvenil/css/bootstrap-multiselect.css" type="text/css"/>
 <script>
+{% for key,value in year.items %}
+
 	$(function () {
-		$('#sexo').highcharts({
+		$('#sexo{{key}}').highcharts({
 			chart: {
 				plotBackgroundColor: null,
 				plotBorderWidth: null,
@@ -25,9 +25,10 @@
 				pie: {
 					allowPointSelect: true,
 					cursor: 'pointer',
+					showInLegend: true,
 					dataLabels: {
 						enabled: true,
-						format: '<b>{point.name}</b>: {point.percentage:.2f} %',
+						format: '{point.percentage:.2f} %',
 						style: {
 							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 						}
@@ -38,14 +39,10 @@
 				name: 'Procentaje',
 				colorByPoint: true,
 				data: [
-				{% for k,v in sexo.items %}
+				{% for k,v in value.0.items %}
 				{
 					name: '{{k}}',
 					y: {{v}},
-					{% if forloop.counter == 1 %}
-					sliced: true,
-					selected: true
-					{% endif %}
 				},
 				{% endfor %}
 				]
@@ -54,7 +51,7 @@
 	});
 
 	$(function () {
-		$('#edad').highcharts({
+		$('#edad{{key}}').highcharts({
 			chart: {
 				plotBackgroundColor: null,
 				plotBorderWidth: null,
@@ -71,9 +68,10 @@
 				pie: {
 					allowPointSelect: true,
 					cursor: 'pointer',
+					showInLegend: true,
 					dataLabels: {
 						enabled: true,
-						format: '<b>{point.name}</b>: {point.percentage:.2f} %',
+						format: '{point.percentage:.2f} %',
 						style: {
 							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 						}
@@ -84,14 +82,10 @@
 				name: 'Procentaje',
 				colorByPoint: true,
 				data: [
-				{% for k,v in edad.items %}
+				{% for k,v in value.1.items %}
 				{
 					name: '{{k}}',
 					y: {{v}},
-					{% if forloop.counter == 1 %}
-					sliced: true,
-					selected: true
-					{% endif %}
 				},
 				{% endfor %}
 				]
@@ -99,69 +93,56 @@
 		});
 	});
 
-	$(function () {
-		$('#etnia').highcharts({
+$(function () {
+		$('#etnia{{key}}').highcharts({
 			chart: {
-				type: 'column'
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
 			},
 			title: {
-				text: 'etnia'
+				text: 'edad'
 			},
-
-			credits: {
-				enabled: false
-			},
-
 			tooltip: {
-				formatter: function() {
-					return ''+
-					this.series.name +': '+ this.y +'%';
-				}
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			xAxis: {
-				categories: [
-				'Etnias',
-
-				],
-				crosshair: true
+				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
 			},
 			plotOptions: {
-				series: {
-					borderWidth: 0,
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					showInLegend: true,
 					dataLabels: {
 						enabled: true,
-						format: '{point.y:.1f}%',
-						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						format: '{point.percentage:.2f} %',
 						style: {
-							textShadow: '0 0 3px white'
+							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
 						}
 					}
 				}
 			},
-			series: [
-			{% for k,v in etnia.items %}
-			{
-				name: '{{k}}',
-				data: [{{v}}],
-
-			},
-			{% endfor %}
-			]
+			series: [{
+				name: 'Procentaje',
+				colorByPoint: true,
+				data: [
+				{% for k,v in value.2.items %}
+				{
+					name: '{{k}}',
+					y: {{v}},
+				},
+				{% endfor %}
+				]
+			}]
 		});
 	});
+{% endfor %}
 </script>
 <!-- script de las graficas-->
-{% include "violencia_juvenil/conocimiento.html" %}
-{% include "violencia_juvenil/actitud.html" %}
-{% include "violencia_juvenil/practicas.html" %}
-{% include "violencia_juvenil/persepcion.html" %}
-{% include "violencia_juvenil/estado_actual.html" %}
+{% include "violencia_juvenil/tab_conocimiento.html" %}
+{% include "violencia_juvenil/tab_actitud.html" %}
+{% include "violencia_juvenil/tab_practicas.html" %}
+{% include "violencia_juvenil/tab_persepcion.html" %}
+{% include "violencia_juvenil/tab_estado_actual.html" %}
 <!-- end script de las graficas-->
 
 {% endblock extra_js %}
@@ -175,59 +156,83 @@
 <div class="container">	
 	{% include "violencia_juvenil/filtros.html" %}
 	<div class="row">
-		<div class="col-md-6" id="sexo" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-		<div class="col-md-6" id="edad" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-		<div class="col-md-6" id="etnia" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+		<a class="btn btn-default" href="/violencia_juvenil/conocimiento/" role="button">Conocimiento</a>
+		<a class="btn btn-default" href="/violencia_juvenil/actitud/" role="button">Actitud</a>
+		<a class="btn btn-default" href="#" role="button">Practicas</a>
+		<a class="btn btn-default" href="#" role="button">Percepción</a>
+		<a class="btn btn-default" href="#" role="button">Estado actual</a>
+	</div>
+	<div id="tabs">
+
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+		<li><a >Años:</a></li>
+
+		{% for key in year.keys %}
+		<li role="presentation" class="{% if forloop.counter == 1 %}active{% endif %}" id="{{forloop.counter}}"><a href="#{{key}}" aria-controls="{{key}}" role="tab" data-toggle="tab">{{key}}</a></li>
+		{% endfor %}
+	</ul>
+	<div class="tab-content">
+		{% for key in year.keys %}
+		<div role="tabpanel" class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{key}}">
+		<div class="row">
+		<div class="col-md-6" id="sexo{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+		<div class="col-md-6" id="edad{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+		<div class="col-md-6" id="etnia{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
 	</div>
 
 	<div class="row">
-		<!-- Nav tabs -->
+			<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#conocimiento" aria-controls="conocimiento" role="tab" data-toggle="tab">Conocimiento</a></li>
-			<li role="presentation"><a href="#actitud" aria-controls="actitud" role="tab" data-toggle="tab">Actitud</a></li>
-			<li role="presentation"><a href="#practicas" aria-controls="practicas" role="tab" data-toggle="tab">Prácticas</a></li>
-			<li role="presentation"><a href="#percepcion" aria-controls="percepcion" role="tab" data-toggle="tab">Percepción</a></li>
-			<li role="presentation"><a href="#estado" aria-controls="estado" role="tab" data-toggle="tab">Estado actual</a></li>
+			<li role="presentation" class="active"><a href="#conocimiento{{key}}" aria-controls="conocimiento{{key}}" role="tab" data-toggle="tab">Conocimiento</a></li>
+			<li role="presentation"><a href="#actitud{{key}}" aria-controls="actitud{{key}}" role="tab" data-toggle="tab">Actitud</a></li>
+			<li role="presentation"><a href="#practicas{{key}}" aria-controls="practicas{{key}}" role="tab" data-toggle="tab">Prácticas</a></li>
+			<li role="presentation"><a href="#percepcion{{key}}" aria-controls="percepcion{{key}}" role="tab" data-toggle="tab">Percepción</a></li>
+			<li role="presentation"><a href="#estado{{key}}" aria-controls="estado{{key}}" role="tab" data-toggle="tab">Estado actual</a></li>
 		</ul>
-
+		
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="conocimiento">
-				<div class="col-md-12" id="pregunta3" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+			<div role="tabpanel" class="tab-pane active" id="conocimiento{{key}}">
+				<div class="col-md-12" id="pregunta3{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 
-				<div class="col-md-12" id="pregunta4" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+				<div class="col-md-12" id="pregunta4{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 				
-				<div class="col-md-12" id="pregunta7" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+				<div class="col-md-12" id="pregunta7{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 
-				<div class="col-md-12" id="pregunta9" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+				<div class="col-md-12" id="pregunta9{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 
-				<div class="col-md-12" id="pregunta13" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+				<div class="col-md-12" id="pregunta13{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 			</div>
 
-			<div role="tabpanel" class="tab-pane" id="actitud">
-				<div class="col-md-12" id="pregunta15" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+			<div role="tabpanel" class="tab-pane" id="actitud{{key}}">
+				<div class="col-md-12" id="pregunta15{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 
-				<div class="col-md-12" id="pregunta19" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+				<div class="col-md-12" id="pregunta19{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 			</div>
 
-			<div role="tabpanel" class="tab-pane" id="practicas">
-				<div class="col-md-12" id="pregunta23" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+			<div role="tabpanel" class="tab-pane" id="practicas{{key}}">
+				<div class="col-md-12" id="pregunta23{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 
-				<div class="col-md-12" id="pregunta24" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+				<div class="col-md-12" id="pregunta24{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 			</div>
 
-			<div role="tabpanel" class="tab-pane" id="percepcion">
-				<div class="col-md-12" id="pregunta30" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+			<div role="tabpanel" class="tab-pane" id="percepcion{{key}}">
+				<div class="col-md-12" id="pregunta30{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 
-				<div class="col-md-12" id="pregunta31" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+				<div class="col-md-12" id="pregunta31{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 			</div>
 			
-			<div role="tabpanel" class="tab-pane" id="estado">
-				<div class="col-md-12" id="pregunta36" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+			<div role="tabpanel" class="tab-pane" id="estado{{key}}">
+				<div class="col-md-12" id="pregunta36{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 
-				<div class="col-md-12" id="pregunta37" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+				<div class="col-md-12" id="pregunta37{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 			</div>
 		</div>
+	</div>
+		</div>
+		{% endfor %}
+	</div>
 	</div>
 </div>
 

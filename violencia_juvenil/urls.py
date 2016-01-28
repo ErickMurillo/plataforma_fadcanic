@@ -6,4 +6,6 @@ urlpatterns = patterns('violencia_juvenil.views',
 	url(r'^mapa/$', 'obtener_lista', name='obtener-lista-violencia'),
 	url(r'^consulta/$', 'consulta', name='consulta-violencia'),
     url(r'^dashboard/',  'dashboard', name='dashboard-violencia'),
+    url(r'^conocimiento/',  'conocimiento', name='conocimiento'),
+    url(r'^actitud/',  'actitud', name='actitud'),
 )

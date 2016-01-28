@@ -1,11 +1,17 @@
+{% extends "cambiaahora/base.html" %}
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="/static/violencia_juvenil/js/highcharts.js"></script>
+<script src="/static/violencia_juvenil/js/exporting.js"></script>
 <script>
-	$(function () {
-		$('#pregunta15').highcharts({
+$(function () {
+		$('#pregunta16').highcharts({
 			chart: {
 				type: 'column'
 			},
 			title: {
-				text: '¿Qué piensa de las personas consumidoras de droga?'
+				text: '¿Qué piensa de los jóvenes violentos?'
 			},
 
 			credits: {
@@ -18,6 +24,12 @@
 					this.series.name +': '+ this.y +'%';
 				}
 			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
 			legend: {
 				layout: 'vertical',
 				align: 'right',
@@ -26,7 +38,7 @@
 			},
 			xAxis: {
 				categories: [
-				'Personas consumidoras de droga',
+				'Jóvenes violentos',
 				
 				],
 				crosshair: true
@@ -46,7 +58,7 @@
 				}
 			},
 			series: [
-			{% for k,v in pregunta15.items %}
+			{% for k,v in pregunta16.items %}
 			{
 				name: '{{k}}',
 				data: [{{v}}],
@@ -57,13 +69,13 @@
 		});
 	});
 
-	$(function () {
-		$('#pregunta19').highcharts({
+$(function () {
+		$('#pregunta17').highcharts({
 			chart: {
 				type: 'column'
 			},
 			title: {
-				text: '¿Por qué muchas mujeres después vivir violencia, perdonan a sus parejas o abusadores?'
+				text: '¿Cómo prevenir la violencia juvenil y el abuso de drogas?'
 			},
 
 			credits: {
@@ -76,6 +88,12 @@
 					this.series.name +': '+ this.y +'%';
 				}
 			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
 			legend: {
 				layout: 'vertical',
 				align: 'right',
@@ -84,7 +102,7 @@
 			},
 			xAxis: {
 				categories: [
-				'¿Por qué?',
+				'Acciones',
 				
 				],
 				crosshair: true
@@ -104,7 +122,71 @@
 				}
 			},
 			series: [
-			{% for k,v in pregunta19.items %}
+			{% for k,v in pregunta17.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+
+$(function () {
+		$('#pregunta18').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Cuáles son las principales causas de la violencia juvenil?'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Causas',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in pregunta18.items %}
 			{
 				name: '{{k}}',
 				data: [{{v}}],
@@ -115,3 +197,15 @@
 		});
 	});
 </script>
+{% endblock extra_js %}
+
+{% block contenido %}
+<div class="container">
+	{% include "violencia_juvenil/filtros.html" %}
+	<div class="row">
+		<div class="col-md-12" id="pregunta16" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div class="col-md-12" id="pregunta17" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div class="col-md-12" id="pregunta18" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+	</div>
+</div>
+{% endblock contenido %}
