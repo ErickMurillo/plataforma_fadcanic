@@ -1,12 +1,12 @@
 {% extends "cambiaahora/base.html" %}
+{% load thumbnail %}
 
 {% block extra_js %}
 
 {% endblock extra_js %}
 
 {% block contenido %}
-
-
+<!--
 <div class="encabezado-mapeo">
 	<div class="container">
 		<div class="row">
@@ -33,8 +33,114 @@
 			</div>
 		</div>
 	</div>
-</div>
+-->
 
+<div class="container">
+
+	{% for obj in object %}
+		<h1>Foto</h1>
+		{% thumbnail obj.foto "x200" format="PNG" as img %}
+			<img class="center-block img-detail img-responsive" src="/media/{{img}}">
+		{% empty %}
+			<img class="center-block img-detail img-responsive" src="http://placehold.it/300x200?text=No+Imagen">
+		{% endthumbnail %}
+	
+		{{obj.nombre}} <br>
+		{{obj.get_tipo_display}}<br>
+
+	{% if obj.persona_contacto %}
+		{{obj.persona_contacto}}<br>
+	{% endif %}
+
+	{% if obj.direccion %}
+		{{obj.direccion}}<br>
+	{% endif %}
+
+	{{obj.municipio}}<br>
+
+	{% if obj.comunidad %}
+		{{obj.comunidad}}<br>
+	{% endif %}
+
+	{% if obj.convencional %}
+		{{obj.convencional}}<br>
+	{% endif %}
+
+	{% if obj.celular %}
+		{{obj.celular}}<br>
+	{% endif %}
+
+	{% if obj.correo %}
+		{{obj.correo}}<br>
+	{% endif %}
+
+	{% if obj.web %}
+		{{obj.web}}<br>
+	{% endif %}
+
+	{% if obj.facebook %}
+		{{obj.facebook}}<br>
+	{% endif %}
+
+	{% if obj.twitter %}
+		{{obj.twitter}}<br>
+	{% endif %}
+
+	{% if obj.youtube %}
+		{{obj.youtube}}<br>
+	{% endif %}
+
+	{% if obj.otro %}
+		{{obj.otro}}<br>
+	{% endif %}
+
+	{% if obj.cobertura %}
+	<h5>Cobertura</h5>
+	<ul>
+		{% for obj in obj.cobertura.all %}
+  			<li>{{obj}}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+	{% if obj.masculino %}
+		<h6>Integrantes masculinos: {{obj.masculino}}</h6>
+	{% endif %}
+
+	{% if obj.femenino %}
+		<h6>Integrantes femeninos: {{obj.femenino}}</h6>
+	{% endif %}
+
+	{% if obj.integrantes %}
+		<h6>Nombre de los integrantes:</h6>
+		{{obj.integrantes|safe}}
+	{% endif %}
+
+	{% if obj.tipo != 1 %}
+		<h6>Edades de los integrantes:</h6>
+		{% if obj.mayor_13 %}
+			13 a 18 años: {{obj.mayor_13}}<br>
+		{% endif %}
+
+		{% if obj.mayor_19 %}
+			19 a 30 años: {{obj.mayor_19}}<br>
+		{% endif %}
+		
+		{% if obj.mayor_30 %}
+			31 a más años: {{obj.mayor_30}}<br>
+		{% endif %}
+		
+	{% endif %}
+
+	<h3>Acciones</h3>
+		<ul>
+			{% for actividad in actividades %}
+				<li><a href="/actividades/actividades_pdf/{{actividad.id}}" target="_black">{{actividad.nombre_actividad}}</a></li>
+			{% endfor %}
+		</ul>
+	{% endfor %}
+</div>
+<!--
 <div class="cuerpo-mapeo">
 	<div class="row">
 		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -85,7 +191,7 @@
 	</div>
 
 </div>
-
+-->
 
 
 <!--

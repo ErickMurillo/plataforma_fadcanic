@@ -16,7 +16,9 @@ from models import *
 import datetime
 import thread
 import urllib
-
+from mapeo.models import *
+from django.views.generic import TemplateView
+from django.core import serializers
 
 #@login_required
 def filtro_proyecto(request):
@@ -41,7 +43,7 @@ def filtro_proyecto(request):
             filtro['fecha_inicio'] = form.cleaned_data['fecha_inicio']
             filtro['fecha_fin'] = form.cleaned_data['fecha_fin']
             filtro['salida'] = 'Por proyecto'
-            filtro['resultado__in'] = form.cleaned_data['resultado']
+            filtro['resultado'] = form.cleaned_data['resultado']
             filtro['municipio'] = form.cleaned_data['municipio']
 
             proy_params = checkParams(proy_params)
@@ -102,7 +104,6 @@ def variables(request, saved_params=None):
     else:
         params = request.session['params']
     actividad = _get_query(params)
-    print actividad
 
     return render_to_response('actividades/contraparte/variables.html', RequestContext(request, locals()))
 
@@ -339,3 +340,10 @@ def get_graph_png(svg, obj, field, width=940):
     setattr(obj, field, response.read())
     obj.save()
     return response.read()
+
+class BusquedaView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        tipo = request.GET['id']
+        organizaciones = Organizaciones.objects.filter(tipo=tipo)
+        data = serializers.serialize('json',organizaciones,fields=('nombre',))
+        return HttpResponse(data,content_type='application/json')

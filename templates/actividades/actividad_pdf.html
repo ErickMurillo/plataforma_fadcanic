@@ -40,9 +40,18 @@
 				{% if obj.tipo == 1 %}
 					<td><b>Persona que organiza la actividad</b></td>
 					<td>{{obj.persona_organiza}}</td>
-				{% else %}
+				{% elif obj.tipo == 2 %}
 					<td><b>Comité comunal que organiza la actividad</b></td>
-					<td>{{obj.comite}}}</td>
+					<td>{{obj.comite}}</td>
+				{% elif obj.tipo == 3 %}
+					<td><b>Comité municipal que organiza la actividad</b></td>
+					<td>{{obj.comite}}</td>
+				{% elif obj.tipo == 4 %}
+					<td><b>Diplomado de promotoría que organiza la actividad</b></td>
+					<td>{{obj.comite}}</td>
+				{% elif obj.tipo == 5 %}
+					<td><b>Diplomado de comunicación que organiza la actividad</b></td>
+					<td>{{obj.comite}}</td>
 				{% endif %}		
 				</tr>
 				<tr>

@@ -22,7 +22,7 @@
 	}
 	
 	.nav-tabs > li > a {
-	  color: black !important;
+	 
 	}
 </style>
 <script type="text/javascript" src="{% static 'actividades/js/underscore-min.js' %}"></script>
@@ -59,10 +59,10 @@
 
 {% block contenido %}
 {% include "actividades/filtros_selectos.html" %}
-<div>
+<div class="contenido-variable">
 
 	<!-- Nav tabs -->
-	<ul class="nav nav-tabs" role="tablist">
+	<ul class="nav nav-tabs nav-act" role="actividades">
 		<li role="presentation" class="active"><a href="#variable" aria-controls="variable" role="tab" data-toggle="tab">Combinaciones de variables</a></li>
 		<li role="presentation"><a href="#lista" aria-controls="lista" role="tab" data-toggle="tab">Lista de actividades</a></li>
 	</ul>
@@ -75,7 +75,7 @@
 			
 
 			<div class="container-fluid">
-				<form action="." method="post">
+				<form class="form" action="." method="post">
 					{% csrf_token %}
 					<div class="col-md-4">
 						<div class="col-md-12">
@@ -108,34 +108,48 @@
 						
 						<div class="x1">
 							<label>Opciones de Visualización</label>
-							<div>
-							<div class="prueba">
+
+							<div class="visualizacion">
 								{{form.total}}
 								<label for="id_total">{{form.total.label}}</label>
-							</div>
 								<br>
-								{{form.bar_graph}} <label>{{form.bar_graph.label}}</label><br>
-								{{form.pie_graph}} <label>{{form.pie_graph.label}}</label>
-							</div>			
-							<div class="clean"></div>
+								{{form.bar_graph}}
+								<label for="id_bar_graph">{{form.bar_graph.label}}</label>
+								<br>
+								{{form.pie_graph}}
+								<label for="id_pie_graph">{{form.pie_graph.label}}</label>
+							</div>
+		
 						</div>
-						<br>
-						<h5>PASO 4</h5>
-						<br>
-						<div>
-							<input type="submit" class="form-button" value="Generar tabla" />
-						</div>		
+								
 					</div>
+					<br>
+					<br>
+					<input type="submit" class="btn-variable"  value="Generar tabla" />
 				</form>
 			</div>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="lista">
-			<h3>Lista de actividades</h3>
-			<ul>
-				{% for obj in actividad %}
-				<li><a href="/actividades/actividades_pdf/{{obj.id}}" target="_black">{{obj.nombre_actividad}}</a></li>
-				{% endfor %}
-			</ul>
+			<h3 class="borde">Lista de actividades</h3>
+			<div class="table-responsive">
+				<table class=" table table-bordered table-hover lista-actividades">
+					<tbody>
+					{% for obj in actividad %}
+						<tr>
+							<td class="td-descarga">
+								<a href="/actividades/actividades_pdf/{{obj.id}}" target="_black"><i class="fa fa-download fa-2x"></i></a>
+							</td>
+							<td>
+								{{obj.nombre_actividad}}
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+
+
 		</div>
 	</div>
 
