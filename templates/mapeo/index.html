@@ -57,23 +57,35 @@
 		height: 500px
 	}
 </style>
-<div class="container">
-	<div class="consulta">
-		<form action="." method="POST">{% csrf_token %}
-            <div>
-            	<label>Tipo:</label>
-                 {{form.tipo}}      
-                 <input type="submit" value="Consultar" name="consulta"/>         
-        	</div>
-        </form>
+
+
+<div class="container mapeo-contenedor">
+	<div class="row">
+		<div class="col-lg-4 parrafo-mapeo">
+			<h4>Mapeo de Actores</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam blanditiis optio, dolorem, repudiandae quos illo nemo ducimus odit, culpa recusandae voluptas incidunt accusamus asperiores ipsam maiores vero unde! Id, facilis.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus alias, ab nulla molestiae unde tempore earum provident accusantium laudantium sapiente blanditiis quia nisi aperiam, quo sint eligendi nesciunt corporis. Possimus!</p>
+		</div>
+		<div class="col-lg-8">
+			<div class="mapeo-form">
+				<form action="." method="POST">{% csrf_token %}
+		            <div class="row">
+		            	<div class="col-lg-9">
+		            		<label>Tipo de actores:</label>
+		                 	{{form.tipo}} 
+		            	</div>
+		            	<div class="col-lg-3">     
+		                 <input class="btn btn-default btn-mapeo" type="submit" value="Consultar" name="consulta"/>
+		             	</div>         
+		        	</div>
+		        </form>
+			</div>
+			<div class="mapa-mapeo">
+				<div id="map"></div>
+			</div>
+		</div>
 	</div>
-	<div class="col-md-4">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam blanditiis optio, dolorem, repudiandae quos illo nemo ducimus odit, culpa recusandae voluptas incidunt accusamus asperiores ipsam maiores vero unde! Id, facilis.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus alias, ab nulla molestiae unde tempore earum provident accusantium laudantium sapiente blanditiis quia nisi aperiam, quo sint eligendi nesciunt corporis. Possimus!</p>
-	</div>
-	<div class="col-md-8">
-		<div id="map"></div>
-	</div>
-	
+      
 </div>
+
 {% endblock contenido %}
