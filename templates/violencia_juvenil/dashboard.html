@@ -5,7 +5,7 @@
 <script src="/static/violencia_juvenil/js/highcharts.js"></script>
 <script src="/static/violencia_juvenil/js/exporting.js"></script>
 <script>
-{% for key,value in year.items %}
+	{% for key,value in year.items %}
 
 	$(function () {
 		$('#sexo{{key}}').highcharts({
@@ -93,7 +93,7 @@
 		});
 	});
 
-$(function () {
+	$(function () {
 		$('#etnia{{key}}').highcharts({
 			chart: {
 				plotBackgroundColor: null,
@@ -135,7 +135,7 @@ $(function () {
 			}]
 		});
 	});
-{% endfor %}
+	{% endfor %}
 </script>
 <!-- script de las graficas-->
 {% include "violencia_juvenil/tab_conocimiento.html" %}
@@ -162,76 +162,78 @@ $(function () {
 		<a class="btn btn-default" href="#" role="button">Percepción</a>
 		<a class="btn btn-default" href="#" role="button">Estado actual</a>
 	</div>
-	<div id="tabs">
-
-	<!-- Nav tabs -->
-	<ul class="nav nav-tabs" role="tablist">
-		<li><a >Años:</a></li>
-
-		{% for key in year.keys %}
-		<li role="presentation" class="{% if forloop.counter == 1 %}active{% endif %}" id="{{forloop.counter}}"><a href="#{{key}}" aria-controls="{{key}}" role="tab" data-toggle="tab">{{key}}</a></li>
-		{% endfor %}
-	</ul>
-	<div class="tab-content">
-		{% for key in year.keys %}
-		<div role="tabpanel" class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{key}}">
-		<div class="row">
-		<div class="col-md-6" id="sexo{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
-		<div class="col-md-6" id="edad{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
-		<div class="col-md-6" id="etnia{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
-	</div>
+	
+	<br><br>
 
 	<div class="row">
-			<!-- Nav tabs -->
+		<div id="tabs">
 		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#conocimiento{{key}}" aria-controls="conocimiento{{key}}" role="tab" data-toggle="tab">Conocimiento</a></li>
-			<li role="presentation"><a href="#actitud{{key}}" aria-controls="actitud{{key}}" role="tab" data-toggle="tab">Actitud</a></li>
-			<li role="presentation"><a href="#practicas{{key}}" aria-controls="practicas{{key}}" role="tab" data-toggle="tab">Prácticas</a></li>
-			<li role="presentation"><a href="#percepcion{{key}}" aria-controls="percepcion{{key}}" role="tab" data-toggle="tab">Percepción</a></li>
-			<li role="presentation"><a href="#estado{{key}}" aria-controls="estado{{key}}" role="tab" data-toggle="tab">Estado actual</a></li>
+			<li><a >Años:</a></li>
+			{% for key in year.keys %}
+			<li role="presentation" class="{% if forloop.counter == 1 %}active{% endif %}" id="{{forloop.counter}}"><a href="#{{key}}" aria-controls="{{key}}" role="tab" data-toggle="tab">{{key}}</a></li>
+			{% endfor %}
 		</ul>
-		
-		<!-- Tab panes -->
 		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="conocimiento{{key}}">
-				<div class="col-md-12" id="pregunta3{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+			{% for key in year.keys %}
+			<div role="tabpanel" class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{key}}">
+				<div class="row">
+					<div class="col-md-6" id="sexo{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+					<div class="col-md-6" id="edad{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+					<div class="col-md-6" id="etnia{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+				</div>
 
-				<div class="col-md-12" id="pregunta4{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
-				
-				<div class="col-md-12" id="pregunta7{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+				<div class="row">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active"><a href="#conocimiento{{key}}" aria-controls="conocimiento{{key}}" role="tab" data-toggle="tab">Conocimiento</a></li>
+						<li role="presentation"><a href="#actitud{{key}}" aria-controls="actitud{{key}}" role="tab" data-toggle="tab">Actitud</a></li>
+						<li role="presentation"><a href="#practicas{{key}}" aria-controls="practicas{{key}}" role="tab" data-toggle="tab">Prácticas</a></li>
+						<li role="presentation"><a href="#percepcion{{key}}" aria-controls="percepcion{{key}}" role="tab" data-toggle="tab">Percepción</a></li>
+						<li role="presentation"><a href="#estado{{key}}" aria-controls="estado{{key}}" role="tab" data-toggle="tab">Estado actual</a></li>
+					</ul>
 
-				<div class="col-md-12" id="pregunta9{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="conocimiento{{key}}">
+							<div class="col-md-12" id="pregunta3{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
 
-				<div class="col-md-12" id="pregunta13{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+							<div class="col-md-12" id="pregunta4{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+
+							<div class="col-md-12" id="pregunta7{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+
+							<div class="col-md-12" id="pregunta9{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+
+							<div class="col-md-12" id="pregunta13{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+						</div>
+
+						<div role="tabpanel" class="tab-pane" id="actitud{{key}}">
+							<div class="col-md-12" id="pregunta15{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+
+							<div class="col-md-12" id="pregunta19{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+						</div>
+
+						<div role="tabpanel" class="tab-pane" id="practicas{{key}}">
+							<div class="col-md-12" id="pregunta23{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+
+							<div class="col-md-12" id="pregunta24{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+						</div>
+
+						<div role="tabpanel" class="tab-pane" id="percepcion{{key}}">
+							<div class="col-md-12" id="pregunta30{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+
+							<div class="col-md-12" id="pregunta31{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+						</div>
+
+						<div role="tabpanel" class="tab-pane" id="estado{{key}}">
+							<div class="col-md-12" id="pregunta36{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+
+							<div class="col-md-12" id="pregunta37{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+						</div>
+					</div>
+				</div>
 			</div>
-
-			<div role="tabpanel" class="tab-pane" id="actitud{{key}}">
-				<div class="col-md-12" id="pregunta15{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta19{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
-			</div>
-
-			<div role="tabpanel" class="tab-pane" id="practicas{{key}}">
-				<div class="col-md-12" id="pregunta23{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta24{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
-			</div>
-
-			<div role="tabpanel" class="tab-pane" id="percepcion{{key}}">
-				<div class="col-md-12" id="pregunta30{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta31{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
-			</div>
-			
-			<div role="tabpanel" class="tab-pane" id="estado{{key}}">
-				<div class="col-md-12" id="pregunta36{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
-
-				<div class="col-md-12" id="pregunta37{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
-			</div>
+			{% endfor %}
 		</div>
-	</div>
-		</div>
-		{% endfor %}
 	</div>
 	</div>
 </div>

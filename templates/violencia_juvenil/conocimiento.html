@@ -5,8 +5,9 @@
 <script src="/static/violencia_juvenil/js/highcharts.js"></script>
 <script src="/static/violencia_juvenil/js/exporting.js"></script>
 <script>
+	{% for key,value in year.items %}
 	$(function () {
-		$('#pregunta1').highcharts({
+		$('#pregunta1{{key}}').highcharts({
 			chart: {
 				type: 'column'
 			},
@@ -58,7 +59,7 @@
 				}
 			},
 			series: [
-			{% for k,v in pregunta1.items %}
+			{% for k,v in value.0.items %}
 			{
 				name: '{{k}}',
 				data: [{{v}}],
@@ -70,7 +71,7 @@
 	});
 
 $(function () {
-	$('#pregunta2').highcharts({
+	$('#pregunta2{{key}}').highcharts({
 		chart: {
 			type: 'column'
 		},
@@ -122,7 +123,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in pregunta2.items %}
+		{% for k,v in value.1.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -134,7 +135,7 @@ $(function () {
 });
 
 $(function () {
-	$('#pregunta5').highcharts({
+	$('#pregunta5{{key}}').highcharts({
 		chart: {
 			type: 'column'
 		},
@@ -186,7 +187,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in pregunta5.items %}
+		{% for k,v in value.2.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -198,7 +199,7 @@ $(function () {
 });
 
 $(function () {
-	$('#pregunta6').highcharts({
+	$('#pregunta6{{key}}').highcharts({
 		chart: {
 			type: 'column'
 		},
@@ -250,7 +251,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in pregunta6.items %}
+		{% for k,v in value.3.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -262,7 +263,7 @@ $(function () {
 });
 
 $(function () {
-	$('#pregunta8').highcharts({
+	$('#pregunta8{{key}}').highcharts({
 		chart: {
 			type: 'column'
 		},
@@ -314,7 +315,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in pregunta8.items %}
+		{% for k,v in value.4.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -326,7 +327,7 @@ $(function () {
 });
 
 $(function () {
-	$('#pregunta10').highcharts({
+	$('#pregunta10{{key}}').highcharts({
 		chart: {
 			type: 'column'
 		},
@@ -378,7 +379,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in pregunta10.items %}
+		{% for k,v in value.5.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -389,7 +390,7 @@ $(function () {
 	});
 });
 $(function () {
-	$('#pregunta11').highcharts({
+	$('#pregunta11{{key}}').highcharts({
 		chart: {
 			type: 'column'
 		},
@@ -439,7 +440,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in pregunta11.items %}
+		{% for k,v in value.6.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -450,7 +451,7 @@ $(function () {
 });
 
 $(function () {
-	$('#pregunta12').highcharts({
+	$('#pregunta12{{key}}').highcharts({
 		chart: {
 			type: 'column'
 		},
@@ -499,7 +500,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in pregunta12.items %}
+		{% for k,v in value.7.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -510,7 +511,7 @@ $(function () {
 });
 
 $(function () {
-	$('#pregunta14').highcharts({
+	$('#pregunta14{{key}}').highcharts({
 		chart: {
 			type: 'column'
 		},
@@ -559,7 +560,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in pregunta14.items %}
+		{% for k,v in value.8.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -568,22 +569,42 @@ $(function () {
 		]
 	});
 });
+{% endfor %}
 </script>
 {% endblock extra_js %}
 
 {% block contenido %}
+<style>
+.nav-tabs > li > a {
+	color: black !important;
+}
+</style>
 <div class="container">
 	{% include "violencia_juvenil/filtros.html" %}
 	<div class="row">
-		<div class="col-md-12" id="pregunta1" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-		<div class="col-md-12" id="pregunta2" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-		<div class="col-md-12" id="pregunta5" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-		<div class="col-md-12" id="pregunta6" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-		<div class="col-md-12" id="pregunta8" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-		<div class="col-md-12" id="pregunta10" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-		<div class="col-md-12" id="pregunta11" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-		<div class="col-md-12" id="pregunta12" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-		<div class="col-md-12" id="pregunta14" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+		<div id="tabs">
+			<ul class="nav nav-tabs" role="tablist">
+				<li><a >Años:</a></li>
+				{% for key in year.keys %}
+				<li role="presentation" class="{% if forloop.counter == 1 %}active{% endif %}" id="{{forloop.counter}}"><a href="#{{key}}" aria-controls="{{key}}" role="tab" data-toggle="tab">{{key}}</a></li>
+				{% endfor %}
+			</ul>
+			<div class="tab-content">
+				{% for key in year.keys %}
+				<div role="tabpanel" class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{key}}">
+					<div class="col-md-12" id="pregunta1{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta2{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta5{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta6{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta8{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta10{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta11{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta12{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta14{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
 	</div>
 </div>
 
