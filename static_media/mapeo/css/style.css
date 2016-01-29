@@ -134,7 +134,41 @@ option:checked { display:none; }
   margin-top: 10px;
 }
 
+.lista-actividades > thead > tr > th{
+  text-align: center;
+  color: #6B6864;
+    font-family: 'latoblack', sans-serif;
+    background-color: white;
+}
+.lista-actividades td {
+    background: white;
+}
 
+.table-bordered, .table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td{
+  border: 2px solid #cacaca;
+
+}
+
+.td-descarga{
+  width: 5%;
+  text-align: center;
+
+}
+
+.td-descarga a{
+  color: #5CB85C;   
+}
+.td-descarga a:hover{
+  color: #3C763D;   
+}
+
+.lista-actividades   > tbody > tr > td{
+  font-family: 'latoblack', sans-serif;
+  color: #6B6864;
+  font-weight: bold;
+  font-size: 14px;
+
+}
 
 
 
