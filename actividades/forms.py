@@ -30,8 +30,8 @@ class ProyectoForm(FormFKAutoFill):
 		self.fields['proyecto'] = forms.ModelChoiceField(queryset=Proyecto.objects.all(), required=True,
 										  widget=forms.Select(attrs={'class':'form-large'}))
 		self.fields['resultado'] = forms.ModelMultipleChoiceField(queryset=Resultado.objects.all(), required=True)
-		self.fields['fecha_inicio'] = forms.DateField(required=False, widget=forms.TextInput(attrs={'style':'width: 320px'}))
-		self.fields['fecha_fin'] = forms.DateField(required=False, widget=forms.TextInput(attrs={'style':'width: 320px'}))
+		self.fields['fecha_inicio'] = forms.DateField(required=True, widget=forms.TextInput(attrs={'style':'width: 320px'}))
+		self.fields['fecha_fin'] = forms.DateField(required=True, widget=forms.TextInput(attrs={'style':'width: 320px'}))
 
 		#query municipios--------------------------------------
 		foo = Actividad.objects.all().order_by('municipio__nombre').distinct().values_list('municipio__id', flat=True)

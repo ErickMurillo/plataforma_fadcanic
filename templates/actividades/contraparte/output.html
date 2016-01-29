@@ -333,12 +333,12 @@ function loadCell(key, key2){
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-  {% if not noshare %}
+ <!-- {% if not noshare %}
     <li role="presentation" class="active"><a href="#detail" aria-controls="detail" role="tab" data-toggle="tab">Detalle</a></li>
-    {% endif %}
+    {% endif %}-->
 
     {% if request.session.bar_graph or bar_graph %}
-    <li role="presentation"><a href="#bar" aria-controls="bar" role="tab" data-toggle="tab">Gráfico de barra</a></li>
+    <li role="presentation" class="active"><a href="#bar" aria-controls="bar" role="tab" data-toggle="tab">Gráfico de barra</a></li>
     {% endif %}
 
     {% if request.session.pie_graph or pie_graph %}

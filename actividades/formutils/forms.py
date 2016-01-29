@@ -33,8 +33,11 @@ class FormFKAutoFill(forms.Form):
                 #separate the elements to load and fill
                 select_key = val['fill']['field']
                 load_key = val['on_change']['field']
-                if raw_data[select_key]:
-                    selected_items[select_key] = raw_data[select_key]
+                try:
+                    if raw_data[select_key]:
+                        selected_items[select_key] = raw_data[select_key]
+                except:
+                    pass
                 try:
                     if raw_data[load_key]:
                         load_items[load_key] = raw_data[load_key]

@@ -79,22 +79,28 @@ $(document).ready(function() {
 		<center>		
 		<form action="." method="post" class="form">
 			{% csrf_token %}
+			{%if form.errors %}
+				<div class="alert alert-error">
+					<b>Favor corregir los siguientes errores:</b><br>
+					Los campos con (*) son requeridos favor seleccionarlos
+				</div>
+			{%endif%}
 		<div class="col-md-12 filtro_space">
 			<div class="row">
-            	<div class="col-md-4"><label>Organización:</label></div>
+            	<div class="col-md-4"><label>Organización *:</label></div>
             	<div class="col-md-8">{{form.organizacion}}</div>
             </div>
         </div>
         <div class="col-md-12 filtro_space">
         	<div class="row">
-            	<div class="col-md-4"><label>Proyecto:</label></div>
+            	<div class="col-md-4"><label>Proyecto *:</label></div>
             	<div class="col-md-8">{{form.proyecto}}</div>
             </div>
         </div>
 
         <div class="col-md-12 filtro_space">
        		<div class="row">
-            	<div class="col-md-4"><label>Resultado:</label></div>
+            	<div class="col-md-4"><label>Resultado *:</label></div>
             	<div class="col-md-8">{{form.resultado}}</div>
             </div>
         </div>
@@ -108,14 +114,14 @@ $(document).ready(function() {
 
         <div class="col-md-12 filtro_space">
         	<div class="row">
-            	<div class="col-md-4"><label>Fecha Inicio:</label></div>
+            	<div class="col-md-4"><label>Fecha Inicio *:</label></div>
             	<div class="col-md-8">{{form.fecha_inicio}}</div>
             </div>
         </div>
 
         <div class="col-md-12 filtro_space">
         	<div class="row">
-            	<div class="col-md-4"><label>Fecha Fin:</label></div>
+            	<div class="col-md-4"><label>Fecha Fin *:</label></div>
             	<div class="col-md-8">{{form.fecha_fin}}</div>
             </div>
         </div>
