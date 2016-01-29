@@ -39,7 +39,7 @@
 
 		<div class="mapeo-detalle">
 			<div class="mapeo-encabezado">
-				<div class="row">
+				<div class="row boder-bajo">
 					<div class="col-md-3">
 						{% thumbnail obj.foto "x200" format="PNG" as img %}
 							<img class="center-block img-detail img-responsive" src="/media/{{img}}">
@@ -67,102 +67,150 @@
 				</div>
 				<div class="row">
 					<div class="col-md-3 ">
-						<div class="conctacto-mapeo border-mapeo">
+						<div class="conctacto-mapeo">
 							<div class="titulos-mapeo">
 								<h4>Contacto</h4>
 							</div>
-							{% if obj.convencional_1 %}
-							<p><strong>Convencional:</strong> {{obj.convencional_1}}</p>
-							{% endif %}
+							<div class="border-mapeo">
+								{% if obj.convencional_1 %}
+								<p><strong>Convencional:</strong> {{obj.convencional_1}}</p>
+								{% endif %}
 
-							{% if obj.celular_1%}
-							<p><strong>Celular:</strong> {{obj.celular_1}}</p>
-							{% endif %}
+								{% if obj.celular_1%}
+								<p><strong>Celular:</strong> {{obj.celular_1}}</p>
+								{% endif %}
 
-							{% if obj.correo %}
-							<p><strong>Correo:</strong> {{obj.correo}}</p>
-							{% endif %}
-
+								{% if obj.correo %}
+								<p><strong>Correo:</strong> {{obj.correo}}</p>
+								{% endif %}
+							</div>
 						</div>
-						<div class="social-mapeo border-mapeo">
+						<div class="social-mapeo">
 							<div class="titulos-mapeo">
 								<h4>Redes Sociales</h4>
 							</div>
-						
-							{% if obj.web %}
-								{{obj.web}}<br>
-							{% endif %}
-
-							{% if obj.facebook %}
-								{{obj.facebook}}<br>
-							{% endif %}
-
-							{% if obj.twitter %}
-								{{obj.twitter}}<br>
-							{% endif %}
-
-							{% if obj.youtube %}
-								{{obj.youtube}}<br>
-							{% endif %}
-
-							{% if obj.otro %}
-								{{obj.otro}}<br>
-							{% endif %}
+							<div class='social-links-mapeo border-mapeo'>
+								{% if obj.web %}
+								  <a class='social-link-mapeo' href='{{obj.web}}'>
+								    <div class='fa fa-globe icon'></div>
+								    <div class='title'>Sitio Web</div>
+								  </a>
+								{% endif %}
+								{% if obj.facebook %}
+								  <a class='social-link-mapeo' href='{{obj.facebook}}'>
+								    <div class='fa fa-facebook icon'></div>
+								    <div class='title'>facebook</div>
+								  </a>
+								{% endif %}
+								{% if obj.twitter %}
+								    <a class='social-link-mapeo' href='{{obj.twitter}}'>
+									    <div class='fa fa-twitter icon'></div>
+									    <div class='title'>twitter</div>
+								  	</a>
+								{% endif %}
+								{% if obj.youtube %}
+								  <a class='social-link-mapeo' href='{{obj.youtube}}'>
+								    <div class='fa fa-youtube icon'></div>
+								    <div class='title'>youtube</div>
+								  </a>
+								{% endif %}
+								{% if obj.otro %}
+								  <a class='social-link-mapeo' href='{{obj.otro}}'>
+								    <div class='fa fa-link icon'></div>
+								    <div class='title'>Otro</div>
+								  </a>
+								{% endif %}
+							</div>
 						</div>
-						<div class="cobertura-mapeo border-mapeo">
+						<div class="cobertura-mapeo">
 							{% if obj.cobertura %}
 							<div class="titulos-mapeo">
 								<h4>Cobertura</h4>
 							</div>
-							<ul>
-								{% for obj in obj.cobertura.all %}
-						  			<li>{{obj}}</li>
-								{% endfor %}
-							</ul>
+							<div class="border-mapeo boder-bajo">
+								<ul>
+									{% for obj in obj.cobertura.all %}
+							  			<li>{{obj}}</li>
+									{% endfor %}
+								</ul>
+							</div>
 							{% endif %}
 						</div>
 					</div>
 					<div class="col-md-9 ">
-						
-						<div class="sexo-mapeo">
-							{% if obj.masculino %}
-								<h6>Integrantes masculinos: {{obj.masculino}}</h6>
-							{% endif %}
 
-							{% if obj.femenino %}
-								<h6>Integrantes femeninos: {{obj.femenino}}</h6>
-							{% endif %}
-
-							{% if obj.integrantes %}
-								<h6>Nombre de los integrantes:</h6>
-								{{obj.integrantes|safe}}
-							{% endif %}
-						</div>
-
-						<div class="integrantes-mapeo">
+							<div class="col-md-12 mapeo-red">
+								<div class="col-md-6">
+									<div class="titulos-mapeo">
+										{% if obj.masculino %}
+											<h4>Integrantes masculinos: {{obj.masculino}}</h4>
+										{% endif %}
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="titulos-mapeo">
+										{% if obj.femenino %}
+											<h4>Integrantes femeninos: {{obj.femenino}}</h4>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 border-mapeo">
+								
+								{% if obj.integrantes %}
+									<h6 class="boder-bajo">Lista de los integrantes:</h6>
+									<div class="lista">
+									{{obj.integrantes|safe}}
+									</div>
+								{% endif %}
+								
+							</div>
 							{% if obj.tipo != 1 %}
-								<h6>Edades de los integrantes:</h6>
-								{% if obj.mayor_13 %}
-									13 a 18 años: {{obj.mayor_13}}<br>
-								{% endif %}
-
-								{% if obj.mayor_19 %}
-									19 a 30 años: {{obj.mayor_19}}<br>
-								{% endif %}
+							<div class="col-md-12 mapeo-red">
+								<div class="col-md-4">
+									<div class="titulos-mapeo">
+										{% if obj.mayor_13 %}
+										<h4>13 a 18 años: 20</h4>
+										{% endif %}
+									</div>	
+								</div>
+								<div class="col-md-4">
+									<div class="titulos-mapeo">
+										{% if obj.mayor_19 %}
+										<h4>19 a 30 años: {{obj.mayor_19}}</h4>
+										{% endif %}
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="titulos-mapeo">
+										{% if obj.mayor_30 %}
+										<h4>31 a más años: {{obj.mayor_30}}</h4>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+							{% else %}
+							<div class="col-md-12  borde-arriba">
 								
-								{% if obj.mayor_30 %}
-									31 a más años: {{obj.mayor_30}}<br>
-								{% endif %}
-								
+							</div>
 							{% endif %}
+
+						
+						<div class="col-md-12 acciones-mapeo">
+						<div class="row">
+							<div class="titulos-mapeo">
+								<h4>Acciones</h4>
+							</div>
+							<div class="">
+								<ul>
+									{% for actividad in actividades %}
+										<li><a href="/actividades/actividades_pdf/{{actividad.id}}" target="_black">{{actividad.nombre_actividad}}</a></li>
+									{% endfor %}
+								</ul>
+							</div>
 						</div>
-						<div class="acciones-mapeo">
-							<h3>Acciones</h3>
-							<ul>
-								{% for actividad in actividades %}
-									<li><a href="/actividades/actividades_pdf/{{actividad.id}}" target="_black">{{actividad.nombre_actividad}}</a></li>
-								{% endfor %}
-							</ul>
+							
+							
 						</div>
 					</div>
 				</div>
