@@ -88,7 +88,7 @@ class SubFiltroForm(forms.Form):
 										  required=False)
 		self.fields['evaluacion'] = forms.ChoiceField(choices=to_choices(evaluacion.keys()),
 									   required=False)
-		self.fields['eval_tipo'] = forms.ChoiceField(choices=((1, 'Hombres'), (2, 'Mujeres')), initial=1)
+		self.fields['eval_tipo'] = forms.ChoiceField(choices=((1, 'Hombres'), (2, 'Mujeres')),initial=1)
 		self.fields['total'] = forms.BooleanField(required=False, label=u"Ver totales")
 		self.fields['bar_graph'] = forms.BooleanField(required=False, label=u"Gráfico de barras")
 		self.fields['pie_graph'] = forms.BooleanField(required=False, label=u"Gráfico de pastel")

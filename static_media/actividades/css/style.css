@@ -210,7 +210,7 @@ span.select2-selection.select2-selection--multiple:focus{
 	background: none;
 	color: #727272;
 }
-form input[type="radio"],form input[type="checkbox"]{
+form input[type="checkbox"]{
 	display: none;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice{

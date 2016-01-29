@@ -28,7 +28,7 @@
 <script type="text/javascript" src="{% static 'actividades/js/underscore-min.js' %}"></script>
 <link href="{% static 'actividades/css/form.css' %}" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="{% static 'actividades/js/jquery.easing.1.3.js' %}"></script>
-<!--<script type="text/javascript" src="{% static 'actividades/js/jquery.ibutton.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'actividades/js/jquery.ibutton.min.js' %}"></script>
 <link href="{% static 'actividades/css/jquery.ibutton.min.css' %}" rel="stylesheet" type="text/css"/>
 
 <script type="text/javascript">
@@ -43,6 +43,24 @@
 			$(this).iButton("toggle", true);
 		});	
 		$('.recursos').attr("disabled", true);
+		$('#id_participantes').append('<option value="" selected="selected">-----</option>');
+		$('#id_evaluacion').append('<option value="" selected="selected">-----</option>');
+
+
+
+		$(document).on('change','#id_participantes',function(){
+			var valor_tipo = $('#id_participantes').val();
+			if (valor_tipo != '') {
+				$('#id_evaluacion').val('');  
+			};
+		});
+		$(document).on('change','#id_evaluacion',function(){
+			var valor_tipo = $('#id_evaluacion').val();
+			if (valor_tipo != '') {
+				$('#id_participantes').val('');  
+			};
+		});
+
 	});	
 	$(window).load(function(){
 		$(":radio").not('.nobutton').iButton({
@@ -53,8 +71,10 @@
 		});
 	});
 
-</script>
--->
+
+
+ 
+    </script>
 {% endblock %}
 
 {% block contenido %}
