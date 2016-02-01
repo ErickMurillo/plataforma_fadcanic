@@ -39,10 +39,6 @@
 	font-size: 14px !important;
 }
 
-.imglogo img {
-	max-width: none;
-}
-
 #text {
 	margin-top: 3em;
 	margin-bottom: 5em;
@@ -111,10 +107,7 @@ body{
 .thumbnail{
 	border: 3px solid #cacaca;
     border-radius: 0px;
-}
-.imglogo img{
-	width: 100%;
-}
+}	
 .contenido{
 	background-color: white;
 	margin-bottom: 50px;
@@ -133,6 +126,9 @@ h4{
 	border-radius: 0px !important;
 	border: 2px solid #4d4641 !important;
 	padding: 10px 50px 10px !important;
+	font-size: 1em !important;
+    line-height: 1.5em !important;
+    letter-spacing: normal !important;
 }
 
 .form input[type="submit"]:hover{
@@ -142,8 +138,13 @@ h4{
 .btn-actividad{
 	padding-bottom: 20px;
 	padding-top: 20px;
-}
 
+}
+form label{
+	font-family: 'latoblack', sans-serif;
+	font-size: 14px;
+	color: #727272 !important;
+}
 select{
 	background: none;
     filter: none;
@@ -305,27 +306,7 @@ form input[type="checkbox"]{
 .nav-act>li:focus{
 	background-color: #3E9B04;
 	color: black;
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*Estilo de checkbox*/
 
@@ -410,6 +391,77 @@ form input[type="checkbox"]{
   color: #fff;
 }
 
+.contenido-outout{
+	background-color: white;
+	padding:20px;
+	margin-bottom: 50px
+}
+
+#titulo-output h4{
+   font-size: 32px;
+   font-weight: 300;
+   color: black;
+   text-align: center;
+}
+
+.dinamictable{
+	margin-top: 20px;
+}
+
+.table{
+	background-color: white;
+}
+.tabla-resultados tr:last-child td{
+	color: black;
+}
+
+.tabla-resultados > thead > tr > th{
+	font-size: 15px;
+	text-align: center;
+}
+
+#divp, #divp2{
+	border:2px solid #cacaca;
+	width: 100%;
+	margin-bottom: 20px;
+	margin-left: auto;
+    margin-right: auto;
+	
+}
+#grafo{
+	width: 100%;
+	margin-bottom: 20px;
+	margin-left: auto;
+    margin-right: auto;
+	
+}
+
+#id_fecha_inicio, #id_fecha_fin{
+		width: 100% !important;
+}
+
+.logo-act{
+	width: 100%;
+}
+.space-act{
+	margin-bottom: 2em;
+}
+.center-block{
+	display: block !important;
+}
+#grafo div#highcharts-0 {
+   max-width: 100% !important;
+}
+
+
+@media (min-width: 593px) and (max-width:767px)  {
+	#grafo div#highcharts-0 {
+    	max-width: 100% !important;
+    	overflow-x: scroll !important;
+	}
+
+}
+
 @media (max-width: 593px)  {
 	
 	.brand img {
@@ -419,9 +471,16 @@ form input[type="checkbox"]{
 	  background-color: transparent !important;
 
 	}
+	#id_fecha_inicio, #id_fecha_fin{
+		width: 100% !important;
+	}
+	.logo-act{
+		width:50%;
+	}
+	#grafo div#highcharts-0 {
+    	max-width: 100% !important;
+    	overflow-x: scroll !important;
+	}
+
 }
-
-
-
-
 

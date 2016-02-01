@@ -1995,6 +1995,9 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 	.logo-fadcanic {
 		width: 25%;
 	}
+	.brand{
+		left: 0px !important;
+	}
 }
 
 @media (max-width: 593px)  {
@@ -2023,6 +2026,7 @@ a.btn-masnotas.pull-right, a.btn-campana.pull-right {
 	.logo-fadcanic {
 	  width: 40%;
 	}
+
 
 }
 
