@@ -84,9 +84,6 @@ class EncuestaAdmin(ImportExportActionModelAdmin):
 # Register your models here.
 admin.site.register(Encuesta, EncuestaAdmin)
 admin.site.register(Encuestador)
-<<<<<<< HEAD
-admin.site.register(Etnias)
-=======
 
 #export import **********************************************************
 
@@ -126,9 +123,8 @@ admin.site.register(InformacionEntrevistado,InformacionAdmin)
 # admin.site.register(Escolaridad,EscolaridadAdmin)
 # admin.site.register(ParticipaOrganizacion,ParticipaOrganizacionAdmin)
 # admin.site.register(RespuetaSi,RespuetaSiAdmin)
-# admin.site.register(Conocimiento,ConocimientoAdmin) 
-# admin.site.register(Actitud,ActitudAdmin) 
+# admin.site.register(Conocimiento,ConocimientoAdmin)
+# admin.site.register(Actitud,ActitudAdmin)
 # admin.site.register(Practicas,PracticasAdmin)
 # admin.site.register(Percepcion,PercepcionAdmin)
 # admin.site.register(EstadoActual,EstadoActualAdmin)
->>>>>>> effe7a207d7b63fcf19c03fee0849c1bce778532
