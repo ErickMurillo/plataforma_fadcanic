@@ -20,6 +20,7 @@
 
         <link rel="stylesheet" href="/static/cambiaahora/css/magnific-popup.css">
         <link rel="stylesheet" href="/static/cambiaahora/css/custom-tabs.css">
+        <link rel="stylesheet" href="/static/cambiaahora/css/style4.css">
 		<!-- Font -->
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
@@ -300,7 +301,36 @@
             </div>
         </div>
 	<!--Footer Section End Here -->
+		<div class="container menubar">
 
+			<nav id="bt-menu" class="bt-menu">
+				<a href="#" class="bt-menu-trigger" data-toggle="tooltip" data-placement="left" title="Menu Principal"><span>Menu</span></a>
+				<ul>
+					<li><a href="#" class="" data-toggle="tooltip" data-placement="top" title="Actividades">
+						<img src="{% static 'panel/img/thumbs/actividades.png' %}" alt="">
+					</a></li>
+					<li><a href="#" class=""  data-toggle="tooltip" data-placement="top" title="Mapeo Actores">
+						<img src="{% static 'panel/img/thumbs/mapeo.png' %}" alt="Mapeo">
+
+					</a></li>
+					<li><a href="#" class="" data-toggle="tooltip" data-placement="top" title="Biblioteca">
+						<img src="{% static 'panel/img/thumbs/biblioteca.png' %}" alt="">
+					</a></li>
+					
+				</ul>
+				<ul>
+					<li><a href="#" class="" data-toggle="tooltip" data-placement="top" title="Encuesta CAPS">
+						<img src="{% static 'panel/img/thumbs/encuesta.png' %}" alt="">
+					</a></li>
+					<li><a href="#" class="" data-toggle="tooltip" data-placement="top" title="Dashboard">
+						<img src="{% static 'panel/img/thumbs/dashboard.png' %}" alt="">
+					</a></li>
+					<li><a href="#" class="" data-toggle="tooltip" data-placement="top" title="Apps Android">
+						<img src="{% static 'panel/img/thumbs/android.png' %}" alt="">
+					</a></li>
+				</ul>
+			</nav>
+		</div><!-- /container -->
 		
 		<script src="/static/cambiaahora/js/less.js"></script>
 		<script src="/static/cambiaahora/js/bootstrap.min.js"></script>
@@ -315,6 +345,13 @@
 		<script src="/static/cambiaahora/js/audiojs/audio.min.js"></script>
 
 		<script src="/static/cambiaahora/js/jquery.magnific-popup.min.js"></script>
+		<script src="/static/cambiaahora/js/classie.js"></script>
+		<script src="/static/cambiaahora/js/borderMenu.js"></script>
+		<script type="text/javascript">
+			$(function () {
+			  $('[data-toggle="tooltip"]').tooltip()
+			})
+		</script>
         {% block social %}{% endblock social %}
 
 

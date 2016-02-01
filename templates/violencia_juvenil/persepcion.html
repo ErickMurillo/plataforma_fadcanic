@@ -1,0 +1,117 @@
+<script>
+		$(function () {
+		$('#pregunta30').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Quiénes considera que son más violentos?'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Respuesta',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in pregunta30.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+
+	$(function () {
+		$('#pregunta31').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Qué opina del narcotráfico?'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Respuesta',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in pregunta31.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+</script>

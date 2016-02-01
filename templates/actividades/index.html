@@ -196,7 +196,7 @@ $(document).ready(function() {
 
 
 		<div class="col-md-4">
-
+			{% if organizaciones %}
 			<h4>Organizaciones</h4>
 			{% for org in organizaciones %}
 			<div class="thumbnail organizaciones">
@@ -217,6 +217,7 @@ $(document).ready(function() {
 					</div>
 				</div>
 				{% endfor %}
+			{% endif %}
 			</div>
 		</div>
 		{% endblock contenido %}

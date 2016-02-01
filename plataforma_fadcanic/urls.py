@@ -67,4 +67,9 @@ urlpatterns += patterns('mapeo.views',
     url(r'^mapeo/', include(mapeo_urls)),
 )
 
+#violencia juvenil
+urlpatterns += patterns('violencia_juvenil.views',
+    url(r'^violencia_juvenil/',  'index', name='index-violencia'),
+)
+
 urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,291 @@
+<script>
+	$(function () {
+		$('#pregunta3').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Qué tipo violencia afecta más a tu comunidad?'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Tipos de violencia',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in pregunta3.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+
+	$(function () {
+		$('#pregunta4').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Qué lugares considera que genera más violencia?'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Lugares',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in pregunta4.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+
+	$(function () {
+		$('#pregunta7').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Qué soluciones hay para prevenir la violencia juvenil?'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Soluciones',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in pregunta7.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+
+	$(function () {
+		$('#pregunta9').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Qué entiende por femicidio?'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Femicidio',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in pregunta9.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+
+	$(function () {
+		$('#pregunta13').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Qué entiende por seguridad ciudadana?'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Seguridad cuidadana',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in pregunta13.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+</script>
