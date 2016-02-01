@@ -5,21 +5,25 @@
 
 {% block extra_head %}
 <style>
-.banner-filtros{	
-	height: 60px;
-	margin-top: -5px;
-	border-top: 6px #fff solid;	
-}
+	.banner-filtros{	
+		height: 60px;
+		margin-top: -5px;
+		border-top: 6px #fff solid;	
+	}
 
-ul, label {
-	list-style: none;
-	font-size: 16px
-}
+	ul, label {
+		list-style: none;
+		font-size: 16px
+	}
 
-p {
-	padding:10px;
-	font-size: 16px;
-}
+	p {
+		padding:10px;
+		font-size: 16px;
+	}
+	
+	.nav-tabs > li > a {
+	 
+	}
 </style>
 <script type="text/javascript" src="{% static 'actividades/js/underscore-min.js' %}"></script>
 <link href="{% static 'actividades/css/form.css' %}" rel="stylesheet" type="text/css"/>
@@ -39,6 +43,24 @@ p {
 			$(this).iButton("toggle", true);
 		});	
 		$('.recursos').attr("disabled", true);
+		$('#id_participantes').append('<option value="" selected="selected">-----</option>');
+		$('#id_evaluacion').append('<option value="" selected="selected">-----</option>');
+
+
+
+		$(document).on('change','#id_participantes',function(){
+			var valor_tipo = $('#id_participantes').val();
+			if (valor_tipo != '') {
+				$('#id_evaluacion').val('');  
+			};
+		});
+		$(document).on('change','#id_evaluacion',function(){
+			var valor_tipo = $('#id_evaluacion').val();
+			if (valor_tipo != '') {
+				$('#id_participantes').val('');  
+			};
+		});
+
 	});	
 	$(window).load(function(){
 		$(":radio").not('.nobutton').iButton({
@@ -48,82 +70,122 @@ p {
 			, duration: 400
 		});
 	});
-</script>
 
+
+
+ 
+    </script>
 {% endblock %}
 
 {% block contenido %}
 {% include "actividades/filtros_selectos.html" %}
+<div class="contenido-variable">
 
-<div class="jumbotron">
-  <h4>Combinaciones de variables</h4>
-</div>	
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs nav-act" role="actividades">
+		<li role="presentation" class="active"><a href="#variable" aria-controls="variable" role="tab" data-toggle="tab">Combinaciones de variables</a></li>
+		<li role="presentation"><a href="#lista" aria-controls="lista" role="tab" data-toggle="tab">Lista de actividades</a></li>
+	</ul>
 
-<div class="container-fluid">
-<form action="." method="post">
-	{% csrf_token %}
-	<div class="col-md-4">
-		<h5>PASO 1</h5>
-		<div class="col-md-12">
-			<p>Variable Principal</p>
-			<div>{{form.main_var}}</div>			
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="variable">
 			
-		</div>		
+			<h4 class="borde">Combinaciones de variables</h4>
+			
+
+			<div class="container-fluid">
+				<form class="form" action="." method="post">
+					{% csrf_token %}
+					<div class="col-md-4">
+						<div class="col-md-12 space-act">
+							<label>Variable Principal</label>
+							<div>{{form.main_var}}</div>			
+
+						</div>
+						<div class="col-md-12 space-act">
+							<label>Sexo</label>
+							{{form.eval_tipo}}
+						</div>
+							
+					</div>
+					<div class="col-md-4">
+						<div class="col-md-12 space-act">
+								<label>{{form.evaluacion.label}}</label>
+								{{form.evaluacion}}
+						</div>		
+						<div class="col-md-12 space-act">		
+							<label>{{form.participantes.label}}</label>
+							{{form.participantes}}			
+								
+						</div>
+					</div>
+					<div class="col-md-4 space-act">
+						
+						<div class="x1">
+							<label>Opciones de Visualización</label>
+
+							<div class="visualizacion">
+								{{form.total}}
+								<label for="id_total">{{form.total.label}}</label>
+								<br>
+								{{form.bar_graph}}
+								<label for="id_bar_graph">{{form.bar_graph.label}}</label>
+								<br>
+								{{form.pie_graph}}
+								<label for="id_pie_graph">{{form.pie_graph.label}}</label>
+							</div>
+		
+						</div>
+								
+					</div>
+					<div class="col-md-12 ">
+						<input type="submit" class="btn btn-success center-block"  value="Generar tabla" />
+					</div>
+					
+				</form>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="lista">
+			<h3 class="borde">Lista de actividades</h3>
+			<div class="table-responsive">
+				<table class=" table table-bordered table-hover lista-actividades">
+					<tbody>
+					{% for obj in actividad %}
+						<tr>
+							<td class="td-descarga">
+								<a href="/actividades/actividades_pdf/{{obj.id}}" target="_black"><i class="fa fa-download fa-2x"></i></a>
+							</td>
+							<td>
+								{{obj.nombre_actividad}}
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+
+
+		</div>
 	</div>
 
-	<div class="col-md-4">
-		<h5>PASO 2</h5>
-		<div class="col-md-12">
-			<div>
-				<p>{{form.participantes.label}}</p>
-				{{form.participantes}}
-			</div>	
-			<br>
-			<div>
-				<p>{{form.evaluacion.label}}</p>
-				{{form.eval_tipo}}
-			</div>
-			<br>			
-			<div>				
-				{{form.evaluacion}}
-			</div>
-			<div class="clean"></div>
-		</div>		
-	</div>
-	<div class="col-md-4">
-		<h5>PASO 3</h5>
-		<div class="x1">
-			<p>Opciones de Visualización</p>
-			<div>
-				{{form.total}} <label>{{form.total.label}}</label><br>
-				{{form.bar_graph}} <label>{{form.bar_graph.label}}</label><br>
-				{{form.pie_graph}} <label>{{form.pie_graph.label}}</label>
-			</div>			
-			<div class="clean"></div>
-		</div>
-		<br>
-		<h5>PASO 4</h5>
-		<br>
-		<div>
-			<input type="submit" class="form-button" value="Generar tabla" />
-		</div>		
-	</div>
-</form>
 </div>
+
 {{request.session.var2}}<br>{{request.session.main}}
 
 {% endblock %}
 
 {% block extra_js %}
 <script>
-$( "#id_participantes li" ).click(function() {
-  $("#id_evaluacion_0, #id_evaluacion_1, #id_evaluacion_2, #id_evaluacion_3, #id_evaluacion_4").prop('checked', false);
-});
+	$( "#id_participantes li" ).click(function() {
+		$("#id_evaluacion_0, #id_evaluacion_1, #id_evaluacion_2, #id_evaluacion_3, #id_evaluacion_4").prop('checked', false);
+	});
 
-$( "#id_evaluacion_0, #id_evaluacion_1, #id_evaluacion_2, #id_evaluacion_3, #id_evaluacion_4" ).click(function() {
-  $("#id_participantes_0, #id_participantes_1, #id_participantes_2").prop('checked', false);
-});	
+	$( "#id_evaluacion_0, #id_evaluacion_1, #id_evaluacion_2, #id_evaluacion_3, #id_evaluacion_4" ).click(function() {
+		$("#id_participantes_0, #id_participantes_1, #id_participantes_2").prop('checked', false);
+	});	
 
 </script>
-	
+
 {% endblock extra_js %}

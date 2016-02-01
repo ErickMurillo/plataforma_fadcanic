@@ -58,6 +58,7 @@
 
 $(document).ready(function() {
   $("#id_municipio").select2();
+  $("#id_resultado").select2();
 });
 </script>
 
@@ -70,148 +71,86 @@ $(document).ready(function() {
 	}
 </style>
 <div class="container contenido">
-	<div class="col-md-8">
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Filtro de actividades</a></li>
-			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Lista de actividades</a></li>
-		</ul>
-
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane active" id="home">
-			<div class="banner banner-filtros">	
-	<h3 align="center">Filtros de proyectos</h3>
-</div>
+	<div class="col-md-7">
+		<div class="banner banner-filtros">	
+			<h3 align="center">Filtros de actividades</h3>
+		</div>
 			
 		<center>		
 		<form action="." method="post" class="form">
 			{% csrf_token %}
+			{%if form.errors %}
+				<div class="alert alert-error">
+					<b>Favor corregir los siguientes errores:</b><br>
+					Los campos con (*) son requeridos favor seleccionarlos
+				</div>
+			{%endif%}
 		<div class="col-md-12 filtro_space">
-            <div class="col-md-4"><label>Organización:</label></div>
-            <div class="col-md-8">{{form.organizacion}}</div>
+			<div class="row">
+            	<div class="col-md-4"><label>Organización *:</label></div>
+            	<div class="col-md-8">{{form.organizacion}}</div>
+            </div>
         </div>
         <div class="col-md-12 filtro_space">
-            <div class="col-md-4"><label>Proyecto:</label></div>
-            <div class="col-md-8">{{form.proyecto}}</div>
+        	<div class="row">
+            	<div class="col-md-4"><label>Proyecto *:</label></div>
+            	<div class="col-md-8">{{form.proyecto}}</div>
+            </div>
         </div>
 
         <div class="col-md-12 filtro_space">
-            <div class="col-md-4"><label>Resultado:</label></div>
-            <div class="col-md-8">{{form.resultado}}</div>
+       		<div class="row">
+            	<div class="col-md-4"><label>Resultado *:</label></div>
+            	<div class="col-md-8">{{form.resultado}}</div>
+            </div>
         </div>
 
         <div class="col-md-12 filtro_space">
-            <div class="col-md-4"><label>Municipios:</label></div>
-            <div class="col-md-8">{{form.municipio}}</div>
+        	<div class="row">
+            	<div class="col-md-4"><label>Municipios:</label></div>
+            	<div class="col-md-8">{{form.municipio}}</div>
+            </div>
         </div>
 
         <div class="col-md-12 filtro_space">
-            <div class="col-md-4"><label>Fecha Inicio:</label></div>
-            <div class="col-md-8">{{form.fecha_inicio}}</div>
+        	<div class="row">
+            	<div class="col-md-4"><label>Fecha Inicio *:</label></div>
+            	<div class="col-md-8">{{form.fecha_inicio}}</div>
+            </div>
         </div>
 
         <div class="col-md-12 filtro_space">
-            <div class="col-md-4"><label>Fecha Fin:</label></div>
-            <div class="col-md-8">{{form.fecha_fin}}</div>
+        	<div class="row">
+            	<div class="col-md-4"><label>Fecha Fin *:</label></div>
+            	<div class="col-md-8">{{form.fecha_fin}}</div>
+            </div>
         </div>
-			<input class="form-button" type="submit" value="Consultar" />	
+        <div class="col-md-12 btn-actividad">
+			<input class="btn btn-default" type="submit" value="Consultar" />
+		</div>	
 		</form>		
 		</center>
-				<!--<div class="col-md-12">
-					<div class="row">
-						<h2>Panel de activiades</h2>
-					</div>
-					<div class="row">
-						<h4>Consultar</h4>
-						<form action"." method="POST">
-							{% csrf_token %}
-							{{form.as_table}}
-							<button type="submit" class="btn">Consultar</button>
-						</form>
-					</div>
-					<div class="row">
-						<h2>Conteos de la organización</h2>
-						<ul>
-							<li>Personas total: {{total_personas_org|default:0}}</li>
-							<li>Hombres: {{personas_hombre_org|default:0}}</li>
-							<li>Mujeres: {{personas_mujer_org|default:0|default:0}}</li>
-						</ul>
-						<h2>Por etnias</h2>
-						<ul>
 
-							<li>Creole: {{creole_org|default:0}}</li>
-							<li>Miskitus: {{miskito_org|default:0}}</li>
-							<li>Ulwa: {{ulwa_org|default:0}}</li>
-							<li>Ramas: {{rama_org|default:0}}</li>
-							<li>Mestizo: {{mestizo_org|default:0}}</li>
-							<li>Mayagna: {{mayagna_org|default:0}}</li>
-							<li>Garifuna: {{garifuna_org|default:0}}</li>
-							<li>Extrangero: {{extranjero_org|default:0}}</li>
-						</ul>
-						<h2>Por rango de edad</h2>
-						<ul>
-							<li>Menor a 12 años: {{menor_12_org|default:0}}</li>
-							<li>13 a 18 años: {{mayor_12_org|default:0}}</li>
-							<li>19 a 30 años: {{mayor_18_org|default:0}}</li>
-							<li>31 a más años: {{mayor_30_org|default:0}}</li>
-						</ul>
-						<h2>Conteos comites comunales</h2>
-						<ul>
-							<li>Personas total: {{total_personas_comunal|default:0}}</li>
-							<li>Hombres: {{personas_hombre_comunal|default:0}}</li>
-							<li>Mujeres: {{personas_mujer_comunal|default:0}}</li>
-						</ul>
-						<h2>Por etnias</h2>
-						<ul>
-
-							<li>Creole: {{creole_comunal|default:0}}</li>
-							<li>Miskitus: {{miskito_comunal|default:0}}</li>
-							<li>Ulwa: {{ulwa_comunal|default:0}}</li>
-							<li>Ramas: {{rama_comunal|default:0}}</li>
-							<li>Mestizo: {{mestizo_comunal|default:0}}</li>
-							<li>Mayagna: {{mayagna_comunal|default:0}}</li>
-							<li>Garifuna: {{garifuna_comunal|default:0}}</li>
-							<li>Extrangero: {{extranjero_comunal|default:0}}</li>
-						</ul>
-						<h2>Por rango de edad</h2>
-						<ul>
-							<li>Menor a 12 años: {{menor_12_comunal|default:0}}</li>
-							<li>13 a 18 años: {{mayor_12_comunal|default:0}}</li>
-							<li>19 a 30 años: {{mayor_18_comunal|default:0}}</li>
-							<li>31 a más años: {{mayor_30_comunal|default:0}}</li>
-						</ul>
-					</div>
-				</div>-->
-			</div>
-			<div role="tabpanel" class="tab-pane" id="profile">
-				<h3>Todas las actividades</h3>
-				<ul>
-					{% for obj in actividad %}
-					<li><a href="/actividades/actividades_pdf/{{obj.id}}" target="_black">{{obj.nombre_actividad}}</a></li>
-					{% endfor %}
-				</ul></div>
-			</div>
 		</div>
 
 
-		<div class="col-md-4">
+		<div class="col-md-5">
 			{% if organizaciones %}
-			<h4>Organizaciones</h4>
+			<h4>Última Actualización</h4>
 			{% for org in organizaciones %}
 			<div class="thumbnail organizaciones">
 				<div class="panel-body">
-					<div class="col-md-9">
+					<div class="col-md-8">
 						<div class="nombre-corto">{{org.nombre_corto|upper}}</div>
 						<div class="nombre-largo">{{org.nombre}}</div>
-						<div class="actcount">Última actividad registrada el: 
+						<div class="actcount">Última actividad registrada el: <br>
 							<b style="color: red;">{{org.last_register|date:"d F Y"}}</b></div>
 						</div>
-						<div class="col-md-3 imglogo">
+						<div class="col-md-4">
 							{% if org.logo %}
-							<img src="/media/{{org.logo}}" alt="" width="60px">
+							<img class="logo-act center-block" src="/media/{{org.logo}}" alt="">
 							{% else %}
-							<img src="http://placehold.it/70x70" alt="{{org.nombre_corto}}">
+							<img class="logo-act" src="{% static 'actividades/img/logo.png' %}" alt="Cambia Ahora">
 							{% endif %}
 						</div>
 					</div>

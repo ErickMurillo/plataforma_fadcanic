@@ -22,10 +22,20 @@
 		</li>
 		{% endif %}
 
+		{% if filtro.resultado__in %}
+		<li>
+			<a href="#">Resultados: </a>
+			{% for result in filtro.resultado__in %}
+				{{result}}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		</li>
+		{% endif %}
 		{% if filtro.resultado %}
 		<li>
 			<a href="#">Resultado: </a>
-			{{filtro.resultado}}
+			{% for result in filtro.resultado %}
+				{{result}}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
 		</li>
 		{% endif %}
 		

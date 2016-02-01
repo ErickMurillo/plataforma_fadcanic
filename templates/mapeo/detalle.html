@@ -1,124 +1,477 @@
 {% extends "cambiaahora/base.html" %}
+{% load thumbnail %}
 
 {% block extra_js %}
 
 {% endblock extra_js %}
 
 {% block contenido %}
+
 <div class="container">
-	{{object}} <br>
+	{% for obj in object %}
 
-	{{object.get_tipo_display}}<br>
+		<div class="mapeo-detalle">
+			<div class="mapeo-encabezado">
+				<div class="row boder-bajo">
+					<div class="col-md-3">
+						{% thumbnail obj.foto "x200" format="PNG" as img %}
+							<img class="center-block img-detail img-responsive" src="/media/{{img}}">
+						{% empty %}
+							<img class="center-block img-detail img-responsive" src="http://placehold.it/300x200?text=No+Imagen">
+						{% endthumbnail %}
+					</div>
+					<div class="col-md-7">
+						<p><strong>Nombre:</strong> {{obj.nombre}}</p>
+						<p><strong>Tipo:</strong>{{obj.get_tipo_display}}</p>
+						{% if obj.persona_contacto %}
+							<p><strong>Contacto:</strong>{{obj.persona_contacto}}</p>
+						{% endif %}
+						<p><strong>Municipio:</strong> {{obj.municipio}}</p>
+						{% if obj.comunidad %}
+						<p><strong>Comunidad:</strong> {{obj.comunidad}}</p>
+						{% endif %}
 
-	{% if object.persona_contacto %}
-		{{object.persona_contacto}}<br>
-	{% endif %}
+						{% if obj.direccion %}
+						<p><strong>Dirección:</strong> {{obj.direccion}}</p>
+						{% endif %}
+						
 
-	{% if object.direccion %}
-		{{object.direccion}}<br>
-	{% endif %}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 ">
+						<div class="conctacto-mapeo">
+							<div class="titulos-mapeo">
+								<h4>Contacto</h4>
+							</div>
+							<div class="border-mapeo">
+								{% if obj.convencional_1 %}
+								<p><strong>Convencional:</strong> {{obj.convencional_1}}</p>
+								{% endif %}
 
-	{{object.municipio}}<br>
+								{% if obj.celular_1%}
+								<p><strong>Celular:</strong> {{obj.celular_1}}</p>
+								{% endif %}
 
-	{% if object.comunidad %}
-		{{object.comunidad}}<br>
-	{% endif %}
+								{% if obj.correo %}
+								<p><strong>Correo:</strong> {{obj.correo}}</p>
+								{% endif %}
+							</div>
+						</div>
+						<div class="social-mapeo">
+							<div class="titulos-mapeo">
+								<h4>Redes Sociales</h4>
+							</div>
+							<div class='social-links-mapeo border-mapeo'>
+								{% if obj.web %}
+								  <a class='social-link-mapeo' href='{{obj.web}}'>
+								    <div class='fa fa-globe icon'></div>
+								    <div class='title'>Sitio Web</div>
+								  </a>
+								{% endif %}
+								{% if obj.facebook %}
+								  <a class='social-link-mapeo' href='{{obj.facebook}}'>
+								    <div class='fa fa-facebook icon'></div>
+								    <div class='title'>facebook</div>
+								  </a>
+								{% endif %}
+								{% if obj.twitter %}
+								    <a class='social-link-mapeo' href='{{obj.twitter}}'>
+									    <div class='fa fa-twitter icon'></div>
+									    <div class='title'>twitter</div>
+								  	</a>
+								{% endif %}
+								{% if obj.youtube %}
+								  <a class='social-link-mapeo' href='{{obj.youtube}}'>
+								    <div class='fa fa-youtube icon'></div>
+								    <div class='title'>youtube</div>
+								  </a>
+								{% endif %}
+								{% if obj.otro %}
+								  <a class='social-link-mapeo' href='{{obj.otro}}'>
+								    <div class='fa fa-link icon'></div>
+								    <div class='title'>Otro</div>
+								  </a>
+								{% endif %}
+							</div>
+						</div>
+						<div class="cobertura-mapeo">
+							{% if obj.cobertura %}
+							<div class="titulos-mapeo">
+								<h4>Cobertura</h4>
+							</div>
+							<div class="border-mapeo boder-bajo">
+								<ul>
+									{% for obj in obj.cobertura.all %}
+							  			<li>{{obj}}</li>
+									{% endfor %}
+								</ul>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+					<div class="col-md-9 ">
 
-	{% if object.convencional %}
-		{{object.convencional}}<br>
-	{% endif %}
+							<div class="col-md-12 mapeo-red">
+								<div class="col-md-6">
+									<div class="titulos-mapeo">
+										{% if obj.masculino %}
+											<h4>Integrantes masculinos: {{obj.masculino}}</h4>
+										{% endif %}
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="titulos-mapeo">
+										{% if obj.femenino %}
+											<h4>Integrantes femeninos: {{obj.femenino}}</h4>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 border-mapeo">
+								
+								{% if obj.integrantes %}
+									<h6 class="boder-bajo">Lista de los integrantes:</h6>
+									<div class="lista">
+									{{obj.integrantes|safe}}
+									</div>
+								{% endif %}
+								
+							</div>
+							{% if obj.tipo != 1 %}
+							<div class="col-md-12 mapeo-red">
+								<div class="col-md-4">
+									<div class="titulos-mapeo">
+										{% if obj.mayor_13 %}
+										<h4>13 a 18 años: 20</h4>
+										{% endif %}
+									</div>	
+								</div>
+								<div class="col-md-4">
+									<div class="titulos-mapeo">
+										{% if obj.mayor_19 %}
+										<h4>19 a 30 años: {{obj.mayor_19}}</h4>
+										{% endif %}
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="titulos-mapeo">
+										{% if obj.mayor_30 %}
+										<h4>31 a más años: {{obj.mayor_30}}</h4>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+							{% else %}
+							<div class="col-md-12  borde-arriba">
+								
+							</div>
+							{% endif %}
 
-	{% if object.celular %}
-		{{object.celular}}<br>
-	{% endif %}
+						
+						<div class="col-md-12 acciones-mapeo">
+						<div class="row">
+							<div class="titulos-mapeo">
+								<h4>Acciones</h4>
+							</div>
+							<div class="">
+							<table class=" table table-bordered table-hover lista-actividades">
+								<tbody>
+								{% for actividad in actividades %}
+									<tr>
+										<td class="td-descarga">
+											<a href="/actividades/actividades_pdf/{{actividad.id}}" 
+											target="_black"><i class="fa fa-download fa-2x"></i></a>
+										</td>
+										<td>
+											{{actividad.nombre_actividad}}
+										</td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+							</div>
+						</div>
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-	{% if object.correo %}
-		{{object.correo}}<br>
-	{% endif %}
-
-	{% if object.web %}
-		{{object.web}}<br>
-	{% endif %}
-
-	{% if object.facebook %}
-		{{object.facebook}}<br>
-	{% endif %}
-
-	{% if object.twitter %}
-		{{object.twitter}}<br>
-	{% endif %}
-
-	{% if object.youtube %}
-		{{object.youtube}}<br>
-	{% endif %}
-
-	{% if object.otro %}
-		{{object.otro}}<br>
-	{% endif %}
-
-	{% if object.cobertura %}
-	<h5>Cobertura</h5>
-	<ul>
-		{% for obj in object.cobertura.all %}
-  			<li>{{obj}}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-
-	{% if object.masculino %}
-		<h6>Integrantes masculinos: {{object.masculino}}</h6>
-	{% endif %}
-
-	{% if object.femenino %}
-		<h6>Integrantes femeninos: {{object.femenino}}</h6>
-	{% endif %}
-
-	{% if object.integrantes %}
-		<h6>Nombre de los integrantes:</h6>
-		{{object.integrantes|safe}}
-	{% endif %}
-
-	{% if object.tipo != 1 %}
-		<h6>Edades de los integrantes:</h6>
-		{% if object.mayor_13 %}
-			13 a 18 años: {{object.mayor_13}}<br>
-		{% endif %}
-
-		{% if object.mayor_19 %}
-			19 a 30 años: {{object.mayor_19}}<br>
-		{% endif %}
-		
-		{% if object.mayor_30 %}
-			31 a más años: {{object.mayor_30}}<br>
-		{% endif %}
-		
-	{% endif %}
-
-	{% if object.acciones_violencia %}
-	<h6>Acciones de Violencia</h6>
-	<ul>
-		{% for obj in object.acciones_violencia.all %}
-  			<li>{{obj}}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-
-	{% if object.acciones_consumo_drogas %}
-	<h6>Acciones consumo de drogas</h6>
-	<ul>
-		{% for obj in object.acciones_consumo_drogas.all %}
-  			<li>{{obj}}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-
-	{% if object.acciones_apoyo %}
-	<h6>Acciones de apoyo</h6>
-	<ul>
-		{% for obj in object.acciones_apoyo.all %}
-  			<li>{{obj}}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
+	{% endfor %}
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+	{% for obj in object %}
+
+
+	
+		
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+
+
+	
+	{% endfor %}
+</div>
+<!--
+<div class="cuerpo-mapeo">
+	<div class="row">
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<div class="aside">
+				<div class="info-mapeo">
+					<p>Información</p>
+				</div>
+				<div class="">
+					<div class="row fila">
+							
+						<div class="col-md-offset-1 col-lg-md-offset-1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+							<div class=" circulo">
+								<span class="fa fa-map fa-lg"></span>
+							</div>
+							
+						</div>
+						<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+							<p class="texto-mapeo">{{object.municipio}}{% if object.comunidad %}, {{object.comunidad}}{% endif %}</p>
+						</div>
+					</div>
+					<div class="row">
+							
+						<div class="col-md-offset-1 col-lg-md-offset-1 col-xs-2 col-sm-2 col-md-2 col-lg-2">
+							<div class=" circulo">
+								<span class="fa fa-map-marker fa-lg"></span>
+							</div>
+							
+						</div>
+						<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+							<p class="texto-mapeo">{% if object.direccion %}{{object.direccion}}{% endif %}
+							</p>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+			<div class="row">
+				{% if object.integrantes %}
+				<div class="col-lg-12">
+					<h6>Nombre de los integrantes:</h6>
+					{{object.integrantes|safe}}
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+</div>
+-->
+
+
+<!--
+			<div class="container">
+
+				<div class="row">
+					<h4></h4>
+					<div class="col-lg-6">
+						<div class="table-responsive">
+							<table class="" border="0">
+								<tbody>
+									<tr>
+										<td>Tipo:</td>
+										<td>{{object.get_tipo_display}}</td>
+									</tr>
+
+									{% if object.persona_contacto %}
+										<tr>
+											<td>Persona de Contacto:</td>
+											<td>{{object.persona_contacto}}</td>
+										</tr>
+									{% endif %}
+
+									<tr>
+										<td>Municipio</td>
+										<td>{{object.municipio}}</td>
+									</tr>
+
+									{% if object.comunidad %}
+										<tr>
+											<td>Comunidad</td>
+											<td>{{object.comunidad}}</td>
+										</tr>
+									{% endif %}
+
+
+									{% if object.direccion %}
+									<tr>
+										<td>Dirección</td>
+										<td>{{object.direccion}}</td>
+									</tr>
+									{% endif %}
+
+									{% if object.convencional %}
+									<tr>
+										<td>Convencional:</td>
+										<td>{{object.convencional}}</td>
+									</tr>
+									{% endif %}
+
+									{% if object.celular %}
+									<tr>
+										<td>Celular:</td>
+										<td>{{object.celular}}</td>
+									</tr>
+									{% endif %}
+									
+									{% if object.correo %}
+									<tr>
+										<td>Correo:</td>
+										<td>{{object.correo}}</td>
+									</tr>
+									{% endif %}
+									{% if object.web %}
+									<tr>
+										<td>Sitio Web:</td>
+										<td>{{object.web}}</td>
+									</tr>
+									{% endif %}
+
+									{% if object.otro %}
+									<tr>
+										<td>Otro:</td>
+										<td>{{object.otro}}</td>
+									</tr>
+									{% endif %}
+									<tr>
+										<td>Redes Sociales:</td>
+										<td class="social-mapeo" >
+												{% if object.facebook %}
+												<a href="{{object.facebook}}" target="_blank"><span>Facebook</span></a>
+												{% endif %}
+												{% if object.twitter %}
+												<a href="{{object.twitter}}" target="_blank"><span>Twitter</span></a>
+												{% endif %}
+												{% if object.youtube %}
+												<a href="{{object.youtube}}" target="_blank"><span>Youtube</span></a>
+												{% endif %}
+
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<h6>Integrantes</h6>
+						<div class="row">
+							{% if object.masculino %}
+								<div class="col-lg-6">
+									Integrantes masculinos: {{object.masculino}}
+								</div>
+							{% endif %}
+							{% if object.femenino %}
+								<div class="col-lg-6">
+									Integrantes femeninos: {{object.femenino}}
+								</div>
+							{% endif %}
+							{% if object.integrantes %}
+								<div class="col-lg-12">
+									<h6>Nombre de los integrantes:</h6>
+									{{object.integrantes|safe}}
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+
+
+				{% if object.cobertura %}
+				<h5>Cobertura</h5>
+				<ul>
+					{% for obj in object.cobertura.all %}
+			  			<li>{{obj}}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+
+				
+					
+				
+
+				{% if object.tipo != 1 %}
+					<h6>Edades de los integrantes:</h6>
+					{% if object.mayor_13 %}
+						13 a 18 años: {{object.mayor_13}}<br>
+					{% endif %}
+
+					{% if object.mayor_19 %}
+						19 a 30 años: {{object.mayor_19}}<br>
+					{% endif %}
+					
+					{% if object.mayor_30 %}
+						31 a más años: {{object.mayor_30}}<br>
+					{% endif %}
+					
+				{% endif %}
+
+				{% if object.acciones_violencia %}
+				<h6>Acciones de Violencia</h6>
+				<ul>
+					{% for obj in object.acciones_violencia.all %}
+			  			<li>{{obj}}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+
+				{% if object.acciones_consumo_drogas %}
+				<h6>Acciones consumo de drogas</h6>
+				<ul>
+					{% for obj in object.acciones_consumo_drogas.all %}
+			  			<li>{{obj}}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+
+				{% if object.acciones_apoyo %}
+				<h6>Acciones de apoyo</h6>
+				<ul>
+					{% for obj in object.acciones_apoyo.all %}
+			  			<li>{{obj}}</li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+			</div>
+-->
 {% endblock contenido %}

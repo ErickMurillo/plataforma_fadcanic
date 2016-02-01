@@ -1,0 +1,129 @@
+<script>
+{% for key,value in year.items %}
+	$(function () {
+		$('#pregunta23{{key}}').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Qué haría si ve que una mujer está siendo violentada?'
+			},
+
+			credits: {
+				enabled: false
+			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Respuesta',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in value.10.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+
+	$(function () {
+		$('#pregunta24{{key}}').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Qué hacer para que los jóvenes no se conviertan en expendedores de droga?'
+			},
+
+			credits: {
+				enabled: false
+			},	
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			xAxis: {
+				categories: [
+				'Respuesta',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in value.11.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+{% endfor %}
+</script>

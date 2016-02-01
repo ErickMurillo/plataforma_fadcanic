@@ -1,6 +1,7 @@
 <script>
-		$(function () {
-		$('#pregunta30').highcharts({
+	{% for key,value in year.items %}
+	$(function () {
+		$('#pregunta30{{key}}').highcharts({
 			chart: {
 				type: 'column'
 			},
@@ -31,6 +32,12 @@
 				],
 				crosshair: true
 			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
 			plotOptions: {
 				series: {
 					borderWidth: 0,
@@ -46,7 +53,7 @@
 				}
 			},
 			series: [
-			{% for k,v in pregunta30.items %}
+			{% for k,v in value.12.items %}
 			{
 				name: '{{k}}',
 				data: [{{v}}],
@@ -58,7 +65,7 @@
 	});
 
 	$(function () {
-		$('#pregunta31').highcharts({
+		$('#pregunta31{{key}}').highcharts({
 			chart: {
 				type: 'column'
 			},
@@ -89,6 +96,12 @@
 				],
 				crosshair: true
 			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
 			plotOptions: {
 				series: {
 					borderWidth: 0,
@@ -104,7 +117,7 @@
 				}
 			},
 			series: [
-			{% for k,v in pregunta31.items %}
+			{% for k,v in value.13.items %}
 			{
 				name: '{{k}}',
 				data: [{{v}}],
@@ -114,4 +127,5 @@
 			]
 		});
 	});
+{% endfor %}
 </script>

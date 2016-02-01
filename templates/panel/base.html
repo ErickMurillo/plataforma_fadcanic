@@ -11,14 +11,14 @@
 		<!-- Bootstrap -->
 		<link href="{% static 'cambiaahora/css/bootstrap.min.css' %}" rel="stylesheet">
 		<link href="{% static 'cambiaahora/css/bootstrap-theme.css' %}" rel="stylesheet">
-		<link href="{% static 'cambiaahora/css/font-awesome.min.css' %}" rel="stylesheet">
+		
 
 		<link href="{% static 'cambiaahora/css/global.css' %}" rel="stylesheet">
 		<link href="{% static 'panel/css/style.css' %}" rel="stylesheet">
 		<link href="{% static 'cambiaahora/css/responsive.css' %}" rel="stylesheet">
 		<!-- Font -->
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <script src="{% static 'cambiaahora/js/jquery.min.js' %}"></script>
 	
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -45,12 +45,7 @@
 
 
 						<div class="social-links col-xs-6 col-sm-10">
-							<a href="/lang/en" class=" btn btn-default btn-idioma">
-									<img src="{% static 'cambiaahora/img/eeuu.jpg' %}" alt=""> ENGLISH
-							</a>
-							<a href="/lang/es" class=" btn btn-default btn-idioma">
-									<img src="{% static 'cambiaahora/img/spanish.jpg' %}" alt=""> SPANISH
-							</a>
+
 							<ul class="social-icons hidden-xs">
 								<li>
 									<a href="https://www.facebook.com/pages/Cambia-ahora-solo-hazlo/1485321515024959?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -67,53 +62,102 @@
 						</div>
 					</div>
 				</div>
+								<div class="navbar navbar-default" role="navigation">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
 
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<nav>
+
+							</nav>
+
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				</div>
 
 			</header>
 			<!-- Header Section End Here -->
-			lalalalaal
 			<div class="main-panel">
 				<ul id="og-grid" class="og-grid">
 					<li>
-						<a href="/" data-largesrc="{% static 'panel/img/1.jpg' %}" data-title="Sitio web Cambia Ahora" data-description="El sitio 'Cambia ahora, solo hazlo' publica los avances de la campaña sobre la prevención de la violencia juvenil y el abuso de drogas en ocho municipios de la RACS, RACN y Managua donde se promueve la campaña. La plataforma esta en inglés y español.">
-							<h5>Sitio Web</h5>
+						<a href="/" data-largesrc="{% static 'panel/img/1.jpg' %}" data-title="Sitio web Cambia Ahora" data-description="La página web presenta las últimas noticias, los documentales, serie radiofónicas, opiniones de los actores claves de la Campaña: Cambia ahora, solo hazlo.">
+						<div class="circulo">
 							<img class="center-block" src="{% static 'panel/img/thumbs/web.png' %}" alt="Cambia Ahora Sitio Web"/>
+						</div>
+						<h5><span class="verde">Web: Cambia </span><span class="rojo">Ahora</span></h5>
+						<div class="panelluna"></div>
+						
 						</a>
 					</li>
 					<li>
-						<a href="/actividades" data-largesrc="{% static 'panel/img/2.jpg' %}" data-title="Actividades." data-description="Se registra las actividades planificadas y realizadas y el rol de las ciudadanas, ciudadanos y organizaciones locales en los territorio donde se lleva acabo la 'Cambia ahora, solo hazlo'">
-							<h5>Actividades</h5>
-							<img class="center-block" src="{% static 'panel/img/thumbs/actividades.png' %}" alt="Cambia Ahora Sitio Web"/>
+						<a href="/actividades" data-largesrc="{% static 'panel/img/2.jpg' %}" data-title="Actividades." data-description="En este componente hallarás los reportes cuantitativos y cualitativos de cada actividadrealizada donde tiene acciones el Proyecto.">
+							<div class="circulo">
+								<img class="center-block" src="{% static 'panel/img/thumbs/actividades.png' %}" alt="Cambia Ahora Sitio Web"/>
+							</div>
+							<h5><span class="verde">Registro de </span><span class="rojo">actividades</span></h5>
+							<div class="panelluna"></div>
 						</a>
 					</li>
 					<li>
-						<a href="/mapeo" data-largesrc="{% static 'panel/img/3.jpg' %}" data-title="Mapeo de actores." data-description="Muestra los actores que participan de las actividades de la campaña 'Cambia ahora, solo hazlo' en los territorios y sus acciones para prevención de violencia juvenil y abuso de drogas.">
-							<h5>Mapeo Actores</h5>
-							<img class="center-block" src="{% static 'panel/img/thumbs/mapeo.png' %}" alt="Cambia Ahora Sitio Web"/>
+						<a href="/mapeo" data-largesrc="{% static 'panel/img/3.jpg' %}" data-title="Mapeo de actores." data-description="Aquí encontrarás información de las organizaciones aliadas del proyecto, datos de los comités comunales, sus acciones y las personas que los conforman, participantes y acciones de los estudiantes de los Diplomados en promotoría y comunicación comunitaria.">
+					
+							<div class="circulo">
+								<img class="center-block" src="{% static 'panel/img/thumbs/mapeo.png' %}" alt="Cambia Ahora Sitio Web"/>
+							</div>
+							<h5><span class="verde">Mapeo de </span><span class="rojo">actores</span></h5>
+							<div class="panelluna"></div>
 						</a>
 					</li>
+					<!--
 					<li>
 						<a href="/biblioteca" data-largesrc="{% static 'panel/img/4.jpg' %}" data-title="Bibilioteca." data-description="Podrás acceder a los recursos comunicacionales que la campaña 'Cambia ahora, solo hazlo' ha generado: documentos, audios, vídeos, cartillas, material didáctico y sirva para masificar los mensajes y acciones en las comunidades.">
-							<h5>Biblioteca</h5>
-							<img class="center-block" src="{% static 'panel/img/thumbs/biblioteca.png' %}" alt="Cambia Ahora Sitio Web"/>
+
+							<div class="circulo">
+								<img class="center-block" src="{% static 'panel/img/thumbs/biblioteca.png' %}" alt="Cambia Ahora Sitio Web"/>
+							</div>
+							<h5><span class="verde">Biblioteca</span></h5>
+							<div class="panelluna"></div>
 						</a>
 					</li>
+					-->
 					<li>
-						<a href="/violencia_juvenil" data-largesrc="{% static 'panel/img/5.jpg' %}" data-title="Monitoreo sobre violencia." data-description="Accede a los datos levantados por encuesta a la población sobre sus concoimientos, actitudes, prácticas y percepción sobre la violencia juvenil y abuso de drogas en los municipios de la RACS, RACN y Managua.">
-							<h5>Encuesta CAPS</h5>
-							<img class="center-block" src="{% static 'panel/img/thumbs/encuesta.png' %}" alt="Cambia Ahora Sitio Web"/>
+						<a href="/violencia_juvenil" data-largesrc="{% static 'panel/img/5.jpg' %}" data-title="Monitoreo sobre violencia." data-description="Aquí encontrarás los resultados de la encuesta sobre conocimientos, actitudes y prácticas sobre la violencia y abuso de droga en las localidades donde tiene acciones la campaña: Cambia ahora solo hazlo.">
+
+							<div class="circulo">
+								<img class="center-block" src="{% static 'panel/img/thumbs/encuesta.png' %}" alt="Cambia Ahora Sitio Web"/>
+							</div>
+							<h5><span class="verde">Encuesta </span><span class="rojo">CAPS</span></h5>
+							<div class="panelluna"></div>
 						</a>
 					</li>
+					<!--
 					<li>
-						<a href="/tablero_indicadores" data-largesrc="{% static 'panel/img/6.jpg' %}" data-title="Tablero de indicadores." data-description="Se presentan los indicadores de resultados sobre el avance de la campaña 'Cambia ahora, solo hazlo', en los municipios de la RACS, RACN y Managua, mediante una propuesta gráfica y estadística." >
-							<h5>Dashboard</h5>
-							<img class="center-block" src="{% static 'panel/img/thumbs/dashboard.png' %}" alt="Cambia Ahora Sitio Web"/>
+						<a href="/tablero_indicadores" data-largesrc="{% static 'panel/img/6.jpg' %}" data-title="Tablero de indicadores." data-description="En este componente se muestra el avance y logros en la generación y cumplimiento de los procesos, productos o indicadores del proyecto." >
+							
+							<div class="circulo">
+								<img class="center-block" src="{% static 'panel/img/thumbs/dashboard.png' %}" alt="Cambia Ahora Sitio Web"/>
+							</div>
+							<h5><span class="verde">Dashboard</span></h5>
+							<div class="panelluna"></div>
 						</a>
-					</li>
+					</li>-->
 					<li>
-						<a href="/aplicaciones_moviles" data-largesrc="{% static 'panel/img/7.jpg' %}" data-title="Apps móviles." data-description="Podrás acceder desde tu dispostivo smartphone o tablet a los test sobre violencia, publicaciones, vídeo y compartirlos en las redes sociales.">
-							<h5>Apps Android</h5>
-							<img class="center-block" src="{% static 'panel/img/thumbs/android.png' %}" alt="Cambia Ahora Sitio Web"/>
+						<a href="/aplicaciones_moviles" data-largesrc="{% static 'panel/img/7.jpg' %}" data-title="Apps móviles." data-description="En este componente hallarás juegos e informaciones dinámicas como: App  para buscar ayuda,  App de test de violencia y noviazgo, App violentómetro y otros juegos.">
+							
+							<div class="circulo">
+								<img class="center-block" src="{% static 'panel/img/thumbs/android.png' %}" alt="Cambia Ahora Sitio Web"/>
+							</div>
+							<h5><span class="verde">Juegos y </span><span class="rojo">aplicaciones</span></h5>
+							<div class="panelluna"></div>
 						</a>
 					</li>
 				</ul>
@@ -121,7 +165,128 @@
 			</div>
 
 	<!--Footer Section Start Here -->
+ <!-- FOOTER -->
+        <footer>
+        	<div class="container">
+            	<div class="row">
+                	
+                	<div class="col-md-3 col-lg-3">
+                        <h3 class="uppercase">FADCANIC</h3>
+                        <img src="/static/cambiaahora/img/logo-fadcanic.png" class="logo-fadcanic" alt="">
+                        <br>
+                        <p>Fundación para la Autonomía y el Desarrollo de la Costa Atlántica (FADCANIC) Bluefields, RACCS, Bilwi, RACN Managua.</p>
+                        <div class="social">
+                        	<a href="https://www.facebook.com/pages/Cambia-ahora-solo-hazlo/1485321515024959?fref=ts">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
 
+
+                            <a href="https://twitter.com/Cambia_ahora">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                            
+                          
+                            
+                            <a href="https://www.youtube.com/channel/UCcpJBeBNFxDip-Avh25xIEw">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-youtube-play fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                    	</div>
+                    </div>
+                    
+                    <div class="col-md-3 col-lg-3">
+                    	<h3 class="uppercase">{# {% trans 'Contactos' %} #}Contactos</h3>
+                        
+
+                        
+                        <div class="address">
+                        	<div class="icon">
+                            	<i class="fa fa-lg fa-phone"></i>
+                            </div>
+                            <p>Managua: (505) 2270 0536 <br> (505) 2270 1921</p>
+                        </div>
+                        <div class="address">
+                            <div class="icon">
+                                <i class="fa fa-lg fa-phone"></i>
+                            </div>
+                            <p>Puerto Cabezas: (505) 27922203</p>
+                        </div>
+                        <div class="address">
+                            <div class="icon">
+                                <i class="fa fa-lg fa-phone"></i>
+                            </div>
+                            <p>Bluefields: (505) 2572 2386</p>
+                        </div>
+                        <div class="address">
+                            <div class="icon">
+                                <i class="fa fa-lg fa-fax"></i>
+                            </div>
+                            <p>Fax: (505) 2270 1921</p>
+                        </div>
+                        
+                        
+                        <div class="address">
+                        	<div class="icon">
+                            	<i class="fa fa-lg fa-envelope"></i>
+                            </div>
+                            
+                            <p>changenowlestsdoit@gmail.com</p>
+
+                        </div>
+                        <div class="address">
+                            <div class="icon">
+                                <i class="fa fa-lg fa-envelope"></i>
+                            </div>
+
+                            <p>director@fadcanic.org.ni</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-6 logo-eeuu">
+                    <h3 class="uppercase">{# {% trans "Auspiciado por" %} #}Auspiciado por</h3>
+                        <div class="col-md-6 col-lg-6">
+                            <img src="/static/cambiaahora/img/ac2.png" alt="">
+                        </div>
+                    	<div class="col-md-6 col-lg-6">
+                        <p>{# {% trans 'Departamento de Estado de los Estados Unidos' %} #}Departamento de Estado de los Estados Unidos
+                        International Narcotics and Law Enforcement Affairs U.S. Embassy.
+                        <br>Managua, Nicaragua</p>
+                        <br>
+
+                            <div class="address">
+                                <div class="icon">
+                                    <i class="fa fa-lg fa-phone"></i>
+                                </div>
+                                <p> (505) 2252-7100</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+     <!-- SUBFOOTER -->
+        <div class="subfooter">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-lg-12">
+                    	<p> © Copyright 2015. {# {% trans  'Desarrollado por' %} #}Desarrollado por <a href="http://www.simas.org.ni" target="_blank">SIMAS</a>
+                                    </p>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+	<!--Footer Section End Here -->
 		<script src="{% static 'cambiaahora/js/bootstrap.min.js' %}"></script>
 		
 		<script src="{% static 'panel/js/grid.js' %}"></script>

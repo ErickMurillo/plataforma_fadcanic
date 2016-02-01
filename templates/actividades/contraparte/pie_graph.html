@@ -1,13 +1,5 @@
 {% load tools %}
-<style type="text/css">
-#divp, #divp2{
-  float: left;
-  margin-left: 10px;
-  border: 1px #eee solid;
-  margin-bottom: 15px;
-  padding-top: 1px;
-}
-</style>
+
 <script type="text/javascript"> 
   var plotOptions1 = {
         pie: {
@@ -88,9 +80,11 @@
         });
     });
 </script>
-<div> 
-<!--  <h3>Gr&aacute;ficos de Pastel</h3> -->
-  <div id="divp"></div>
-  <div id="divp2"></div>
-  <div class="clean"></div> 
+<div class="row"> 
+    <div class="col-sm-12 col-md-6">
+        <div id="divp" width='100%'></div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <div id="divp2" width='100%'></div>
+    </div>
 </div>

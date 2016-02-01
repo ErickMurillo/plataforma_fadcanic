@@ -16,7 +16,9 @@ from models import *
 import datetime
 import thread
 import urllib
-
+from mapeo.models import *
+from django.views.generic import TemplateView
+from django.core import serializers
 
 #@login_required
 def filtro_proyecto(request):
@@ -31,7 +33,7 @@ def filtro_proyecto(request):
         if form.is_valid():
             proy_params['organizacion__id'] = form.cleaned_data['organizacion'].id
             proy_params['proyecto__id'] = form.cleaned_data['proyecto'].id
-            proy_params['resultado__id'] = form.cleaned_data['resultado'].id
+            proy_params['resultado__id__in'] = form.cleaned_data['resultado']
             proy_params['fecha__range'] = (form.cleaned_data['fecha_inicio'], form.cleaned_data['fecha_fin'])
             proy_params['municipio__in'] = form.cleaned_data['municipio']
 
@@ -41,7 +43,7 @@ def filtro_proyecto(request):
             filtro['fecha_inicio'] = form.cleaned_data['fecha_inicio']
             filtro['fecha_fin'] = form.cleaned_data['fecha_fin']
             filtro['salida'] = 'Por proyecto'
-            filtro['resultado'] = form.cleaned_data['resultado'].nombre_corto
+            filtro['resultado'] = form.cleaned_data['resultado']
             filtro['municipio'] = form.cleaned_data['municipio']
 
             proy_params = checkParams(proy_params)
@@ -63,7 +65,7 @@ def _get_query(params):
 checkParams = lambda x: dict((k, v) for k, v in x.items() if x[k])
 
 #@login_required
-def variables(request):
+def variables(request, saved_params=None):
     filtro = request.session['filtro']
     if request.method == 'POST':
         tabla_params = {}
@@ -96,6 +98,12 @@ def variables(request):
         for a in ['var2', 'main', 'total', 'bar_graph', 'pie_graph', 'eval_tipo']:
             if a in request.session:
                 del request.session[a]
+
+    if saved_params:
+        params = saved_params['params']
+    else:
+        params = request.session['params']
+    actividad = _get_query(params)
 
     return render_to_response('actividades/contraparte/variables.html', RequestContext(request, locals()))
 
@@ -332,3 +340,10 @@ def get_graph_png(svg, obj, field, width=940):
     setattr(obj, field, response.read())
     obj.save()
     return response.read()
+
+class BusquedaView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        tipo = request.GET['id']
+        organizaciones = Organizaciones.objects.filter(tipo=tipo)
+        data = serializers.serialize('json',organizaciones,fields=('nombre',))
+        return HttpResponse(data,content_type='application/json')

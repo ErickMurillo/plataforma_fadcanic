@@ -385,7 +385,7 @@ CHOICE_24 = (('a', 'Mayor vigilancia policial'),
 class Practicas(models.Model):
 	encuesta = models.ForeignKey(Encuesta)
 	pregunta21 = MultiSelectField(choices=CHOICE_21, blank=True,null=True, verbose_name='21-¿Qué harías si en tu presencia alguien es víctima de violencia juvenil?')
-	pregunta22 = MultiSelectField(choices=CHOICE_22, blank=True,null=True, verbose_name='22-Qué hace usted para prevenir la violencia juvenil y abuso de droga?')
+	pregunta22 = MultiSelectField(choices=CHOICE_22, blank=True,null=True, verbose_name='22-¿Qué hace usted para prevenir la violencia juvenil y abuso de droga?')
 	pregunta23 = MultiSelectField(choices=CHOICE_23, blank=True,null=True, verbose_name='23-¿Qué haría si ve que una mujer está siendo violentada?')
 	pregunta24 = MultiSelectField(choices=CHOICE_24, blank=True,null=True, verbose_name='24-¿Qué hacer para que los jóvenes no se conviertan en expendedores de droga?')
    

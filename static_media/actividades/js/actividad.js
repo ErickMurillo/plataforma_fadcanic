@@ -35,8 +35,14 @@ function showCustomPopup(dicc, triggeringLink) {
 (function($) {	
 $(document).ready( function() 
 	{
-		$('.field-persona_organiza').hide();
-		$('.field-comite').hide();
+		var valor_tipo = $('#id_tipo').val();
+			if (valor_tipo === '1' ) {
+				$('.field-persona_organiza').show();
+				$('.field-comite').hide();
+			}else{
+				$('.field-persona_organiza').hide();
+				$('.field-comite').show();
+			};
 
 		$('#id_tipo').change(function(){
 			var valor_tipo = $('#id_tipo').val();
@@ -50,5 +56,26 @@ $(document).ready( function()
 		});
 
 	} );
+
+$(document).on('click','#id_tipo',function(){
+		var id = $(this).val();
+		if (id != '1') {
+			$('#id_comite').empty();
+			$.ajax({
+			data : {'id' : id},
+			url : '/admin/comite/',
+			type : 'get',
+			success : function(data){
+				var html = ""
+				 console.log(data);
+				 for (var i = 0; i < data.length; i++) {
+				 	//<option value="2">Lisbeth Howard</option>
+				 	html += '<option value="'+data[i].pk+'">'+data[i].fields.nombre+'</option>'
+				 };
+				 $('#id_comite').html(html);
+				}
+			});
+		};
+	});
 
 })(jQuery || django.jQuery);

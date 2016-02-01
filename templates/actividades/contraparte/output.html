@@ -22,21 +22,15 @@
 	margin-top: -5px;
 	border-top: 6px #fff solid;	
 }
-.nav-tabs > li > a {
-  color: black !important;
-}
 
-.dinamictable {
-    margin: 0 0 3em 0;
-}
 </style>
 {% endblock %}
 
 {% block extra_js %}
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="/static/violencia_juvenil/js/highcharts.js"></script>
+<script src="/static/violencia_juvenil/js/exporting.js"></script>
 <script type="text/javascript" src="{% static 'actividades/js/table.exporting.js' %}"></script>
-<script type="text/javascript" src="{% static 'actividades/js/exporting_patched.js' %}"></script>
+
 <script type='text/javascript' src="{% static 'actividades/js/jquery.tipsy.js' %}"></script>
 <script type='text/javascript' src="{% static 'actividades/js/tabs.js' %}"></script>
 <script type='text/javascript' src="{% static 'actividades/js/underscore-min.js' %}"></script>
@@ -303,132 +297,60 @@ function loadCell(key, key2){
 
 {% block contenido %}
 {% include "actividades/filtros_selectos.html" %}
-
-<div class="col-md-12">
-	<h4 id="text_theme" align="center">{{var2.1|unslugify}} por {{main_field|unslugify}} {% if eval_tipo %}| {{eval_tipo}}{% endif %}</h4>
-</div>
-
-<div class="col-md-12 space">
-  <a class="btn btn-success" href="/actividades/" role="button">Ir a Inicio</a>
-	<a class="btn btn-default guardarXLS" href="#" role="button" onclick="exportarXLS('result_table'); return false;">Exportar</a>
-  <!--
-	{% if not noshare %}
-		<a class="btn btn-default" href="#inline" id="sharesave" role="button" data-toggle="modal" data-target="#myModal">Guardar para informe</a>
-		<a class="btn btn-default" href="#file" id="generatefile" role="button" data-toggle="modal" data-target="#myModal2">Generar informe</a>
-		<a class="btn btn-default" href="#" id="share" role="button">Compartir</a>
-
-      <a href="#inline" id="sharesave" class="btn btn-default">Guardar para informe</a>
-      <a href="#file" id="generatefile" class="btn btn-default">Generar informe</a>
-      <a href="#" id="share" class="btn btn-default">Compartir</a>
-		<div id="copiador" style="display: none;">
-			<span id="clippy_117"></span>{% clippy "clippy_117" "14x14" "#FFFFFF" "opaque" %}
-		</div> -->
-	{% endif %}
-</div>
-
-
-<div class="dinamictable">
-		{% load_table dicc opts2 var2 main_field total tipo %}
-	</div>
-
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-  {% if not noshare %}
-    <li role="presentation" class="active"><a href="#detail" aria-controls="detail" role="tab" data-toggle="tab">Detalle</a></li>
-    {% endif %}
-
-    {% if request.session.bar_graph or bar_graph %}
-    <li role="presentation"><a href="#bar" aria-controls="bar" role="tab" data-toggle="tab">Gráfico de barra</a></li>
-    {% endif %}
-
-    {% if request.session.pie_graph or pie_graph %}
-    <li role="presentation"><a href="#pie" aria-controls="pie" role="tab" data-toggle="tab">Gráfico de pastel</a></li>
-    {% endif %}	
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-  {% if not noshare %}
-    <div role="tabpanel" class="tab-pane " id="detail">
-    	<label for="id_multimedia">
-			<input value="multimedia" type="radio" name="contenido_detalle" id="id_contenido" checked="checked"/>Multimedia</label>
-			<label for="id_comentarios">
-			<input value="comentarios" type="radio" name="contenido_detalle" id="id_contenido" />Comentarios</label>
+<div class="contenido-outout">
+    <div class="" id="titulo-output">
+        <h4 >
+            {{var2.1|unslugify}} por {{main_field|unslugify}} {% if eval_tipo %}| {{eval_tipo}}{% endif %}
+        </h4>
     </div>
-	{% endif %}	
-
-	{% if request.session.bar_graph or bar_graph %}
-    <div role="tabpanel" class="tab-pane" id="bar">
-    	{% bar_graph dicc var2 main_field tipo %}
+    <div class="">
+        <a class="btn btn-warning" href="/actividades/" role="button">Ir a Inicio</a>
+        <a class="btn btn-default guardarXLS" href="#" role="button" onclick="exportarXLS('result_table'); return false;">Exportar</a>
     </div>
-    {% endif %}	
-
-	{% if request.session.pie_graph or pie_graph %}
-    <div role="tabpanel" class="tab-pane" id="pie">
-    	{% pie_graph dicc var2 main_field tipo %}
+    <div class="dinamictable table-responsive">
+        {% load_table dicc opts2 var2 main_field total tipo %}
     </div>
-    {% endif %}	
- 
-  </div>
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Comentario:</h4>
-      </div>
-      <div class="modal-body">
-        <div id="inline">
-		<form method="POST" action="." class="form">{% csrf_token %}
-			<textarea rows="5" cols="50" name="comentario" id="id_comentario"></textarea><br><br>
-			<input type="submit" id="guardarfile" value="Guardar" title="Guardar">
-		</form>
-	</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <div class="tabs-graficos">
         
-      </div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-act" role="tablist">
+
+            {% if request.session.bar_graph or bar_graph %}
+                <li role="graficos"><a href="#bar" aria-controls="bar" role="tab" data-toggle="tab">Gráfico de barra</a></li>
+            {% endif %}
+
+            {% if request.session.pie_graph or pie_graph %}
+                <li role="graficos"><a href="#pie" aria-controls="pie" role="tab" data-toggle="tab">Gráfico de pastel</a></li>
+            {% endif %} 
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content"> 
+
+            {% if request.session.bar_graph or bar_graph %}
+                <div role="tabpanel" class="tab-pane" id="bar">
+                    {% bar_graph dicc var2 main_field tipo %}
+                </div>
+            {% endif %} 
+
+            {% if request.session.pie_graph or pie_graph %}
+                <div role="tabpanel" class="tab-pane" id="pie">
+                    {% pie_graph dicc var2 main_field tipo %}
+                </div>
+            {% endif %} 
+         
+        </div>
+
     </div>
-  </div>
-</div> -->
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Generar reporte</h4>
-      </div>
-      <div class="modal-body">				
-		<table class="result_table reporte_tabla" width="100%">
-			<thead>
-				<tr>
-					<th><input id="id_todos" type="checkbox" name="todos" title="Marcar todos"></th>
-					<th>Dirección</th>
-					<th>Fecha</th>
-					<th>Comentario</th>										
-				</tr>
-			</thead>
-			<tbody id="reportbodytable">				
-			</tbody>
-		</table><br>
-		<input type="submit" id="generate_report" value="Generar Reporte" title="Generar Reporte" class="optionsbutton">		
-		<input type="submit" id="delete_report" value="Eliminar" title="Eliminar" class="optionsbutton">
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        
-      </div>
-    </div>
-  </div>
 </div>
- -->
+
+
+
+
+
+    
+
 
 <div style="display: none;">
   <div id="inline">

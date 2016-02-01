@@ -1,0 +1,89 @@
+<div class="row">
+<h5>Filtros Selectos:</h5>
+	<ol class="breadcrumb">
+		<li><a href="#">Año(s):</a>
+			{% for year in request.session.year %}
+				{{year}}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		</li>
+		{% if request.session.grupos %}
+		<li><a href="#">Grupo(s):</a>
+			{% for grupo in request.session.grupos %}
+				{% if grupo == '1' %}
+					Adolescente o Joven{% if not forloop.last %}, {% endif %}
+				{% endif %}
+				{% if grupo == '2' %}
+					Comité comunal{% if not forloop.last %}, {% endif %}
+				{% endif %}
+				{% if grupo == '3' %}
+					Diplomado/Promotoría{% if not forloop.last %}, {% endif %}
+				{% endif %}
+				{% if grupo == '4' %}
+					Diplomado/comunicación{% if not forloop.last %}, {% endif %}
+				{% endif %}
+				{% if grupo == '5' %}
+					Poblador general +30{% if not forloop.last %}, {% endif %}
+				{% endif %}
+			{% endfor %}
+		</li>
+		{% endif %}
+
+		{% if request.session.sexo %}
+			<li><a href="#">Sexo:</a>
+			{% if request.session.sexo == '1' %}
+				Mujer
+			{% elif request.session.sexo == '2' %}
+				Hombre
+			{% endif %}
+			</li>
+		{% else %}
+			<li><a href="#">Sexo:</a> Ambos</li>
+		{% endif %}
+
+		{% if request.session.edad %}
+		<li><a href="#">Edad(s):</a>
+			{% for edad in request.session.edad %}
+				{% if edad == '1' %}
+					13 a 18{% if not forloop.last %}, {% endif %}
+				{% elif edad == '2' %}
+					19 a 30{% if not forloop.last %}, {% endif %}
+				{% elif edad == '3' %}
+					30 a +{% if not forloop.last %}, {% endif %}
+				{% endif %}
+			{% endfor %}
+		</li>
+		{% endif %}
+
+		{% if request.session.etnia %}
+		<li><a href="#">Etnia(s):</a>
+			{% for etnia in request.session.etnia %}
+				{% if etnia == '1' %}
+					Mestiza{% if not forloop.last %}, {% endif %}
+				{% elif etnia == '2' %}
+					Ulwa{% if not forloop.last %}, {% endif %}
+				{% elif etnia == '3' %}
+					Miskitu{% if not forloop.last %}, {% endif %}
+				{% elif etnia == '4' %}
+					Creole{% if not forloop.last %}, {% endif %}
+				{% endif %}
+			{% endfor %}
+		</li>
+		{% endif %}
+
+		{% if request.session.departamento %}
+		<li><a href="#">Departamento(s):</a>
+			{% for departamento in request.session.departamento %}
+				{{departamento}}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		</li>
+		{% endif %}
+
+		{% if request.session.municipio %}
+		<li><a href="#">Municipio(s):</a>
+			{% for municipio in request.session.municipio %}
+				{{municipio}}{% if not forloop.last %}, {% endif %}
+			{% endfor %}
+		</li>
+		{% endif %}
+	</ol>
+</div>

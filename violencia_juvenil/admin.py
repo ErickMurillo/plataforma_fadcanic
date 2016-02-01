@@ -95,8 +95,8 @@ admin.site.register(Etnias)
 
 # admin.site.register(Encuestador,EncuestadorAdmin)
 
-# class InformacionAdmin(ImportExportActionModelAdmin):
-#     model = InformacionEntrevistado
+class InformacionAdmin(ImportExportActionModelAdmin):
+    model = InformacionEntrevistado
 
 # class EscolaridadAdmin(ImportExportActionModelAdmin):
 #     model = Escolaridad
@@ -122,7 +122,7 @@ admin.site.register(Etnias)
 # class EstadoActualAdmin(ImportExportActionModelAdmin):
 #     model = EstadoActual
 
-# admin.site.register(InformacionEntrevistado,InformacionAdmin)
+admin.site.register(InformacionEntrevistado,InformacionAdmin)
 # admin.site.register(Escolaridad,EscolaridadAdmin)
 # admin.site.register(ParticipaOrganizacion,ParticipaOrganizacionAdmin)
 # admin.site.register(RespuetaSi,RespuetaSiAdmin)

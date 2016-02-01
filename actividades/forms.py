@@ -29,16 +29,15 @@ class ProyectoForm(FormFKAutoFill):
 											  widget=forms.Select(attrs={'class':'form-large'}))
 		self.fields['proyecto'] = forms.ModelChoiceField(queryset=Proyecto.objects.all(), required=True,
 										  widget=forms.Select(attrs={'class':'form-large'}))
-		self.fields['resultado'] = forms.ModelChoiceField(queryset=Resultado.objects.all(), required=True, 
-										  widget=forms.Select(attrs={'class':'form-large'}))
-		self.fields['fecha_inicio'] = forms.DateField(required=False, widget=forms.TextInput(attrs={'style':'width: 320px'}))
-		self.fields['fecha_fin'] = forms.DateField(required=False, widget=forms.TextInput(attrs={'style':'width: 320px'}))
+		self.fields['resultado'] = forms.ModelMultipleChoiceField(queryset=Resultado.objects.all(), required=True)
+		self.fields['fecha_inicio'] = forms.DateField(required=True, widget=forms.TextInput(attrs={'style':'width: 320px'}))
+		self.fields['fecha_fin'] = forms.DateField(required=True, widget=forms.TextInput(attrs={'style':'width: 320px'}))
 
 		#query municipios--------------------------------------
 		foo = Actividad.objects.all().order_by('municipio__nombre').distinct().values_list('municipio__id', flat=True)
 		#------------------------------------------------------
 		self.fields['municipio'] = forms.ModelMultipleChoiceField(queryset=Municipio.objects.filter(id__in=foo),
-									 required=True)
+									 required=False)
 		
 	class Foo:
 		config = [{'on_change': {'field': 'organizacion'},
@@ -84,16 +83,12 @@ evaluacion_m = {'importancia_del_tema': 'relevancia_m',
 class SubFiltroForm(forms.Form):  
 	def __init__(self, *args, **kwargs):
 		super(SubFiltroForm, self).__init__(*args, **kwargs)  
-		self.fields['main_var'] = forms.ChoiceField(choices=to_choices(first_class.keys()), 
-									 widget=RadioSelect(attrs={'class':'main'}))
-		self.fields['participantes'] = forms.ChoiceField(choices=to_choices(participantes.keys()), 
-										  widget=RadioSelect(attrs={'class':'unique'}),
+		self.fields['main_var'] = forms.ChoiceField(choices=to_choices(first_class.keys()))
+		self.fields['participantes'] = forms.ChoiceField(choices=to_choices(participantes.keys()),
 										  required=False)
-		self.fields['evaluacion'] = forms.ChoiceField(choices=to_choices(evaluacion.keys()), 
-									   widget=RadioSelect(attrs={'class':'unique'}),
+		self.fields['evaluacion'] = forms.ChoiceField(choices=to_choices(evaluacion.keys()),
 									   required=False)
-		self.fields['eval_tipo'] = forms.ChoiceField(choices=((1, 'Hombres'), (2, 'Mujeres')), 
-									  widget=RadioSelect(attrs={'class':'nobutton'}), initial=1)
+		self.fields['eval_tipo'] = forms.ChoiceField(choices=((1, 'Hombres'), (2, 'Mujeres')),initial=1)
 		self.fields['total'] = forms.BooleanField(required=False, label=u"Ver totales")
 		self.fields['bar_graph'] = forms.BooleanField(required=False, label=u"Gráfico de barras")
 		self.fields['pie_graph'] = forms.BooleanField(required=False, label=u"Gráfico de pastel")
