@@ -143,14 +143,14 @@ $(document).ready(function() {
 					<div class="col-md-8">
 						<div class="nombre-corto">{{org.nombre_corto|upper}}</div>
 						<div class="nombre-largo">{{org.nombre}}</div>
-						<div class="actcount">Última actividad registrada el: 
+						<div class="actcount">Última actividad registrada el: <br>
 							<b style="color: red;">{{org.last_register|date:"d F Y"}}</b></div>
 						</div>
-						<div class="col-md-4 imglogo">
+						<div class="col-md-4">
 							{% if org.logo %}
-							<img src="/media/{{org.logo}}" alt="" width="60px">
+							<img class="logo-act center-block" src="/media/{{org.logo}}" alt="">
 							{% else %}
-							<img src="{% static 'actividades/img/logo.png' %}" alt="Cambia Ahora">
+							<img class="logo-act" src="{% static 'actividades/img/logo.png' %}" alt="Cambia Ahora">
 							{% endif %}
 						</div>
 					</div>

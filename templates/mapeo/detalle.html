@@ -6,34 +6,7 @@
 {% endblock extra_js %}
 
 {% block contenido %}
-<!--
-<div class="encabezado-mapeo">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-				<h5 class="titulo-mapeo">{{object}} </h5>
-				<h6 class="tipo-mapeo">{{object.get_tipo_display}}</h6>
-			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-				<div class="row integrantes">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<h6>Integrantes</h6>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						{% if object.masculino %}
-						<p>Hombres: {{object.masculino}}</p>
-						{% endif %}
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						{% if object.femenino %}
-							<p>Mujeres: {{object.femenino}}</p>
-						{% endif %}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
--->
+
 <div class="container">
 	{% for obj in object %}
 
@@ -202,11 +175,21 @@
 								<h4>Acciones</h4>
 							</div>
 							<div class="">
-								<ul>
-									{% for actividad in actividades %}
-										<li><a href="/actividades/actividades_pdf/{{actividad.id}}" target="_black">{{actividad.nombre_actividad}}</a></li>
-									{% endfor %}
-								</ul>
+							<table class=" table table-bordered table-hover lista-actividades">
+								<tbody>
+								{% for actividad in actividades %}
+									<tr>
+										<td class="td-descarga">
+											<a href="/actividades/actividades_pdf/{{actividad.id}}" 
+											target="_black"><i class="fa fa-download fa-2x"></i></a>
+										</td>
+										<td>
+											{{actividad.nombre_actividad}}
+										</td>
+									</tr>
+								{% endfor %}
+								</tbody>
+							</table>
 							</div>
 						</div>
 							

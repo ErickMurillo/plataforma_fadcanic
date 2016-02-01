@@ -3,7 +3,7 @@
 {% if comment %}
 <div>{{comment}}</div>
 {% endif %}
-<table class="result_table" width="100%" {% if borde %}border="1" cellspacing="0" cellpadding="0"{% endif %}>
+<table class="table table-bordered table-hover tabla-resultados" width="100%" {% if borde %}border="1" cellspacing="0" cellpadding="0"{% endif %}>
 	<thead>			
 		<tr>
 			<th rowspan="2">{{main_field|unslugify}}</th>

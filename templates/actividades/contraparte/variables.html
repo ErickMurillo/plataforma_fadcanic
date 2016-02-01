@@ -98,33 +98,29 @@
 				<form class="form" action="." method="post">
 					{% csrf_token %}
 					<div class="col-md-4">
-						<div class="col-md-12">
+						<div class="col-md-12 space-act">
 							<label>Variable Principal</label>
 							<div>{{form.main_var}}</div>			
 
 						</div>
-						
-						<div class="col-md-12">
-							<div>
-								<label>{{form.participantes.label}}</label>
-								{{form.participantes}}
-							</div>	
-							<br>
+						<div class="col-md-12 space-act">
+							<label>Sexo</label>
+							{{form.eval_tipo}}
+						</div>
 							
-							<div class="clean"></div>
-						</div>	
 					</div>
 					<div class="col-md-4">
-						<div>
+						<div class="col-md-12 space-act">
 								<label>{{form.evaluacion.label}}</label>
-								<br>
-								{{form.eval_tipo}}
-								
-							<label class="labelclean" for=""></label>				
 								{{form.evaluacion}}
-							</div>
+						</div>		
+						<div class="col-md-12 space-act">		
+							<label>{{form.participantes.label}}</label>
+							{{form.participantes}}			
+								
+						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4 space-act">
 						
 						<div class="x1">
 							<label>Opciones de Visualización</label>
@@ -143,9 +139,10 @@
 						</div>
 								
 					</div>
-					<br>
-					<br>
-					<input type="submit" class="btn-variable"  value="Generar tabla" />
+					<div class="col-md-12 ">
+						<input type="submit" class="btn btn-success center-block"  value="Generar tabla" />
+					</div>
+					
 				</form>
 			</div>
 		</div>
