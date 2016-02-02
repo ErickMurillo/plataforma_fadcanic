@@ -226,3 +226,9 @@ option:checked { display:none; }
   position: absolute;
   transition: .3s;
 }
+
+@media (max-width: 593px)  {
+  select#id_tipo {
+    width: 100%;
+  }
+}
