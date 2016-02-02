@@ -38,7 +38,7 @@ $(function () {
 				name: 'Procentaje',
 				colorByPoint: true,
 				data: [
-				{% for k,v in value.0.items %}
+				{% for k,v in value.1.items %}
 				{
 					name: '{{k}}',
 					y: {{v}},
@@ -46,6 +46,305 @@ $(function () {
 				{% endfor %}
 				]
 			}]
+		});
+	});
+
+	$(function () {
+		$('#pregunta34_si{{key}}').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: 'Tipos de acciones'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
+			xAxis: {
+				categories: [
+				'Tipos',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in value.2.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+
+$(function () {
+		$('#pregunta35{{key}}').highcharts({
+			chart: {
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
+			},
+			title: {
+				text: '¿Existen lugares en tu comunidad para atender a personas que vivieron la violencia juvenil y el abuso de drogas?'
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					showInLegend: true,
+					dataLabels: {
+						enabled: true,
+						format: '{point.percentage:.2f} %',
+						style: {
+							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+						}
+					}
+				}
+			},
+			series: [{
+				name: 'Procentaje',
+				colorByPoint: true,
+				data: [
+				{% for k,v in value.3.items %}
+				{
+					name: '{{k}}',
+					y: {{v}},
+				},
+				{% endfor %}
+				]
+			}]
+		});
+	});
+
+	$(function () {
+		$('#pregunta35_si{{key}}').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: 'Lugares'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
+			xAxis: {
+				categories: [
+				'Lugares',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in value.4.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+
+	$(function () {
+		$('#pregunta38{{key}}').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿De qué temas trata la campaña?'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
+			xAxis: {
+				categories: [
+				'Temas',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in value.5.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
+		});
+	});
+
+	$(function () {
+		$('#pregunta39{{key}}').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: '¿Qué producto ha visto de la Campaña?'
+			},
+
+			credits: {
+				enabled: false
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+					this.series.name +': '+ this.y +'%';
+				}
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle',
+				borderWidth: 0
+			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: 'Porcentajes'
+				}
+			},
+			xAxis: {
+				categories: [
+				'Productos',
+				
+				],
+				crosshair: true
+			},
+			plotOptions: {
+				series: {
+					borderWidth: 0,
+					groupPadding: 0.1,
+					dataLabels: {
+						enabled: true,
+						format: '{point.y:.1f}%',
+						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+						style: {
+							textShadow: '0 0 3px white'
+						}
+					}
+				}
+			},
+			series: [
+			{% for k,v in value.6.items %}
+			{
+				name: '{{k}}',
+				data: [{{v}}],
+				
+			},
+			{% endfor %}
+			]
 		});
 	});
 {% endfor %}
@@ -57,6 +356,9 @@ $(function () {
 .nav-tabs > li > a {
 	color: black !important;
 }
+.table{
+		width: auto !important;
+	}
 </style>
 <div class="container">
 	{% include "violencia_juvenil/filtros.html" %}
@@ -71,7 +373,12 @@ $(function () {
 			<div class="tab-content">
 				{% for key in year.keys %}
 				<div role="tabpanel" class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{key}}">
-					<div class="col-md-12" id="pregunta34{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta34{{key}}" style="min-width: 310px; height: 400px; max-width: 500px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta34_si{{key}}" style="min-width: 310px; height: 400px; max-width: 500px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta35{{key}}" style="min-width: 310px; height: 400px; max-width: 500px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta35_si{{key}}" style="min-width: 310px; height: 400px; max-width: 500px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta38{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta39{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
 				</div>
 				{% endfor %}
 			</div>
