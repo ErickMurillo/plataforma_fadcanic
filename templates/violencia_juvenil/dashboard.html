@@ -39,7 +39,7 @@
 				name: 'Procentaje',
 				colorByPoint: true,
 				data: [
-				{% for k,v in value.0.items %}
+				{% for k,v in value.1.items %}
 				{
 					name: '{{k}}',
 					y: {{v}},
@@ -82,7 +82,7 @@
 				name: 'Procentaje',
 				colorByPoint: true,
 				data: [
-				{% for k,v in value.1.items %}
+				{% for k,v in value.2.items %}
 				{
 					name: '{{k}}',
 					y: {{v}},
@@ -125,7 +125,7 @@
 				name: 'Procentaje',
 				colorByPoint: true,
 				data: [
-				{% for k,v in value.2.items %}
+				{% for k,v in value.3.items %}
 				{
 					name: '{{k}}',
 					y: {{v}},
@@ -151,6 +151,9 @@
 <style>
 	.nav-tabs > li > a {
 		color: black !important; 
+	}
+	.table{
+		width: auto !important;
 	}
 </style>
 <div class="container">	

@@ -481,6 +481,18 @@ form input[type="checkbox"]{
     	max-width: 100% !important;
     	overflow-x: scroll !important;
 	}
+	#grafo div#highcharts-0 {
+    	max-width: 100% !important;
+    	overflow-x: scroll !important;
+	}
+	#divp div.highcharts-container {
+    	max-width: 100% !important;
+    	overflow-x: scroll !important;
+	}
+	#divp2 div.highcharts-container {
+    	max-width: 100% !important;
+    	overflow-x: scroll !important;
+	}
 
 }
 
