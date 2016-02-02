@@ -39,7 +39,7 @@
 				name: 'Procentaje',
 				colorByPoint: true,
 				data: [
-				{% for k,v in value.0.items %}
+				{% for k,v in value.1.items %}
 				{
 					name: '{{k}}',
 					y: {{v}},
@@ -82,7 +82,7 @@
 				name: 'Procentaje',
 				colorByPoint: true,
 				data: [
-				{% for k,v in value.1.items %}
+				{% for k,v in value.2.items %}
 				{
 					name: '{{k}}',
 					y: {{v}},
@@ -102,7 +102,7 @@
 				type: 'pie'
 			},
 			title: {
-				text: 'edad'
+				text: 'etnia'
 			},
 			tooltip: {
 				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
@@ -125,7 +125,7 @@
 				name: 'Procentaje',
 				colorByPoint: true,
 				data: [
-				{% for k,v in value.2.items %}
+				{% for k,v in value.3.items %}
 				{
 					name: '{{k}}',
 					y: {{v}},
@@ -152,15 +152,18 @@
 	.nav-tabs > li > a {
 		color: black !important; 
 	}
+	.table{
+		width: auto !important;
+	}
 </style>
 <div class="container">	
 	{% include "violencia_juvenil/filtros.html" %}
 	<div class="row">
 		<a class="btn btn-default" href="/violencia_juvenil/conocimiento/" role="button">Conocimiento</a>
 		<a class="btn btn-default" href="/violencia_juvenil/actitud/" role="button">Actitud</a>
-		<a class="btn btn-default" href="#" role="button">Practicas</a>
-		<a class="btn btn-default" href="#" role="button">Percepción</a>
-		<a class="btn btn-default" href="#" role="button">Estado actual</a>
+		<a class="btn btn-default" href="/violencia_juvenil/practicas/" role="button">Practicas</a>
+		<a class="btn btn-default" href="/violencia_juvenil/percepcion/" role="button">Percepción</a>
+		<a class="btn btn-default" href="/violencia_juvenil/estado_actual/" role="button">Estado actual</a>
 	</div>
 	
 	<br><br>

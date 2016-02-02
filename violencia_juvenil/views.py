@@ -176,7 +176,7 @@ def dashboard(request,template='violencia_juvenil/dashboard.html'):
 			conteo = filtro.filter(estadoactual__pregunta37__contains=obj[0],year=y).count()
 			pregunta37[obj[1]] = saca_porcentajes(conteo,encuestas,False)
 		
-		year[y] = (sexo,edad,etnia,
+		year[y] = (encuestas,sexo,edad,etnia,
 					#conocimiento
 					pregunta3,pregunta4,pregunta7,pregunta9,pregunta13,
 					#actitud
@@ -243,7 +243,7 @@ def conocimiento(request,template='violencia_juvenil/conocimiento.html'):
 			conteo = filtro.filter(conocimiento__pregunta14__contains=obj[0],year=y).count()
 			pregunta14[obj[1]] = saca_porcentajes(conteo,encuestas,False)
 
-		year[y] = (pregunta1,pregunta2,pregunta5,pregunta6,pregunta8,pregunta10,pregunta11,pregunta12,pregunta14)
+		year[y] = (encuestas,pregunta1,pregunta2,pregunta5,pregunta6,pregunta8,pregunta10,pregunta11,pregunta12,pregunta14)
 
 	return render(request, template, locals())
 
@@ -269,7 +269,116 @@ def actitud(request,template='violencia_juvenil/actitud.html'):
 			conteo = filtro.filter(actitud__pregunta18__contains=obj[0],year=y).count()
 			pregunta18[obj[1]] = saca_porcentajes(conteo,encuestas,False)
 
-		year[y] = (pregunta16,pregunta17,pregunta18)
+		year[y] = (encuestas,pregunta16,pregunta17,pregunta18)
+
+	return render(request, template, locals())
+
+def practicas(request,template='violencia_juvenil/practicas.html'):
+	filtro = _queryset_filtrado(request)
+	
+	year = {}
+	for y in request.session['year']:
+		encuestas = filtro.filter(year=y).count()
+
+		pregunta21 = collections.OrderedDict()
+		for obj in CHOICE_21:
+			conteo = filtro.filter(practicas__pregunta21__contains=obj[0],year=y).count()
+			pregunta21[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		pregunta22 = collections.OrderedDict()
+		for obj in CHOICE_22:
+			conteo = filtro.filter(practicas__pregunta22__contains=obj[0],year=y).count()
+			pregunta22[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		year[y] = (encuestas,pregunta21,pregunta22)
+
+	return render(request, template, locals())
+
+def percepcion(request,template='violencia_juvenil/percepcion.html'):
+	filtro = _queryset_filtrado(request)
+	
+	year = {}
+	for y in request.session['year']:
+		encuestas = filtro.filter(year=y).count()
+
+		pregunta25 = collections.OrderedDict()
+		for obj in CHOICE_25:
+			conteo = filtro.filter(percepcion__pregunta25__contains=obj[0],year=y).count()
+			pregunta25[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		pregunta26 = collections.OrderedDict()
+		for obj in CHOICE_26:
+			conteo = filtro.filter(percepcion__pregunta26__contains=obj[0],year=y).count()
+			pregunta26[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		pregunta27 = collections.OrderedDict()
+		for obj in CHOICE_27:
+			conteo = filtro.filter(percepcion__pregunta27__contains=obj[0],year=y).count()
+			pregunta27[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		pregunta28 = collections.OrderedDict()
+		for obj in CHOICE_28:
+			conteo = filtro.filter(percepcion__pregunta28__contains=obj[0],year=y).count()
+			pregunta28[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		pregunta29 = collections.OrderedDict()
+		for obj in CHOICE_29:
+			conteo = filtro.filter(percepcion__pregunta29_1=obj[0],year=y).count()
+			pregunta29[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		pregunta32 = collections.OrderedDict()
+		for obj in CHOICE_32_33:
+			conteo = filtro.filter(percepcion__pregunta32_1=obj[0],year=y).count()
+			pregunta32[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		pregunta33 = collections.OrderedDict()
+		for obj in CHOICE_32_33:
+			conteo = filtro.filter(percepcion__pregunta33=obj[0],year=y).count()
+			pregunta33[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		year[y] = (encuestas,pregunta25,pregunta26,pregunta27,pregunta28,pregunta29,pregunta32,pregunta33)
+
+	return render(request, template, locals())
+
+def estado_actual(request,template='violencia_juvenil/estado_actual.html'):
+	filtro = _queryset_filtrado(request)
+	
+	year = {}
+	for y in request.session['year']:
+		encuestas = filtro.filter(year=y).count()
+
+		pregunta34 = collections.OrderedDict()
+		for obj in CHOICE_SI_NO:
+			conteo = filtro.filter(estadoactual__pregunta34=obj[0],year=y).count()
+			pregunta34[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		si_respuesta_34 = collections.OrderedDict()
+		for obj in CHOICE_34_SI:
+			conteo = filtro.filter(estadoactual__si_respuesta_34__contains=obj[0],year=y).count()
+			si_respuesta_34[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		pregunta35 = collections.OrderedDict()
+		for obj in CHOICE_SI_NO:
+			conteo = filtro.filter(estadoactual__pregunta35=obj[0],year=y).count()
+			pregunta35[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		si_respuesta_35 = collections.OrderedDict()
+		for obj in CHOICE_35_SI:
+			conteo = filtro.filter(estadoactual__si_respuesta_35__contains=obj[0],year=y).count()
+			si_respuesta_35[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		pregunta38 = collections.OrderedDict()
+		for obj in CHOICE_38:
+			conteo = filtro.filter(estadoactual__pregunta38__contains=obj[0],year=y).count()
+			pregunta38[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+		pregunta39 = collections.OrderedDict()
+		for obj in CHOICE_39:
+			conteo = filtro.filter(estadoactual__pregunta39__contains=obj[0],year=y).count()
+			pregunta39[obj[1]] = saca_porcentajes(conteo,encuestas,False)
+
+
+		year[y] = (encuestas,pregunta34,si_respuesta_34,pregunta35,si_respuesta_35,pregunta38,pregunta39)
 
 	return render(request, template, locals())
 
@@ -333,9 +442,9 @@ def obtener_lista(request):
 		lista = []
 		for objeto in InformacionEntrevistado.objects.all():
 			dicc = dict(nombre=objeto.municipio1.nombre, id=objeto.id,
-						lon=float(objeto.municipio1.longitud),
-						lat=float(objeto.municipio1.latitud)
-						)
+					lon=float(objeto.municipio1.longitud),
+					lat=float(objeto.municipio1.latitud)
+					)
 			lista.append(dicc)
 
 		serializado = simplejson.dumps(lista)

@@ -6,13 +6,13 @@
 <script src="/static/violencia_juvenil/js/exporting.js"></script>
 <script>
 {% for key,value in year.items %}
-	$(function () {
-		$('#pregunta16{{key}}').highcharts({
+$(function () {
+		$('#pregunta21{{key}}').highcharts({
 			chart: {
 				type: 'column'
 			},
 			title: {
-				text: '¿Qué piensa de los jóvenes violentos?'
+				text: '¿Qué harías si en tu presencia alguien es víctima de violencia juvenil?'
 			},
 
 			credits: {
@@ -39,7 +39,7 @@
 			},
 			xAxis: {
 				categories: [
-				'Jóvenes violentos',
+				'Acciones',
 				
 				],
 				crosshair: true
@@ -71,12 +71,12 @@
 	});
 
 $(function () {
-		$('#pregunta17{{key}}').highcharts({
+		$('#pregunta22{{key}}').highcharts({
 			chart: {
 				type: 'column'
 			},
 			title: {
-				text: '¿Cómo prevenir la violencia juvenil y el abuso de drogas?'
+				text: '¿Qué hace usted para prevenir la violencia juvenil y abuso de droga?'
 			},
 
 			credits: {
@@ -133,70 +133,6 @@ $(function () {
 			]
 		});
 	});
-
-$(function () {
-		$('#pregunta18{{key}}').highcharts({
-			chart: {
-				type: 'column'
-			},
-			title: {
-				text: '¿Cuáles son las principales causas de la violencia juvenil?'
-			},
-
-			credits: {
-				enabled: false
-			},
-
-			tooltip: {
-				formatter: function() {
-					return ''+
-					this.series.name +': '+ this.y +'%';
-				}
-			},
-			yAxis: {
-				min: 0,
-				title: {
-					text: 'Porcentajes'
-				}
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			xAxis: {
-				categories: [
-				'Causas',
-				
-				],
-				crosshair: true
-			},
-			plotOptions: {
-				series: {
-					borderWidth: 0,
-					groupPadding: 0.1,
-					dataLabels: {
-						enabled: true,
-						format: '{point.y:.1f}%',
-						color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
-						style: {
-							textShadow: '0 0 3px white'
-						}
-					}
-				}
-			},
-			series: [
-			{% for k,v in value.3.items %}
-			{
-				name: '{{k}}',
-				data: [{{v}}],
-				
-			},
-			{% endfor %}
-			]
-		});
-	});
 {% endfor %}
 </script>
 {% endblock extra_js %}
@@ -223,9 +159,8 @@ $(function () {
 			<div class="tab-content">
 				{% for key in year.keys %}
 				<div role="tabpanel" class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{key}}">
-					<div class="col-md-12" id="pregunta16{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-					<div class="col-md-12" id="pregunta17{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-					<div class="col-md-12" id="pregunta18{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta21{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="col-md-12" id="pregunta22{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
 				</div>
 				{% endfor %}
 			</div>

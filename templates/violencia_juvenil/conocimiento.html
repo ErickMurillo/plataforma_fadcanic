@@ -59,7 +59,7 @@
 				}
 			},
 			series: [
-			{% for k,v in value.0.items %}
+			{% for k,v in value.1.items %}
 			{
 				name: '{{k}}',
 				data: [{{v}}],
@@ -123,7 +123,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in value.1.items %}
+		{% for k,v in value.2.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -187,7 +187,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in value.2.items %}
+		{% for k,v in value.3.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -251,7 +251,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in value.3.items %}
+		{% for k,v in value.4.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -315,7 +315,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in value.4.items %}
+		{% for k,v in value.5.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -379,7 +379,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in value.5.items %}
+		{% for k,v in value.6.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -440,7 +440,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in value.6.items %}
+		{% for k,v in value.7.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -500,7 +500,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in value.7.items %}
+		{% for k,v in value.8.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -560,7 +560,7 @@ $(function () {
 			}
 		},
 		series: [
-		{% for k,v in value.8.items %}
+		{% for k,v in value.9.items %}
 		{
 			name: '{{k}}',
 			data: [{{v}}],
@@ -578,6 +578,9 @@ $(function () {
 .nav-tabs > li > a {
 	color: black !important;
 }
+.table{
+		width: auto !important;
+	}
 </style>
 <div class="container">
 	{% include "violencia_juvenil/filtros.html" %}

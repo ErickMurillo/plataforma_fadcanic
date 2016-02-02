@@ -8,4 +8,7 @@ urlpatterns = patterns('violencia_juvenil.views',
     url(r'^dashboard/',  'dashboard', name='dashboard-violencia'),
     url(r'^conocimiento/',  'conocimiento', name='conocimiento'),
     url(r'^actitud/',  'actitud', name='actitud'),
+    url(r'^practicas/',  'practicas', name='practicas'),
+    url(r'^percepcion/',  'percepcion', name='percepcion'),
+    url(r'^estado_actual/',  'estado_actual', name='estado_actual'),
 )
