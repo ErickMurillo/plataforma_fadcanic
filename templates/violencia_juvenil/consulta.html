@@ -1,5 +1,4 @@
-{% extends "cambiaahora/base.html" %}
-
+{% extends "violencia_juvenil/base.html" %}
 {% block extra_js %}
 <link rel="stylesheet" href="/static/violencia_juvenil/css/bootstrap-multiselect.css" type="text/css"/>
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
@@ -204,28 +203,64 @@ $('#id_sexo').append('<option value="" selected="selected">Ambos</option>');
 
 {% block contenido %}
 <div class="container">
-	<div class="row">
-		<div class="consulta">
-			<form action="." method="POST">{% csrf_token %}
-				<div>
-					<label>Año:</label>
-					{{form.year}}   
-					<label>Grupos:</label>
-					{{form.grupos}}
-                    <label>Sexo:</label>
-                    {{form.sexo}}
-                    <label>Edad:</label>
-                    {{form.edad}}
-                    <label>Etnia:</label>
-                    {{form.etnia}}
-					<label>Departamentos:</label>
-					{{form.departamento}}
-					<label>Municipios:</label>
-					{{form.municipio}}
-					<input type="submit" value="Consultar" name="consulta"/>         
-				</div>
-			</form>
-		</div>
-	</div>
+    <div class="consulta-violencia">
+        <div class="row">
+            <div class="titulo-violencia">
+               <h4 class="borde">
+                    Combinacion de Variables
+                </h4> 
+            </div>
+            
+
+                <form action="." method="POST">{% csrf_token %}
+                    <div class="col-sm-6 col-md-4">
+                        <div class="col-md-12 space-act">
+                            <label>Año*</label>
+                            {{form.year}}           
+
+                        </div>
+                        <div class="col-md-12 space-act">
+                            <label>Departamentos</label>
+                            {{form.departamento}}
+                        </div>
+                        <div class="col-md-12 space-act">
+                            <label>Municipios</label>
+                            {{form.municipio}}
+                        </div>
+                            
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="col-md-12 space-act">
+                            <label>Sexo</label>
+                            {{form.sexo}}
+                        </div>
+                        <div class="col-md-12 space-act">
+                            <label>Grupos</label>
+                            {{form.grupos}}          
+
+                        </div>
+                        <div class="col-md-12 space-act">
+                            <label>Edad</label>
+                            {{form.edad}}
+                        </div>
+                            
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="col-md-12 space-act">
+                            <label>Etnia</label>
+                            {{form.etnia}}          
+
+                        </div>
+                        <div class="col-md-12 space-act">
+                           
+                            <input class="btn btn-default br-violencia" type="submit" value="Consultar" name="consulta"/> 
+                        </div>
+                            
+                    </div>          
+
+                </form>
+
+        </div>
+    </div>	
 </div>
 {% endblock contenido %}

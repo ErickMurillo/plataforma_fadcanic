@@ -1,0 +1,103 @@
+body {
+    background-color: #F1F2F2;
+}
+.mapa-violencia{
+  margin-top:50px;
+  margin-bottom:50px;
+  background: white;
+  padding:20px;
+}
+.mapa-violencia .panel-body{
+	padding: 0px;
+}
+.mapa-violencia .panel-title > a{
+	padding: 0px;
+}
+.mapa-violencia .panel-title .list-group-item{
+	background-color: #A10C12;
+	color: white;
+	padding: 18px 15px;
+
+}
+
+.mapa-violencia .panel-default>.panel-heading .badge{
+	width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    padding-top: 8px;
+}
+.mapa-violencia .panel-collapse {
+	border:0px;
+}
+.mapa-violencia .list-group-item:last-child{
+	border-radius: 0px;
+}
+
+.mapa-violencia .panel-body .list-group{
+    margin-bottom: 0px; 
+}
+.titulo-violencia h4{
+	font-size: 32px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.parrafo-violencia p{
+    text-align: justify;
+    margin-bottom: 20px;
+}
+.mapa-violencia .panel-body .list-group-item{
+	color: black;
+}
+.mapa-violencia .panel-body .list-group-item .badge{
+	width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    padding-top: 8px;
+}
+.mapa-violencia .btn{
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+.consulta-violencia{
+	background-color: white;
+	margin-top:50px;
+ 	margin-bottom:50px;
+	padding:38px;
+
+}
+
+.consulta-violencia form label {
+	display: block;
+    font-family: 'latoblack', sans-serif;
+    font-size: 14px;
+    color: #727272 !important;
+}
+
+.space-act{
+	margin-bottom: 2em;
+}
+.borde {
+    border-bottom: 3px solid #cacaca;
+    padding-bottom: 20px;
+    text-align: left !important;
+}
+.br-violencia{
+	margin-top: 1.8em;
+	font-size: 14px;
+}
+
+.consulta-violencia .multiselect-container{
+	width: 100%;
+}
+
+.space-act .btn-default{
+	border-color: #cacaca;
+	color: #727272;
+	font-size: 14px;
+}
+
+.space-act .btn-default:hover,.space-act .btn-default:focus{
+	background-color: #cacaca;
+	border-color: #cacaca;
+}
