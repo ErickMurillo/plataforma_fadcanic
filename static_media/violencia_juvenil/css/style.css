@@ -205,7 +205,9 @@ body {
 .tab-titulo{
 
 }
-
+.nencuestas{
+	padding: 10px;
+}
 @media (min-width: 593px) and (max-width:767px)  {
 	.graficos{
     max-width: 100% !important;

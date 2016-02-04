@@ -1,3 +1,11 @@
+
+
+		<div class="nencuestas">
+			Numero de Encuestas:
+			{% for k,v in year.items %}
+					<strong>{{k}}: </strong>{{v.0}},
+			{% endfor %}
+		</div>
 		<div class="panel-group indicadores-violencia" id="accordion" role="tablist" aria-multiselectable="true">
 			<div class="panel panel-default">
 				<div class="panel-heading" role="tab" id="headingOne">

@@ -92,24 +92,4 @@
 
 		</div>-->
 </div>
-<!-- conteo encuestas por año-->
-<div class="row">
-		<table class="table table-bordered table-striped table-hover">
-			<thead>
-				<tr>
-					<th></th>
-					{% for k in year.keys %}
-						<th>{{k}}</th>
-					{% endfor %}
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>No. Encuestas</td>
-				{% for v in year.values %}
-					<td>{{v.0}}</td>
-				{% endfor %}
-				</tr>
-			</tbody>
-		</table>
-	</div>
+
