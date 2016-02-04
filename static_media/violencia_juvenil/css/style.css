@@ -41,7 +41,12 @@ body {
     font-weight: 300;
     text-align: center;
 }
-
+.titulo-violencia h5{
+	font-size: 32px;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 10px !important;
+}
 .parrafo-violencia p{
     text-align: justify;
     margin-bottom: 20px;
@@ -91,13 +96,140 @@ body {
 	width: 100%;
 }
 
-.space-act .btn-default{
+.space-act .dropdown-toggle{
 	border-color: #cacaca;
 	color: #727272;
 	font-size: 14px;
 }
 
-.space-act .btn-default:hover,.space-act .btn-default:focus{
+.space-act .dropdown-toggle:hover,.space-act .dropdown-toggle:focus{
 	background-color: #cacaca;
 	border-color: #cacaca;
+}
+.space-act .dropdown-menu > .active > a{
+	background-image: #A10C12;
+	background-image: linear-gradient(to bottom, #A10C12 0%, #A10C12 100%);
+	
+}
+.space-act .dropdown-menu > .active > a>label{
+	color:white !important;
+}
+
+
+#filtros {
+	margin: 50px 0 50px 0;
+	background: #A10C12;
+	padding: 7px 20px;
+}
+#filtros .breadcrumb li a, #filtros .breadcrumb li {
+    color: white !important;
+}
+
+.breadcrumb>li+li:before {
+  color: rgba(15, 8, 8, 1);
+  content: "\276F\00a0";
+}
+.borde-superior{
+	border-top: 3px solid white;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+.nav-act>li.active>a, 
+.nav-act>li.active>a:hover, 
+.nav-act>li.active>a:focus{
+	background-color: white;
+	color: black !important;
+	border-top: 5px solid #3E9B04;
+
+
+}
+.nav-act>li.active,
+.nav-act>li.active:hover,
+.nav-act>li.active:focus{
+	background: white;
+
+}
+
+.nav-act>li>a, 
+.nav-act>li>a:hover, 
+.nav-act>li>a:focus{
+	background-color: #3E9B04;
+	color: white ;
+	border-bottom: 5px solid #3E9B04;
+	border-right: transparent;
+	border-left: transparent;
+	font-size: 14px;
+
+}
+
+.nav-act>li, 
+.nav-act>li:hover, 
+.nav-act>li:focus{
+	background-color: #3E9B04;
+	color: black;
+
+}
+.indicadores-violencia .panel-title{
+	background-color: #4E4E4E;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+
+}
+.tab-contenido{
+	padding: 38px 38px 20px;
+}
+.indicadores-violencia  .fa-navicon:before, .fa-reorder:before, .fa-bars:before{
+	margin-right: 10px;
+}
+.dash-violencia{
+	background-color: white;
+
+	margin-bottom: 50px;
+}
+
+.dash-violencia .panel-group{
+	margin-bottom: 0px;
+}
+
+.graficos{
+	margin-bottom: 20px;
+}
+.grafico-pie,.graficos-bar{
+	border:2px solid #cacaca;
+
+}
+
+.tab-titulo{
+
+}
+
+@media (min-width: 593px) and (max-width:767px)  {
+	.graficos{
+    max-width: 100% !important;
+    overflow-x: scroll !important;
+}
+
+}
+
+@media (max-width: 593px)  {
+	
+	.brand img {
+
+	  width: 20%;
+	  margin-top: 3px;
+	  background-color: transparent !important;
+
+	}
+	.logo-act{
+		width:50%;
+	}
+	.graficos{
+    max-width: 100% !important;
+    overflow-x: scroll !important;
+	}
+
+
 }

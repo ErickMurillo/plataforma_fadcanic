@@ -1,4 +1,4 @@
-{% extends "cambiaahora/base.html" %}
+{% extends "violencia_juvenil/base.html" %}
 
 {% block extra_js %}
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
@@ -395,18 +395,17 @@ $(function () {
 
 {% block contenido %}
 <style>
-	.nav-tabs > li > a {
-		color: black !important;
-	}
+
 	.table{
 		width: auto !important;
 	}
 </style>
 <div class="container">
 	{% include "violencia_juvenil/filtros.html" %}
-	<div class="row">
+	<div class="dash-violencia">
+		{% include "violencia_juvenil/indicadores.html" %}
 		<div id="tabs">
-			<ul class="nav nav-tabs" role="tablist">
+			<ul class="nav nav-tabs nav-act" role="tablist">
 				<li><a >Años:</a></li>
 				{% for key in year.keys %}
 				<li role="presentation" class="{% if forloop.counter == 1 %}active{% endif %}" id="{{forloop.counter}}"><a href="#{{key}}" aria-controls="{{key}}" role="tab" data-toggle="tab">{{key}}</a></li>
@@ -415,13 +414,33 @@ $(function () {
 			<div class="tab-content">
 				{% for key in year.keys %}
 				<div role="tabpanel" class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{key}}">
-					<div class="col-md-12" id="pregunta25{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-					<div class="col-md-12" id="pregunta26{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-					<div class="col-md-12" id="pregunta27{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-					<div class="col-md-12" id="pregunta28{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-					<div class="col-md-12" id="pregunta29{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-					<div class="col-md-12" id="pregunta32{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
-					<div class="col-md-12" id="pregunta33{{key}}" style="min-width: 310px; height: 400px; max-width: 1000px; margin: 0 auto"></div>
+					<div class="titulo-violencia">
+						<h4>Percepción</h4>
+					</div>
+					<div class="row">
+						<div class="col-md-12 graficos">
+							<div class="graficos-bar" id="pregunta25{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+						</div>
+						<div class="col-md-12 graficos">
+							<div class="graficos-bar" id="pregunta26{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+						</div>
+						<div class="col-md-12 graficos">
+							<div class="graficos-bar" id="pregunta27{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+						</div>
+						<div class="col-md-12 graficos">
+							<div class="graficos-bar" id="pregunta28{{key}}" style="min-width: 310px; height: 400px; width: 1000px; margin: 0 auto"></div>
+						</div>
+						<div class="col-md-6 graficos">
+							<div class="grafico-pie" id="pregunta29{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+						</div>
+						<div class="col-md-6 graficos">
+							<div class="grafico-pie" id="pregunta32{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+						</div>
+						<div class="col-md-offset-3 col-md-6 graficos">
+							<div class="grafico-pie" id="pregunta33{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+						</div>
+					</div>
+
 				</div>
 				{% endfor %}
 			</div>
