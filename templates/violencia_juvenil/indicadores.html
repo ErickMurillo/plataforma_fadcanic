@@ -1,11 +1,26 @@
 
-
+<!--
 		<div class="nencuestas">
-			Numero de Encuestas:
-			{% for k,v in year.items %}
-					<strong>{{k}}: </strong>{{v.0}},
-			{% endfor %}
+			
+				<table class="table table-bordered t-encuesta">				
+					<tbody>
+						<tr>		
+							<th>Años</th>		
+							{% for k in year.keys %}		
+							<th>{{k}}</th>		
+							{% endfor %}		
+						</tr>	
+						<tr>		
+							<td>No. Encuestas</td>		
+							{% for v in year.values %}		
+							<td>{{v.0}}</td>		
+							{% endfor %}		
+						</tr>		
+					</tbody>		
+				</table>
+
 		</div>
+-->
 		<div class="panel-group indicadores-violencia" id="accordion" role="tablist" aria-multiselectable="true">
 			<div class="panel panel-default">
 				<div class="panel-heading" role="tab" id="headingOne">
@@ -18,11 +33,13 @@
 				<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 					<div class="panel-body">
 						<div class="row">
-							<a class="btn btn-default" href="/violencia_juvenil/conocimiento/" role="button">Conocimiento</a>
-							<a class="btn btn-default" href="/violencia_juvenil/actitud/" role="button">Actitud</a>
-							<a class="btn btn-default" href="/violencia_juvenil/practicas/" role="button">Practicas</a>
-							<a class="btn btn-default" href="/violencia_juvenil/percepcion/" role="button">Percepción</a>
-							<a class="btn btn-default" href="/violencia_juvenil/estado_actual/" role="button">Estado actual</a>
+							<div class="col-md-offset-2">
+								<a class="btn btn-warning" href="/violencia_juvenil/conocimiento/" role="button">Conocimiento</a>
+								<a class="btn btn-warning" href="/violencia_juvenil/actitud/" role="button">Actitud</a>
+								<a class="btn btn-warning" href="/violencia_juvenil/practicas/" role="button">Practicas</a>
+								<a class="btn btn-warning" href="/violencia_juvenil/percepcion/" role="button">Percepción</a>
+								<a class="btn btn-warning" href="/violencia_juvenil/estado_actual/" role="button">Estado actual</a>
+							</div>
 						</div>
 					</div>
 				</div>

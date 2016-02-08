@@ -201,13 +201,30 @@ body {
 	border:2px solid #cacaca;
 
 }
+.nav-act>li.tab-titulo>a, .nav-act>li.tab-titulo>a:hover, .nav-act>li.tab-titulo>a:focus
+{
+	background-color: #486D31;
+	border-bottom: 5px solid #486D31;
+	font-weight: bold;
+}
 
-.tab-titulo{
+.t-encuesta{
+	background-color: #fff;
+	margin-bottom: 0px;
 
 }
-.nencuestas{
-	padding: 10px;
+
+.bordes-1{
+	border-left: 3px solid #cacaca;
+
 }
+
+.t-encuesta>thead>tr>th, .t-encuesta>tbody>tr>th, .t-encuesta>tfoot>tr>th, .t-encuesta>thead>tr>td, .t-encuesta>tbody>tr>td, .t-encuesta>tfoot>tr>td{
+	border: 2px solid #cacaca;
+}
+
+
+
 @media (min-width: 593px) and (max-width:767px)  {
 	.graficos{
     max-width: 100% !important;

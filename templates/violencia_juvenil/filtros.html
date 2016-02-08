@@ -8,6 +8,12 @@
 					{{year}}{% if not forloop.last %}, {% endif %}
 				{% endfor %}
 			</li>
+			<li><a href="#">No de encuestas:</a>
+				{% for v in year.values %}		
+					{{v.0}},	
+				{% endfor %}
+	
+			</li>
 			{% if request.session.grupos %}
 			<li><a href="#">Grupo(s):</a>
 				{% for grupo in request.session.grupos %}
