@@ -54,12 +54,7 @@ def index(request,template="violencia_juvenil/index.html"):
 			conteo_municipio = InformacionEntrevistado.objects.filter(municipio1=y).count()
 			if conteo_municipio != 0:
 				municipio[x,y] = conteo_municipio
-	
-	for k,v in depto.items():
-		print k,v
-		for k1,v2 in municipio.items():
-			if k == k1[0]:
-				print k1[1],v2
+
 	return render(request, template, locals())
 
 def consulta(request,template="violencia_juvenil/consulta.html"):
