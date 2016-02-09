@@ -20,6 +20,7 @@
 .popup-detalle img {
   max-width: 100%;
   height: 200px;
+  max-height: 200px;
   padding: 0;
   margin: 0;
 }
@@ -159,3 +160,4 @@
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+

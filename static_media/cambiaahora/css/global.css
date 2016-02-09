@@ -1542,8 +1542,9 @@ ol li span:before{
 	color: white !important;
 }
 
-.img-thumb{
-	
+.img-listnota .img-thumb{
+	min-height: 240px;
+    max-height: 240px;
 }
 .we-help .gallery .thumbnail h3 a {
 	font-size: 13px;
@@ -1838,7 +1839,7 @@ hr.style-two {
 }
 
 .item-nota {
-  height: 500px;
+  min-height: 500px;
 }
 /*.btn-nota{
 	position: absolute;
