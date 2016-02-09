@@ -3111,6 +3111,24 @@ body .ui-widget-header {
 .launch .input-group {
 	width: 86%;
 }
+
+
+
+.otro .img-thumb {
+    height: 340px;
+    max-height: 340px;
+}
+.tamano {
+    height: 50px;
+}
+
+
+
+
+
+
+
+
 @media (max-width: 1023px) {
 
 	.launch input[type="email"], .launch .input-group {
