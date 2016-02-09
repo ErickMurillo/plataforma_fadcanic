@@ -25,6 +25,10 @@
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+		<link href="/static/violencia_juvenil/css/style.css" rel="stylesheet">
+
+
         <script src="/static/cambiaahora/js/jquery.min.js"></script>
 	
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -88,12 +92,7 @@
 						
 
 						<div class="social-links col-xs-6 col-sm-10">
-							<a href="/lang/en" class=" btn btn-default btn-idioma">
-									<img src="/static/cambiaahora/img/eeuu.jpg" alt=""> ENGLISH
-							</a>
-							<a href="/lang/es" class=" btn btn-default btn-idioma">
-									<img src="/static/cambiaahora/img/spanish.jpg" alt=""> SPANISH
-							</a>
+
 							<ul class="social-icons hidden-xs">
 								<li>
 									<a href="https://www.facebook.com/pages/Cambia-ahora-solo-hazlo/1485321515024959?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -126,43 +125,7 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<nav>
 							<ul class="nav navbar-nav">
-								<li class="">
-									<a href="/">{% trans 'Inicio' %}</a>
 
-								</li>
-								<li class="">
-								{% if LANGUAGE_CODE == 'en' %}
-									<a href="/campaign-change-now/">{% trans 'Campaña' %}</a>
-								{%else%}
-									<a href="/campana-cambia-ahora/">{% trans 'Campaña' %}</a>
-								{% endif %}
-								</li>
-								<li class="">
-									<a href="/noticias/">{% trans 'Noticias' %}</a>
-
-								</li>
-
-								<li class="">
-								{% if LANGUAGE_CODE == 'en' %}
-									<a href="/about-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
-								{%else%}
-									<a href="/sobre-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
-								{% endif %}
-								</li>
-							
-								
-								<li class="">
-									<a href="/multimedias/">{% trans 'Multimedia' %}</a>
-
-								</li>
-
-								<!--<li>
-									<a href="/monitoreo/">{% trans 'Actividades' %}</a>
-								</li>-->
-								
-								<li>
-									<a href="/contactenos/">{% trans 'Contáctenos' %}</a>
-								</li>
 
 							</ul>
 							</nav>

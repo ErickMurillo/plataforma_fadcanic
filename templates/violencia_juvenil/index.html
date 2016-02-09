@@ -1,4 +1,4 @@
-{% extends "cambiaahora/base.html" %}
+{% extends "violencia_juvenil/base.html" %}
 
 {% block extra_js %}
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -62,12 +62,125 @@
 	}
 </style>
 <div class="container">
-	<div class="row">
-		<div class="col-md-3">
-			<a class="btn btn-default" href="/violencia_juvenil/consulta">Consulta</a>
-		</div>
-		<div class="col-md-9">
-			<div id="map-canvas"></div>
+	<div class="mapa-violencia">
+		<div class="row">
+			<div class="col-md-4">
+			<div class="titulo-violencia">
+				<h4>Violencia Juvenil</h4>
+			</div>
+			<div class="parrafo-violencia">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem culpa esse iste pariatur ratione eveniet possimus excepturi quam nam quae praesentium adipisci asperiores, cupiditate modi numquam atque, doloremque quaerat cumque.</p>
+			</div>
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+								<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	RAAS
+							  	</li>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+							<ul class="list-group">
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Bluefields
+							  	</li>
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Desembocadura de Río Grande
+							  	</li>
+							  	
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Kukra Hill
+							  	</li>
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Laguna de Perlas
+							  	</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingTwo">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	RACN
+							  	</li>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						<div class="panel-body">
+							<ul class="list-group">
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Bilwi
+							  	</li>
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Tuapi
+							  	</li>
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Waspam
+							  	</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingThree">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Managua
+							  	</li>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						<div class="panel-body">
+							<ul class="list-group">
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Barrio Jorge Dimitrov
+							  	</li>
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Barrio San Judas
+							  	</li>
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	 Ciudad Sandino
+							  	</li>
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Mateare
+							  	</li>
+							  	<li class="list-group-item">
+							    	<span class="badge">14</span>
+							    	Sabana Grande
+							  	</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+				<a class="btn btn-default" href="/violencia_juvenil/consulta">Consulta</a>
+			</div>
+			<div class="col-md-8">
+				<div id="map-canvas"></div>
+			</div>
 		</div>
 	</div>
 </div>

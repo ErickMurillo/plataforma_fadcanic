@@ -112,8 +112,11 @@ option:checked { display:none; }
 .boder-bajo{
   border-bottom: 3px solid #cacaca;
   margin-bottom: 20px;
-}
 
+}
+.mapeo-encabezado .boder-bajo{
+    padding-bottom: 10px;
+}
 .mapeo-red{
   background-color: #860513;
 }
@@ -225,4 +228,10 @@ option:checked { display:none; }
   font-size: 0.35em;
   position: absolute;
   transition: .3s;
+}
+
+@media (max-width: 593px)  {
+  select#id_tipo {
+    width: 100%;
+  }
 }
