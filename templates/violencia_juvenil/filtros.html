@@ -10,7 +10,7 @@
 			</li>
 			<li><a href="#">No de encuestas:</a>
 				{% for v in year.values %}		
-					{{v.0}},	
+					{{v.0}}{% if not forloop.last %}, {% endif %}	
 				{% endfor %}
 	
 			</li>
