@@ -72,109 +72,34 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem culpa esse iste pariatur ratione eveniet possimus excepturi quam nam quae praesentium adipisci asperiores, cupiditate modi numquam atque, doloremque quaerat cumque.</p>
 			</div>
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			{% for key,value in depto.items %}
 				<div class="panel panel-default">
-					<div class="panel-heading" role="tab" id="headingOne">
+					<div class="panel-heading" role="tab" id="heading{{forloop.counter}}">
 						<h4 class="panel-title">
-							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
 								<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	RAAS
+							    	<span class="badge">{{value}}</span>
+							    	{{key}}
 							  	</li>
 							</a>
 						</h4>
 					</div>
-					<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+					<div id="collapse{{forloop.counter}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{forloop.counter}}">
 						<div class="panel-body">
 							<ul class="list-group">
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Bluefields
-							  	</li>
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Desembocadura de Río Grande
-							  	</li>
-							  	
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Kukra Hill
-							  	</li>
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Laguna de Perlas
-							  	</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading" role="tab" id="headingTwo">
-						<h4 class="panel-title">
-							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							{% for k,v in municipio.items %}
+								{% if key == k.0 %}
 								<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	RACN
+							    	<span class="badge">{{v}}</span>
+							    	{{k.1}}
 							  	</li>
-							</a>
-						</h4>
-					</div>
-					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-						<div class="panel-body">
-							<ul class="list-group">
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Bilwi
-							  	</li>
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Tuapi
-							  	</li>
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Waspam
-							  	</li>
+								{% endif %}
+							{% endfor %}
 							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading" role="tab" id="headingThree">
-						<h4 class="panel-title">
-							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Managua
-							  	</li>
-							</a>
-						</h4>
-					</div>
-					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-						<div class="panel-body">
-							<ul class="list-group">
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Barrio Jorge Dimitrov
-							  	</li>
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Barrio San Judas
-							  	</li>
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	 Ciudad Sandino
-							  	</li>
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Mateare
-							  	</li>
-							  	<li class="list-group-item">
-							    	<span class="badge">14</span>
-							    	Sabana Grande
-							  	</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+			{% endfor %}
 			</div>
 				<a class="btn btn-default" href="/violencia_juvenil/consulta">Consulta</a>
 			</div>
