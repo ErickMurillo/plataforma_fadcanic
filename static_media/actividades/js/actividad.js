@@ -53,6 +53,17 @@ $(document).ready( function()
 				$('.field-persona_organiza').hide();
 				$('.field-comite').show();
 			};
+
+			if (valor_tipo === '3') {
+				$(".field-comite label").empty();
+				$(".field-comite label").append("Comité municipal que organiza la actividad:");
+			}else if(valor_tipo === '4'){
+				$(".field-comite label").empty();
+				$(".field-comite label").append("Diplomado de promotoría que organiza la actividad:");
+			}else if(valor_tipo === '5'){
+				$(".field-comite label").empty();
+				$(".field-comite label").append("Diplomado de comunicación que organiza la actividad:");
+			};
 		});
 
 	} );
@@ -69,7 +80,6 @@ $(document).on('click','#id_tipo',function(){
 				var html = ""
 				 console.log(data);
 				 for (var i = 0; i < data.length; i++) {
-				 	//<option value="2">Lisbeth Howard</option>
 				 	html += '<option value="'+data[i].pk+'">'+data[i].fields.nombre+'</option>'
 				 };
 				 $('#id_comite').html(html);
