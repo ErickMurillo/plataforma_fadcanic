@@ -343,7 +343,13 @@ def get_graph_png(svg, obj, field, width=940):
 
 class BusquedaView(TemplateView):
     def get(self, request, *args, **kwargs):
-        tipo = request.GET['id']
+        tipo = request.GET['id'] 
+        if tipo == '3':
+            tipo = 1
+        elif tipo == '4':
+            tipo = 3
+        elif tipo == '5':
+            tipo = 4
         organizaciones = Organizaciones.objects.filter(tipo=tipo)
         data = serializers.serialize('json',organizaciones,fields=('nombre',))
         return HttpResponse(data,content_type='application/json')
