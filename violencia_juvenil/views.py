@@ -43,6 +43,18 @@ def _queryset_filtrado(request):
 	return Encuesta.objects.filter(**params)
 
 def index(request,template="violencia_juvenil/index.html"):
+	depto = {}
+	municipio = {}
+	for x in Departamento.objects.all():
+		conteo_depto = InformacionEntrevistado.objects.filter(departamento=x).count()
+		if conteo_depto != 0:
+			depto[x] = conteo_depto
+
+		for y in Municipio.objects.filter(departamento=x):
+			conteo_municipio = InformacionEntrevistado.objects.filter(municipio1=y).count()
+			if conteo_municipio != 0:
+				municipio[x,y] = conteo_municipio
+
 	return render(request, template, locals())
 
 def consulta(request,template="violencia_juvenil/consulta.html"):

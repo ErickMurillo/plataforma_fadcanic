@@ -62,7 +62,7 @@ class EstadoActualInline(admin.StackedInline):
     max_num = 1
 
 #ImportExportActionModelAdmin
-class EncuestaAdmin(ImportExportActionModelAdmin):
+class EncuestaAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.user = request.user
         obj.save()
@@ -92,8 +92,8 @@ admin.site.register(Encuestador)
 
 # admin.site.register(Encuestador,EncuestadorAdmin)
 
-class InformacionAdmin(ImportExportActionModelAdmin):
-    model = InformacionEntrevistado
+# class InformacionAdmin(ImportExportActionModelAdmin):
+#     model = InformacionEntrevistado
 
 # class EscolaridadAdmin(ImportExportActionModelAdmin):
 #     model = Escolaridad
@@ -119,12 +119,12 @@ class InformacionAdmin(ImportExportActionModelAdmin):
 # class EstadoActualAdmin(ImportExportActionModelAdmin):
 #     model = EstadoActual
 
-admin.site.register(InformacionEntrevistado,InformacionAdmin)
+# admin.site.register(InformacionEntrevistado,InformacionAdmin)
 # admin.site.register(Escolaridad,EscolaridadAdmin)
 # admin.site.register(ParticipaOrganizacion,ParticipaOrganizacionAdmin)
 # admin.site.register(RespuetaSi,RespuetaSiAdmin)
-# admin.site.register(Conocimiento,ConocimientoAdmin) 
-# admin.site.register(Actitud,ActitudAdmin) 
+# admin.site.register(Conocimiento,ConocimientoAdmin)
+# admin.site.register(Actitud,ActitudAdmin)
 # admin.site.register(Practicas,PracticasAdmin)
 # admin.site.register(Percepcion,PercepcionAdmin)
 # admin.site.register(EstadoActual,EstadoActualAdmin)
