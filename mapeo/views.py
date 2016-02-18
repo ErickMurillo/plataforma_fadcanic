@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from .models import *
 from .forms import *
@@ -27,6 +28,14 @@ def _queryset_filtrado(request):
 	return Organizaciones.objects.filter(**params)
 
 def index(request,template="mapeo/index.html"):
+	TIPO_CHOICES = ((1,'Comité municipal de prevención de violencia'),(2,'Comité comunal'),
+					(3,'Diplomado de promotoría'),(4,'Diplomado de comunicación'))
+
+	tipo_org = {}
+	for obj in TIPO_CHOICES:
+		count = Organizaciones.objects.filter(tipo=obj[0]).count()
+		tipo_org[obj[1]] = count
+
 	if request.method == 'POST':
 		mensaje = None
 		form = OrganizacionConsulta(request.POST)
@@ -38,17 +47,24 @@ def index(request,template="mapeo/index.html"):
 			centinela = 1
 
 			tipo = request.session['tipo']
-			list_municipio = Organizaciones.objects.filter(tipo=tipo).values_list('municipio', flat=True).distinct('municipio')
-			lista = []
-			for x in list_municipio:
-				municipio = Municipio.objects.filter(id=x)
-				organizaciones = Organizaciones.objects.filter(municipio=x,tipo=tipo)
-				for y in municipio:
-					lista.append((y,float(y.latitud),float(y.longitud),organizaciones))
-			municipios = lista
-
-		else:
-			centinela = 0
+			if tipo != '':
+				list_municipio = Organizaciones.objects.filter(tipo=tipo).values_list('municipio', flat=True).distinct('municipio')
+				lista = []
+				for x in list_municipio:
+					municipio = Municipio.objects.filter(id=x)
+					organizaciones = Organizaciones.objects.filter(municipio=x,tipo=tipo)
+					for y in municipio:
+						lista.append((y,float(y.latitud),float(y.longitud),organizaciones))
+				municipios = lista
+			else:
+				list_municipio = Organizaciones.objects.values_list('municipio', flat=True).distinct('municipio')
+				lista = []
+				for x in list_municipio:
+					municipio = Municipio.objects.filter(id=x)
+					organizaciones = Organizaciones.objects.filter(municipio=x)
+					for y in municipio:
+						lista.append((y,float(y.latitud),float(y.longitud),organizaciones))
+				municipios = lista
 
 	else:
 		form = OrganizacionConsulta()
