@@ -26,6 +26,16 @@ body {
     border-radius: 50px;
     padding-top: 8px;
 }
+/*
+
+.mapa-violencia .panel-default>.panel-heading .badge{
+	width: 45px;
+    height: 30px;
+    border-radius: 50px;
+    padding-top: 8px;
+}
+
+*/
 .mapa-violencia .panel-collapse {
 	border:0px;
 }
