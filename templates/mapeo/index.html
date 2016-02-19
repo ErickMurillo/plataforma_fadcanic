@@ -63,12 +63,13 @@
 	<div class="row">
 		<div class="col-lg-4 parrafo-mapeo">
 			<h4>Mapeo de Actores</h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam blanditiis optio, dolorem, repudiandae quos illo nemo ducimus odit, culpa recusandae voluptas incidunt accusamus asperiores ipsam maiores vero unde! Id, facilis.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus alias, ab nulla molestiae unde tempore earum provident accusantium laudantium sapiente blanditiis quia nisi aperiam, quo sint eligendi nesciunt corporis. Possimus!</p>
+			<p>Aquí encontrarás información de las organizaciones aliadas del proyecto, datos de los comités comunales, sus acciones y las personas que los conforman, participantes y acciones de los estudiantes de los Diplomados en promotoría y comunicación comunitaria.</p>
 			<br>
 
 			{% for k,v in tipo_org.items %}
-				{{k}} ---> {{v}} <br>
+			<div class="list-group-item mapeo-dato">
+				{{k}} <span class="badge">{{v}}</span>
+			</div>
 			{% endfor %}
 		</div>
 		<div class="col-lg-8">

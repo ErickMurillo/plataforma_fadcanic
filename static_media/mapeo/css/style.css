@@ -230,6 +230,24 @@ option:checked { display:none; }
   transition: .3s;
 }
 
+.mapeo-dato{
+  background-color: white;
+  font-size: 1em;
+  padding: 18px 15px;
+  border-radius: 0px;
+  border:1px solid #d1d1d1;
+  margin-bottom: 2px;
+
+}
+.list-group-item:last-child{
+  border-radius: 0px;
+}
+.mapeo-dato:hover{
+  border: 1px solid #d1d1d1;
+  margin-bottom:2px !important;
+}
+
+
 @media (max-width: 593px)  {
   select#id_tipo {
     width: 100%;
