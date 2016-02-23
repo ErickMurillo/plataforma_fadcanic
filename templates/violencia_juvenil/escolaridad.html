@@ -1,0 +1,229 @@
+{% extends "violencia_juvenil/base.html" %}
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="/static/violencia_juvenil/js/highcharts.js"></script>
+<script src="/static/violencia_juvenil/js/exporting.js"></script>
+<script>
+	{% for key,value in year.items %}
+	$(function () {
+		$('#escolaridad{{key}}').highcharts({
+			chart: {
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
+			},
+			title: {
+				text: 'Nivel de escolaridad'
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					showInLegend: true,
+					dataLabels: {
+						enabled: true,
+						format: '{point.percentage:.2f} %',
+						style: {
+							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+						}
+					}
+				}
+			},
+			series: [{
+				name: 'Procentaje',
+				colorByPoint: true,
+				data: [
+				{% for k,v in value.1.items %}
+				{
+					name: '{{k}}',
+					y: {{v}},
+				},
+				{% endfor %}
+				]
+			}]
+		});
+	});
+
+	$(function () {
+		$('#estado_civil{{key}}').highcharts({
+			chart: {
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
+			},
+			title: {
+				text: 'Estado civil'
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					showInLegend: true,
+					dataLabels: {
+						enabled: true,
+						format: '{point.percentage:.2f} %',
+						style: {
+							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+						}
+					}
+				}
+			},
+			series: [{
+				name: 'Procentaje',
+				colorByPoint: true,
+				data: [
+				{% for k,v in value.2.items %}
+				{
+					name: '{{k}}',
+					y: {{v}},
+				},
+				{% endfor %}
+				]
+			}]
+		});
+	});
+
+	$(function () {
+		$('#hijos{{key}}').highcharts({
+			chart: {
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
+			},
+			title: {
+				text: 'Tienen hijos'
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					showInLegend: true,
+					dataLabels: {
+						enabled: true,
+						format: '{point.percentage:.2f} %',
+						style: {
+							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+						}
+					}
+				}
+			},
+			series: [{
+				name: 'Procentaje',
+				colorByPoint: true,
+				data: [
+				{% for k,v in value.3.items %}
+				{
+					name: '{{k}}',
+					y: {{v}},
+				},
+				{% endfor %}
+				]
+			}]
+		});
+	});
+
+	$(function () {
+		$('#cantidad_hijos{{key}}').highcharts({
+			chart: {
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
+			},
+			title: {
+				text: 'Cantidad de hijos'
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					showInLegend: true,
+					dataLabels: {
+						enabled: true,
+						format: '{point.percentage:.2f} %',
+						style: {
+							color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+						}
+					}
+				}
+			},
+			series: [{
+				name: 'Procentaje',
+				colorByPoint: true,
+				data: [
+				{% for k,v in value.4.items %}
+				{
+					name: '{{k}}',
+					y: {{v}},
+				},
+				{% endfor %}
+				]
+			}]
+		});
+	});
+	{% endfor %}
+</script>
+{% endblock extra_js %}
+
+{% block contenido %}
+<style>
+
+.table{
+		width: auto !important;
+	}
+</style>
+<div class="container">
+	{% include "violencia_juvenil/filtros.html" %}
+	<div class="dash-violencia">
+		{% include "violencia_juvenil/indicadores.html" %}
+		<div id="tabs">
+			<ul class="nav nav-tabs nav-act" role="tablist">
+				<li><a >Años:</a></li>
+				{% for key in year.keys %}
+				<li role="presentation" class="{% if forloop.counter == 1 %}active{% endif %}" id="{{forloop.counter}}"><a href="#{{key}}" aria-controls="{{key}}" role="tab" data-toggle="tab">{{key}}</a></li>
+				{% endfor %}
+			</ul>
+			<div class="tab-content">
+				<div class="titulo-violencia">
+					<h4>Otros</h4>
+				</div>
+				{% for key in year.keys %}
+				<div role="tabpanel" class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{key}}">
+					<div class="row">
+						<div class="col-md-6 graficos">
+							<div class="grafico-pie" id="escolaridad{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+						</div>
+						<div class="col-md-6 graficos">
+							<div class="grafico-pie" id="estado_civil{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+						</div>
+						<div class="col-md-6 graficos">
+							<div class="grafico-pie" id="hijos{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+						</div>
+						<div class="col-md-6 graficos">
+							<div class="grafico-pie" id="cantidad_hijos{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+						</div>
+					</div>
+
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock contenido %}

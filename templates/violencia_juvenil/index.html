@@ -66,10 +66,10 @@
 		<div class="row">
 			<div class="col-md-4">
 			<div class="titulo-violencia">
-				<h4>Violencia Juvenil</h4>
+				<h4>Encuesta CAP</h4>
 			</div>
 			<div class="parrafo-violencia">
-				<p>Aquí encontrarás los resultados de la encuesta sobre conocimientos, actitudes y prácticas sobre la violencia y abuso de droga en las localidades donde tiene acciones la campaña: Cambia ahora solo hazlo.</p>
+				<p>Aquí encontrarás los resultados de la encuesta que se realizó en {% for x in years %}{{x}}{% if not forloop.last %}, {% endif %}{% endfor %}, sobre conocimientos, actitudes y prácticas sobre la violencia y abuso de droga en las localidades donde tiene acciones la campaña: Cambia ahora solo hazlo.</p>
 			</div>
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			{% for key,value in depto.items %}
@@ -101,7 +101,7 @@
 				</div>
 			{% endfor %}
 			</div>
-				<a class="btn btn-default" href="/violencia_juvenil/consulta">Consulta</a>
+				<a class="btn btn-default" href="/encuesta_cap/consulta">Consulta</a>
 			</div>
 			<div class="col-md-8">
 				<div id="map-canvas"></div>

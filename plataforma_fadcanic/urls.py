@@ -72,7 +72,7 @@ urlpatterns += patterns('mapeo.views',
 
 #violencia juvenil
 urlpatterns += patterns('violencia_juvenil.views',
-    url(r'^violencia_juvenil/', include(violencia_juvenil_urls)),
+    url(r'^encuesta_cap/', include(violencia_juvenil_urls)),
     url(r'^ajax/munis/$', 'get_munis', name='get-munis'),
 )
 

@@ -34,11 +34,15 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-offset-2">
-								<a class="btn btn-warning" href="/violencia_juvenil/conocimiento/" role="button">Conocimiento</a>
-								<a class="btn btn-warning" href="/violencia_juvenil/actitud/" role="button">Actitud</a>
-								<a class="btn btn-warning" href="/violencia_juvenil/practicas/" role="button">Practicas</a>
-								<a class="btn btn-warning" href="/violencia_juvenil/percepcion/" role="button">Percepción</a>
-								<a class="btn btn-warning" href="/violencia_juvenil/estado_actual/" role="button">Estado actual</a>
+								{% if request.path != '/encuesta_cap/dashboard/' %}
+									<a class="btn btn-warning" href="/encuesta_cap/dashboard/" role="button">Tablero principal</a>
+								{% endif %}
+								<a class="btn btn-warning" href="/encuesta_cap/conocimiento/" role="button">Conocimiento</a>
+								<a class="btn btn-warning" href="/encuesta_cap/actitud/" role="button">Actitud</a>
+								<a class="btn btn-warning" href="/encuesta_cap/practicas/" role="button">Practicas</a>
+								<a class="btn btn-warning" href="/encuesta_cap/percepcion/" role="button">Percepción</a>
+								<a class="btn btn-warning" href="/encuesta_cap/estado_actual/" role="button">Estado actual</a>
+								<!--<a class="btn btn-warning" href="/encuesta_cap/otros/" role="button">Otros</a>-->
 							</div>
 						</div>
 					</div>

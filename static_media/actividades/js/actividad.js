@@ -54,7 +54,13 @@ $(document).ready( function()
 				$('.field-comite').show();
 			};
 
-			if (valor_tipo === '3') {
+			if (valor_tipo === '1') {
+				$(".field-comite label").empty();
+				$(".field-comite label").append("Persona que organiza la actividad:");
+			}else if(valor_tipo === '2'){
+				$(".field-comite label").empty();
+				$(".field-comite label").append("Comité comunal que organiza la actividad:");
+			}else if(valor_tipo === '3'){
 				$(".field-comite label").empty();
 				$(".field-comite label").append("Comité municipal que organiza la actividad:");
 			}else if(valor_tipo === '4'){

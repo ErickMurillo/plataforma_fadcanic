@@ -43,6 +43,10 @@ def _queryset_filtrado(request):
 	return Encuesta.objects.filter(**params)
 
 def index(request,template="violencia_juvenil/index.html"):
+	years = []
+	for en in Encuesta.objects.order_by('year').values_list('year', flat=True).distinct('year'):
+		years.append(en)
+
 	depto = {}
 	municipio = {}
 	for x in Departamento.objects.all():
@@ -54,6 +58,22 @@ def index(request,template="violencia_juvenil/index.html"):
 			conteo_municipio = InformacionEntrevistado.objects.filter(municipio1=y).count()
 			if conteo_municipio != 0:
 				municipio[x,y] = conteo_municipio
+
+	# tab_year = {}
+	# for year in years:
+	# 	depto = {}
+	# 	municipio = {}
+	# 	for x in Departamento.objects.all():
+	# 		conteo_depto = InformacionEntrevistado.objects.filter(departamento=x,encuesta__year=year).count()
+	# 		if conteo_depto != 0:
+	# 			depto[x] = conteo_depto
+
+	# 		for y in Municipio.objects.filter(departamento=x):
+	# 			conteo_municipio = InformacionEntrevistado.objects.filter(municipio1=y,encuesta__year=year).count()
+	# 			if conteo_municipio != 0:
+	# 				municipio[x,y] = conteo_municipio
+
+	# 	tab_year[year] = (depto,municipio)
 
 	return render(request, template, locals())
 
@@ -69,7 +89,7 @@ def consulta(request,template="violencia_juvenil/consulta.html"):
 			request.session['departamento'] = form.cleaned_data['departamento']
 			request.session['municipio'] = form.cleaned_data['municipio']
 
-			return HttpResponseRedirect('/violencia_juvenil/dashboard/')		
+			return HttpResponseRedirect('/encuesta_cap/dashboard/')		
 	else:
 		form = ViolenciaConsulta()
 		try:
@@ -200,6 +220,37 @@ def dashboard(request,template='violencia_juvenil/dashboard.html'):
 					#estado actual
 					pregunta36,pregunta37
 					)
+
+	return render(request, template, locals())
+
+def otros(request,template='violencia_juvenil/escolaridad.html'):
+	filtro = _queryset_filtrado(request)
+
+	year = {}
+	for y in request.session['year']:
+		encuestas = filtro.filter(year=y).count()
+
+		escolaridad = collections.OrderedDict()
+		for obj in CHOICE_ESCOLARIDAD:
+			conteo = filtro.filter(escolaridad__escolaridad=obj[0],year=y).count()
+			escolaridad[obj[1]] = conteo
+
+		estado_civil = collections.OrderedDict()
+		for obj in CHOICE_CIVIL:
+			conteo = filtro.filter(escolaridad__civil=obj[0],year=y).count()
+			estado_civil[obj[1]] = conteo
+
+		hijos = collections.OrderedDict()
+		for obj in CHOICE_SI_NO:
+			conteo = filtro.filter(escolaridad__hijos=obj[0],year=y).count()
+			hijos[obj[1]] = conteo
+
+		cantidad_hijos = collections.OrderedDict()
+		for obj in CANTIDAD_HIJOS_CHOICES:
+			conteo = filtro.filter(escolaridad__cantidad=obj[0],year=y).count()
+			cantidad_hijos[obj[1]] = conteo
+
+		year[y] = (encuestas,escolaridad,estado_civil,hijos,cantidad_hijos)
 
 	return render(request, template, locals())
 

@@ -21,8 +21,12 @@
 		font-size: 16px;
 	}
 	
-	.nav-tabs > li > a {
-	 
+	select {
+	 font-size: 14px
+	}
+
+	.borde{
+		border: 1px solid #afcde3;
 	}
 </style>
 <script type="text/javascript" src="{% static 'actividades/js/underscore-min.js' %}"></script>
@@ -101,24 +105,19 @@
 						<div class="col-md-12 space-act">
 							<label>Variable Principal</label>
 							<div>{{form.main_var}}</div>			
-
 						</div>
-						<div class="col-md-12 space-act">
-							<label>Sexo</label>
-							{{form.eval_tipo}}
+						<div class="col-md-12 space-act">		
+							<label>{{form.participantes.label}}</label>
+							{{form.participantes}}				
 						</div>
 							
 					</div>
 					<div class="col-md-4">
-						<div class="col-md-12 space-act">
+						<div class="col-md-12 space-act borde">
 								<label>{{form.evaluacion.label}}</label>
+								{{form.eval_tipo}}
 								{{form.evaluacion}}
 						</div>		
-						<div class="col-md-12 space-act">		
-							<label>{{form.participantes.label}}</label>
-							{{form.participantes}}			
-								
-						</div>
 					</div>
 					<div class="col-md-4 space-act">
 						
@@ -172,7 +171,7 @@
 
 </div>
 
-{{request.session.var2}}<br>{{request.session.main}}
+
 
 {% endblock %}
 

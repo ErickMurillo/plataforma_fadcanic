@@ -216,8 +216,7 @@
 		<h2>Acuerdos:</h2>
 		<p>{{ obj.acuerdos|safe }}</p>
 
-		<pdf:nextpage>
-
+		<!--<pdf:nextpage> -->
 		<div id="recursos">
 			<h1 align="center">Recursos</h1>
 			{% if obj.video %}
@@ -243,12 +242,10 @@
 			</div>
 			<br />
 			{% endif %}
-
 		</div>
 
 		{% endfor %}
 	</div>
-
 
 </body>
 </html>
