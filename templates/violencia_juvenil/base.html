@@ -264,7 +264,7 @@
             </div>
         </div>
 	<!--Footer Section End Here -->
-		<div class="container menubar">
+<!-- 		<div class="container menubar">
 
 			<nav id="bt-menu" class="bt-menu">
 				<a href="#" class="bt-menu-trigger" data-toggle="tooltip" data-placement="left" title="Menu Principal"><span>Menu</span></a>
@@ -293,7 +293,15 @@
 					</a></li>
 				</ul>
 			</nav>
-		</div><!-- /container -->
+
+		</div> 
+
+			<script src="/static/cambiaahora/js/borderMenu.js"></script>
+			<script type="text/javascript">
+			$(function () {
+			  $('[data-toggle="tooltip"]').tooltip()
+			})
+		</script>-->
 		
 		<script src="/static/cambiaahora/js/less.js"></script>
 		<script src="/static/cambiaahora/js/bootstrap.min.js"></script>
@@ -305,69 +313,14 @@
 		<script src="/static/cambiaahora/js/jquery.flexslider.js"></script>
 		<script src="/static/cambiaahora/js/fixednavbar.js"></script>
 		<script src="/static/cambiaahora/js/site.js"></script>
-		<script src="/static/cambiaahora/js/audiojs/audio.min.js"></script>
+	
 
 		<script src="/static/cambiaahora/js/jquery.magnific-popup.min.js"></script>
 		<script src="/static/cambiaahora/js/classie.js"></script>
-		<script src="/static/cambiaahora/js/borderMenu.js"></script>
-		<script type="text/javascript">
-			$(function () {
-			  $('[data-toggle="tooltip"]').tooltip()
-			})
-		</script>
+	
+		
         {% block social %}{% endblock social %}
 
-
-
-	<script>
-      $(function() { 
-        // Setup the player to autoplay the next track
-        var a = audiojs.createAll({
-          trackEnded: function() {
-            var next = $('ol li.playing').next();
-            if (!next.length) next = $('ol li').first();
-            next.addClass('playing').siblings().removeClass('playing');
-            audio.load($('a', next).attr('data-src'));
-            audio.play();
-          }
-        });
-        
-        // Load in the first track
-        var audio = a[0];
-            first = $('ol a').attr('data-src');
-        $('ol li').first().addClass('playing');
-        audio.load(first);
-
-        // Load in a track on click
-        $('ol li').click(function(e) {
-          e.preventDefault();
-          $(this).addClass('playing disabled').siblings().removeClass('playing disabled');
-          audio.load($('a', this).attr('data-src'));
-          audio.play();
-        });
-        // Keyboard shortcuts
-        $(document).keydown(function(e) {
-          var unicode = e.charCode ? e.charCode : e.keyCode;
-             // right arrow
-          if (unicode == 39) {
-            var next = $('li.playing').next();
-            if (!next.length) next = $('ol li').first();
-            next.click();
-            // back arrow
-          } else if (unicode == 37) {
-            var prev = $('li.playing').prev();
-            if (!prev.length) prev = $('ol li').last();
-            prev.click();
-            // spacebar
-          } else if (unicode == 32) {
-            audio.playPause();
-          }
-        })
-      });
-
-
-		document.addEventListener("touchstart", function(){}, true);
-    </script>
 	{% block extra_js %}{% endblock extra_js %}
 
 	</body>
