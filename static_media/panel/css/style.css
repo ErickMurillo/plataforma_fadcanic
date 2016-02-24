@@ -1,5 +1,5 @@
 body{
-	background: url(../img/fondo.jpg) no-repeat center center fixed;
+	background: url(../img/fondo.png) no-repeat center center fixed;
 	background-size: cover;
 	/*linear-gradient(rgba(244,115,23,0.2),rgba(244,115,23,0.2)),*/ 
 }
@@ -249,8 +249,8 @@ body{
     box-shadow: 8px 2px 0 #A31628;
 }
 .og-grid li.og-expanded > a::after{
-	margin-top: -150px;
+	
 }
 .og-expander{
-	margin-top: -120px;
+	
 }
