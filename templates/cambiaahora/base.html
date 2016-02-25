@@ -88,6 +88,9 @@
 						
 
 						<div class="social-links col-xs-6 col-sm-10">
+							<a href="/contactenos/" class=" btn btn-default btn-idioma">
+								{% trans 'Contáctenos' %}
+							</a>
 							<a href="/lang/en" class=" btn btn-default btn-idioma">
 									<img src="/static/cambiaahora/img/eeuu.jpg" alt=""> ENGLISH
 							</a>
@@ -126,43 +129,68 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<nav>
 							<ul class="nav navbar-nav">
-								<li class="">
-									<a href="/">{% trans 'Inicio' %}</a>
+								<!-- <li class="">
+									<a href="/"><span class="fa fa-home fa-lg"></span> </a>
 
-								</li>
+								</li> -->
 								<li class="">
-								{% if LANGUAGE_CODE == 'en' %}
+
+								<a href="javascript:;"  data-toggle="dropdown"  class="submenu-icon">
+									{% trans 'Conócenos' %}
+									<span class="glyphicon glyphicon-chevron-down"></span> 
+									<span class="glyphicon glyphicon-chevron-up"></span> 
+								</a>
+								<div  class="dropdown-menu">
+									<ul>
+										<li>
+											{% if LANGUAGE_CODE == 'en' %}
+											<a href="/campaign-change-now/">{% trans 'Campaña' %}</a>
+											{%else%}
+												<a href="/campana-cambia-ahora/">{% trans 'Campaña' %}</a>
+											{% endif %} 
+										</li>
+										<li>
+											{% if LANGUAGE_CODE == 'en' %}
+												<a href="/about-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
+											{%else%}
+												<a href="/sobre-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
+											{% endif %}
+										</li>
+									</ul>
+								</div>
+
+
+								<!-- {% if LANGUAGE_CODE == 'en' %}
 									<a href="/campaign-change-now/">{% trans 'Campaña' %}</a>
 								{%else%}
 									<a href="/campana-cambia-ahora/">{% trans 'Campaña' %}</a>
-								{% endif %}
+								{% endif %} -->
 								</li>
 								<li class="">
 									<a href="/noticias/">{% trans 'Noticias' %}</a>
 
-								</li>
-
-								<li class="">
-								{% if LANGUAGE_CODE == 'en' %}
-									<a href="/about-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
-								{%else%}
-									<a href="/sobre-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
-								{% endif %}
-								</li>
-							
+								</li>		
 								
 								<li class="">
-									<a href="/multimedias/">{% trans 'Multimedia' %}</a>
+									<a href="/multimedias/">{% trans 'Fotos y Videos' %}</a>
 
 								</li>
+								<!-- <li>
+									<a href="">{% trans 'Biblioteca Multimedia' %}</a>
+								</li> -->
 
 								<li>
 									<a href="/monitoreo/">{% trans 'Monitoreo' %}</a>
 								</li>
-								
 								<li>
-									<a href="/contactenos/">{% trans 'Contáctenos' %}</a>
+									<a href="/monitoreo/">{% trans 'Actividades' %}</a>
 								</li>
+								<li>
+									<a href="/monitoreo/">{% trans 'Mapeo' %}</a>
+								</li>
+								<!-- <li>
+									<a href="/contactenos/">{% trans 'Contáctenos' %}</a>
+								</li> -->
 
 							</ul>
 							</nav>
@@ -301,7 +329,7 @@
             </div>
         </div>
 	<!--Footer Section End Here -->
-		<div class="container menubar">
+		<!-- <div class="container menubar">
 
 			<nav id="bt-menu" class="bt-menu">
 				<a href="#" class="bt-menu-trigger" data-toggle="tooltip" data-placement="left" title="Menu Principal"><span>Menu</span></a>
@@ -330,7 +358,7 @@
 					</a></li>
 				</ul>
 			</nav>
-		</div><!-- /container -->
+		</div> -->
 		
 		<script src="/static/cambiaahora/js/less.js"></script>
 		<script src="/static/cambiaahora/js/bootstrap.min.js"></script>

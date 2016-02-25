@@ -262,3 +262,78 @@ body {
 
 
 }
+
+
+.nav-violencia{
+	padding-right: 0px;
+}
+
+
+.nav-violencia li>a{
+	text-align: center;
+}
+.tab-graficos{
+	padding:0px;
+}
+.nav-indicadores li{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.contenido-graficos{
+	background: white;
+}
+
+.nav-violencia>li>a, 
+.nav-violencia>li>a:hover, 
+.nav-violencia>li>a:focus{
+	background-color: #3E9B04;
+	color: white ;
+	border-right: transparent;
+	border-left: transparent;
+	font-size: 14px;
+	border-bottom: 4px solid #3E9B04;
+
+}
+
+.nav-violencia>li, 
+.nav-violencia>li:hover, 
+.nav-violencia>li:focus{
+	background-color: #3E9B04;
+	color: black;
+
+
+}
+
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus{
+	border-color:#3E9B04;
+}
+
+.ir-arriba {
+	display:none;
+	padding:20px;
+	background:#024959;
+	font-size:20px;
+	color:#fff;
+	cursor:pointer;
+	position: fixed;
+	bottom:20px;
+	right:20px;
+}
+.conteo-encuestas{
+	padding: 0px
+}
+.tab-index li > a:hover{
+	background:transparent;
+}
+.tab-index li > a{
+	color:#727272;
+	font-weight: bold;
+}
+.tab-index li.dropdown{
+	border-bottom: 3px solid #d1d1d1;
+	margin-bottom: 5px;
+}
+.tab-index .dropdown-toggle{
+	padding:0px;
+}

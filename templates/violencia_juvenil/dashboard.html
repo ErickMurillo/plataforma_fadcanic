@@ -158,36 +158,61 @@
 	{% include "violencia_juvenil/filtros.html" %}
 	<div class="dash-violencia">
 		{% include "violencia_juvenil/indicadores.html" %}
-		<div id="tabs">
-			<ul class="nav nav-tabs nav-act" role="tablist">
-				<li class="tab-titulo"><a >Años:</a></li>
-				{% for key in year.keys %}
-				<li role="presentation" class="{% if forloop.counter == 1 %}active{% endif %}" id="{{forloop.counter}}"><a href="#{{key}}" aria-controls="{{key}}" role="tab" data-toggle="tab">{{key}}</a></li>
-				{% endfor %}
+		<div class="container-fluid" id="tabs">
+			<div class=" row contenido-graficos">
+			<ul class="col-lg-1 nav nav-violencia" role="tablist">
+				
+				<li role="presentation" class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				      Años: <span class="caret"></span>
+				    </a>
+				    <ul class="dropdown-menu">
+				      	{% for key in year.keys %}
+							<li role="presentation" class="col-lg-12" id="{{forloop.counter}}"><a href="#{{key}}" aria-controls="{{key}}" role="tab" data-toggle="tab">{{key}}</a></li>
+						{% endfor %}
+				    </ul>
+				</li>
 			</ul>
-			<div class="tab-content tab-contenido">
+
+			<div class="col-lg-11  tab-content tab-graficos">
 				{% for key in year.keys %}
 				<div role="tabpanel" class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="{{key}}">
 
 						<!-- Nav tabs -->
-						<ul class="nav nav-tabs nav-act" role="tablist">
-							<li role="presentation" class="active"><a href="#info{{key}}" aria-controls="conocimiento{{key}}" role="tab" data-toggle="tab">Información general</a></li>
-							<li role="presentation"><a href="#conocimiento{{key}}" aria-controls="conocimiento{{key}}" role="tab" data-toggle="tab">Conocimiento</a></li>
-							<li role="presentation"><a href="#actitud{{key}}" aria-controls="actitud{{key}}" role="tab" data-toggle="tab">Actitud</a></li>
-							<li role="presentation"><a href="#practicas{{key}}" aria-controls="practicas{{key}}" role="tab" data-toggle="tab">Prácticas</a></li>
-							<li role="presentation"><a href="#percepcion{{key}}" aria-controls="percepcion{{key}}" role="tab" data-toggle="tab">Percepción</a></li>
-							<li role="presentation"><a href="#estado{{key}}" aria-controls="estado{{key}}" role="tab" data-toggle="tab">Estado actual</a></li>
+						<ul class="nav nav-tabs nav-act nav-indicadores" role="tablist">
+
+							<li role="presentation" class="col-xs-12 col-sm-6 col-md-4 col-lg-2 active">
+								<a href="#info{{key}}" aria-controls="conocimiento{{key}}" role="tab" data-toggle="tab">Información general</a>
+							</li>
+							<li role="presentation" class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+								<a href="#conocimiento{{key}}" aria-controls="conocimiento{{key}}" role="tab" data-toggle="tab">Conocimiento</a>
+							</li>
+							<li role="presentation" class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+								<a href="#actitud{{key}}" aria-controls="actitud{{key}}" role="tab" data-toggle="tab">Actitud</a>
+							</li>
+							<li role="presentation" class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+								<a href="#practicas{{key}}" aria-controls="practicas{{key}}" role="tab" data-toggle="tab">Prácticas</a>
+							</li>
+							<li role="presentation" class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+								<a href="#percepcion{{key}}" aria-controls="percepcion{{key}}" role="tab" data-toggle="tab">Percepción</a>
+							</li>
+							<li role="presentation" class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+								<a href="#estado{{key}}" aria-controls="estado{{key}}" role="tab" data-toggle="tab">Estado actual</a>
+							</li>
 						</ul>
 
 						<!-- Tab panes -->
 						<div class="tab-content tab-contenido">
+							<div class="titulo-violencia">
+								<h4>Año {{key}}</h4>
+							</div>
 							<div role="tabpanel" class="tab-pane active" id="info{{key}}">
 								<div class="row">
 									<div class="col-md-6 graficos">
-										<div class="grafico-pie" id="sexo{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+										<div class="grafico-pie" id="sexo{{key}}" style="min-width: 310px;  width: 490px; height: 400px; margin: 0 auto"></div>
 									</div>
 									<div class="col-md-6 graficos">
-										<div class="grafico-pie" id="edad{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
+										<div class="grafico-pie" id="edad{{key}}" style="min-width: 310px;  width: 490px; height: 400px; margin: 0 auto"></div>
 									</div>
 									<div class="col-md-offset-3 col-md-6 graficos">
 										<div class="grafico-pie" id="etnia{{key}}" style="min-width: 310px;  width: 500px; height: 400px; margin: 0 auto"></div>
@@ -268,8 +293,7 @@
 			</div>
 		</div>
 
-
-	
+	</div>
 	</div>
 </div>
 
