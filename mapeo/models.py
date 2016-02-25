@@ -87,7 +87,11 @@ class Organizaciones(models.Model):
 	acciones_apoyo = models.ManyToManyField(Acciones_Apoyo,blank=True)
 	#nuevo campo img
 	foto = ImageField('Foto', upload_to=get_file_path, blank=True, null=True)
-	#----------------------------------------------------------------------------
+	#nuevo campo cantidad org----------------------------------------------------
+	cantidad_org = models.IntegerField(null=True,blank=True,verbose_name='Cantidad de Organizaciones')
+	#---------------------------------------------------------------------------
+
+
 	slug = models.SlugField(editable=False, max_length=450)
 
 	fileDir = 'mapeo/'
@@ -102,3 +106,14 @@ class Organizaciones(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = (slugify(self.nombre))
 		super(Organizaciones, self).save(*args, **kwargs)
+
+
+class Info_Organizaciones(models.Model):
+    nombre = models.CharField(max_length=200)
+    telefono = models.CharField(max_length=50,blank=True,null=True,verbose_name='Teléfono')
+    correo = models.EmailField(blank=True,null=True)
+    organizacion = models.ForeignKey(Organizaciones)
+
+    class Meta:
+		verbose_name = "Organización"
+		verbose_name_plural = "Organizaciones"
