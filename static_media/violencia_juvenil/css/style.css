@@ -320,3 +320,20 @@ body {
 	bottom:20px;
 	right:20px;
 }
+.conteo-encuestas{
+	padding: 0px
+}
+.tab-index li > a:hover{
+	background:transparent;
+}
+.tab-index li > a{
+	color:#727272;
+	font-weight: bold;
+}
+.tab-index li.dropdown{
+	border-bottom: 3px solid #d1d1d1;
+	margin-bottom: 5px;
+}
+.tab-index .dropdown-toggle{
+	padding:0px;
+}
