@@ -47,9 +47,11 @@ body {
     margin-bottom: 0px; 
 }
 .titulo-violencia h4{
-	font-size: 32px;
+	font-size: 25px;
     font-weight: 300;
     text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px !important;
 }
 .titulo-violencia h5{
 	font-size: 32px;
@@ -310,7 +312,7 @@ body {
 }
 
 .ir-arriba {
-	display:none;
+	display: none;
 	padding:20px;
 	background:#024959;
 	font-size:20px;
@@ -319,6 +321,7 @@ body {
 	position: fixed;
 	bottom:20px;
 	right:20px;
+	border-radius: 50px;
 }
 .conteo-encuestas{
 	padding: 0px
@@ -337,3 +340,6 @@ body {
 .tab-index .dropdown-toggle{
 	padding:0px;
 }
+
+.text-dash{     padding: 10px 20px;     background: white; } .text-dash p{
+color:#727272;     font-size: 1.1em;     font-weight: bold; }
