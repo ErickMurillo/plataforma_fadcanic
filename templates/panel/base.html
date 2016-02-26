@@ -39,13 +39,15 @@
 
 			<header  id="header">
 				<div class="container">
-					<div class="row primary-header">		
-				
-							<a href="/" class="col-xs-6 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="{% static 'cambiaahora/img/es.png' %}"  alt="Cambia Ahora"></a>	
-
+					<div class="row primary-header">
+						
+							<a href="/" class="col-xs-6 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/es.png"  alt="Cambia Ahora"></a>	
 
 						<div class="social-links col-xs-6 col-sm-10">
-
+							<a href="/contactenos/" class=" btn btn-default btn-idioma">
+								Contáctenos
+							</a>
+						
 							<ul class="social-icons hidden-xs">
 								<li>
 									<a href="https://www.facebook.com/pages/Cambia-ahora-solo-hazlo/1485321515024959?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -62,7 +64,7 @@
 						</div>
 					</div>
 				</div>
-								<div class="navbar navbar-default" role="navigation">
+				<div class="navbar navbar-default" role="navigation">
 					<div class="container">
 						<!-- Brand and toggle get grouped for better mobile display -->
 						<div class="navbar-header">
@@ -77,7 +79,62 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<nav>
+							<ul class="nav navbar-nav">
+								<!-- <li class="">
+									<a href="/"><span class="fa fa-home fa-lg"></span> </a>
 
+								</li> -->
+								<li class="">
+
+								<a href="javascript:;"  data-toggle="dropdown"  class="submenu-icon">
+									Conócenos
+									<span class="glyphicon glyphicon-chevron-down"></span> 
+									<span class="glyphicon glyphicon-chevron-up"></span> 
+								</a>
+								<div  class="dropdown-menu">
+									<ul>
+										<li>
+									
+												<a href="/campana-cambia-ahora/">Campaña</a>
+										
+										</li>
+										<li>
+											
+												<a href="/sobre-fadcanic/">Sobre FADCANIC</a>
+											
+										</li>
+									</ul>
+								</div>
+
+
+								</li>
+								<li class="">
+									<a href="/noticias/">Noticias</a>
+
+								</li>		
+								
+								<li class="">
+									<a href="/multimedias/">Fotos y Videos</a>
+
+								</li>
+								<!-- <li>
+									<a href="">Biblioteca Multimedia</a>
+								</li> -->
+
+								<li>
+									<a href="/monitoreo/">Monitoreo</a>
+								</li>
+								<li>
+									<a href="/actividades/">Actividades</a>
+								</li>
+								<li>
+									<a href="/mapeo/">Mapeo</a>
+								</li>
+								<!-- <li>
+									<a href="/contactenos/">Contáctenos</a>
+								</li> -->
+
+							</ul>
 							</nav>
 
 						</div><!-- /.navbar-collapse -->
@@ -135,7 +192,7 @@
 							<div class="circulo">
 								<img class="center-block" src="{% static 'panel/img/thumbs/encuesta.png' %}" alt="Cambia Ahora Sitio Web"/>
 							</div>
-							<h5><span class="verde">Encuesta </span><span class="rojo">CAP</span></h5>
+							<h5><span class="verde">Encuesta </span><br><span class="rojo">CAP</span></h5>
 							
 						</a>
 					</li>
