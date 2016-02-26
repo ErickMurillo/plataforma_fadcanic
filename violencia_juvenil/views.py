@@ -47,33 +47,33 @@ def index(request,template="violencia_juvenil/index.html"):
 	for en in Encuesta.objects.order_by('year').values_list('year', flat=True).distinct('year'):
 		years.append(en)
 
-	depto = {}
-	municipio = {}
-	for x in Departamento.objects.all():
-		conteo_depto = InformacionEntrevistado.objects.filter(departamento=x).count()
-		if conteo_depto != 0:
-			depto[x] = conteo_depto
+	# depto = {}
+	# municipio = {}
+	# for x in Departamento.objects.all():
+	# 	conteo_depto = InformacionEntrevistado.objects.filter(departamento=x).count()
+	# 	if conteo_depto != 0:
+	# 		depto[x] = conteo_depto
 
-		for y in Municipio.objects.filter(departamento=x):
-			conteo_municipio = InformacionEntrevistado.objects.filter(municipio1=y).count()
-			if conteo_municipio != 0:
-				municipio[x,y] = conteo_municipio
+	# 	for y in Municipio.objects.filter(departamento=x):
+	# 		conteo_municipio = InformacionEntrevistado.objects.filter(municipio1=y).count()
+	# 		if conteo_municipio != 0:
+	# 			municipio[x,y] = conteo_municipio
 
-	# tab_year = {}
-	# for year in years:
-	# 	depto = {}
-	# 	municipio = {}
-	# 	for x in Departamento.objects.all():
-	# 		conteo_depto = InformacionEntrevistado.objects.filter(departamento=x,encuesta__year=year).count()
-	# 		if conteo_depto != 0:
-	# 			depto[x] = conteo_depto
+	tab_year = collections.OrderedDict()
+	for year in years:
+		depto = {}
+		municipio = {}
+		for x in Departamento.objects.all():
+			conteo_depto = InformacionEntrevistado.objects.filter(departamento=x,encuesta__year=year).count()
+			if conteo_depto != 0:
+				depto[x] = conteo_depto
 
-	# 		for y in Municipio.objects.filter(departamento=x):
-	# 			conteo_municipio = InformacionEntrevistado.objects.filter(municipio1=y,encuesta__year=year).count()
-	# 			if conteo_municipio != 0:
-	# 				municipio[x,y] = conteo_municipio
+			for y in Municipio.objects.filter(departamento=x):
+				conteo_municipio = InformacionEntrevistado.objects.filter(municipio1=y,encuesta__year=year).count()
+				if conteo_municipio != 0:
+					municipio[x,y] = conteo_municipio
 
-	# 	tab_year[year] = (depto,municipio)
+		tab_year[year] = (depto,municipio)
 
 	return render(request, template, locals())
 
