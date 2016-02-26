@@ -36,11 +36,17 @@
 
 		
 			<!--Header Section Start Here -->
-			<header id="header">
+			<header  id="header">
 				<div class="container">
 					<div class="row primary-header">
-						<a href="/actividades/" class="col-xs-12 col-sm-2 brand" title="Actividades"><img src="/static/cambiaahora/img/logo es.png" alt="fadcanic"></a>
-						<div class="social-links col-xs-12 col-sm-10">
+						
+							<a href="/" class="col-xs-6 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/es.png"  alt="Cambia Ahora"></a>	
+
+						<div class="social-links col-xs-6 col-sm-10">
+							<a href="/contactenos/" class=" btn btn-default btn-idioma">
+								Contáctenos
+							</a>
+						
 							<ul class="social-icons hidden-xs">
 								<li>
 									<a href="https://www.facebook.com/pages/Cambia-ahora-solo-hazlo/1485321515024959?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -73,26 +79,60 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<nav>
 							<ul class="nav navbar-nav">
+								<!-- <li class="">
+									<a href="/"><span class="fa fa-home fa-lg"></span> </a>
 
+								</li> -->
 								<li class="">
-									<a href="/actividades/proyecto/">Proyecto</a>
+
+								<a href="javascript:;"  data-toggle="dropdown"  class="submenu-icon">
+									Conócenos
+									<span class="glyphicon glyphicon-chevron-down"></span> 
+									<span class="glyphicon glyphicon-chevron-up"></span> 
+								</a>
+								<div  class="dropdown-menu">
+									<ul>
+										<li>
+									
+												<a href="/campana-cambia-ahora/">Campaña</a>
+										
+										</li>
+										<li>
+											
+												<a href="/sobre-fadcanic/">Sobre FADCANIC</a>
+											
+										</li>
+									</ul>
+								</div>
+
 
 								</li>
+								<li class="">
+									<a href="/noticias/">Noticias</a>
+
+								</li>		
 								
 								<li class="">
-									<a href="/admin/">Administrar</a>
+									<a href="/multimedias/">Fotos y Videos</a>
 
 								</li>
-								 
-								{% if user.is_authenticated %}
+								<!-- <li>
+									<a href="">Biblioteca Multimedia</a>
+								</li> -->
+
 								<li>
-									<a href="/logout/">Salir</a>
+									<a href="/monitoreo/">Monitoreo</a>
 								</li>
-								{% endif %}
-								<li class="">
-									<a href="#">Manual</a>
+								<li>
+									<a href="/actividades/">Actividades</a>
+								</li>
+								<li>
+									<a href="/mapeo/">Mapeo</a>
+								</li>
+								<!-- <li>
+									<a href="/contactenos/">Contáctenos</a>
+								</li> -->
 
-								</li>
 							</ul>
 							</nav>
 

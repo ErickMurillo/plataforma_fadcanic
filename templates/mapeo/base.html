@@ -82,16 +82,12 @@
 				<div class="container">
 					<div class="row primary-header">
 						
-						{% if LANGUAGE_CODE == 'en' %}
-						<a href="/" class="col-xs-6 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/logo en.png" alt="Change Now"></a>	
-									
-						{%else%}
 							<a href="/" class="col-xs-6 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/es.png"  alt="Cambia Ahora"></a>	
-						{% endif %}
-
-						
 
 						<div class="social-links col-xs-6 col-sm-10">
+							<a href="/contactenos/" class=" btn btn-default btn-idioma">
+								Contáctenos							
+							</a>
 
 							<ul class="social-icons hidden-xs">
 								<li>
@@ -125,43 +121,59 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<nav>
 							<ul class="nav navbar-nav">
+								<!-- <li class="">
+									<a href="/"><span class="fa fa-home fa-lg"></span> </a>
+
+								</li> -->
 								<li class="">
-									<a href="/">{% trans 'Inicio' %}</a>
+
+								<a href="javascript:;"  data-toggle="dropdown"  class="submenu-icon">
+									Conócenos
+									<span class="glyphicon glyphicon-chevron-down"></span> 
+									<span class="glyphicon glyphicon-chevron-up"></span> 
+								</a>
+								<div  class="dropdown-menu">
+									<ul>
+										<li>
+									
+												<a href="/campana-cambia-ahora/">Campaña</a>
+										
+										</li>
+										<li>
+											
+												<a href="/sobre-fadcanic/">Sobre FADCANIC</a>
+											
+										</li>
+									</ul>
+								</div>
+
 
 								</li>
 								<li class="">
-								{% if LANGUAGE_CODE == 'en' %}
-									<a href="/campaign-change-now/">{% trans 'Campaña' %}</a>
-								{%else%}
-									<a href="/campana-cambia-ahora/">{% trans 'Campaña' %}</a>
-								{% endif %}
-								</li>
-								<li class="">
-									<a href="/noticias/">{% trans 'Noticias' %}</a>
+									<a href="/noticias/">Noticias</a>
 
-								</li>
-
-								<li class="">
-								{% if LANGUAGE_CODE == 'en' %}
-									<a href="/about-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
-								{%else%}
-									<a href="/sobre-fadcanic/">{% trans 'Sobre FADCANIC '%}</a>
-								{% endif %}
-								</li>
-							
+								</li>		
 								
 								<li class="">
-									<a href="/multimedias/">{% trans 'Multimedia' %}</a>
+									<a href="/multimedias/">Fotos y Videos</a>
 
 								</li>
+								<!-- <li>
+									<a href="">Biblioteca Multimedia</a>
+								</li> -->
 
-								<!--<li>
-									<a href="/monitoreo/">{% trans 'Actividades' %}</a>
-								</li>-->
-								
 								<li>
-									<a href="/contactenos/">{% trans 'Contáctenos' %}</a>
+									<a href="/monitoreo/">Monitoreo</a>
 								</li>
+								<li>
+									<a href="/actividades/">Actividades</a>
+								</li>
+								<li>
+									<a href="/mapeo/">Mapeo</a>
+								</li>
+								<!-- <li>
+									<a href="/contactenos/">Contáctenos</a>
+								</li> -->
 
 							</ul>
 							</nav>

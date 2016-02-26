@@ -82,17 +82,14 @@
 				<div class="container">
 					<div class="row primary-header">
 						
-						{% if LANGUAGE_CODE == 'en' %}
-						<a href="/" class="col-xs-6 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/logo en.png" alt="Change Now"></a>	
-									
-						{%else%}
 							<a href="/" class="col-xs-6 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/es.png"  alt="Cambia Ahora"></a>	
-						{% endif %}
-
-						
 
 						<div class="social-links col-xs-6 col-sm-10">
-
+							<a href="/contactenos/" class=" btn btn-default btn-idioma">
+								Contáctenos							</a>
+							<a href="/encuesta_cap/consulta/" class=" btn btn-default btn-idioma">
+								Consultar
+							</a>
 							<ul class="social-icons hidden-xs">
 								<li>
 									<a href="https://www.facebook.com/pages/Cambia-ahora-solo-hazlo/1485321515024959?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -125,7 +122,64 @@
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<nav>
 							<ul class="nav navbar-nav">
+								<!-- <li class="">
+									<a href="/"><span class="fa fa-home fa-lg"></span> </a>
 
+								</li> -->
+								<li class="">
+
+								<a href="javascript:;"  data-toggle="dropdown"  class="submenu-icon">
+									Conócenos
+									<span class="glyphicon glyphicon-chevron-down"></span> 
+									<span class="glyphicon glyphicon-chevron-up"></span> 
+								</a>
+								<div  class="dropdown-menu">
+									<ul>
+										<li>
+									
+												<a href="/campana-cambia-ahora/">Campaña</a>
+										
+										</li>
+										<li>
+											
+												<a href="/sobre-fadcanic/">Sobre FADCANIC</a>
+											
+										</li>
+									</ul>
+								</div>
+
+
+								<!-- {% if LANGUAGE_CODE == 'en' %}
+									<a href="/campaign-change-now/">{% trans 'Campaña' %}</a>
+								{%else%}
+									<a href="/campana-cambia-ahora/">{% trans 'Campaña' %}</a>
+								{% endif %} -->
+								</li>
+								<li class="">
+									<a href="/noticias/">Noticias</a>
+
+								</li>		
+								
+								<li class="">
+									<a href="/multimedias/">Fotos y Videos</a>
+
+								</li>
+								<!-- <li>
+									<a href="">Biblioteca Multimedia</a>
+								</li> -->
+
+								<li>
+									<a href="/monitoreo/">Monitoreo</a>
+								</li>
+								<li>
+									<a href="/actividades/">Actividades</a>
+								</li>
+								<li>
+									<a href="/mapeo/">Mapeo</a>
+								</li>
+								<!-- <li>
+									<a href="/contactenos/">{% trans 'Contáctenos' %}</a>
+								</li> -->
 
 							</ul>
 							</nav>
