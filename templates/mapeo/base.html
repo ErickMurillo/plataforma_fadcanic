@@ -311,8 +311,8 @@
                 </div>
             </div>
         </div>
-	<!--Footer Section End Here -->
-		<div class="container menubar">
+        <span class="ir-arriba fa fa-arrow-up"></span>
+	<!--Footer Section End Here 		<div class="container menubar">
 
 			<nav id="bt-menu" class="bt-menu">
 				<a href="#" class="bt-menu-trigger" data-toggle="tooltip" data-placement="left" title="Menu Principal"><span>Menu</span></a>
@@ -341,7 +341,12 @@
 					</a></li>
 				</ul>
 			</nav>
-		</div><!-- /container -->
+		</div> 
+		<script type="text/javascript">
+			$(function () {
+			  $('[data-toggle="tooltip"]').tooltip()
+			})
+		</script>container -->
 		
 		<script src="/static/cambiaahora/js/less.js"></script>
 		<script src="/static/cambiaahora/js/bootstrap.min.js"></script>
@@ -358,11 +363,24 @@
 		<script src="/static/cambiaahora/js/jquery.magnific-popup.min.js"></script>
 		<script src="/static/cambiaahora/js/classie.js"></script>
 		<script src="/static/cambiaahora/js/borderMenu.js"></script>
+		
 		<script type="text/javascript">
-			$(function () {
-			  $('[data-toggle="tooltip"]').tooltip()
-			})
-		</script>
+	    	$(document).ready(function(){
+
+	    		$('.ir-arriba').click(function(){
+	    			$('body, html').animate({
+	    				scrollTop: '0px'
+	    			}, 300);
+	    		});
+	    		$(window).scroll(function(){
+	    			if( $(this).scrollTop() > 600 ){
+	    				$('.ir-arriba').fadeIn(300);
+	    			} else {
+	    				$('.ir-arriba').fadeOut(300);
+	    			}
+	    		});
+	    	});
+	    </script> 
         {% block social %}{% endblock social %}
 
 

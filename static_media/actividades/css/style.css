@@ -225,11 +225,7 @@ form input[type="checkbox"]{
 	background-color: white;
 }
 
-.borde{
-	border-bottom: 3px solid #cacaca;
-	padding-bottom: 20px;
-}
-
+`
 .labelclean{
 	min-height: 19px;
 }
@@ -497,3 +493,26 @@ form input[type="checkbox"]{
 
 }
 
+.ir-arriba {
+	display: none;
+	padding:20px;
+	background:#024959;
+	font-size:20px;
+	color:#fff;
+	cursor:pointer;
+	position: fixed;
+	bottom:20px;
+	right:20px;
+	border-radius: 50px;
+}
+.variables label{
+	width: 100%;
+}
+.bordet{
+	border-bottom: 1px solid #cacaca;
+	padding-bottom: 2px;
+}
+.borde{
+	border-bottom: 3px solid #cacaca;
+	padding-bottom: 20px;
+}

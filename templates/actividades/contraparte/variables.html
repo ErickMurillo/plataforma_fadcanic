@@ -25,9 +25,6 @@
 	 font-size: 14px
 	}
 
-	.borde{
-		border: 1px solid #afcde3;
-	}
 </style>
 <script type="text/javascript" src="{% static 'actividades/js/underscore-min.js' %}"></script>
 <link href="{% static 'actividades/css/form.css' %}" rel="stylesheet" type="text/css"/>
@@ -99,30 +96,39 @@
 			
 
 			<div class="container-fluid">
-				<form class="form" action="." method="post">
+				<form class="form variables" action="." method="post">
 					{% csrf_token %}
 					<div class="col-md-4">
 						<div class="col-md-12 space-act">
-							<label>Variable Principal</label>
+							<label class="bordet">Variable Principal</label>
 							<div>{{form.main_var}}</div>			
 						</div>
 						<div class="col-md-12 space-act">		
-							<label>{{form.participantes.label}}</label>
+							<label class="bordet">{{form.participantes.label}}</label>
 							{{form.participantes}}				
 						</div>
 							
 					</div>
 					<div class="col-md-4">
-						<div class="col-md-12 space-act borde">
-								<label>{{form.evaluacion.label}}</label>
-								{{form.eval_tipo}}
+					<label class="bordet">{{form.evaluacion.label}}</label>
+						<div class="col-md-12 space-act">
+								<div class="row">
+									<div class="col-md-4">
+									<p><strong>Sexo: </strong></p>
+									</div>
+									<div class="col-md-8">
+										{{form.eval_tipo}}
+									</div>
+								</div>
+								
+								<br>
 								{{form.evaluacion}}
 						</div>		
 					</div>
 					<div class="col-md-4 space-act">
 						
 						<div class="x1">
-							<label>Opciones de Visualización</label>
+							<label class="bordet">Opciones de Visualización</label>
 
 							<div class="visualizacion">
 								{{form.total}}

@@ -253,3 +253,16 @@ option:checked { display:none; }
     width: 100%;
   }
 }
+
+.ir-arriba {
+  display: none;
+  padding:20px;
+  background:#024959;
+  font-size:20px;
+  color:#fff;
+  cursor:pointer;
+  position: fixed;
+  bottom:20px;
+  right:20px;
+  border-radius: 50px;
+}

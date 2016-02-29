@@ -278,6 +278,7 @@
                 </div>
             </div>
         </div>
+        <span class="ir-arriba fa fa-arrow-up"></span>
 	<!--Footer Section End Here -->
 
 
@@ -303,6 +304,23 @@
 
         <script type="text/javascript" src="{% static 'actividades/js/jquery.cookie.js' %}"></script>
         <script type="text/javascript" src="{% static 'actividades/js/table.exporting.js' %}"></script>
+        <script type="text/javascript">
+	    	$(document).ready(function(){
+
+	    		$('.ir-arriba').click(function(){
+	    			$('body, html').animate({
+	    				scrollTop: '0px'
+	    			}, 300);
+	    		});
+	    		$(window).scroll(function(){
+	    			if( $(this).scrollTop() > 600 ){
+	    				$('.ir-arriba').fadeIn(300);
+	    			} else {
+	    				$('.ir-arriba').fadeOut(300);
+	    			}
+	    		});
+	    	});
+	    </script> 
 
     {% block extra_js %}{% endblock extra_js %}
 	</body>
