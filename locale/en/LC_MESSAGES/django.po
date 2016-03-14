@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-14 21:12+0000\n"
+"POT-Creation-Date: 2016-03-14 16:54-0600\n"
 "PO-Revision-Date: 2015-06-23 21:06+0000\n"
 "Last-Translator:   <carlos@simas.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,6 +96,7 @@ msgstr "Information Campaign"
 #: cambiaahora/historias/models.py:14 cambiaahora/multimedias/models.py:87
 #: cambiaahora/multimedias/models.py:99 cambiaahora/multimedias/models.py:112
 #: cambiaahora/multimedias/models.py:126 cambiaahora/noticias/models.py:26
+#: cambiaahora/noticias/models.py:53
 msgid "Titulo"
 msgstr "Title"
 
@@ -146,7 +147,7 @@ msgstr "Video"
 #: templates/cambiaahora/multimedia/documentales_list.html:58
 #: templates/cambiaahora/multimedia/fotos_list.html:57
 #: templates/cambiaahora/multimedia/multimedia.html:54
-#: templates/cambiaahora/multimedia/multimedia.html:66
+#: templates/cambiaahora/multimedia/multimedia.html:87
 #: templates/cambiaahora/multimedia/videos_detail.html:41
 #: templates/cambiaahora/multimedia/videos_detail.html:47
 #: templates/cambiaahora/multimedia/videos_list.html:21
@@ -157,6 +158,7 @@ msgid "Videos"
 msgstr "Videos"
 
 #: cambiaahora/multimedias/models.py:45 cambiaahora/multimedias/models.py:100
+#: cambiaahora/noticias/models.py:54
 #: templates/cambiaahora/multimedia/audios_detail.html:42
 msgid "Audio"
 msgstr "Audio"
@@ -164,12 +166,8 @@ msgstr "Audio"
 #: cambiaahora/multimedias/models.py:46
 #: templates/cambiaahora/multimedia/audios_detail.html:36
 #: templates/cambiaahora/multimedia/audios_list.html:19
-#: templates/cambiaahora/multimedia/audios_list.html:28
-#: templates/cambiaahora/multimedia/audios_list.html:62
-#: templates/cambiaahora/multimedia/audios_list.html:69
 #: templates/cambiaahora/multimedia/documentales_list.html:64
 #: templates/cambiaahora/multimedia/fotos_list.html:63
-#: templates/cambiaahora/multimedia/multimedia.html:60
 #: templates/cambiaahora/multimedia/videos_list.html:64
 msgid "Audios"
 msgstr "Audios"
@@ -183,7 +181,7 @@ msgid "Categoria"
 msgstr "Category"
 
 #: cambiaahora/multimedias/models.py:80 cambiaahora/multimedias/models.py:81
-#: templates/cambiaahora/index.html:266
+#: templates/cambiaahora/index.html:311
 #: templates/cambiaahora/multimedia/audios_list.html:59
 #: templates/cambiaahora/multimedia/documentales_detail.html:41
 #: templates/cambiaahora/multimedia/documentales_list.html:21
@@ -192,7 +190,7 @@ msgstr "Category"
 #: templates/cambiaahora/multimedia/documentales_list.html:71
 #: templates/cambiaahora/multimedia/fotos_list.html:60
 #: templates/cambiaahora/multimedia/multimedia.html:57
-#: templates/cambiaahora/multimedia/multimedia.html:82
+#: templates/cambiaahora/multimedia/multimedia.html:103
 #: templates/cambiaahora/multimedia/videos_list.html:61
 msgid "Documentales"
 msgstr "Documentaries"
@@ -205,11 +203,11 @@ msgstr "Upload video"
 msgid "Subir videos"
 msgstr "Upload video"
 
-#: cambiaahora/multimedias/models.py:106
+#: cambiaahora/multimedias/models.py:106 cambiaahora/noticias/models.py:62
 msgid "Subir audio"
 msgstr "Upload audio"
 
-#: cambiaahora/multimedias/models.py:107
+#: cambiaahora/multimedias/models.py:107 cambiaahora/noticias/models.py:63
 msgid "Subir audios"
 msgstr "Upload audios"
 
@@ -254,7 +252,8 @@ msgstr "url of the video as the cover"
 msgid "Noticia"
 msgstr "News"
 
-#: cambiaahora/noticias/models.py:49 templates/cambiaahora/base.html:128
+#: cambiaahora/noticias/models.py:49 templates/base.html:145
+#: templates/cambiaahora/base.html:170
 #: templates/cambiaahora/noticias/noticias_detail.html:40
 #: templates/cambiaahora/noticias/noticias_list.html:9
 #: templates/cambiaahora/noticias/noticias_list.html:27
@@ -281,12 +280,12 @@ msgstr "Staff"
 msgid "Opiniones"
 msgstr "Reviews"
 
-#: templates/cambiaahora/base.html:8 templates/cambiaahora/index.html:198
-#: templates/cambiaahora/index.html:408
+#: templates/base.html:8 templates/cambiaahora/base.html:8
+#: templates/cambiaahora/index.html:243 templates/cambiaahora/index.html:453
 msgid "Cambia Ahora"
 msgstr "Change Now"
 
-#: templates/cambiaahora/base.html:117
+#: templates/base.html:134
 #: templates/cambiaahora/multimedia/audios_detail.html:39
 #: templates/cambiaahora/multimedia/audios_list.html:22
 #: templates/cambiaahora/multimedia/documentales_detail.html:44
@@ -301,113 +300,148 @@ msgstr "Change Now"
 msgid "Inicio"
 msgstr "Home"
 
-#: templates/cambiaahora/base.html:122 templates/cambiaahora/base.html:124
+#: templates/base.html:139 templates/base.html.py:141
+#: templates/cambiaahora/base.html:147 templates/cambiaahora/base.html:149
+#: templates/cambiaahora/base.html:164 templates/cambiaahora/base.html:166
+#: templates/violencia_juvenil/base.html:153
+#: templates/violencia_juvenil/base.html:155
 msgid "Campaña"
 msgstr "Campaign"
 
-#: templates/cambiaahora/base.html:134 templates/cambiaahora/base.html:136
+#: templates/base.html:151 templates/base.html.py:153
+#: templates/cambiaahora/base.html:154 templates/cambiaahora/base.html:156
 msgid "Sobre FADCANIC "
 msgstr "About FADCANIC"
 
-#: templates/cambiaahora/base.html:142
+#: templates/base.html:159
 msgid "Multimedia"
 msgstr "Multimedia"
 
-#: templates/cambiaahora/base.html:147
+#: templates/base.html:164 templates/cambiaahora/base.html:186
 #: templates/monitoreo_actividades/datos.html:5
 #: templates/monitoreo_actividades/index.html:5
 msgid "Actividades"
 msgstr "Activities"
 
-#: templates/cambiaahora/base.html:151 templates/flatpages/contactenos.html:17
+#: templates/base.html:168 templates/cambiaahora/base.html:92
+#: templates/cambiaahora/base.html.py:192
+#: templates/flatpages/contactenos.html:17
 #: templates/flatpages/contactenos.html:23
+#: templates/violencia_juvenil/base.html:181
 msgid "Contáctenos"
 msgstr "Contact Us"
 
-#: templates/cambiaahora/base.html:207
+#: templates/base.html:224 templates/cambiaahora/base.html:248
+#: templates/mapeo/base.html:231 templates/violencia_juvenil/base.html:237
 msgid "Contactos"
 msgstr "contacts"
 
-#: templates/cambiaahora/base.html:255
+#: templates/base.html:272 templates/cambiaahora/base.html:296
+#: templates/mapeo/base.html:279 templates/violencia_juvenil/base.html:285
 msgid "Auspiciado por"
 msgstr "Sponsored by"
 
-#: templates/cambiaahora/base.html:260
+#: templates/base.html:277 templates/cambiaahora/base.html:301
+#: templates/mapeo/base.html:284 templates/violencia_juvenil/base.html:290
 msgid "Departamento de Estado de los Estados Unidos"
 msgstr "United States Department of State"
 
-#: templates/cambiaahora/base.html:283
+#: templates/base.html:300 templates/cambiaahora/base.html:324
+#: templates/mapeo/base.html:307 templates/violencia_juvenil/base.html:313
 msgid "Desarrollado por"
 msgstr "Developed by "
+
+#: templates/cambiaahora/base.html:139
+#| msgid "Contáctenos"
+msgid "Conócenos"
+msgstr "Know us"
+
+#: templates/cambiaahora/base.html:175
+#| msgid "Videos"
+msgid "Fotos y Videos"
+msgstr "Photos and Videos"
+
+#: templates/cambiaahora/base.html:179
+#| msgid "Multimedia"
+msgid "Biblioteca Multimedia"
+msgstr "Library Multimedia"
+
+#: templates/cambiaahora/base.html:183
+msgid "Monitoreo"
+msgstr "Monitoring"
+
+#: templates/cambiaahora/base.html:189
+msgid "Mapeo"
+msgstr "Mapping"
 
 #: templates/cambiaahora/index.html:9
 msgid "cambia ahora"
 msgstr "Change Now"
 
-#: templates/cambiaahora/index.html:150
+#: templates/cambiaahora/index.html:194
 msgid "Dale un vistazo a lo que está pasando."
 msgstr "Take a look at what is happening."
 
-#: templates/cambiaahora/index.html:150
+#: templates/cambiaahora/index.html:194
 #: templates/cambiaahora/noticias/noticias_list.html:21
 msgid "Últimas Noticias"
 msgstr "Last News"
 
-#: templates/cambiaahora/index.html:177
+#: templates/cambiaahora/index.html:221
 msgid "Tema:"
 msgstr "Theme"
 
-#: templates/cambiaahora/index.html:180 templates/cambiaahora/index.html:460
-#: templates/cambiaahora/index.html:462
+#: templates/cambiaahora/index.html:225 templates/cambiaahora/index.html:505
+#: templates/cambiaahora/index.html:507
 msgid "LEER MÁS"
 msgstr "READ MORE"
 
-#: templates/cambiaahora/index.html:186
+#: templates/cambiaahora/index.html:231
 msgid "VER MÁS NOTICIAS"
 msgstr "MORE NEWS"
 
-#: templates/cambiaahora/index.html:198
+#: templates/cambiaahora/index.html:243
 msgid "Opina"
 msgstr "Review"
 
-#: templates/cambiaahora/index.html:291
+#: templates/cambiaahora/index.html:336
 msgid "Tema"
 msgstr "Theme"
 
-#: templates/cambiaahora/index.html:299
+#: templates/cambiaahora/index.html:344
 msgid "VER MÁS"
 msgstr "READ MORE"
 
-#: templates/cambiaahora/index.html:344
+#: templates/cambiaahora/index.html:389
 msgid "Series Radiofónica"
 msgstr "Radiofónica series"
 
-#: templates/cambiaahora/index.html:372
+#: templates/cambiaahora/index.html:417
 #: templates/cambiaahora/multimedia/audios_list.html:79
 msgid "Serie radiofónica"
 msgstr "Radiofónica series"
 
-#: templates/cambiaahora/index.html:408
+#: templates/cambiaahora/index.html:453
 msgid "Redes Sociales"
 msgstr "Social Media"
 
-#: templates/cambiaahora/index.html:431
+#: templates/cambiaahora/index.html:476
 msgid "Información de la Campaña"
 msgstr "Information Campaign"
 
-#: templates/cambiaahora/index.html:445
+#: templates/cambiaahora/index.html:490
 msgid "Objetivo"
 msgstr "Objective"
 
-#: templates/cambiaahora/index.html:449
+#: templates/cambiaahora/index.html:494
 msgid "Territorio"
 msgstr "Territory"
 
-#: templates/cambiaahora/index.html:453
+#: templates/cambiaahora/index.html:498
 msgid "Acciones"
 msgstr "Actions"
 
-#: templates/cambiaahora/index.html:480
+#: templates/cambiaahora/index.html:525
 msgid "Apoyan la campaña"
 msgstr "Supporting the campaign"
 
@@ -423,6 +457,14 @@ msgstr "Audios"
 #: templates/cambiaahora/multimedia/videos_list.html:27
 msgid "Multimedias"
 msgstr "Multimedia"
+
+#: templates/cambiaahora/multimedia/audios_list.html:28
+#: templates/cambiaahora/multimedia/audios_list.html:62
+#: templates/cambiaahora/multimedia/audios_list.html:69
+#: templates/cambiaahora/multimedia/multimedia.html:60
+#| msgid "Series Radiofónica"
+msgid "Series Radiofónicas"
+msgstr "Radiofónica series"
 
 #: templates/cambiaahora/multimedia/audios_list.html:53
 #: templates/cambiaahora/multimedia/documentales_list.html:55
@@ -445,7 +487,7 @@ msgstr "Documentaries"
 #: templates/cambiaahora/multimedia/fotos_list.html:9
 #: templates/cambiaahora/multimedia/fotos_list.html:20
 #: templates/cambiaahora/multimedia/fotos_list.html:29
-#: templates/cambiaahora/multimedia/multimedia.html:99
+#: templates/cambiaahora/multimedia/multimedia.html:66
 msgid "Galerias"
 msgstr "Galleries"
 
@@ -463,6 +505,21 @@ msgstr "Videos"
 
 #: templates/cambiaahora/noticias/noticias_detail.html:125
 msgid "Noticias Relacionadas"
+msgstr "Related news"
+
+#: templates/cambiaahora/noticias/noticias_list.html:51
+#| msgid "Noticias Relacionadas"
+msgid "Noticias con imagenes"
+msgstr "Related news"
+
+#: templates/cambiaahora/noticias/noticias_list.html:54
+#| msgid "Noticias Relacionadas"
+msgid "Noticias con videos"
+msgstr "Related news"
+
+#: templates/cambiaahora/noticias/noticias_list.html:57
+#| msgid "Noticias Relacionadas"
+msgid "Noticias con audio"
 msgstr "Related news"
 
 #: templates/flatpages/contactenos.html:6
