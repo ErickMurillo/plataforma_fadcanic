@@ -1527,6 +1527,8 @@ ol li span:before{
 	margin-left:2%;
 	color: #fff;
 	font-size: 11px;
+	max-width: 131px;
+	margin-bottom: 5px;
 
 }
  .btn-idioma img{
