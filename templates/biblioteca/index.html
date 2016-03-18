@@ -1,0 +1,179 @@
+{% extends "biblioteca/base.html" %}
+
+{% load staticfiles%}
+{% load i18n %}
+{% load thumbnail %}
+{% load embed_video_tags %}
+
+{% block titulo %}
+	:: {% trans 'cambia ahora' %}::
+{% endblock titulo %}
+{% block extra_js %}
+<script src="/static/biblioteca/js/materialmodal.js"></script>
+{% endblock extra_js %}
+{% block contenido %}
+
+<section class="rev_slider_wrapperc main-slider">
+	<div  class="rev_slider banner-slider">
+		<ul>
+		
+			<!-- SLIDE  -->
+			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
+				<!-- MAIN IMAGE -->
+				
+				<img src="/static/biblioteca/img/1.jpg" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
+				<!--Start Primer mensaje-->
+			</li>
+			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
+				<img src="/static/biblioteca/img/2.JPG" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
+			</li>
+			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
+				<img src="/static/biblioteca/img/3.jpg" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
+			</li>
+		</ul>
+	</div>
+</section>
+<!-- banner slider End Here -->
+<section class="busqueda">
+	<div class="container">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<h3>Búsqueda</h3>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<form class="form-wrapper">
+			    <input type="text" placeholder="Búsqueda libre" required>
+			    <button type="submit">Buscar</button>
+			</form> 
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<!-- <a href="" data-modal="#modal" class="modal__trigger">Selecionar Tema</a> -->
+			<div class="dropdown toggle">
+				<input id="t1" type="checkbox">
+				<label for="t1">Selecione tema</label>
+				<ul>
+					<li><a href="#">Item</a></li>
+					<li><a href="#">Product</a></li>
+					<li><a href="#">Text</a></li>
+					<li><a href="#">Page</a></li>
+					<li><a href="#">Thing</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+			
+			
+</section>
+<div class="arrow-down"></div>
+<div class="container">
+	<section class="temas-index">
+		<header class="faq-header biblioteca-header">
+			<h2>Biblioteca multimedia para la prevención de <strong>violencia  y consumo de drogas</strong></h2>
+		</header>
+		<p>
+		Tenés en tus manos la Biblioteca Multimedia que es parte del Kit de herramientas metodológicas para la prevención de la violencia y consumo de drogas. El Kit es un producto de la Campaña: Cambia ahora solo hazlo,ejecutado por la Fundación para la Autonomía y Desarrollo de la Costa Atlántica- FADCANIC. La campaña tiene como objetivo sensibilizar y movilizar a la opinión pública a favor de las acciones de la familia y la comunidad para aportar en la prevención de la violencia y consumo de drogas en la Costa Caribe y zonas pilotos de Managua, Nicaragua.
+		</p>
+		<p>
+		Esta Biblioteca multimedia para la prevención de la violencia y consumo de drogas es una herramienta de apoyo al trabajo de promotoras, promotores, estudiantes, docentes, periodistas, líderes, lideresas y las organizaciones que trabajan la prevención de la violencia y las adicciones a las drogas desde sus espacios y comunidades. Acá encontrarás ocho videos documentales con sus respectivas guías metodológicas y capítulos radiofónicos que se han producido desde la Campaña; también se proponen algunos documentos complementarios sobre las temáticas abordadas y cuatro videos documentales que muestran el contexto del Caribe y Pacífico así como el trabajo de educación, prevención y atención que realizan algunas organizaciones aliadas.
+		</p>
+	</section>
+	<section class="contenido-temas">
+			<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+			<div class="row faq">
+				<div class="cols-xs-12 col-sm-6">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title tema">
+									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
+								</h4>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="cols-xs-12 col-sm-6">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title tema">
+									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
+								</h4>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="cols-xs-12 col-sm-6">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title tema">
+									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
+								</h4>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="cols-xs-12 col-sm-6">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title tema">
+									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
+								</h4>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="cols-xs-12 col-sm-6">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title tema">
+									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
+								</h4>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="cols-xs-12 col-sm-6">
+					<div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title tema">
+									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
+								</h4>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+</div>
+	<!-- Modal -->
+	<div id="modal" class="modal modal__bg" role="dialog" aria-hidden="true">
+		<div class="modal__dialog">
+			<div class="modal__content">
+				<div>
+					<a href="" class="modal__close demo-close fa fa-times"></a>
+				</div>
+				
+				<p>Church-key American Apparel trust fund, cardigan mlkshk small batch Godard mustache pickled bespoke meh seitan. Wes Anderson farm-to-table vegan, kitsch Carles 8-bit gastropub paleo YOLO jean shorts health goth lo-fi. Normcore chambray locavore Banksy, YOLO meditation master cleanse readymade Bushwick.</p>
+				
+				<!-- modal close button -->
+				
+				
+			</div>
+		</div>
+	</div>
+{% endblock contenido %}
