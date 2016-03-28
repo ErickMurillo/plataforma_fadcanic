@@ -22,8 +22,7 @@ box-shadow: 0 6px 5px -5px rgba(0,0,0,0.3);
     float: left;    
     font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 0;
-    background: #eee;
-    border-radius: 3px 0 0 3px;      
+    background: #eee;      
 }
 
 .form-wrapper input:focus {
@@ -113,7 +112,6 @@ box-shadow: 0 6px 5px -5px rgba(0,0,0,0.3);
   display: none;
 }
 .dropdown > a, .dropdown.toggle > label {
-  border-radius: 2px;
   box-shadow: 0 6px 5px -5px rgba(0,0,0,0.3);
 }
 .dropdown > a::after, .dropdown.toggle > label::after {
@@ -370,5 +368,5 @@ a.fa{
 }
 .video-lista a{
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 }

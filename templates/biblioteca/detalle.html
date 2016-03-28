@@ -9,54 +9,52 @@
 	:: {% trans 'cambia ahora' %}::
 {% endblock titulo %}
 {% block extra_js %}
+<script src="/static/cambiaahora/js/audiojs/audio.min.js"></script>
 <script>
-	$(function() { 
-	// Setup the player to autoplay the next track
-	var a = audiojs.createAll({
-		trackEnded: function() {
-			var next = $('ol li.playing').next();
-			if (!next.length) next = $('ol li').first();
-			next.addClass('playing').siblings().removeClass('playing');
-			audio.load($('a', next).attr('data-src'));
-			audio.play();
-		}
-	});
+      $(function() { 
+        // Setup the player to autoplay the next track
+        var a = audiojs.createAll({
+          trackEnded: function() {
+            var next = $('ol li.playing').next();
+            if (!next.length) next = $('ol li').first();
+            next.addClass('playing').siblings().removeClass('playing');
+            audio.load($('a', next).attr('data-src'));
+            audio.play();
+          }
+        });
+        
+        // Load in the first track
+        var audio = a[0];
+            first = $('ol a').attr('data-src');
+        $('ol li').first().addClass('playing');
+        audio.load(first);
 
-	// Load in the first track
-	var audio = a[0];
-	first = $('ol a').attr('data-src');
-	$('ol li').first().addClass('playing');
-	audio.load(first);
-
-	// Load in a track on click
-	$('ol li').click(function(e) {
-		e.preventDefault();
-		$(this).addClass('playing disabled').siblings().removeClass('playing disabled');
-		audio.load($('a', this).attr('data-src'));
-		audio.play();
-	});
-	// Keyboard shortcuts
-	$(document).keydown(function(e) {
-		var unicode = e.charCode ? e.charCode : e.keyCode;
-	// right arrow
-	if (unicode == 39) {
-		var next = $('li.playing').next();
-		if (!next.length) next = $('ol li').first();
-		next.click();
-	// back arrow
-	} else if (unicode == 37) {
-		var prev = $('li.playing').prev();
-		if (!prev.length) prev = $('ol li').last();
-		prev.click();
-	// spacebar
-	} else if (unicode == 32) {
-		audio.playPause();
-	}
-	})
-	});
-
-
-	document.addEventListener("touchstart", function(){}, true);
+        // Load in a track on click
+        $('ol li').click(function(e) {
+          e.preventDefault();
+          $(this).addClass('playing').siblings().removeClass('playing');
+          audio.load($('a', this).attr('data-src'));
+          audio.play();
+        });
+        // Keyboard shortcuts
+        $(document).keydown(function(e) {
+          var unicode = e.charCode ? e.charCode : e.keyCode;
+             // right arrow
+          if (unicode == 39) {
+            var next = $('li.playing').next();
+            if (!next.length) next = $('ol li').first();
+            next.click();
+            // back arrow
+          } else if (unicode == 37) {
+            var prev = $('li.playing').prev();
+            if (!prev.length) prev = $('ol li').last();
+            prev.click();
+            // spacebar
+          } else if (unicode == 32) {
+            audio.playPause();
+          }
+        })
+      });
 </script>
 {% endblock extra_js %}
 {% block contenido %}
@@ -198,18 +196,18 @@
 									<div role="tabpanel" class="tab-pane fade" id="documental">
 										<div class="row">
 											<div class="video-play col-md-9">
-												<img class="img-thumbnail" src="http://placehold.it/700x450" alt="">
+												<img class="img-thumbnail" src="http://placehold.it/640x360" alt="">
 											</div>
 											<div class="video-lista col-md-3">
 												<a href="">
-													<img class="img-thumbnail" src="http://placehold.it/200x100" alt="">
+													<img class="img-thumbnail" src="http://placehold.it/213x120" alt="">
 												</a>
 												
 												<a href="">
-													<img class="img-thumbnail" src="http://placehold.it/200x100" alt="">
+													<img class="img-thumbnail" src="http://placehold.it/213x120" alt="">
 												</a>
 												<a href="">
-													<img class="img-thumbnail" src="http://placehold.it/200x100" alt="">
+													<img class="img-thumbnail" src="http://placehold.it/213x120" alt="">
 												</a>
 											</div>
 										</div>
@@ -218,7 +216,6 @@
 									<div role="tabpanel" class="tab-pane fade" id="audio">
 										<h2 class="h4 page-header">Blockquote Heading Title 3</h2>
 										<div class="col-xs-12 reproductor">
-											<img class="img-thumbnail" src="http://placehold.it/800x400" alt="">
 										
 								      		<audio preload></audio>
 								      		<div class="track-details">
@@ -248,7 +245,23 @@
 										</div>
 									</div>
 									<div role="tabpanel" class="tab-pane fade" id="video">
-										<h2 class="h4 page-header">Blockquote Heading Title 4</h2>
+										<div class="row">
+											<div class="video-play col-md-9">
+												<img class="img-thumbnail" src="http://placehold.it/640x360" alt="">
+											</div>
+											<div class="video-lista col-md-3">
+												<a href="">
+													<img class="img-thumbnail" src="http://placehold.it/213x120" alt="">
+												</a>
+												
+												<a href="">
+													<img class="img-thumbnail" src="http://placehold.it/213x120" alt="">
+												</a>
+												<a href="">
+													<img class="img-thumbnail" src="http://placehold.it/213x120" alt="">
+												</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
