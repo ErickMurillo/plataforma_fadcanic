@@ -17,7 +17,6 @@ class Temas(models.Model):
         return self.titulo
 
 
-
 class Biblioteca(models.Model):
     titulo = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, editable=False)
