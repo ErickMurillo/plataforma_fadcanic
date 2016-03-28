@@ -29,6 +29,7 @@ from rest_framework import routers
 from django.views.generic import TemplateView
 from violencia_juvenil import urls as violencia_juvenil_urls
 from actividades.contraparte.views import BusquedaView
+from biblioteca import urls as biblioteca_urls
 
 admin.site.site_header = "FADCANIC administración"
 admin.site.site_title = "FADCANIC sitio admin"
@@ -74,6 +75,10 @@ urlpatterns += patterns('mapeo.views',
 urlpatterns += patterns('violencia_juvenil.views',
     url(r'^encuesta_cap/', include(violencia_juvenil_urls)),
     url(r'^ajax/munis/$', 'get_munis', name='get-munis'),
+)
+
+urlpatterns += patterns('biblioteca.views',
+    url(r'^biblioteca/', include(biblioteca_urls)),
 )
 
 urlpatterns += staticfiles_urlpatterns()
