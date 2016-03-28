@@ -9,10 +9,19 @@ from embed_video.fields import EmbedVideoField
 
 
 # Create your models here.
+class Temas(models.Model):
+    """(Temas description)"""
+    titulo = models.CharField(max_length=350)
+
+    def __unicode__(self):
+        return self.titulo
+
+
 
 class Biblioteca(models.Model):
     titulo = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, editable=False)
+    tema = models.ForeignKey(Temas, blank=True, null=True)
     autor = models.CharField('Autores', max_length=250, null=True, blank=True)
     anio = models.CharField('Año', max_length=50, null=True, blank=True)
     descripcion = RichTextField('Descripción', null=True, blank=True)

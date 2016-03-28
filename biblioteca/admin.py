@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Biblioteca, Documentales, Audios, Adjuntos
+from .models import Biblioteca, Documentales, Audios, Adjuntos, Temas
 
 
 class DocumentalesInline(admin.TabularInline):
@@ -24,3 +24,4 @@ class BibliotecaAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Biblioteca, BibliotecaAdmin)
+admin.site.register(Temas)
