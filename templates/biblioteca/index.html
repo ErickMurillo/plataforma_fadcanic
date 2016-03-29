@@ -16,11 +16,11 @@
 <section class="rev_slider_wrapperc main-slider">
 	<div  class="rev_slider banner-slider">
 		<ul>
-		
+
 			<!-- SLIDE  -->
 			<li data-transition="random" data-slotamount="7" data-masterspeed="500" >
 				<!-- MAIN IMAGE -->
-				
+
 				<img src="/static/biblioteca/img/1.jpg" alt="banner" data-bgfit="cover" data-bgposition="center 36%" data-bgrepeat="no-repeat">
 				<!--Start Primer mensaje-->
 			</li>
@@ -43,7 +43,7 @@
 			<form class="form-wrapper">
 			    <input type="text" placeholder="Búsqueda libre" required>
 			    <button type="submit">Buscar</button>
-			</form> 
+			</form>
 		</div>
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 		<!-- <a href="" data-modal="#modal" class="modal__trigger">Selecionar Tema</a> -->
@@ -51,17 +51,15 @@
 				<input id="t1" type="checkbox">
 				<label for="t1">Selecione tema</label>
 				<ul>
-					<li><a href="detalle">Tema</a></li>
-					<li><a href="detalle">Tema</a></li>
-					<li><a href="detalle">Tema</a></li>
-					<li><a href="detalle">Tema</a></li>
-					<li><a href="detalle">Tema</a></li>
+					{% for tema in temas %}
+						<li><a href="#">{{tema}}</a></li>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>
 	</div>
-			
-			
+
+
 </section>
 <div class="arrow-down"></div>
 <div class="container">
@@ -77,103 +75,22 @@
 		</p>
 	</section>
 	<section class="contenido-temas">
-			<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+			<h2>Ultimas Guias y documentos agregados a la Biblioteca.</h2>
 			<div class="row faq">
-				<div class="cols-xs-12 col-sm-6">
-					<div class="panel-group" id="accordion">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title tema">
-									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
-								</h4>
+				{% for guia in ultimas_guias %}
+					<div class="cols-xs-12 col-sm-6">
+						<div class="panel-group" id="accordion">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title tema">
+										<a href="{% url 'detalle-guia' guia.slug %}"><span class="fa fa-angle-double-right"></span>{{guia.titulo}}</a>
+									</h4>
+								</div>
 							</div>
-
 						</div>
-
 					</div>
-				</div>
-				<div class="cols-xs-12 col-sm-6">
-					<div class="panel-group" id="accordion">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title tema">
-									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
-								</h4>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-				<div class="cols-xs-12 col-sm-6">
-					<div class="panel-group" id="accordion">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title tema">
-									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
-								</h4>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-				<div class="cols-xs-12 col-sm-6">
-					<div class="panel-group" id="accordion">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title tema">
-									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
-								</h4>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-				<div class="cols-xs-12 col-sm-6">
-					<div class="panel-group" id="accordion">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title tema">
-									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
-								</h4>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-				<div class="cols-xs-12 col-sm-6">
-					<div class="panel-group" id="accordion">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title tema">
-									<a href=""><span class="fa fa-angle-double-right"></span>Dictumst cras sit amet est eget dui viverra scelerisque duis  ?</a>
-								</h4>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</section>
 </div>
-	<!-- Modal -->
-	<div id="modal" class="modal modal__bg" role="dialog" aria-hidden="true">
-		<div class="modal__dialog">
-			<div class="modal__content">
-				<div>
-					<a href="" class="modal__close demo-close fa fa-times"></a>
-				</div>
-				
-				<p>Church-key American Apparel trust fund, cardigan mlkshk small batch Godard mustache pickled bespoke meh seitan. Wes Anderson farm-to-table vegan, kitsch Carles 8-bit gastropub paleo YOLO jean shorts health goth lo-fi. Normcore chambray locavore Banksy, YOLO meditation master cleanse readymade Bushwick.</p>
-				
-				<!-- modal close button -->
-				
-				
-			</div>
-		</div>
-	</div>
 {% endblock contenido %}

@@ -16,6 +16,9 @@ class Temas(models.Model):
     def __unicode__(self):
         return self.titulo
 
+    class Meta:
+        verbose_name_plural = "Temas"
+
 
 class Biblioteca(models.Model):
     titulo = models.CharField(max_length=250)
@@ -23,7 +26,7 @@ class Biblioteca(models.Model):
     tema = models.ForeignKey(Temas, blank=True, null=True)
     autor = models.CharField('Autores', max_length=250, null=True, blank=True)
     anio = models.CharField('Año', max_length=50, null=True, blank=True)
-    descripcion = RichTextField('Descripción', null=True, blank=True)
+    descripcion = RichTextField('Sinopsis', null=True, blank=True)
     fecha = models.DateField(auto_now=True)
     portada = ImageField(upload_to=get_file_path, null=True, blank=True)
     palabras_claves = models.CharField(max_length=250, null=True, blank=True,
@@ -68,7 +71,7 @@ class Audios(models.Model):
     fileDir = 'BibliotecaAudios/'
 
     def __unicode__(self):
-        return self.documental
+        return self.titulo
 
     class Meta:
         verbose_name = "Audio"
@@ -78,8 +81,6 @@ class Audios(models.Model):
 class Adjuntos(models.Model):
     biblioteca = models.ForeignKey(Biblioteca)
     archivo = models.FileField(upload_to=get_file_path)
-
-    fileDir = 'BibliotecaAdjuntos/'
 
     fileDir = 'BibliotecaArchivos/'
 
