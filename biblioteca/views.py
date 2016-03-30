@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Temas, Biblioteca
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 # Create your views here.
 def index(request,template='biblioteca/index.html',slug=None):
@@ -9,7 +10,12 @@ def index(request,template='biblioteca/index.html',slug=None):
 
 	return render(request, template, locals())
 
-def buscar(request, template='biblioteca/index.html'):
+def buscar_guia(request, template='biblioteca/lista_guias.html'):
+
+	buscar_palabra = request.GET.get('q')
+
+	resultado = Biblioteca.objects.filter(Q(titulo__icontains=buscar_palabra) | Q(descripcion__icontains=buscar_palabra))
+	print resultado
 
 	return render(request, template, locals())
 
