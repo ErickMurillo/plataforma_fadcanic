@@ -160,33 +160,42 @@
 									</div>
 									<div role="tabpanel" class="tab-pane fade" id="documental">
 										<div class="row">
-											<div class="video-play col-md-9">
-												<div class="video-r">
-													<div class="video-icon">
-							              <i class="fa fa-lg fa-video-camera"></i>
-							            </div>
-													<div class="thumbnail embed-vedio">
-													{% for vd in la_guia.documentales_set.all|slice:":1" %}
-														<div class="embed-responsive embed-responsive-16by9">
-														 {% video vd.documental query="autoplay=1" as video %}
-															<img  src="{{ video.thumbnail }}" width="600" height="400" alt="Click to play" data-video="{{video.url}}"/>
-														 {% endvideo %}
+										<div role="tabpanel">
+											<!-- Nav tabs -->
+											
+										
+											<!-- Tab panes -->
+											<div class="tab-content col-xs-12 col-md-9">
+												<div role="tabpanel" class="tab-pane active" id="home">
+											
+													<div class="video-play">
+														<div class="video-r">
+															<div class="embed-vedio">
+															{% for vd in la_guia.documentales_set.all|slice:":1" %}
+																<div class="embed-responsive embed-responsive-16by9">
+																 {% video vd.documental query="autoplay=1" as video %}
+																	<img  src="{{ video.thumbnail }}" width="600" height="400" alt="Click to play" data-video="{{video.url}}"/>
+																 {% endvideo %}
+																</div>
+															{% endfor %}
+															</div>
 														</div>
-													{% endfor %}
 													</div>
 												</div>
 											</div>
-											<div class="video-lista col-md-3">
-												<figure>
-												{% for vd in la_guia.documentales_set.all%}
-												<a href="#home{{forloop.counter}}" data-toggle="tab">
+											<ul class="nav col-xs-12 col-md-3" role="tablist">
+											{% for vd in la_guia.documentales_set.all%}
+												<li role="presentation" class="active">
+													<a href="#home{{forloop.counter}}" data-toggle="tab">
 													{% video vd.documental as video %}
 														<img src="{{ video.thumbnail }}" width="170" height="100" alt="">
 													{% endvideo %}
-												</a>
-												{% endfor %}
-												</figure>
-											</div>
+													</a>
+												</li>
+											{% endfor %}
+											</ul>
+										</div>
+
 										</div>
 
 									</div>
