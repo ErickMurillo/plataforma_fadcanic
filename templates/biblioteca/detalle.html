@@ -144,7 +144,6 @@
 
 								<!-- Tab panes -->
 								<div class="tab-content col-xs-12 col-md-9 content-tabs">
-
 									<div role="tabpanel" class="tab-pane fade in active" id="pdf">
 										<h2 class="h4 page-header">Documentos en PDF de {{la_guia}}</h2>
 										<div class="row">
@@ -156,36 +155,35 @@
 											</div>
 											{% endfor %}
 										</div>
-
 									</div>
 									<div role="tabpanel" class="tab-pane fade" id="documental">
 										<div class="row">
-										<div role="tabpanel">
+
 											<!-- Nav tabs -->
-											
-										
-											<!-- Tab panes -->
+
+								 <!-- Tab panes -->
 											<div class="tab-content col-xs-12 col-md-9">
-												<div role="tabpanel" class="tab-pane active" id="home">
-											
+											{% for obj in la_guia.documentales_set.all %}
+												<div class="tab-pane {% if forloop.counter == 1 %}active{% endif %}" id="home{{forloop.counter}}">
 													<div class="video-play">
 														<div class="video-r">
 															<div class="embed-vedio">
-															{% for vd in la_guia.documentales_set.all|slice:":1" %}
 																<div class="embed-responsive embed-responsive-16by9">
-																 {% video vd.documental query="autoplay=1" as video %}
+																 {% video obj query="autoplay=1" as video %}
 																	<img  src="{{ video.thumbnail }}" width="600" height="400" alt="Click to play" data-video="{{video.url}}"/>
 																 {% endvideo %}
 																</div>
-															{% endfor %}
 															</div>
 														</div>
 													</div>
 												</div>
+											{% endfor %}
+
+
 											</div>
-											<ul class="nav col-xs-12 col-md-3" role="tablist">
+											<ul class="nav nav-tabs col-xs-12 col-md-3" role="tablist">
 											{% for vd in la_guia.documentales_set.all%}
-												<li role="presentation" class="active">
+												<li role="presentation" {% if forloop.counter == 1 %}class="active"{% endif %}>
 													<a href="#home{{forloop.counter}}" data-toggle="tab">
 													{% video vd.documental as video %}
 														<img src="{{ video.thumbnail }}" width="170" height="100" alt="">
@@ -194,7 +192,7 @@
 												</li>
 											{% endfor %}
 											</ul>
-										</div>
+
 
 										</div>
 
