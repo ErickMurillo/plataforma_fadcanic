@@ -12,13 +12,12 @@
 <script src="/static/cambiaahora/js/audiojs/audio.min.js"></script>
 <script>
 
-$(function(){
-	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-		var $iframes = $(e.relatedTarget.hash).find('iframe');
-		$iframes.each(function(index, iframe){
-			$(iframe).attr("src", $(iframe).attr("src"));
-		});
-	});
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  var iframe = $(e.relatedTarget.hash).find('iframe');
+  var src = iframe.attr('src');
+  iframe.attr('src', '');
+	iframe.attr('src', src + '?autoplay=0');
+
 });
 
       $(function() {
@@ -168,8 +167,7 @@ $(function(){
 									</div>
 									<div role="tabpanel" class="tab-pane fade" id="documental">
 										<div class="row">
-
-											<!-- Nav tabs -->
+											<div id="AgencyTabs">
 
 								 <!-- Tab panes -->
 											<div class="tab-content col-xs-12 col-md-9">
@@ -188,8 +186,6 @@ $(function(){
 													</div>
 												</div>
 											{% endfor %}
-
-
 											</div>
 											<ul class="nav nav-tabs col-xs-12 col-md-3" role="tablist">
 											{% for vd in la_guia.documentales_set.all%}
@@ -203,7 +199,7 @@ $(function(){
 											{% endfor %}
 											</ul>
 
-
+										</div>
 										</div>
 
 									</div>
