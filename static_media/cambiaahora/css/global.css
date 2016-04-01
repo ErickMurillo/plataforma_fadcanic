@@ -1280,7 +1280,6 @@ form {
   background-color: transparent;
 }
 .menu-fixed{
-	height: 65px !important;
 	opacity: 0.4 !important;
 }
 .menu-fixed:hover{
