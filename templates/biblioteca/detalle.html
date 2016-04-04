@@ -106,7 +106,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 				<label for="t1">Selecione tema</label>
 				<ul>
 					{% for tema in temas %}
-						<li><a href="#">{{tema}}</a></li>
+						<li><a href="/biblioteca/tema/{{tema.id}}">{{tema}}</a></li>
 					{% endfor %}
 				</ul>
 			</div>
