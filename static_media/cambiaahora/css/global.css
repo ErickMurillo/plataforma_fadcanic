@@ -1587,6 +1587,8 @@ ol li span:before{
 }
 .testimonial img{
 	height: 250px !important;
+	width: 250px !important;
+	
 }
 .help-list img{
 	height: auto;
