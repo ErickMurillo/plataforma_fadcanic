@@ -19,7 +19,7 @@ class AdjuntosInline(admin.TabularInline):
 
 class BibliotecaAdmin(admin.ModelAdmin):
     inlines = [DocumentalesInline, AudioInline, AdjuntosInline]
-    list_display = ('titulo', 'palabras_claves', 'user')
+    list_display = ('titulo', 'palabras_claves', 'user', 'tema')
 
 
 # Register your models here.

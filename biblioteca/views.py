@@ -15,7 +15,15 @@ def buscar_guia(request, template='biblioteca/lista_guias.html'):
 	buscar_palabra = request.GET.get('q')
 
 	resultado = Biblioteca.objects.filter(Q(titulo__icontains=buscar_palabra) | Q(descripcion__icontains=buscar_palabra))
-	print resultado
+
+	return render(request, template, locals())
+
+def buscar_tema(request, template='biblioteca/lista_guias.html', id=None):
+
+	temas = Temas.objects.all()
+	buscar_palabra = get_object_or_404(Temas,id=id)
+
+	resultado = Biblioteca.objects.filter(tema=buscar_palabra)
 
 	return render(request, template, locals())
 
