@@ -73,7 +73,7 @@ select#id_tipo:focus {
   background-color: #7B0909;
   border-color: white;
 }
-option:checked { display:none; }
+
 
 
 .mapeo-detalle{

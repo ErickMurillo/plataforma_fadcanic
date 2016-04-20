@@ -14,9 +14,10 @@
 /* Form text input */
 .form-wrapper{
 box-shadow: 0 6px 5px -5px rgba(0,0,0,0.3);
+margin-bottom: 10px;
 }
 .form-wrapper input {
-    width: 75%;
+    width: 70%;
     height: 20px;
     padding: 20px 5px;
     float: left;    
@@ -57,7 +58,7 @@ box-shadow: 0 6px 5px -5px rgba(0,0,0,0.3);
     padding: 0;
     cursor: pointer;
     height: 40px;
-    width: 25%;
+    width: 30%;
     font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
     color: #fff;
     text-transform: uppercase;
@@ -302,7 +303,7 @@ a.fa{
     margin-right: 10px;
 }
 .content-tabs{
-    padding: 0 0 0 38px;
+    padding: 0 10px 0 10px;
 }
 
 .biblioteca-header {
@@ -363,10 +364,87 @@ a.fa{
     color: white;
     opacity: 1;
 }
+.descargar-pdf:focus{
+  color: white;
+}
 .docpdf{
     margin-top: 20px;
 }
 .video-lista a{
     display: block;
     margin-bottom: 13px;
+}
+.list-group-item.disabled a{
+  font-weight: bold !important;
+  color: white !important;
+}
+
+.list-group-item.disabled span{
+  
+  color: white !important;
+}
+
+ol li span{
+  padding-right: 10px;
+  
+}
+ol li span:before{
+  content: "\f001";
+}
+.list-group-item.disabled, .list-group-item.disabled:hover, .list-group-item.disabled:focus {
+  background-color: #DD3333 !important;
+  color: white: !important;
+
+}
+.list-group-item:first-child {
+  border-top-right-radius: 0px !important; 
+  border-top-left-radius: 0px !important;
+}
+.list-group-item:hover {
+  border-color: #DD3333;
+  margin-bottom: 0px !important;
+
+}
+.list-group-item.disabled span:before{
+    content: "\f028";
+
+}
+.video-biblioteca{
+  padding:0 5px;
+  margin-bottom: 10px;
+}
+.list-videos>li>a{
+  padding: 5px 0px;
+}
+.list-videos{
+  padding:0 20px;
+  max-height: 368px;
+  overflow-y: scroll;
+  background: rgba(214, 214, 214, 0.32);
+  color: white;
+}
+.list-videos li{
+  display: inline-block;
+  padding: 0px 0;
+  margin: 0;
+}
+.list-videos p{
+  color: black;
+  margin-top: 10px;
+  font-size: 1em;
+}
+@media (max-width: 1023px) {
+  .list-videos li{
+  display: inline-block;
+  padding: 0px 1%;
+  margin: 0;
+  }
+}
+
+@media (max-width:767px) {
+  .list-videos li{
+    display: inline-block;
+    padding: 0px 1%;
+    margin: -1%;
+  }
 }
