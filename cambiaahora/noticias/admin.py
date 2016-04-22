@@ -1,11 +1,15 @@
 from django.contrib import admin
-from .models import Noticias, Categoria, NoticiasAudios
+from .models import Noticias, Categoria, NoticiasAudios, NoticiasAdjuntos
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from cambiaahora.utils import *
 
 class InlineNoticiasAudios(admin.TabularInline):
     model = NoticiasAudios
+    extra = 1
+
+class InlineNoticiasAdjuntos(admin.TabularInline):
+    model = NoticiasAdjuntos
     extra = 1
 
 class NoticiasAdmin(admin.ModelAdmin):
@@ -16,7 +20,7 @@ class NoticiasAdmin(admin.ModelAdmin):
         return Noticias.objects.filter(user=request.user)
 
     def save_model(self, request, obj, form, change):
-        #guarda todos los objectos   
+        #guarda todos los objectos
         obj.save()
         #envio de correo
         if not obj.user.is_superuser:
@@ -37,15 +41,15 @@ class NoticiasAdmin(admin.ModelAdmin):
                 pass
 
 
-    def get_form(self, request, obj=None, **kwargs): 
-        if request.user.is_superuser: 
-            self.exclude = () 
-        else: 
-            self.exclude = ('aprobacion',) 
+    def get_form(self, request, obj=None, **kwargs):
+        if request.user.is_superuser:
+            self.exclude = ()
+        else:
+            self.exclude = ('aprobacion',)
         return super(NoticiasAdmin, self).get_form(request, obj=None, **kwargs)
 
     # exclude = ('user',)
-    inlines = [InlineNoticiasAudios]
+    inlines = [InlineNoticiasAudios,InlineNoticiasAdjuntos]
     list_display = ('titulo', 'fecha', 'aprobacion', 'idioma', 'user')
     list_filter = ('idioma', 'user', 'aprobacion')
     search_fields = ('titulo',)

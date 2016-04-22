@@ -19,10 +19,15 @@ class Temas(models.Model):
     class Meta:
         verbose_name_plural = "Temas"
 
+CHOICE_CATEGORIA = (
+        (1, "Documento para biblioteca"),
+        (2, "Informe privado"),
+)
 
 class Biblioteca(models.Model):
     titulo = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, editable=False)
+    tipo_documento = models.IntegerField(choices=CHOICE_CATEGORIA,blank=True, null=True)
     tema = models.ForeignKey(Temas, blank=True, null=True)
     autor = models.CharField('Autores', max_length=250, null=True, blank=True)
     anio = models.CharField('Año', max_length=50, null=True, blank=True)

@@ -54,39 +54,39 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				
+
 
 
 				<header class="page-header section-header text-center">
 					<h2>{{object.titulo|upper}}</h2>
-					
+
 				</header>
 				<br>
 
 				<div id="share-buttons">
-					
+
 					<a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=http://cambiaahora.com{{request.path}}" title="Facebook share" target="_blank"><img src="{% static 'cambiaahora/img/facebook.png' %}"></a>
 
 					<a class="twitter customer share" href="http://twitter.com/share?url=http://cambiaahora.com{{request.path}}&amp;text={{object.titulo}}" title="Twitter share" target="_blank"><img src="{% static 'cambiaahora/img/twitter.png' %}"></a>
-					
+
 					<a class="google_plus customer share" href="https://plus.google.com/share?url=http://cambiaahora.com{{request.path}}" title="Google Plus Share" target="_blank"><img src="{% static 'cambiaahora/img/g+.png' %}"></a>
-					
+
 
 				</div>
 
 				<div id="share">
-					
+
 					<a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=http://cambiaahora.com{{request.path}}" title="Facebook share" target="_blank"><img src="{% static 'cambiaahora/img/facebook.png' %}"></a>
 
 					<a class="twitter customer share" href="http://twitter.com/share?url=http://cambiaahora.com{{request.path}}&amp;text={{object.titulo}}" title="Twitter share" target="_blank"><img src="{% static 'cambiaahora/img/twitter.png' %}"></a>
-					
+
 					<a class="google_plus customer share" href="https://plus.google.com/share?url=http://cambiaahora.com{{request.path}}" title="Google Plus Share" target="_blank"><img src="{% static 'cambiaahora/img/g+.png' %}"></a>
-					
+
 
 				</div>
-				
 
-				<div class="portfolio-detail-description">	
+
+				<div class="portfolio-detail-description">
 					{% if not object.url %}
 					{% thumbnail object.foto "800x500" as img %}
 					<a href="#" class="img-thumb">
@@ -94,14 +94,14 @@
 					</a>
 					{% endthumbnail %}
 					{% endif %}
-					
+
 					{% if object.url %}
 					<!--<h2>Esta noticia tiene el siguiente video</h2>-->
 					<div class="embed-responsive embed-responsive-16by9 video_space">
 						{% video object.url as video  %}
 						<div class="col-md-8 col-md-offset-2 col-xs-12">
-							<iframe id="detalle_nota_video" 
-							src="{{ video.url }}?byline=0&amp;portrait=0&amp;color=ff0179&amp;autoplay=1" 
+							<iframe id="detalle_nota_video"
+							src="{{ video.url }}?byline=0&amp;portrait=0&amp;color=ff0179&amp;autoplay=1"
 							frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
 						</iframe>
 					</div>
@@ -119,6 +119,15 @@
 								{{object.texto|safe}}
 							</p>
 						</div>
+						<div class="detail-description">
+							<p class="">
+								{% for documento in object.noticiasadjuntos_set.all %}
+										Descargar: <a class=" descargar-pdf hvr-icon-sink-away" href="/media/{{documento.archivo}}">{{documento.titulo}}
+										</a>
+
+								{% endfor %}
+							</p>
+						</div>
 
 						<header class="page-header section-header text-left">
 
@@ -127,7 +136,7 @@
 
 						<div class="row we-help anim-section">
 							{% for relacion in noticias_relacionadas %}
-							
+
 							<div class="cols-xs-12 zoom col-sm-4">
 								<div class="thumbnail">
 									{% if relacion.foto %}
