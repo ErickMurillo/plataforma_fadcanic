@@ -122,7 +122,7 @@
 						<div class="detail-description">
 							<p class="">
 								{% for documento in object.noticiasadjuntos_set.all %}
-										Descargar: <a class=" descargar-pdf hvr-icon-sink-away" href="/media/{{documento.archivo}}">{{documento.titulo}}
+										<a  class="btn btn-default btn-nota" href="/media/{{documento.archivo}}">{{documento.titulo}}
 										</a>
 
 								{% endfor %}
