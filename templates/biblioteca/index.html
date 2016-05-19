@@ -12,23 +12,27 @@
 <script src="/static/biblioteca/js/materialmodal.js"></script>
 {% endblock extra_js %}
 {% block contenido %}
-
+<style type="text/css">
+	h1 strong, .h1 strong, h2 strong, .h2 strong, h3 strong, .h3 strong, h2 strong, .h2 strong, h4 strong, .h4 strong{
+		text-transform: none;
+	}
+</style>
 
 
 <div class="container">
 	<section class="temas-index">
 		<header class="faq-header biblioteca-header">
-			<h2>Biblioteca multimedia para la prevención de <strong>violencia  y consumo de drogas</strong></h2>
+			<h2>Biblioteca multimedia para la prevención de <strong>Violencia  y consumo de drogas</strong></h2>
 		</header>
 		<p>
-		Tenés en tus manos la Biblioteca Multimedia que es parte del Kit de herramientas metodológicas para la prevención de la violencia y consumo de drogas. El Kit es un producto de la Campaña: Cambia ahora solo hazlo,ejecutado por la Fundación para la Autonomía y Desarrollo de la Costa Atlántica- FADCANIC. La campaña tiene como objetivo sensibilizar y movilizar a la opinión pública a favor de las acciones de la familia y la comunidad para aportar en la prevención de la violencia y consumo de drogas en la Costa Caribe y zonas pilotos de Managua, Nicaragua.
+		Tenés en tus manos la Biblioteca Multimedia que es parte del Kit de herramientas metodológicas para la prevención de la violencia y consumo de drogas. El Kit es un producto de la Campaña: Cambia ahora sólo hazlo,ejecutado por la Fundación para la Autonomía y Desarrollo de la Costa Atlántica- FADCANIC. La campaña tiene como objetivo sensibilizar y movilizar a la opinión pública a favor de las acciones de la familia y la comunidad para aportar en la prevención de la violencia y consumo de drogas en la Costa Caribe y zonas pilotos de Managua, Nicaragua.
 		</p>
 		<p>
 		Esta Biblioteca multimedia para la prevención de la violencia y consumo de drogas es una herramienta de apoyo al trabajo de promotoras, promotores, estudiantes, docentes, periodistas, líderes, lideresas y las organizaciones que trabajan la prevención de la violencia y las adicciones a las drogas desde sus espacios y comunidades. Acá encontrarás ocho videos documentales con sus respectivas guías metodológicas y capítulos radiofónicos que se han producido desde la Campaña; también se proponen algunos documentos complementarios sobre las temáticas abordadas y cuatro videos documentales que muestran el contexto del Caribe y Pacífico así como el trabajo de educación, prevención y atención que realizan algunas organizaciones aliadas.
 		</p>
 	</section>
 	<section class="contenido-temas">
-			<h2>Ultimas Guias y documentos agregados a la Biblioteca.</h2>
+			<h2>Últimas Guías y documentos agregados a la Biblioteca.</h2>
 			<div class="row faq">
 				{% for guia in ultimas_guias %}
 					<div class="cols-xs-12 col-sm-6">
