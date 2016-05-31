@@ -4,33 +4,11 @@
 
 {% block contenido %}
 <!-- banner slider End Here -->
-<section class="busqueda">
-<div class="container">
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	<h3>Búsqueda</h3>
-	</div>
-	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-		<form class="form-wrapper" action="/biblioteca/busqueda/" method="get">
-		    <input type="text" placeholder="Búsqueda libre" name="q" required>
-		    <button type="submit">Buscar</button>
-		</form>
-	</div>
-	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-	<!-- <a href="" data-modal="#modal" class="modal__trigger">Selecionar Tema</a> -->
-		<div class="dropdown toggle">
-			<input id="t1" type="checkbox">
-			<label for="t1">Selecione tema</label>
-			<ul>
-				{% for tema in temas %}
-					<li><a href="/biblioteca/tema/{{tema.id}}">{{tema}}</a></li>
-				{% endfor %}
-			</ul>
-		</div>
-	</div>
-</div>
-
-</section>
-<div class="arrow-down"></div>
+<style type="text/css">
+	h1 strong, .h1 strong, h2 strong, .h2 strong, h3 strong, .h3 strong, h2 strong, .h2 strong, h4 strong, .h4 strong{
+		text-transform: none;
+	}
+</style>
 <div class="container">
 	<section class="temas-index">
 		<header class="faq-header biblioteca-header">
