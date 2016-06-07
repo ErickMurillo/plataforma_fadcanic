@@ -109,9 +109,20 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 										<div class="row">
 											{% for pdf in la_guia.adjuntos_set.all %}
 											<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 docpdf">
-												<img class="center-block"src="/static/biblioteca/img/pdf.png">
+												<!--<img class="center-block"src="/static/biblioteca/img/pdf.png">
 												<a class=" descargar-pdf hvr-icon-sink-away" href="/media/{{pdf.archivo}}">Descargar
-												</a>
+												</a>-->
+												<!-- colored -->
+
+											   	<div class="ih-item square colored effect6 from_top_and_bottom"><a href="/media/{{pdf.archivo}}">
+											        <div class="img"><img src="/static/biblioteca/img/pdf.png" alt="img"></div>
+											        <div class="info">
+											          <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
+											          <p></p>
+											          
+											        </div></a>
+											    </div>
+											    <!-- end colored -->
 											</div>
 											{% endfor %}
 										</div>
