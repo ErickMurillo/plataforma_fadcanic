@@ -19,7 +19,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 
 });
 
- $(function() { 
+ $(function() {
         // Setup the player to autoplay the next track
         var a = audiojs.createAll({
           trackEnded: function() {
@@ -30,7 +30,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             audio.play();
           }
         });
-        
+
         // Load in the first track
         var audio = a[0];
             first = $('ol a').attr('data-src');
@@ -117,9 +117,14 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 											   	<div class="ih-item square colored effect6 from_top_and_bottom"><a href="/media/{{pdf.archivo}}">
 											        <div class="img"><img src="/static/biblioteca/img/pdf.png" alt="img"></div>
 											        <div class="info">
-											          <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
+																{% if pdf.titulo %}
+																	<h3>{{pdf.titulo}}</h3>
+																{% else %}
+																	<h3>Sin titulo</h3>
+																{% endif %}
+
 											          <p></p>
-											          
+
 											        </div></a>
 											    </div>
 											    <!-- end colored -->
@@ -150,10 +155,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 											{% endfor %}
 											</div>
 											<div class=" col-xs-12 col-md-3">
-											
+
 												<ul class="nav list-videos col-lg-12" role="tablist">
 												<p>Más Documentales</p>
-											
+
 												{% for vd in la_guia.documentales_set.all%}
 													<li class="col-xs-3 col-sm-4 col-md-12 col-lg-12" role="presentation" {% if forloop.counter == 1 %}class="active"{% endif %}>
 														<a href="#home{{forloop.counter}}" data-toggle="tab">
