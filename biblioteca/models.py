@@ -86,6 +86,7 @@ class Audios(models.Model):
 class Adjuntos(models.Model):
     biblioteca = models.ForeignKey(Biblioteca)
     titulo = models.CharField(max_length=250, null=True, blank=True)
+    portada = ImageField(upload_to='BibliotecaPortada/', null=True, blank=True)
     archivo = models.FileField(upload_to=get_file_path)
 
     fileDir = 'BibliotecaArchivos/'
