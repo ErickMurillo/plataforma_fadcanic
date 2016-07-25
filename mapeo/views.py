@@ -4,6 +4,7 @@ from .models import *
 from .forms import *
 from django.views.generic import TemplateView, ListView, DetailView
 from actividades.contraparte.models import *
+import collections
 
 # Create your views here.
 def DetailOrg(request,template='mapeo/detalle.html',slug=None):
@@ -29,9 +30,11 @@ def _queryset_filtrado(request):
 
 def index(request,template="mapeo/index.html"):
 	TIPO_CHOICES = ((1,'Comité municipal de prevención de violencia'),(2,'Comité comunal'),
-					(3,'Diplomado de promotoría'),(4,'Diplomado de comunicación'))
+					(3,'Diplomado de promotoría'),(4,'Diplomado de comunicación'),
+					(5,'Acción docente'),(6,'Comité comunal y municipal'),(7,'Acción masiva'),
+					(8,'Debate escolar'))
 
-	tipo_org = {}
+	tipo_org = collections.OrderedDict()
 	for obj in TIPO_CHOICES:
 		count = Organizaciones.objects.filter(tipo=obj[0]).count()
 		tipo_org[obj[1]] = count
@@ -79,7 +82,7 @@ def index(request,template="mapeo/index.html"):
 			for y in municipio:
 				lista.append((y,float(y.latitud),float(y.longitud),organizaciones))
 		municipios = lista
-		
+
 		try:
 			del request.session['tipo']
 		except:

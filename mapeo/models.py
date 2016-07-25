@@ -42,6 +42,10 @@ TIPO_CHOICES = (
 		(2,'Comité comunal'),
 		(3,'Diplomado de promotoría'),
 		(4,'Diplomado de comunicación'),
+		(5,'Acción docente'),
+		(6,'Comité comunal y municipal'),
+		(7,'Acción masiva'),
+		(8,'Debate escolar'),
 	)
 
 class Organizaciones(models.Model):
@@ -76,7 +80,7 @@ class Organizaciones(models.Model):
 	femenino = models.IntegerField(null=True,blank=True,verbose_name='Cantidad de integrantes femeninos')
 
 	integrantes = RichTextField('Nombre de los integrantes',blank=True,null=True)
-	
+
 	#edades
 	mayor_13 = models.IntegerField('Edades de integrantes de 13 a 18 años',null=True,blank=True)
 	mayor_19 = models.IntegerField('Edades de integrantes de 19 a 30 años',null=True,blank=True)
