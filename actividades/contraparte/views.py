@@ -24,7 +24,7 @@ from django.core import serializers
 def filtro_proyecto(request):
     actividad = Actividad.objects.all()
     organizaciones = Organizacion.objects.all()
-    
+
     proy_params = {}
     filtro = {}
     if request.method == 'POST':
@@ -343,13 +343,21 @@ def get_graph_png(svg, obj, field, width=940):
 
 class BusquedaView(TemplateView):
     def get(self, request, *args, **kwargs):
-        tipo = request.GET['id'] 
+        tipo = request.GET['id']
         if tipo == '3':
             tipo = 1
         elif tipo == '4':
             tipo = 3
         elif tipo == '5':
             tipo = 4
+        elif tipo == '6':
+            tipo = 5
+        elif tipo == '7':
+            tipo = 6
+        elif tipo == '8':
+            tipo = 7
+        elif tipo == '9':
+            tipo = 8
         organizaciones = Organizaciones.objects.filter(tipo=tipo)
         data = serializers.serialize('json',organizaciones,fields=('nombre',))
         return HttpResponse(data,content_type='application/json')
