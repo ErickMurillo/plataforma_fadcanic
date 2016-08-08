@@ -560,7 +560,7 @@ msgstr "Meet Our Team"
 
 #: templates/flatpages/default.html:140
 msgid "Cargo"
-msgstr "Charge"
+msgstr "Position"
 
 #~ msgid "Edad"
 #~ msgstr "Age"

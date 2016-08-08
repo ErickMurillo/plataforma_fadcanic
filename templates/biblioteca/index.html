@@ -35,11 +35,14 @@
 			<h2>Últimas Guías y documentos agregados a la Biblioteca.</h2>
 			<div class="row faq">
 				{% for guia in ultimas_guias %}
-					<div class="cols-xs-12 col-sm-6">
+					<div class="cols-xs-12 col-sm-4">
 						<div class="panel-group" id="accordion">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title tema">
+									{% thumbnail guia.portada "360x291" as img %}
+										<img src="/media/{{img}}" alt="">
+									{% endthumbnail %}
 										<a href="{% url 'detalle-guia' guia.slug %}"><span class="fa fa-angle-double-right"></span>{{guia.titulo}}</a>
 									</h4>
 								</div>
