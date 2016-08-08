@@ -83,6 +83,10 @@ TIPO_CHOICES = (
         (3,'Acción municipal de prevención de violencia'),
         (4,'Acción diplomado de promotoría'),
         (5,'Acción diplomado de comunicación'),
+        (6,'Acción docente'),
+		(7,'Comité comunal y municipal'),
+		(8,'Acción masiva'),
+		(9,'Debate escolar'),
     )
 class Actividad(models.Model):
     organizacion = models.ForeignKey(Organizacion)

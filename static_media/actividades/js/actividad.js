@@ -1,10 +1,10 @@
 var dicc;
 
-(function($) {	
+(function($) {
 	$(document).ready(function(){
 		$('#add_id_comunidad').removeAttr('onclick');
 		$('#add_id_comunidad').attr('href', '#');
-		
+
 		$('#id_municipio').change(function(){
 			var val = $(this).val();
 			var name = $('#id_municipio option:selected').text();
@@ -24,7 +24,7 @@ var dicc;
 })(jQuery || django.jQuery);
 
 function showCustomPopup(dicc, triggeringLink) {
-	var name = triggeringLink.id.replace(/^add_/, '');	
+	var name = triggeringLink.id.replace(/^add_/, '');
 	var href = '/admin/lugar/comunidad/add/?_popup=1&id='+dicc.id+'&name='+dicc.name;
 	var win = window.open(href, name, 'height=500,width=800,resizable=yes,scrollbars=yes');
     win.focus();
@@ -32,8 +32,8 @@ function showCustomPopup(dicc, triggeringLink) {
 }
 
 // codigo nuevo
-(function($) {	
-$(document).ready( function() 
+(function($) {
+$(document).ready( function()
 	{
 		var valor_tipo = $('#id_tipo').val();
 			if (valor_tipo === '1' ) {
@@ -69,6 +69,18 @@ $(document).ready( function()
 			}else if(valor_tipo === '5'){
 				$(".field-comite label").empty();
 				$(".field-comite label").append("Diplomado de comunicación que organiza la actividad:");
+			}else if(valor_tipo === '6'){
+				$(".field-comite label").empty();
+				$(".field-comite label").append("Acción docente que organiza la actividad:");
+			}else if(valor_tipo === '7'){
+				$(".field-comite label").empty();
+				$(".field-comite label").append("Comité comunal y municipal que organiza la actividad:");
+			}else if(valor_tipo === '8'){
+				$(".field-comite label").empty();
+				$(".field-comite label").append("Acción masiva que organiza la actividad:");
+			}else if(valor_tipo === '9'){
+				$(".field-comite label").empty();
+				$(".field-comite label").append("Debate escolar que organiza la actividad:");
 			};
 		});
 
