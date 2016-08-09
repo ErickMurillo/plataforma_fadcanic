@@ -463,3 +463,21 @@ ol li span:before{
   font-size: 12px;
   font-weight: bold;
 }
+.enlace-guia{
+  display: block;
+  width: 100%;
+  height: 200px;
+  
+}
+.enlace-guia:hover{
+    color: #26211d;
+}
+.ih-item.square.effect6.colored .info.infoguia h3{
+    font-size: 14px;
+    line-height: 1.3;
+
+}
+.panel-guia .side-nav .nav{
+    padding-bottom: 0px;
+}
+/*href="{% url 'detalle-guia' guia.slug %}"*/

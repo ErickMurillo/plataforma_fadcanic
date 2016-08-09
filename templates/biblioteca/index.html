@@ -35,19 +35,56 @@
 			<h2>Últimas Guías y documentos agregados a la Biblioteca.</h2>
 			<div class="row faq">
 				{% for guia in ultimas_guias %}
-					<div class="cols-xs-12 col-sm-4">
-						<div class="panel-group" id="accordion">
+					<div class="cols-xs-12 col-sm-3">
+						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title tema">
-									{% thumbnail guia.portada "360x291" as img %}
-										<img src="/media/{{img}}" alt="">
-									{% endthumbnail %}
-										<a href="{% url 'detalle-guia' guia.slug %}"><span class="fa fa-angle-double-right"></span>{{guia.titulo}}</a>
-									</h4>
+								
+								
+									<div class="ih-item square colored effect6 from_top_and_bottom">
+										<a  class="enlace-guia" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											<div class="img">
+												{% thumbnail guia.portada "360x291" as img %}
+													<img class="center-block" src="/media/{{img}}" alt="">
+												{% endthumbnail %}
+											</div>
+											<div class="info infoguia">
+												{% if guia.titulo %}
+													<h3>{{guia.titulo}}</h3>
+												{% else %}
+													<h3>Sin titulo</h3>
+												{% endif %}
+
+											    <p></p>
+
+											</div>
+										</a>
+									</div>
+								
+
+								<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+									<div class="panel-body panel-guia">
+										<nav class="side-nav">
+											<ul class="nav" role="tablist">
+												<li class="active">
+													<a href="#pdf" aria-controls="pdf" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>PDF</a>
+
+												</li>
+												<li>
+													<a href="#documental" aria-controls="documental" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>Documentales</a>
+												</li>
+												<li>
+													<a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>Audio</a>
+												</li>
+
+
+											</ul>
+										</nav>	
+									</div>
 								</div>
 							</div>
 						</div>
+
+
 					</div>
 				{% endfor %}
 			</div>
