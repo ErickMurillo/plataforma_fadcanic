@@ -41,11 +41,15 @@
 								
 								
 									<div class="ih-item square colored effect6 from_top_and_bottom">
-										<a  class="enlace-guia" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										<a  class="enlace-guia" data-toggle="collapse" data-parent="#accordion" href="#collapse{{guia.id}}" aria-expanded="true" aria-controls="collapse{{guia.id}}">
 											<div class="img">
+											{% if guia.portada %}
 												{% thumbnail guia.portada "360x291" as img %}
 													<img class="center-block" src="/media/{{img}}" alt="">
 												{% endthumbnail %}
+											{%else%}
+												<img class="center-block" src="http://placehold.it/215x290?text=No+imagen" alt="">
+											{% endif %}
 											</div>
 											<div class="info infoguia">
 												{% if guia.titulo %}
@@ -61,11 +65,11 @@
 									</div>
 								
 
-								<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+								<div id="collapse{{guia.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body panel-guia">
 										<nav class="side-nav">
 											<ul class="nav" role="tablist">
-												<li class="active">
+												<li>
 													<a href="#pdf" aria-controls="pdf" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>PDF</a>
 
 												</li>

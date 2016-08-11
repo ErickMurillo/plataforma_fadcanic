@@ -479,5 +479,19 @@ ol li span:before{
 }
 .panel-guia .side-nav .nav{
     padding-bottom: 0px;
+
 }
+.collapse.in, .panel-collapse {
+    position: absolute;
+    background-color: white;
+    width: 90%;
+    z-index: 99;
+}
+.panel-guia {
+    padding: 0px;
+}
+.panel-guia .side-nav .nav a{
+    padding-left: 5px
+}
+
 /*href="{% url 'detalle-guia' guia.slug %}"*/
