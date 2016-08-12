@@ -63,32 +63,26 @@
 											</div>
 										</a>
 									</div>
-								
-
 								<div id="collapse{{guia.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 									<div class="panel-body panel-guia">
 										<nav class="side-nav">
 											<ul class="nav" role="tablist">
 												<li>
-													<a href="#pdf" aria-controls="pdf" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>PDF</a>
+													<a href="{% url 'detalle-guia' guia.slug %}#pdf"><i class="fa fa-angle-double-right bullet-arrow"></i>PDF</a>
 
 												</li>
 												<li>
-													<a href="#documental" aria-controls="documental" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>Documentales</a>
+													<a href="{% url 'detalle-guia' guia.slug %}#documental"><i class="fa fa-angle-double-right bullet-arrow"></i>Documentales</a>
 												</li>
 												<li>
-													<a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>Audio</a>
+													<a href="{% url 'detalle-guia' guia.slug %}#audio"><i class="fa fa-angle-double-right bullet-arrow"></i>Audio</a>
 												</li>
-
-
 											</ul>
 										</nav>	
 									</div>
 								</div>
 							</div>
 						</div>
-
-
 					</div>
 				{% endfor %}
 			</div>
