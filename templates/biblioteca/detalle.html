@@ -124,13 +124,21 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 												<!-- colored -->
 
 											   	<div class="ih-item square colored effect6 from_top_and_bottom"><a href="/media/{{pdf.archivo}}">
-											        <div class="img"><img src="/static/biblioteca/img/pdf.png" alt="img"></div>
+											        <div class="img">
+											        {% if pdf.portada %}
+														{% thumbnail pdf.portada "250x325" as img %}
+															<img class="center-block" src="/media/{{img}}" alt="">
+														{% endthumbnail %}
+													{%else%}
+														<img src="/static/biblioteca/img/pdf.png" alt="img">
+													{% endif %}
+											        </div>
 											        <div class="info">
-																{% if pdf.titulo %}
-																	<h3>{{pdf.titulo}}</h3>
-																{% else %}
-																	<h3>Sin titulo</h3>
-																{% endif %}
+														{% if pdf.titulo %}
+															<h3>{{pdf.titulo}}</h3>
+														{% else %}
+															<h3>Sin titulo</h3>
+														{% endif %}
 
 											          <p></p>
 
