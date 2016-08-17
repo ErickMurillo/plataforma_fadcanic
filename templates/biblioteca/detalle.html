@@ -127,7 +127,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 											        <div class="img">
 											        {% if pdf.portada %}
 														{% thumbnail pdf.portada "250x325" as img %}
-															<img class="center-block" src="/media/{{img}}" width="250" height="325" alt="">
+															<img class="center-block" src="/media/{{img}}" alt="">
 														{% endthumbnail %}
 													{%else%}
 														<img src="/static/biblioteca/img/pdf.png" alt="img">
