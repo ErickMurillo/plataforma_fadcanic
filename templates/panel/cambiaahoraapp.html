@@ -1,0 +1,477 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>::Monitoreo::</title>
+		
+		<!-- google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,300italic,300,700%7CPlayfair+Display:400,700italic%7CRoboto:300%7CMontserrat:400,700%7COpen+Sans:400,300%7CLibre+Baskerville:400,400italic' rel='stylesheet' type='text/css'>
+		<!-- Bootstrap -->
+		<link href="{% static 'cambiaahora/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'cambiaahora/css/bootstrap-theme.css' %}" rel="stylesheet">
+		
+
+		<link href="{% static 'cambiaahora/css/global.css' %}" rel="stylesheet">
+
+		<link href="{% static 'cambiaahora/css/responsive.css' %}" rel="stylesheet">
+		<!-- Font -->
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        
+	
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+
+
+	</head>
+	<body>
+	    <style type="text/css">
+			#prueba .nav a small
+			{
+			    display: block;
+			}
+			#prueba .nav
+			{
+			    background: #eee;
+			}
+			.nav-justified > li > a
+			{
+			    border-radius: 0px;
+			}
+			.carousel-inner>.item>img, .carousel-inner>.item>a>img{
+				width: 60%;
+			}
+			.nav-pills>li[data-slide-to="0"].active a,
+			.nav-pills>li[data-slide-to="0"].active a:focus { background-color: #389500 !important; }
+			.nav-pills>li[data-slide-to="1"].active a,
+			.nav-pills>li[data-slide-to="1"].active a:focus { background-color: #F47317 !important; }
+			.nav-pills>li[data-slide-to="2"].active a,
+			.nav-pills>li[data-slide-to="2"].active a:focus { background-color: #FAC42B !important; }
+			.nav-pills>li[data-slide-to="3"].active a,
+			.nav-pills>li[data-slide-to="3"].active a:focus { background-color: #8B0313 !important; }
+			.nav-pills>li[data-slide-to="4"].active a,
+			.nav-pills>li[data-slide-to="4"].active a:focus { background-color: #3B8887 !important; }
+			#prueba{
+				margin: 30px 0px;
+			}
+			.page-header h2{
+				margin-bottom: 0px;
+				text-align: center;
+			}
+			.page-header h2 strong{
+				text-transform: lowercase;
+			}
+			.carousel-inner{
+				min-height: 415px;
+			}
+			.carousel-inner p{
+				text-align: justify;
+				font-size: 15px;
+			}
+		</style>
+				<!--Header Section Start Here -->
+			
+
+			<header  id="header">
+				<div class="container">
+					<div class="row primary-header">
+						
+							<a href="/" class="col-xs-6 col-sm-2 brand" title="Welcome to Cambia Ahora"><img src="/static/cambiaahora/img/es.png"  alt="Cambia Ahora"></a>	
+
+						<div class="social-links col-xs-6 col-sm-10">
+							<a href="/contactenos/" class=" btn btn-default btn-idioma">
+								Contáctenos
+							</a>
+						
+							<ul class="social-icons hidden-xs">
+								<li>
+									<a href="https://www.facebook.com/pages/Cambia-ahora-solo-hazlo/1485321515024959?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="https://twitter.com/Cambia_ahora" target="_blank"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="https://www.youtube.com/channel/UCcpJBeBNFxDip-Avh25xIEw"><i class="fa fa-youtube"></i></a>
+								</li>
+
+
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="navbar navbar-default" role="navigation">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<nav>
+							<ul class="nav navbar-nav">
+								<!-- <li class="">
+									<a href="/"><span class="fa fa-home fa-lg"></span> </a>
+
+								</li> -->
+								<li class="">
+
+								<a href="javascript:;"  data-toggle="dropdown"  class="submenu-icon">
+									Conócenos
+									<span class="glyphicon glyphicon-chevron-down"></span> 
+									<span class="glyphicon glyphicon-chevron-up"></span> 
+								</a>
+								<div  class="dropdown-menu">
+									<ul>
+										<li>
+									
+												<a href="/campana-cambia-ahora/">Campaña</a>
+										
+										</li>
+										<li>
+											
+												<a href="/sobre-fadcanic/">Sobre FADCANIC</a>
+											
+										</li>
+									</ul>
+								</div>
+
+
+								</li>
+								<li class="">
+									<a href="/noticias/">Noticias</a>
+
+								</li>		
+								
+								<li class="">
+									<a href="/multimedias/">Fotos y Videos</a>
+
+								</li>
+								<li>
+									<a href="/biblioteca/">Biblioteca Multimedia</a>
+								</li>
+
+								<li>
+									<a href="/monitoreo/">Monitoreo</a>
+								</li>
+								<li>
+									<a href="/actividades/">Actividades</a>
+								</li>
+								<li>
+									<a href="/mapeo/">Mapeo</a>
+								</li>
+
+
+							</ul>
+							</nav>
+
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				</div>
+
+			</header>
+			<!-- Header Section End Here -->
+			<div class="container">
+				<div id="prueba" class="carousel slide" data-ride="carousel">
+					<ul class="nav probar nav-pills nav-justified">
+							<li data-target="#prueba" data-slide-to="0" class="active">
+								<a href="#">Juego y aplicaciones</a>
+							</li>
+							<li data-target="#prueba" data-slide-to="1">
+								<a href="#">“Que sabes vos”</a>
+							</li>
+							<li data-target="#prueba" data-slide-to="2">
+								<a href="#">Test adicciones</a>
+							</li>
+							<li data-target="#prueba" data-slide-to="3">
+								<a href="#">Sopa de letras</a>
+							</li>
+							<li data-target="#prueba" data-slide-to="4">
+								<a href="#">Directorio de ayuda</a>
+							</li>
+					</ul>
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<div class="row">
+								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+									<img src="{% static 'panel/img/apps/CambiaAhora 1.png' %}">
+								</div>
+								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+									<header class="page-header section-header clearfix">
+										<h2>Cambia Ahora <strong>aplicación</strong></h2>
+									</header>
+									<p>
+										Aplicación educativa diseñada desde el proyecto Mass Media Campaign for prevention of youth violence and drug abuse, ejecutado por la Fundación para la Autonomía y Desarrollo de la Costa Atlántica de Nicaragua –FADCANIC- que busca la sensibilización y movilización de las familias y comunidades a favor de la prevención de la violencia en Waspam, Bilwi, Bluefields, Pearl Lagoon, Desembocadura de Rio Grande y Managua, Nicaragua. 
+ 
+									</p>
+									<p>
+										Apta para toda la familia pero diseñada para personas entre los 13 y 30 años de edad que requieren de información oportuna, pertinente que ayude a la sensibilización, concientización para la prevención de la violencia y consumo de drogas. Una reflexión para el cambio de actitud que comienza desde la persona misma, su accionar diario en la familia, escuela, comunidad para la promoción de una cultura de paz y bienestar general.
+									</p>
+								</div>
+							</div>
+							
+						</div>
+						<!-- End Item -->
+						<div class="item">
+							<div class="row">
+								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+									<img src="{% static 'panel/img/apps/CambiaAhora 1.png' %}">
+								</div>
+								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+									<header class="page-header section-header clearfix">
+										<h2>“Que sabes vos”</h2>
+									</header>
+									<p>
+										Un test con preguntas básicas sobre la violencia hacia las mujeres, violencia intrafamiliar, ESCA, nuevas masculinidades, entre otras. Consta de 4 niveles compuestos de 15 preguntas, que a medida que se va respondiendo correctamente se va superando el nivel con mayor complejidad.
+ 
+									</p>
+								
+								</div>
+							</div>
+							
+						</div>
+						<!-- End Item -->
+						<div class="item">
+							<div class="row">
+								
+								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+									<header class="page-header section-header clearfix">
+										<h2>Test adicciones</h2>
+									</header>
+									<p>
+										Basado en el test ASSIST validado por la OMS (Organización Mundial de la Salud), permite hacer un análisis personal del posible riesgo o grado de dependencia de sustancias adictivas como el cigarro, alcohol, marihuana, cocaína o tranquilizantes. Responderás una serie de 8 preguntas que te ayudarán a conocerte y ayudarte.  Se puede hacer hasta 5 veces este test ya que las preguntas son diferentes. El resultado te puede servir para buscar ayuda profesional si te encontrás en riesgo.
+ 
+									</p>
+
+								</div>
+								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+									<img src="{% static 'panel/img/apps/CambiaAhora 3.png' %}">
+								</div>
+							</div>
+							
+						</div>
+						<!-- End Item -->
+						<div class="item">
+							<div class="row">
+								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+									<img src="{% static 'panel/img/apps/CambiaAhora 1.png' %}">
+								</div>
+								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+									<header class="page-header section-header clearfix">
+										<h2>Sopa de letras</h2>
+									</header>
+									<p>
+										En esta ocasión de traemos la tradicional y nunca pasada de moda Sopa de letras pero con la novedad de estar en 2 lenguas autóctonas del Caribe Nicaragüense (Mískitu y Ulwa), en Español e Inglés. Las palabras que se podrán formar son referentes a las temáticas de prevención de la violencia, consumo de drogas y actitudes positivas ante el cambio. ¡También podes ampliar tu vocabulario en 4 idiomas!  
+ 
+									</p>
+				
+								</div>
+							</div>
+							
+						</div>
+						<!-- End Item -->
+						<div class="item">
+							<div class="row">
+								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+									<img src="{% static 'panel/img/apps/CambiaAhora 1.png' %}">
+								</div>
+								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+									<header class="page-header section-header clearfix">
+										<h2>Directorio de ayuda</h2>
+									</header>
+									<p>
+										Encontrarás información sobre las instituciones y organizaciones que trabajan en la prevención, información y atención en casos de Consumo de droga, Violencia juvenil, Violencia hacia las mujeres, Violencia en el hogar, Trata de persona, Abuso sexual, Acoso callejero, Explotación sexual comercial y Bullying. 
+ 
+ 
+ 
+									</p>
+									<p>
+										Al inicio del directorio podés seleccionar tu municipio y el problema para el que necesitas ayuda; seguido de ello te saldrá una lista de las organizaciones que trabajan dicho tema con sus respectivas direcciones y números telefónicos. Podes marcar al número telefónico de la organización como un primer paso para solicitar apoyo y contribuir a prevenir la violencia y adicciones a nivel personal y comunitario.
+									</p>
+									<p>
+										Si tu seguridad o salud personal o de un familiar está en riesgo te invitamos a actuar, no estás sola ni solo. También podes acercarte a personas de confianza en tu comunidad, promotores sociales o una autoridad que te brinde apoyo. Cambia ahora, solo hazlo. 
+									</p>
+								</div>
+							</div>
+							
+						</div>
+						<!-- End Item -->
+					</div>
+					<!-- End Carousel Inner -->
+						
+				</div>
+				<!-- End Carousel -->
+			</div>
+
+	<!--Footer Section Start Here -->
+ <!-- FOOTER -->
+        <footer>
+        	<div class="container">
+            	<div class="row">
+                	
+                	<div class="col-md-3 col-lg-3">
+                        <h3 class="uppercase">FADCANIC</h3>
+                        <img src="/static/cambiaahora/img/logo-fadcanic.png" class="logo-fadcanic" alt="">
+                        <br>
+                        <p>Fundación para la Autonomía y el Desarrollo de la Costa Atlántica (FADCANIC) Bluefields, RACCS, Bilwi, RACN Managua.</p>
+                        <div class="social">
+                        	<a href="https://www.facebook.com/pages/Cambia-ahora-solo-hazlo/1485321515024959?fref=ts">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+
+
+                            <a href="https://twitter.com/Cambia_ahora">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                            
+                          
+                            
+                            <a href="https://www.youtube.com/channel/UCcpJBeBNFxDip-Avh25xIEw">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-youtube-play fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                    	</div>
+                    </div>
+                    
+                    <div class="col-md-3 col-lg-3">
+                    	<h3 class="uppercase">{# {% trans 'Contactos' %} #}Contactos</h3>
+                        
+
+                        
+                        <div class="address">
+                        	<div class="icon">
+                            	<i class="fa fa-lg fa-phone"></i>
+                            </div>
+                            <p>Managua: (505) 2270 0536 <br> (505) 2270 1921</p>
+                        </div>
+                        <div class="address">
+                            <div class="icon">
+                                <i class="fa fa-lg fa-phone"></i>
+                            </div>
+                            <p>Puerto Cabezas: (505) 27922203</p>
+                        </div>
+                        <div class="address">
+                            <div class="icon">
+                                <i class="fa fa-lg fa-phone"></i>
+                            </div>
+                            <p>Bluefields: (505) 2572 2386</p>
+                        </div>
+                        <div class="address">
+                            <div class="icon">
+                                <i class="fa fa-lg fa-fax"></i>
+                            </div>
+                            <p>Fax: (505) 2270 1921</p>
+                        </div>
+                        
+                        
+                        <div class="address">
+                        	<div class="icon">
+                            	<i class="fa fa-lg fa-envelope"></i>
+                            </div>
+                            
+                            <p>changenowlestsdoit@gmail.com</p>
+
+                        </div>
+                        <div class="address">
+                            <div class="icon">
+                                <i class="fa fa-lg fa-envelope"></i>
+                            </div>
+
+                            <p>director@fadcanic.org.ni</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-6 logo-eeuu">
+                    <h3 class="uppercase">{# {% trans "Auspiciado por" %} #}Auspiciado por</h3>
+                        <div class="col-md-6 col-lg-6">
+                            <img src="/static/cambiaahora/img/ac2.png" alt="">
+                        </div>
+                    	<div class="col-md-6 col-lg-6">
+                        <p>{# {% trans 'Departamento de Estado de los Estados Unidos' %} #}Departamento de Estado de los Estados Unidos
+                        International Narcotics and Law Enforcement Affairs U.S. Embassy.
+                        <br>Managua, Nicaragua</p>
+                        <br>
+
+                            <div class="address">
+                                <div class="icon">
+                                    <i class="fa fa-lg fa-phone"></i>
+                                </div>
+                                <p> (505) 2252-7100</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+     <!-- SUBFOOTER -->
+        <div class="subfooter">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-lg-12">
+                    	<p> © Copyright 2015. {# {% trans  'Desarrollado por' %} #}Desarrollado por <a href="http://www.simas.org.ni" target="_blank">SIMAS</a>
+                                    </p>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+	<!--Footer Section End Here -->
+	<script src="{% static 'cambiaahora/js/jquery.min.js' %}"></script>
+		<script src="{% static 'cambiaahora/js/bootstrap.min.js' %}"></script>
+		
+
+		<script type="text/javascript">
+			$(document).ready( function() {
+			    $('#prueba').carousel({
+			    	interval:   4000
+				});
+				
+				var clickEvent = false;
+				$('#prueba').on('click', '.probar a', function() {
+						clickEvent = true;
+						$('.probar li').removeClass('active');
+						$(this).parent().addClass('active');		
+				}).on('slid.bs.carousel', function(e) {
+					if(!clickEvent) {
+						var count = $('.probar').children().length -1;
+						var current = $('.probar li.active');
+						current.removeClass('active').next().addClass('active');
+						var id = parseInt(current.data('slide-to'));
+						if(count == id) {
+							$('.probar li').first().addClass('active');	
+						}
+					}
+					clickEvent = false;
+				});
+			});
+		</script>
+		
+
+	</body>
+</html>
+
+
