@@ -46,8 +46,8 @@
 			{
 			    border-radius: 0px;
 			}
-			.carousel-inner>.item>img, .carousel-inner>.item>a>img{
-				width: 60%;
+			.img-apps{
+				margin-top: 20px;
 			}
 			.nav-pills>li[data-slide-to="0"].active a,
 			.nav-pills>li[data-slide-to="0"].active a:focus { background-color: #389500 !important; }
@@ -60,7 +60,8 @@
 			.nav-pills>li[data-slide-to="4"].active a,
 			.nav-pills>li[data-slide-to="4"].active a:focus { background-color: #3B8887 !important; }
 			#prueba{
-				margin: 30px 0px;
+				margin-top: 30px;
+				margin-bottom: 0px;
 			}
 			.page-header h2{
 				margin-bottom: 0px;
@@ -70,11 +71,20 @@
 				text-transform: lowercase;
 			}
 			.carousel-inner{
-				min-height: 415px;
+				min-height: 465px;
 			}
 			.carousel-inner p{
 				text-align: justify;
 				font-size: 15px;
+			}
+			.item .page-header{
+				margin-bottom: 10px;
+			}
+			.dowload-play{
+				display: block;
+				margin-bottom: 30px;
+
+
 			}
 		</style>
 				<!--Header Section Start Here -->
@@ -208,7 +218,7 @@
 						<div class="item active">
 							<div class="row">
 								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-									<img src="{% static 'panel/img/apps/CambiaAhora 1.png' %}">
+									<img class="img-responsive img-apps"src="{% static 'panel/img/apps/CambiaAhora 1.jpg' %}">
 								</div>
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 									<header class="page-header section-header clearfix">
@@ -228,9 +238,7 @@
 						<!-- End Item -->
 						<div class="item">
 							<div class="row">
-								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-									<img src="{% static 'panel/img/apps/CambiaAhora 1.png' %}">
-								</div>
+								
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 									<header class="page-header section-header clearfix">
 										<h2>“Que sabes vos”</h2>
@@ -241,13 +249,18 @@
 									</p>
 								
 								</div>
+								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+									<img class="img-responsive img-apps"src="{% static 'panel/img/apps/CambiaAhora 2.jpg' %}">
+								</div>
 							</div>
 							
 						</div>
 						<!-- End Item -->
 						<div class="item">
 							<div class="row">
-								
+								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+									<img class="img-responsive img-apps"src="{% static 'panel/img/apps/CambiaAhora 3.jpg' %}">
+								</div>
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 									<header class="page-header section-header clearfix">
 										<h2>Test adicciones</h2>
@@ -258,18 +271,14 @@
 									</p>
 
 								</div>
-								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-									<img src="{% static 'panel/img/apps/CambiaAhora 3.png' %}">
-								</div>
+								
 							</div>
 							
 						</div>
 						<!-- End Item -->
 						<div class="item">
 							<div class="row">
-								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-									<img src="{% static 'panel/img/apps/CambiaAhora 1.png' %}">
-								</div>
+								
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 									<header class="page-header section-header clearfix">
 										<h2>Sopa de letras</h2>
@@ -280,6 +289,9 @@
 									</p>
 				
 								</div>
+								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+									<img class="img-responsive img-apps"src="{% static 'panel/img/apps/CambiaAhora 4.jpg' %}">
+								</div>
 							</div>
 							
 						</div>
@@ -287,7 +299,7 @@
 						<div class="item">
 							<div class="row">
 								<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-									<img src="{% static 'panel/img/apps/CambiaAhora 1.png' %}">
+									<img class="img-responsive img-apps"src="{% static 'panel/img/apps/CambiaAhora 5.jpg' %}">
 								</div>
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 									<header class="page-header section-header clearfix">
@@ -315,6 +327,11 @@
 						
 				</div>
 				<!-- End Carousel -->
+
+
+				<a class="dowload-play" href="https://play.google.com/store/apps/details?id=ni.org.simas.android.wordsearch&hl=es_419" target="_blank">
+					<img class="img-responsive " src="{% static 'panel/img/apps/googleplay.png' %}" alt="">
+				</a>
 			</div>
 
 	<!--Footer Section Start Here -->
