@@ -60,6 +60,7 @@ urlpatterns += i18n_patterns('',
 
 urlpatterns += patterns('actividades.views',
     url(r'^monitoreo/$', TemplateView.as_view(template_name="panel/base.html"), name='monitoreo-panel'),
+    url(r'^cambiaahora_app/$', TemplateView.as_view(template_name="panel/cambiaahoraapp.html"), name='cambiaahora-app'),
     url(r'^mapa/$', 'obtener_lista', name='obtener-lista'),
     url(r'^municipios/$', 'datos', name='obtener-datos'),
     url(r'^jsonnews/', include(router.urls)),

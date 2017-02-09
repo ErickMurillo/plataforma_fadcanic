@@ -12,6 +12,15 @@
 <script src="/static/cambiaahora/js/audiojs/audio.min.js"></script>
 <script>
 
+// Javascript to enable link to tab
+var url = document.location.toString();
+if (url.match('#')) {
+    $('.side-nav a[href="#' + url.split('#')[1] + '"]').tab('show');
+    //$('html, body').animate({scrollTop:$('.container').position().top});
+
+}
+
+
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   var iframe = $(e.relatedTarget.hash).find('iframe');
   var src = iframe.attr('src');
@@ -82,15 +91,15 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 										<span class="fa fa-bars"></span>Contenido
 
 									</li>
-									<li class="active">
-										<a href="#pdf" aria-controls="pdf" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>PDF</a>
+									<li>
+										<a href="#pdf" class="banana" aria-controls="pdf" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>PDF</a>
 
 									</li>
 									<li>
-										<a href="#documental" aria-controls="documental" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>Documentales</a>
+										<a href="#documental" class="banana" aria-controls="documental" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>Documentales</a>
 									</li>
 									<li>
-										<a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>Audio</a>
+										<a href="#audio" class="banana" aria-controls="audio" role="tab" data-toggle="tab"><i class="fa fa-angle-double-right bullet-arrow"></i>Audio</a>
 									</li>
 
 
@@ -115,13 +124,21 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 												<!-- colored -->
 
 											   	<div class="ih-item square colored effect6 from_top_and_bottom"><a href="/media/{{pdf.archivo}}">
-											        <div class="img"><img src="/static/biblioteca/img/pdf.png" alt="img"></div>
+											        <div class="img">
+											        {% if pdf.portada %}
+														{% thumbnail pdf.portada "250x325" as img %}
+															<img class="center-block" src="/media/{{img}}" alt="">
+														{% endthumbnail %}
+													{%else%}
+														<img src="/static/biblioteca/img/pdf.png" alt="img">
+													{% endif %}
+											        </div>
 											        <div class="info">
-																{% if pdf.titulo %}
-																	<h3>{{pdf.titulo}}</h3>
-																{% else %}
-																	<h3>Sin titulo</h3>
-																{% endif %}
+														{% if pdf.titulo %}
+															<h3>{{pdf.titulo}}</h3>
+														{% else %}
+															<h3>Sin titulo</h3>
+														{% endif %}
 
 											          <p></p>
 

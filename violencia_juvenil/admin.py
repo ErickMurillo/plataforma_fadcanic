@@ -72,7 +72,7 @@ class EncuestaAdmin(admin.ModelAdmin):
     inlines = [InformacionInline,EscolaridadInline,ParticipaOrganizacionInline,
                 RespuetaSiInline,ConocimientoInline,ActitudInline,PracticasInline,
                 PercepcionInline,EstadoActualInline]
-    list_display = ('fecha','grupos','encuestador')
+    list_display = ('id','fecha','grupos','encuestador')
 
     class Media:
         css = {

@@ -6,7 +6,7 @@ from django.db.models import Q
 # Create your views here.
 def index(request,template='biblioteca/index.html',slug=None):
 	temas = Temas.objects.all()
-	ultimas_guias = Biblioteca.objects.filter(tipo_documento=1).order_by('-fecha')[:6]
+	ultimas_guias = Biblioteca.objects.filter(tipo_documento=1).order_by('-fecha')[:12]
 
 	return render(request, template, locals())
 
