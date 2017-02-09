@@ -174,14 +174,14 @@ $(document).ready(function() {
 var foo = [];
 $(document).on('change','#id_departamento',function(){
 	$('#id_municipio').html('');
-    $('#id_departamento :selected').each(function(i, selected){ 
-        foo[i] = $(selected).val();      
+    $('#id_departamento :selected').each(function(i, selected){
+        foo[i] = $(selected).val();
     });
     $.getJSON('/ajax/munis/?ids='+foo.join(","), function(data){
         $("#id_municipio").multiselect('enable');
         var municipio = $('#id_municipio')
         if(data){
-            
+
            $.each(data, function(i, item){
             $.each(item, function(j, item2){
                 var group = $('<optgroup></optgroup>').attr('label', j);
@@ -208,15 +208,15 @@ $('#id_sexo').append('<option value="" selected="selected">Ambos</option>');
             <div class="titulo-violencia">
                <h4 class="borde">
                     Combinacion de Variables
-                </h4> 
+                </h4>
             </div>
-            
+
 
                 <form action="." method="POST">{% csrf_token %}
                     <div class="col-sm-6 col-md-4">
                         <div class="col-md-12 space-act">
                             <label>Año*</label>
-                            {{form.year}}           
+                            {{form.year}}
 
                         </div>
                         <div class="col-md-12 space-act">
@@ -227,7 +227,7 @@ $('#id_sexo').append('<option value="" selected="selected">Ambos</option>');
                             <label>Municipios</label>
                             {{form.municipio}}
                         </div>
-                            
+
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <div class="col-md-12 space-act">
@@ -236,31 +236,32 @@ $('#id_sexo').append('<option value="" selected="selected">Ambos</option>');
                         </div>
                         <div class="col-md-12 space-act">
                             <label>Grupos</label>
-                            {{form.grupos}}          
+                            {{form.grupos}}
 
                         </div>
                         <div class="col-md-12 space-act">
                             <label>Edad</label>
                             {{form.edad}}
                         </div>
-                            
+
                     </div>
                     <div class="col-sm-6 col-md-4">
                         <div class="col-md-12 space-act">
                             <label>Etnia</label>
-                            {{form.etnia}}          
+                            {{form.etnia}}
 
                         </div>
                         <div class="col-md-12 space-act">
-                           
-                            <input class="btn btn-default br-violencia" type="submit" value="Consultar" name="consulta"/> 
+
+                            <input class="btn btn-default br-violencia" type="submit" value="Consultar" name="consulta"/>
                         </div>
-                            
-                    </div>          
+
+                    </div>
 
                 </form>
 
         </div>
-    </div>	
+    </div>
 </div>
+
 {% endblock contenido %}

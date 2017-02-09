@@ -89,7 +89,7 @@ def consulta(request,template="violencia_juvenil/consulta.html"):
 			request.session['departamento'] = form.cleaned_data['departamento']
 			request.session['municipio'] = form.cleaned_data['municipio']
 
-			return HttpResponseRedirect('/encuesta_cap/dashboard/')		
+			return HttpResponseRedirect('/encuesta_cap/dashboard/')
 	else:
 		form = ViolenciaConsulta()
 		try:
@@ -168,14 +168,14 @@ def dashboard(request,template='violencia_juvenil/dashboard.html'):
 		for obj in CHOICE_19:
 			conteo = filtro.filter(actitud__pregunta19__contains=obj[0],year=y).count()
 			pregunta19[obj[1]] = saca_porcentajes(conteo,encuestas,False)
-			
+
 		#tab practicas-------------------------------------------------------
 		#preg 23
 		pregunta23 = collections.OrderedDict()
 		for obj in CHOICE_23:
 			conteo = filtro.filter(practicas__pregunta23__contains=obj[0],year=y).count()
 			pregunta23[obj[1]] = saca_porcentajes(conteo,encuestas,False)
-		
+
 		#preg 24
 		pregunta24 = collections.OrderedDict()
 		for obj in CHOICE_24:
@@ -207,7 +207,7 @@ def dashboard(request,template='violencia_juvenil/dashboard.html'):
 		for obj in CHOICE_37:
 			conteo = filtro.filter(estadoactual__pregunta37__contains=obj[0],year=y).count()
 			pregunta37[obj[1]] = saca_porcentajes(conteo,encuestas,False)
-		
+
 		year[y] = (encuestas,sexo,edad,etnia,
 					#conocimiento
 					pregunta3,pregunta4,pregunta7,pregunta9,pregunta13,
@@ -312,7 +312,7 @@ def conocimiento(request,template='violencia_juvenil/conocimiento.html'):
 
 def actitud(request,template='violencia_juvenil/actitud.html'):
 	filtro = _queryset_filtrado(request)
-	
+
 	year = {}
 	for y in request.session['year']:
 		encuestas = filtro.filter(year=y).count()
@@ -338,7 +338,7 @@ def actitud(request,template='violencia_juvenil/actitud.html'):
 
 def practicas(request,template='violencia_juvenil/practicas.html'):
 	filtro = _queryset_filtrado(request)
-	
+
 	year = {}
 	for y in request.session['year']:
 		encuestas = filtro.filter(year=y).count()
@@ -359,7 +359,7 @@ def practicas(request,template='violencia_juvenil/practicas.html'):
 
 def percepcion(request,template='violencia_juvenil/percepcion.html'):
 	filtro = _queryset_filtrado(request)
-	
+
 	year = {}
 	for y in request.session['year']:
 		encuestas = filtro.filter(year=y).count()
@@ -405,7 +405,7 @@ def percepcion(request,template='violencia_juvenil/percepcion.html'):
 
 def estado_actual(request,template='violencia_juvenil/estado_actual.html'):
 	filtro = _queryset_filtrado(request)
-	
+
 	year = {}
 	for y in request.session['year']:
 		encuestas = filtro.filter(year=y).count()
